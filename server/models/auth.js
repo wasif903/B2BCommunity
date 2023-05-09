@@ -1,14 +1,49 @@
 import mongoose, { model } from "mongoose";
 const { Schema } = mongoose;
 
-const UserSchema = new Schema(
+const AuthSchema = new Schema(
   {
-    username: {
+    firstName: {
       type: String,
       require: true,
     },
-    
-     
+
+    lastName: {
+      type: String,
+      require: true,
+    },
+
+    companyName: {
+      type: String,
+      require: true,
+    },
+
+    VAT_ID: {
+      type: String,
+      require: true,
+    },
+
+    addressLine: {
+      type: String,
+      require: true,
+    },
+
+    zipCode: {
+      type: Number,
+      require: true,
+    },
+
+    city: {
+      type: String,
+      require: true,
+    },
+
+    country: {
+      type: String,
+      require: true,
+    },
+
+
     email: {
       type: String,
       require: true,
@@ -20,8 +55,18 @@ const UserSchema = new Schema(
       require: true,
     },
 
+    roles: {
+      type: [String],
+      enum: ['User', 'Seller'],
+      default: ['User'],
+      require: true
+    },
+    invitation: {
+      type: [String],
+      enum: ['Pending', 'Accepted'],
+    },
   },
   { timestamps: true }
 );
 
-export default model("User", UserSchema);
+export default model("Auth", AuthSchema);
