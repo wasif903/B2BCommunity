@@ -2,6 +2,7 @@ import express  from "express";
 import mongoDBConnection from "./db.js";
 import dotenv from 'dotenv';
 import auth from "./routes/auth.js";
+import groupCrud from "./routes/groupCrud.js";
 
 
 const app = express();
@@ -12,6 +13,7 @@ dotenv.config();
 mongoDBConnection();
 
 app.use('/auth', auth);
+app.use('/groups', groupCrud);
 
 app.get('/check', (req, res) => {
     res.send("hello world");

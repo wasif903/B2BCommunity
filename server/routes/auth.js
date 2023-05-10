@@ -3,7 +3,7 @@ import AuthSchema from "../models/auth.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-const router = express();
+const router = express.Router();
 
 router.post("/register", async (req, res) => {
     
