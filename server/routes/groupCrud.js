@@ -1,6 +1,7 @@
 import express from "express";
 import Group from "../models/Group.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
+import auth from "../models/auth.js";
 
 const router = express.Router();
 
@@ -19,30 +20,33 @@ router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
     }
 });
 
-router.patch("/join-group/GroupID", authMiddleware(["User"]), async (req, res) => {
 
+router.patch("/join-group/:GroupID", authMiddleware(["User"]), async (req, res) => {
     try {
-
         const { GroupID } = req.params;
         const findGroup = await Group.findById(GroupID);
         const findUser = await auth.findOne({ _id: req.body.userID });
         
-        if (!findUser && !findGroup) {
+        if (!findUser || !findGroup) {
             res.status(404).json({ error: "Data Not Found" });
         } else {
-
-            const pushedInUserID = await createGroup.userID.push(findUser);
-            const updateGroup = Group.findByIdAndUpdate({
-                userID: pushedInUserID,
-            });
+            findGroup.userID.push(findUser._id); // Push the user's _id value
             
-            const saveGroup = await updateGroup.save();
+            await findGroup.save(); // Save the updated group
 
-            res.status(201).json({ message: "New User Has Joined", saveGroup });
+            await auth.findByIdAndUpdate(
+                findUser._id,
+                { $set: { invitation: "Accepted" } } // Update the invitation status to "Accepted"
+            );
+
+            res.status(201).json({ message: "New User Has Joined", updateGroup: findGroup });
         }
     } catch (error) {
         res.status(500).json(error);
+        console.log(error);
     }
 });
+
+
 
 export default router;

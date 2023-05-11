@@ -9,11 +9,12 @@ const GroupSchema = new Schema(
         require:true
     },
 
-    sellerID :[{
+    sellerID :{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Auth',
         require:true
-    }],
+    },
+    
     userID :[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Auth',
