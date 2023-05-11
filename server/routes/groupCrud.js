@@ -21,17 +21,67 @@ router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
 });
 
 
-router.patch("/join-group/:GroupID", authMiddleware(["User"]), async (req, res) => {
+router.patch("/request-join-group/:GroupID", authMiddleware(["User"]), async (req, res) => {
     try {
         const { GroupID } = req.params;
         const findGroup = await Group.findById(GroupID);
         const findUser = await auth.findOne({ _id: req.body.userID });
-        
+
         if (!findUser || !findGroup) {
             res.status(404).json({ error: "Data Not Found" });
         } else {
-            findGroup.userID.push(findUser._id); // Push the user's _id value
-            
+            const existingUserIndex = findGroup.userID.findIndex(id => id.equals(findUser._id));
+
+            if (existingUserIndex !== -1) {
+                // User already exists in the group, update the invitation status
+                findGroup.userID[existingUserIndex].invitation = "Pending";
+            } else {
+                // User doesn't exist in the group, add the user
+                findGroup.userID.push({
+                    _id: findUser._id,
+                    invitation: "Pending"
+                });
+            }
+
+            await findGroup.save(); // Save the updated group
+
+            await auth.findByIdAndUpdate(
+                findUser._id,
+                { $set: { invitation: "Pending" } } // Update the invitation status to "Pending"
+            );
+
+            res.status(200).json({ message: "Waiting For Seller To Accept Your Invitation", updateGroup: findGroup });
+        }
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error);
+    }
+});
+
+router.patch("/:sellerID/group-request-accepted/:GroupID", authMiddleware(["Seller"]), async (req, res) => {
+    try {
+        const { GroupID } = req.params;
+        const { sellerID } = req.params;
+        const findGroup = await Group.findById(GroupID);
+        const findSeller = await auth.findById(sellerID);
+        const findUser = await auth.findOne({ _id: req.body.userID });
+
+        if (!findUser || !findGroup) {
+            res.status(404).json({ error: "Data Not Found" });
+        } else {
+            const existingUserIndex = findGroup.userID.findIndex(id => id.equals(findUser._id));
+
+            if (existingUserIndex !== -1) {
+                // User already exists in the group, update the invitation status
+                findGroup.userID[existingUserIndex].invitation = "Accepted";
+            } else {
+                // User doesn't exist in the group, add the user
+                findGroup.userID.push({
+                    _id: findUser._id,
+                    invitation: "Accepted"
+                });
+            }
+
             await findGroup.save(); // Save the updated group
 
             await auth.findByIdAndUpdate(
@@ -39,7 +89,7 @@ router.patch("/join-group/:GroupID", authMiddleware(["User"]), async (req, res) 
                 { $set: { invitation: "Accepted" } } // Update the invitation status to "Accepted"
             );
 
-            res.status(201).json({ message: "New User Has Joined", updateGroup: findGroup });
+            res.status(200).json({ message: "Your Invitation Has Been Accepted By The Seller", updateGroup: findGroup });
         }
     } catch (error) {
         res.status(500).json(error);
