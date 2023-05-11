@@ -1,7 +1,6 @@
 import Jwt from "jsonwebtoken";
 
 const authMiddleware = (allowedRoles, allowedStatus) => {
-  const secret = 'newsecretkeyshhh';
 
   return async (req, res, next) => {
     try {
@@ -11,11 +10,11 @@ const authMiddleware = (allowedRoles, allowedStatus) => {
         return res.status(401).json('UnAuthorized');
       }
 
-      const decodedToken = Jwt.verify(token.split(' ')[1], secret);
+      const decodedToken = Jwt.verify(token.split(' ')[1], process.env.JWT_SECRET);
       const verifyRoles = decodedToken.roles;
       const verifyStatus = decodedToken.status;
 
-      const checkRoles = allowedRoles ? allowedRoles.some(role => verifyRoles.includes(role)) : true;
+      const checkRoles = allowedRoles ? allowedRoles.some(roles => verifyRoles.includes(roles)) : true;
       const checkStatus = allowedStatus ? allowedStatus.includes(verifyStatus) : true;
 
       if (!checkRoles) {
