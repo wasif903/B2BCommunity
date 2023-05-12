@@ -1,0 +1,45 @@
+:root {
+  --primary-color: #db3685;
+  --bg-color: white;
+  --btn-bg-color: white;
+  --font-color: black;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif !important;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--btn-bg-color);
+}
+
+button:hover {
+  color: var(--primary-color);
+  background-color: var(--btn-bg-color);
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+p {
+  color: var(--font-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--font-color);
+}
