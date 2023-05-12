@@ -1,11 +1,17 @@
+import { useRoutes } from 'react-router-dom'
 import './App.css'
-import Header from './Components/Header'
+import sellerRoutes from './Router/SellerRoutes'
+
 
 function App() {
 
+  const element = useRoutes(sellerRoutes)
+
   return (
     <>
-      <Header />  
+      {
+        element
+      }
     </>
   )
 }

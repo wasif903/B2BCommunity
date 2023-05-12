@@ -6,13 +6,15 @@ import styles from './auth.module.css'
 function Welcome() {
     return (
         <>
-            <Container className={styles.welComeWrapper}>
-                <Row>
-                    <Col>
-
-                    </Col>
-                </Row>
-            </Container>
+            <div className={styles.welComeWrapper}>
+                <Container className={styles.welComeWrapper}>
+                    <Row>
+                        <Col>
+                            <h1>Hellow World</h1>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         </>
     )
 }
