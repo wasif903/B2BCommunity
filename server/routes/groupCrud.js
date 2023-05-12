@@ -5,6 +5,7 @@ import auth from "../models/auth.js";
 
 const router = express.Router();
 
+// Create Group Endpoint
 router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
     try {
 
@@ -20,7 +21,49 @@ router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
     }
 });
 
+// Update Group Endpoint
+router.patch("/update-group/:groupID", authMiddleware(["Seller"]), async (req, res) => {
+    try {
 
+        const { groupID } = req.params;
+
+        const findGroup = await Group.findById(groupID);
+
+        if (findGroup) {
+
+            findGroup.groupName = req.body.groupName || findGroup.groupName
+
+            const saveUpdateGroup = await findGroup.save();
+            res.status(200).json({ message: "Group Has Been Created Successfully", saveUpdateGroup });
+        } else {
+            res.status(404).json({ message: "Group Not Found" })
+        }
+
+    } catch (error) {
+        res.status(500).json({ message: error });
+        console.log(error)
+    }
+});
+
+// All Groups Endpoint
+router.get("/get-groups", async (req, res) => {
+
+    try {
+        const findGroups = await Group.find();
+
+        if (findGroups) {
+            res.status(200).json({ message: "All Groups Has Been Listed Successfully", findGroups });
+        } else {
+            res.status(404).json({ message: "Groups Not Found" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
+});
+
+
+
+// Requesting To Join Group Endpoint
 router.patch("/request-join-group/:GroupID", authMiddleware(["User"]), async (req, res) => {
     try {
         const { GroupID } = req.params;
@@ -58,6 +101,7 @@ router.patch("/request-join-group/:GroupID", authMiddleware(["User"]), async (re
     }
 });
 
+// Accepting Request To Join Group From Seller Endpoint
 router.patch("/:sellerID/group-request-accepted/:GroupID", authMiddleware(["Seller"]), async (req, res) => {
     try {
         const { GroupID } = req.params;
@@ -66,7 +110,7 @@ router.patch("/:sellerID/group-request-accepted/:GroupID", authMiddleware(["Sell
         const findSeller = await auth.findById(sellerID);
         const findUser = await auth.findOne({ _id: req.body.userID });
 
-        if (!findUser || !findGroup) {
+        if (!findUser || !findGroup || !findSeller) {
             res.status(404).json({ error: "Data Not Found" });
         } else {
             const existingUserIndex = findGroup.userID.findIndex(id => id.equals(findUser._id));
