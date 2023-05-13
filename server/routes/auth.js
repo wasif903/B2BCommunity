@@ -3,7 +3,6 @@ import AuthSchema from "../models/auth.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { body, validationResult } from 'express-validator';
-import cookieParser from 'cookie-parser';
 
 const router = express.Router();
 
@@ -63,7 +62,7 @@ router.post("/register", [
             // Generate a cookie and set it in the response
             res.cookie('cookie', cookie, { httpOnly: true });
 
-            res.status(200).json({ message: "Registered in successfully", saveUser });
+            res.status(200).json({ message: "Registered in successfully", saveUser, cookie });
         }
     } catch (error) {
         res.status(500).json(error);
@@ -73,43 +72,47 @@ router.post("/register", [
 
 
 
-
-router.post('/login', async (req, res) => {
-    
+router.post('/login', [
+    body('email').notEmpty().withMessage('Email is required').isEmail().withMessage('Invalid email address'),
+    body('password').notEmpty().withMessage('Password is required')
+], async (req, res) => {
     try {
-    
-        const UserExists = await AuthSchema.findOne({email:req.body.email})
-
-        if (UserExists) {
-
-            const comparePass = await bcrypt.compare(req.body.password, UserExists.password);
-
-            if (comparePass) {
-                
-                const token = await jwt.sign(
-                    {
-                        email:UserExists.email,
-                        userID:UserExists.id,
-                        roles:UserExists.roles,
-                        invitation:UserExists.invitation
-    
-                    }, process.env.JWT_SECRET)
-
-            res.status(200).json({message:"Logged In Successfully", token})
-
-            } else {
-                res.status(400).json({message:"Passwords Dont Match"});
-            }
-
-        } else {
-            res.status(404).json({message:"Account Not Found"})
+        // Check for validation errors
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
 
-        
-    } catch (error) {
-        res.status(500).json(error)
-    }
+        const userExists = await AuthSchema.findOne({ email: req.body.email });
 
-})
+        if (userExists) {
+            const comparePass = await bcrypt.compare(req.body.password, userExists.password);
+
+            if (comparePass) {
+                const cookie = await jwt.sign(
+                    {
+                        email: userExists.email,
+                        userID: userExists.id,
+                        roles: userExists.roles,
+                        invitation: userExists.invitation
+                    }, process.env.JWT_SECRET
+                );
+
+                // Generate a cookie and set it in the response
+                res.cookie('cookie', cookie, { httpOnly: true });
+
+                res.status(200).json({ message: "Logged In Successfully", cookie });
+            } else {
+                res.status(400).json({ message: "Passwords Don't Match" });
+            }
+        } else {
+            res.status(404).json({ message: "Account Not Found" });
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+
 
 export default router;
