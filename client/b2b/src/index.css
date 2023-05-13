@@ -24,11 +24,15 @@ a:hover {
 button {
   background-color: var(--primary-color);
   color: var(--btn-bg-color);
+  border: none;
+  border-radius: 12px !important;
+  padding: 10px 10px 10px 10px;
 }
 
 button:hover {
   color: var(--primary-color);
   background-color: var(--btn-bg-color);
+  border-radius: 10px !important;
   transform: translateY(-5px);
   transition: 0.3s;
 }
@@ -45,3 +49,4 @@ h5,
 h6 {
   color: var(--font-primary-color);
 }
+

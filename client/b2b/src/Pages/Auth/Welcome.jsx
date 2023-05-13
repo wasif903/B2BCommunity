@@ -5,8 +5,8 @@ import styles from "./auth.module.css";
 import Logo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom'
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 function Welcome() {
   return (
@@ -15,14 +15,13 @@ function Welcome() {
         <Container className={styles.pageWrapper}>
           <Row>
             <Col>
-              <div className="text-center">
+              <div className="text-center pb-4">
                 <img src={Logo} alt="site logo" />
               </div>
               <div className="text-center">
                 <h2 className={styles.headings}>Welcome</h2>
                 <h1 className={`${styles.headings} display-6`}>OUTLET 34</h1>
               </div>
-              
             </Col>
           </Row>
           <Row className={`${styles.loginOptionRow}`}>
@@ -84,11 +83,13 @@ function Welcome() {
           </Row>
 
           <Row className={`${styles.loginOptionRow}`}>
-            <Col sm='12' md="9" className="text-md-start text-center">
+            <Col sm="12" md="9" className="text-md-start text-center">
               <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
             </Col>
-            <Col sm='12' md="3" className="text-center text-md-end pb-2">
-              <Link to='/login' className={styles.anchor}>LOGIN</Link>
+            <Col sm="12" md="3" className="text-center text-md-end pb-2">
+              <Link to="/login" className={styles.anchor}>
+                LOGIN
+              </Link>
             </Col>
           </Row>
         </Container>

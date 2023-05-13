@@ -1,3 +1,4 @@
+import Login from "../Pages/Auth/Login";
 import Welcome from "../Pages/Auth/Welcome";
 
 const sellerRoutes = [
@@ -5,6 +6,10 @@ const sellerRoutes = [
     {
         path: '/',
         element: <Welcome />
+    },
+    {
+        path: '/login',
+        element: <Login />
     },
 
 ]
