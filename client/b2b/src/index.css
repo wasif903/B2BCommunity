@@ -2,7 +2,9 @@
   --primary-color: #db3685;
   --bg-color: white;
   --btn-bg-color: white;
-  --font-color: black;
+  --font-primary-color: black;
+  --font-inter-color:  #db3685;
+  --font-secondary-color: white;
 }
 
 body {
@@ -32,7 +34,7 @@ button:hover {
 }
 
 p {
-  color: var(--font-color);
+  color: var(--font-primary-color);
 }
 
 h1,
@@ -41,5 +43,5 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--font-color);
+  color: var(--font-primary-color);
 }

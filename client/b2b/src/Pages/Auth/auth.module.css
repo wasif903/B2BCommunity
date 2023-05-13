@@ -1,8 +1,89 @@
 .welComeWrapper {
-    height: 100vh;
-    width: 100%;
-    background-color: var(--primary-color);
+  height: 100vh;
+  width: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headings {
+  color: var(--font-secondary-color);
+}
+
+.anchor {
+  color: var(--font-secondary-color);
+  text-decoration: none;
+}
+.anchor:hover {
+  color: var(--font-secondary-color);
+  text-decoration: none;
+}
+
+.loginOptionRow {
+  width: 300px;
+  height: 85px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginOptionIcon {
+  border: 3px white solid;
+  border-radius: 10px 0px 0px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.loginOptionTxt {
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.loginOptionHeadings {
+  color: var(--font-inter-color);
+  font-weight: 600 !important;
+}
+
+.lines {
+  width: 100%;
+  color: white;
+  opacity: 1;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .loginOptionTxt {
+    display: none;
+  }
+  .loginOptionIcon {
+    border: 3px white solid;
+    border-radius: 10px 10px 10px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+ 
+}
+
+@media only screen and (max-width: 600px) {
+  
+  .loginOptionRow {
+    /* width: 100px;
+    height: 85px; */
+    padding-top: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+ 
 }

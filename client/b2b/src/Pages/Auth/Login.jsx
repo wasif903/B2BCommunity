@@ -8,7 +8,7 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom'
 
-function Welcome() {
+function Login() {
   return (
     <>
       <div className={styles.welComeWrapper}>
@@ -88,7 +88,7 @@ function Welcome() {
               <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
             </Col>
             <Col sm='12' md="3" className="text-center text-md-end pb-2">
-              <Link to='/login' className={styles.anchor}>LOGIN</Link>
+              <Link to='/signup' className={styles.anchor}>SIGN UP</Link>
             </Col>
           </Row>
         </Container>
@@ -97,4 +97,4 @@ function Welcome() {
   );
 }
 
-export default Welcome;
+export default Login;
