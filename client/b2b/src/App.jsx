@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom'
 import './App.css'
 import sellerRoutes from './Router/SellerRoutes'
-
+import Header from './Components/Header'
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
 
   return (
     <>
+    < Header />
       {
         element
       }

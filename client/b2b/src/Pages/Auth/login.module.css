@@ -108,19 +108,9 @@ input.check:checked {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  .loginWrapper {
-    padding-top: 60px;
-    overflow-y: scroll;
-  }
   .loginOptionRow {
     padding: 0px;
-  }
-
-  .loginWrapper{
-    padding-top:250px ;
-  }
-  
-  
+  } 
 }
 
 @media only screen and (max-width: 600px) {
