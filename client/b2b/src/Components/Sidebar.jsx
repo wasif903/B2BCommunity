@@ -52,8 +52,8 @@ const Sidebar = ({ setIsOpen }) => {
             <div className="d-inline-flex ">
               <img src={userProfile} width="70px" alt="" />
               <div className="d-flex pt-3 justify-content-center flex-column" style={{lineHeight:'10px'}}>
-                <p>David Smith</p>
-                <p>davidsmith@gmail.com</p>
+                <p className="text-white">David Smith</p>
+                <p className="text-white">davidsmith@gmail.com</p>
               </div>
             </div>
           </Col>
