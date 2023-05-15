@@ -1,6 +1,6 @@
 import React from "react";
 import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
-import styles from "./ManageDataStyles/ManageUser.module.css";
+import styles from "./ManageDataStyles/NewRequest.module.css";
 import userPic from "../../assets/UserPic.jpeg";
 
 // function for display user
@@ -16,7 +16,7 @@ function displayData(users) {
       </div>
       <div className={styles.userDataBtn}>
         <button>remove</button>
-        <button>block</button>
+        <button>Add</button>
       </div>
     </li>
   );
@@ -27,7 +27,7 @@ function ManageUser() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.heading}>
-        <p>Manage Users</p>
+        <p>New Request</p>
       </div>
       <input type="text" placeholder="Search here..." />
       <div className={styles.sliders}>

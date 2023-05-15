@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk:wght@500&display=swap");
 
-
 .main {
   height: 100vh;
   display: flex;
@@ -14,7 +13,6 @@
   bottom: 17rem;
 }
 .heading h2 {
-  /* font-family: Work Sans; */
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 35px;

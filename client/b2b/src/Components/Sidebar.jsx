@@ -51,7 +51,10 @@ const Sidebar = ({ setIsOpen }) => {
           <Col sm="9" className="text-start mt-3 order-md-1 order-2">
             <div className="d-inline-flex ">
               <img src={userProfile} width="70px" alt="" />
-              <div className="d-flex pt-3 justify-content-center flex-column" style={{lineHeight:'10px'}}>
+              <div
+                className="d-flex pt-3 justify-content-center flex-column"
+                style={{ lineHeight: "10px" }}
+              >
                 <p>David Smith</p>
                 <p>davidsmith@gmail.com</p>
               </div>
