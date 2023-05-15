@@ -1,0 +1,42 @@
+ { "DummyUserData" : [
+    {
+      "name": "John Doe",
+      "code": "12345"
+    },
+    {
+      "name": "Jane Smith",
+      "code": "67890"
+    },
+    {
+      "name": "Mike Johnson",
+      "code": "54321"
+    },
+    {
+      "name": "Emily Davis",
+      "code": "98765"
+    },
+    {
+      "name": "Chris Lee",
+      "code": "45678"
+    },
+    {
+      "name": "Sarah Brown",
+      "code": "23456"
+    },
+    {
+      "name": "David Wilson",
+      "code": "78901"
+    },
+    {
+      "name": "Amy Taylor",
+      "code": "34567"
+    },
+    {
+      "name": "Kevin Chen",
+      "code": "89012"
+    },
+    {
+      "name": "Karen Wong",
+      "code": "67890"
+    }
+  ]}
