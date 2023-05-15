@@ -1,3 +1,4 @@
+import AdminPanel from "../Pages/AdminPanel/AdminPanel";
 import Login from "../Pages/Auth/Login";
 import OtpAuth from "../Pages/Auth/OtpAuth";
 import Welcome from "../Pages/Auth/Welcome";
@@ -22,10 +23,13 @@ const sellerRoutes = [
     element: <ManageUser />,
   },
   {
+    path: "/admin-panel",
+    element: <AdminPanel />,
+  },
+  {
     path: "/home",
     element: <Home />,
   },
  
 ];
-
 export default sellerRoutes;
