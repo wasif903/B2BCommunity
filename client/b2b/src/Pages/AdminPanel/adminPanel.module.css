@@ -1,4 +1,3 @@
-
 .coverPhoto {
     position: relative;
     height: 45vh;
@@ -19,7 +18,7 @@
     position: relative;
 }
 
-.editProfilePhoto{
+.editProfilePhoto {
     position: absolute;
     top: -120px;
     right: 550px;
@@ -33,16 +32,53 @@
     border: 5px solid var(--primary-color);
 }
 
+.aboutLinks {
+    list-style: none;
+    text-decoration: none;
+    color: var(--font-primary-color);
+}
+
+.manageUsers {
+    background: rgba(219, 54, 134, 0.326);
+    box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
+    border-radius: 15px;
+    width: 250px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manageWholeSeller {
+    background: #EDF4E7;
+    box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
+    border-radius: 15px;
+    width: 300px;
+    height: 80px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.manager {
+    color: #70d419;
+}
+
+.user {
+    color: rgba(255, 30, 139, 0.658);
+}
 
 @media only screen and (max-width:600px) {
     .coverPhoto {
         height: 25vh;
     }
+
     .profilePhoto {
         width: 35%;
         margin-top: -55px;
     }
-    .editProfilePhoto{
+
+    .editProfilePhoto {
         top: -45px;
         right: 150px;
         background-color: red;
