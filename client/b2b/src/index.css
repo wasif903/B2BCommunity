@@ -3,12 +3,12 @@
   --bg-color: white;
   --btn-bg-color: white;
   --font-primary-color: black;
-  --font-inter-color:  #db3685;
+  --font-inter-color: #db3685;
   --font-secondary-color: white;
 }
 
 body {
-  font-family: 'Work Sans', sans-serif !important;
+  font-family: "Work Sans", sans-serif !important;
 }
 
 a {
@@ -49,4 +49,5 @@ h5,
 h6 {
   color: var(--font-primary-color);
 }
+
 

@@ -1,0 +1,9 @@
+.sidebarWrapper {
+  position: fixed;
+  width: 20% !important;
+  background-color: white;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  transition: 1s;
+}
