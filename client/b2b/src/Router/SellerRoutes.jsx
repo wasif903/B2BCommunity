@@ -1,6 +1,7 @@
 import Login from "../Pages/Auth/Login";
 import OtpAuth from "../Pages/Auth/OtpAuth";
 import Welcome from "../Pages/Auth/Welcome";
+import ManageUser from "../Pages/ManageData/ManageUser";
 
 const sellerRoutes = [
   {
@@ -14,6 +15,10 @@ const sellerRoutes = [
   {
     path: "/Otp-auth",
     element: <OtpAuth />,
+  },
+  {
+    path: "/Manage-User",
+    element: <ManageUser />,
   },
 ];
 
