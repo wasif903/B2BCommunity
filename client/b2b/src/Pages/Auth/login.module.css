@@ -1,62 +1,99 @@
-.welComeWrapper {
+.loginWrapper {
   height: 100vh;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.loginPageWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.pageWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.logo {
+    width: 40%;
+
 }
 
 .headings {
-  color: var(--font-secondary-color);
+  color: var(--font-primary-color);
+  text-decoration: none !important;
+}
+
+input.check:checked {
+    color: var(--primary-color) !important;
 }
 
 .anchor {
-  color: var(--font-secondary-color);
+  color: var(--font-primary-color);
   text-decoration: none;
 }
 .anchor:hover {
-  color: var(--font-secondary-color);
+  color: var(--font-primary-color);
   text-decoration: none;
 }
 
 .loginOptionRow {
   width: 300px;
   height: 85px;
+  padding-top: 20px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginFrom {
+  width: 300px;
+  height: 270px;
   padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.loginInputs {
+    border: none;
+    outline: none;
+}
+.loginInputs:hover {
+    border: none;
+    outline: none;
+}
+.loginInputs:active {
+    border: none !important;
+    outline: none !important;
+}
+.loginInputs:focus {
+    border: none !important;
+    outline: none !important;
+}
+
 .loginOptionIcon {
-  border: 3px white solid;
+  border: 3px var(--primary-color) solid;
   border-radius: 10px 0px 0px 10px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 .loginOptionTxt {
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 0px 10px 10px 0px;
   padding-top: 11px;
   padding-bottom: 11px;
 }
 
 .loginOptionHeadings {
-  color: var(--font-inter-color);
+  color: var(--font-secondary-color);
   font-weight: 600 !important;
 }
 
 .lines {
   width: 100%;
-  color: white;
+  color: var(--primary-color);
   opacity: 1;
   text-align: center;
 }
@@ -66,24 +103,22 @@
     display: none;
   }
   .loginOptionIcon {
-    border: 3px white solid;
+    border: 3px var(--primary-color) solid;
     border-radius: 10px 10px 10px 10px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  
- 
+  .loginOptionRow {
+    padding: 0px;
+  } 
 }
 
 @media only screen and (max-width: 600px) {
-  
   .loginOptionRow {
-    /* width: 100px;
-    height: 85px; */
-    padding-top: 0px;
+    width: 280px;
+    /* padding-top: 40px; */
     display: flex;
     justify-content: center;
     align-items: center;
   }
- 
 }

@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk:wght@500&display=swap");
+
+
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.heading {
+  margin-top: 8rem;
+  position: relative;
+  bottom: 17rem;
+}
+.heading h2 {
+  /* font-family: Work Sans; */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+.heading p {
+  width: 25rem;
+  font-family: Mulish;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+}
+.inputFields {
+  position: relative;
+  bottom: 15rem;
+  right: 3rem;
+}
+.inputs {
+  border: none;
+  border-bottom: 1px solid #979797;
+  margin-left: 3rem;
+  -moz-appearance: textfield;
+  appearance: 0;
+  width: 51px;
+  outline: none;
+}
+.inputs[type="number"] {
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+.AuthBtn {
+  width: 22rem;
+  border: none;
+  border-radius: 5px;
+  height: 4rem;
+  font-size: 1.2rem;
+  position: relative;
+  bottom: 12rem;
+  right: 1.3rem;
+  cursor: pointer;
+}
+.footer {
+  display: flex;
+  width: 23rem;
+  justify-content: space-between;
+  position: relative;
+  bottom: 10rem;
+  right: 1rem;
+}
+
+.footer a,
+.footer a:hover {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+@media all and (max-width: 400px) {
+  html {
+    font-size: 85%;
+  }
+  .inputs {
+    margin-left: 2rem;
+  }
+  .AuthBtn {
+    width: 23rem;
+  }
+}

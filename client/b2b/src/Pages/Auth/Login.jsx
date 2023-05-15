@@ -1,48 +1,62 @@
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import styles from "./auth.module.css";
-import Logo from "../../assets/logo.png";
+import styles from "./login.module.css";
+import Logo from "../../assets/login_logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
-function Welcome() {
+function Login() {
   return (
     <>
-      <div className={styles.welComeWrapper}>
-        <Container className={styles.pageWrapper}>
+      <div className={styles.loginWrapper}>
+        <Container className={styles.loginPageWrapper}>
           <Row>
             <Col>
-              <div className="text-center pb-4">
-                <img src={Logo} alt="site logo" />
+              <div className="text-center py-3">
+                <img src={Logo} className={styles.logo} alt="site logo" />
               </div>
               <div className="text-center">
-                <h2 className={styles.headings}>Welcome</h2>
-                <h1 className={`${styles.headings} display-6`}>OUTLET 34</h1>
+                <h1 className={`${styles.headings} pb-3`}>Login</h1>
+                <h4 className={`${styles.headings}`}>
+                  Login With Your Account <br /> To Continue
+                </h4>
               </div>
             </Col>
           </Row>
-          <Row className={`${styles.loginOptionRow}`}>
-            <Col
-              md="3"
-              className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}
-            >
-              <div className="text-center">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="fa-2x"
-                  style={{ color: "#ffffff" }}
+
+          <Row className={styles.loginFrom}>
+            <Col>
+              <Form>
+                <input
+                  className={`${styles.loginInputs} form-control-lg my-3`}
+                  type="email"
+                  placeholder="Email"
                 />
-              </div>
-            </Col>
-            <Col md="9" className={styles.loginOptionTxt}>
-              <div className="text-center pt-2">
-                <h5 className={styles.loginOptionHeadings}>
-                  Continue With Gmail
-                </h5>
-              </div>
+
+                <input
+                  className={`form-control-lg my-3 ${styles.loginInputs}`}
+                  type="password"
+                  placeholder="Password"
+                />
+
+                <div className="d-flex justify-content-between">
+                  <div>
+                      <input type="checkbox" id="checkbox" label="" />
+                        <label className="ms-1" htmlFor="checkbox">Remember Me</label>
+                 
+                  </div>
+                  <div>
+                    <Link to="/forget-password" className={styles.headings}>Forgot Password?</Link>
+                  </div>
+                </div>
+
+                <div className="text-center d-grid my-3 ">
+                  <button type="submit">Submit</button>
+                </div>
+              </Form>
             </Col>
           </Row>
 
@@ -69,14 +83,14 @@ function Welcome() {
                 <FontAwesomeIcon
                   icon={faGoogle}
                   className="fa-2x"
-                  style={{ color: "#ffffff" }}
+                  style={{ color: "#db3685" }}
                 />
               </div>
             </Col>
-            <Col md="9" className={styles.loginOptionTxt}>
+            <Col md="9" className={` ${styles.loginOptionTxt}`}>
               <div className="text-center pt-2">
                 <h5 className={`${styles.loginOptionHeadings}`}>
-                  Sign UP With Google
+                  Login With Google
                 </h5>
               </div>
             </Col>
@@ -87,8 +101,8 @@ function Welcome() {
               <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
             </Col>
             <Col sm="12" md="3" className="text-center text-md-end pb-2">
-              <Link to="/login" className={styles.anchor}>
-                LOGIN
+              <Link to="/signup" className={styles.anchor}>
+                SIGNUP
               </Link>
             </Col>
           </Row>
@@ -98,4 +112,4 @@ function Welcome() {
   );
 }
 
-export default Welcome;
+export default Login;
