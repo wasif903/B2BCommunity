@@ -5,6 +5,7 @@
     background-color: white;
     border-radius: 8px;
     padding: 5px 20px 5px 20px;
+    
   }
   
   .search_bar .searchInput {
@@ -12,6 +13,7 @@
     border: none;
     outline: none;
     padding: 2px ;
+    
   }
   
   .search_icon {
@@ -23,4 +25,19 @@
   .navBar {
     background-color: var(--primary-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.527);
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media only screen and (max-width:600px) {
+    .search_bar {
+      display: flex;
+      align-items: center;
+      width: 225px;
+      background-color: white;
+      border-radius: 8px;
+      padding: 5px 20px 5px 20px;
+    }
   }

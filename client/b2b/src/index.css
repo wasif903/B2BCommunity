@@ -13,12 +13,12 @@ body {
 
 a {
   color: var(--primary-color);
+  text-decoration: none;
 }
 
 a:hover {
   color: var(--primary-color);
-  text-decoration: underline;
-  transition: 0.3s;
+  text-transform: none;
 }
 
 button {
@@ -30,8 +30,6 @@ button {
 }
 
 button:hover {
-  color: var(--primary-color);
-  background-color: var(--btn-bg-color);
   border-radius: 10px !important;
   transform: translateY(-5px);
   transition: 0.3s;
@@ -48,6 +46,26 @@ h4,
 h5,
 h6 {
   color: var(--font-primary-color);
+}
+
+ul, li {
+  list-style: none;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-style-2 {
+  background-color: var(--btn-bg-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 12px !important;
+  padding: 10px 10px 10px 10px;
+}
+.btn-style-2:hover {
+  border-radius: 10px !important;
+  transform: translateY(-5px);
+  transition: 0.3s;
 }
 
 
