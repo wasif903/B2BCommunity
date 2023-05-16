@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+// /* eslint-disable no-unused-vars */
+// /* eslint-disable react/prop-types */
 import styles from "./compStyles/sidebar.module.css";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/Col";
@@ -51,7 +51,10 @@ const Sidebar = ({ setIsOpen }) => {
           <Col sm="9" className="text-start mt-3 order-md-1 order-2">
             <div className="d-inline-flex ">
               <img src={userProfile} width="70px" alt="" />
-              <div className="d-flex pt-3 justify-content-center flex-column" style={{lineHeight:'10px'}}>
+              <div
+                style={{ lineHeight: "10px" }}
+                className="d-flex pt-3 justify-content-center flex-column"
+              >
                 <p className="text-white">David Smith</p>
                 <p className="text-white">davidsmith@gmail.com</p>
               </div>

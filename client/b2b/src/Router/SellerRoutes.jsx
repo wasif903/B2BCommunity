@@ -5,6 +5,9 @@ import Signup from "../Pages/Auth/Signup";
 import Welcome from "../Pages/Auth/Welcome";
 import Home from "../Pages/HomePage/Home";
 import ManageUser from "../Pages/ManageData/ManageUser";
+import ManageWholesellers from "../Pages/ManageData/ManageWholesellers";
+import NewRequest from "../Pages/ManageData/NewRequest";
+import AllMembers from "../Pages/ManageData/AllMembers";
 
 const sellerRoutes = [
   {
@@ -23,6 +26,19 @@ const sellerRoutes = [
     path: "/Manage-User",
     element: <ManageUser />,
   },
+  {
+    path: "/Manage-Wholeseller",
+    element: <ManageWholesellers />,
+  },
+  {
+    path: "/New-Request",
+    element: <NewRequest />,
+  },
+  {
+    path: "/All-Members",
+    element: <AllMembers />,
+  },
+
   {
     path: "/admin-panel",
     element: <AdminPanel />,

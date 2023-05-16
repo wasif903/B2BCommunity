@@ -63,7 +63,10 @@ function Header() {
                 <div
                   onClick={handleModal}
                   // eventKey={2}
-                  className={`${isOpen ? "d-none" : "d-flex"} pe-lg-4 ps-2`}
+                  className={`
+                  ${styles.bars}
+                  ${isOpen ? "d-none" : "d-flex"} 
+                  pe-lg-4 ps-2`}
                 >
                   <FontAwesomeIcon icon={faBars} className="text-white fa-lg" />
                 </div>

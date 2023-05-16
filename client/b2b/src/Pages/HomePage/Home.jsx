@@ -5,21 +5,15 @@ import JoinedGroups from "../../Components/JoinedGroups";
 import SuggestedGroups from "../../Components/SuggestedGroups";
 
 function Home() {
+  return (
+    <>
+      <Header />
 
-   
+      <SuggestedGroups />
 
-
-    return (
-        <>
-            <Header />
-
-            <SuggestedGroups />
-
-            <JoinedGroups />
-
-
-        </>
-    )
+      <JoinedGroups />
+    </>
+  );
 }
 
-export default Home
+export default Home;
