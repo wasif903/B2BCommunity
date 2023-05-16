@@ -2,6 +2,7 @@ import React from "react";
 import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
 import styles from "./ManageDataStyles/ManageWholesellers.module.css";
 import userPic from "../../assets/UserPic.jpeg";
+import Header from "../../Components/Header";
 
 // function for display user
 function displayData(users) {
@@ -28,23 +29,26 @@ function displayData(users) {
 
 function ManageUser() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.heading}>
-        <p className="w-2">Manage Wholesellers</p>
+    <>
+      <Header />
+      <div className={styles.wrapper}>
+        <div className={styles.heading}>
+          <p className="w-2">Manage Wholesellers</p>
+        </div>
+        <form>
+          <input type="text" placeholder="Search here..." />
+          <button>+ WholeSellers</button>
+        </form>
+        <div className={styles.sliders}>
+          <a href="#">UIUX Designers</a>
+          <a href="#">WordPress Developers</a>
+          <a href="#">Social Media Marketing</a>
+        </div>
+        <section className={styles.displayUserData}>
+          <ul>{DummyUserData.map(displayData)}</ul>
+        </section>
       </div>
-      <form>
-        <input type="text" placeholder="Search here..." />
-        <button>+ WholeSellers</button>
-      </form>
-      <div className={styles.sliders}>
-        <a href="#">UIUX Designers</a>
-        <a href="#">WordPress Developers</a>
-        <a href="#">Social Media Marketing</a>
-      </div>
-      <section className={styles.displayUserData}>
-        <ul>{DummyUserData.map(displayData)}</ul>
-      </section>
-    </div>
+    </>
   );
 }
 

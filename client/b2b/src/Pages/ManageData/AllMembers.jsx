@@ -2,6 +2,7 @@ import React from "react";
 import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
 import styles from "./ManageDataStyles/ManageUser.module.css";
 import userPic from "../../assets/UserPic.jpeg";
+import Header from "../../Components/Header";
 
 // function for display user
 function displayData(users) {
@@ -25,20 +26,23 @@ function displayData(users) {
 
 function ManageUser() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.heading}>
-        <p>All Members</p>
+    <>
+      <Header />
+      <div className={styles.wrapper}>
+        <div className={styles.heading}>
+          <p>All Members</p>
+        </div>
+        <input type="text" placeholder="Search here..." />
+        <div className={styles.sliders}>
+          <a href="#">UIUX Designers</a>
+          <a href="#">WordPress Developers</a>
+          <a href="#">Social Media Marketing</a>
+        </div>
+        <section className={styles.displayUserData}>
+          <ul>{DummyUserData.map(displayData)}</ul>
+        </section>
       </div>
-      <input type="text" placeholder="Search here..." />
-      <div className={styles.sliders}>
-        <a href="#">UIUX Designers</a>
-        <a href="#">WordPress Developers</a>
-        <a href="#">Social Media Marketing</a>
-      </div>
-      <section className={styles.displayUserData}>
-        <ul>{DummyUserData.map(displayData)}</ul>
-      </section>
-    </div>
+    </>
   );
 }
 
