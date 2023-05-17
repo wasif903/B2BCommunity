@@ -68,6 +68,10 @@
     color: rgba(255, 30, 139, 0.658);
 }
 
+.chart {
+    width: 40%;
+}
+
 @media only screen and (max-width:600px) {
     .coverPhoto {
         height: 25vh;
@@ -83,4 +87,8 @@
         right: 150px;
         background-color: red;
     }
+    .chart {
+        width: 80%;
+    }
 }
+

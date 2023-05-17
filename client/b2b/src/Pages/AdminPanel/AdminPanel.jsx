@@ -13,6 +13,7 @@ import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import PieChartAdminPanel from "../../Components/Charts/PieChartAdminPanel";
 
 function AdminPanel() {
   const aboutMe = [
@@ -43,6 +44,23 @@ function AdminPanel() {
     },
   ];
 
+
+  const chartData = {
+    labels: ['UIUX Designers', 'Social Media', 'WordPress Developers', 'Graphic Designers'],
+    datasets: [
+      {
+        label: 'My Dataset',
+        data: [12, 19, 9, 8],
+        backgroundColor: ['#1AD598', '#DB3685', '#FFB536', '#895BF1']
+      }
+    ]
+  };
+
+  const chartOptions = {
+    // Add any chart options here
+  };
+
+
   return (
     <>
       <Header />
@@ -56,39 +74,6 @@ function AdminPanel() {
           </Row>
         </Container>
       </div>
-      <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
-        <Row>
-          <Col>
-            <div
-              className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
-            >
-              <div className={styles.editProfilePhoto}>X</div>
-              <img src={image} className={styles.profilePhoto} alt="" />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center pt-4">
-            <div>
-              <h1>James Bond</h1>
-              <h4>
-                “Pushing pixels and experiences in digital products for
-                Sebostudio”
-              </h4>
-            </div>
-          </Col>
-        </Row>
-        <Row className="py-5">
-          <Col md="6">
-            <h3>ABOUT</h3>
-          </Col>
-          <Col md="6">
-            <div className="text-end">
-              <button>New Group</button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
 
       <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
         <Row>
@@ -116,10 +101,10 @@ function AdminPanel() {
           className="pt-5 pb-4"
           style={{ borderBottom: "2px solid #F1F1F5" }}
         >
-          <Col md="6">
+          <Col size="6" className="d-flex justify-content-start align-items-center">
             <h3>About Me</h3>
           </Col>
-          <Col md="6">
+          <Col size="6">
             <div className="text-end">
               <button>
                 New Group <FontAwesomeIcon icon={faPlus} />
@@ -146,7 +131,7 @@ function AdminPanel() {
         </Row>
 
         <Row className="py-lg-5">
-          <Col md="6">
+          <Col md="6" className="py-3 d-md-block d-flex  justify-content-center align-items-center">
             <div className={styles.manageUsers}>
               <h4 className="pt-2">
                 <FontAwesomeIcon
@@ -157,7 +142,7 @@ function AdminPanel() {
               </h4>
             </div>
           </Col>
-          <Col md="6" className=" d-flex justify-content-end ">
+          <Col md="6" className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center">
             <div className={`${styles.manageWholeSeller}`}>
               <h4 className="pt-2">
                 <FontAwesomeIcon
@@ -166,6 +151,14 @@ function AdminPanel() {
                 />
                 Manage Whole Seller
               </h4>
+            </div>
+          </Col>
+        </Row>
+
+        <Row className="py-5">
+          <Col lg='12' className="d-flex justify-content-center align-items-center">
+            <div className={styles.chart} >
+              <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>
           </Col>
         </Row>
