@@ -14,8 +14,15 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import PieChartAdminPanel from "../../Components/Charts/PieChartAdminPanel";
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
+import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
+import EditProfilePhoto from "../../Components/AdminPanelModals/EditProfilePhoto";
+
 
 function AdminPanel() {
+
+  // Assets Start
   const aboutMe = [
     {
       text: "Yogyakarta, ID",
@@ -59,6 +66,20 @@ function AdminPanel() {
   const chartOptions = {
     // Add any chart options here
   };
+  // Assets End
+
+
+  const [showEditCoverModal, setShowEditCoverModal] = useState(false)
+  
+  const [showEditProfileModal, setShowEditProfileModal] = useState(false)
+
+  const toggleEditCoverModal = () => {
+    setShowEditCoverModal(!showEditCoverModal)
+  }
+
+  const toggleEditProfileModal = () => {
+    setShowEditProfileModal(!showEditProfileModal)
+  }
 
 
   return (
@@ -69,7 +90,9 @@ function AdminPanel() {
         <Container>
           <Row>
             <Col>
-              <div className={styles.editCoverPhoto}>X</div>
+              <div className={styles.editCoverPhoto}>
+                <FontAwesomeIcon icon={faPenToSquare}  onClick={toggleEditCoverModal} className={`${styles.editIcon} fa-lg`} />
+              </div>
             </Col>
           </Row>
         </Container>
@@ -81,7 +104,9 @@ function AdminPanel() {
             <div
               className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
             >
-              <div className={styles.editProfilePhoto}>X</div>
+              <div className={styles.editProfilePhoto}>
+                <FontAwesomeIcon icon={faPenToSquare} onClick={toggleEditProfileModal} className={`${styles.editIcon} fa-lg`} />
+              </div>
               <img src={image} className={styles.profilePhoto} alt="" />
             </div>
           </Col>
@@ -163,6 +188,9 @@ function AdminPanel() {
           </Col>
         </Row>
       </Container>
+
+      {showEditCoverModal ? <EditCoverPhoto toggleEditCoverModal={toggleEditCoverModal} /> : ""}
+      {showEditProfileModal ? <EditProfilePhoto toggleEditProfileModal={toggleEditProfileModal}  /> : ""}
     </>
   );
 }
