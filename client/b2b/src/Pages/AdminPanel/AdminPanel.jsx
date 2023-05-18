@@ -13,8 +13,14 @@ import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import PieChartAdminPanel from "../../Components/Charts/PieChartAdminPanel";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
+import EditProfilePhoto from "../../Components/AdminPanelModals/EditProfilePhoto";
 
 function AdminPanel() {
+  // Assets Start
   const aboutMe = [
     {
       text: "Yogyakarta, ID",
@@ -43,6 +49,39 @@ function AdminPanel() {
     },
   ];
 
+  const chartData = {
+    labels: [
+      "UIUX Designers",
+      "Social Media",
+      "WordPress Developers",
+      "Graphic Designers",
+    ],
+    datasets: [
+      {
+        label: "My Dataset",
+        data: [12, 19, 9, 8],
+        backgroundColor: ["#1AD598", "#DB3685", "#FFB536", "#895BF1"],
+      },
+    ],
+  };
+
+  const chartOptions = {
+    // Add any chart options here
+  };
+  // Assets End
+
+  const [showEditCoverModal, setShowEditCoverModal] = useState(false);
+
+  const [showEditProfileModal, setShowEditProfileModal] = useState(false);
+
+  const toggleEditCoverModal = () => {
+    setShowEditCoverModal(!showEditCoverModal);
+  };
+
+  const toggleEditProfileModal = () => {
+    setShowEditProfileModal(!showEditProfileModal);
+  };
+
   return (
     <>
       <Header />
@@ -51,7 +90,13 @@ function AdminPanel() {
         <Container>
           <Row>
             <Col>
-              <div className={styles.editCoverPhoto}>X</div>
+              <div className={styles.editCoverPhoto}>
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  onClick={toggleEditCoverModal}
+                  className={`${styles.editIcon} fa-lg`}
+                />
+              </div>
             </Col>
           </Row>
         </Container>
@@ -82,10 +127,13 @@ function AdminPanel() {
           className="pt-5 pb-4"
           style={{ borderBottom: "2px solid #F1F1F5" }}
         >
-          <Col md="6">
+          <Col
+            size="6"
+            className="d-flex justify-content-start align-items-center"
+          >
             <h3>About Me</h3>
           </Col>
-          <Col md="6">
+          <Col size="6">
             <div className="text-end">
               <button>
                 New Group <FontAwesomeIcon icon={faPlus} />
@@ -112,7 +160,10 @@ function AdminPanel() {
         </Row>
 
         <Row className="py-lg-5">
-          <Col md="6">
+          <Col
+            md="6"
+            className="py-3 d-md-block d-flex  justify-content-center align-items-center"
+          >
             <div className={styles.manageUsers}>
               <h4 className="pt-2">
                 <FontAwesomeIcon
@@ -123,7 +174,10 @@ function AdminPanel() {
               </h4>
             </div>
           </Col>
-          <Col md="6" className=" d-flex justify-content-end ">
+          <Col
+            md="6"
+            className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center"
+          >
             <div className={`${styles.manageWholeSeller}`}>
               <h4 className="pt-2">
                 <FontAwesomeIcon
@@ -135,7 +189,29 @@ function AdminPanel() {
             </div>
           </Col>
         </Row>
+
+        <Row className="py-5">
+          <Col
+            lg="12"
+            className="d-flex justify-content-center align-items-center"
+          >
+            <div className={styles.chart}>
+              <PieChartAdminPanel data={chartData} options={chartOptions} />
+            </div>
+          </Col>
+        </Row>
       </Container>
+
+      {showEditCoverModal ? (
+        <EditCoverPhoto toggleEditCoverModal={toggleEditCoverModal} />
+      ) : (
+        ""
+      )}
+      {showEditProfileModal ? (
+        <EditProfilePhoto toggleEditProfileModal={toggleEditProfileModal} />
+      ) : (
+        ""
+      )}
     </>
   );
 }
