@@ -78,40 +78,6 @@ function AdminPanel() {
             </div>
           </Col>
         </Row>
-        <Row className="py-5">
-          <Col md="6">
-            <h3>ABOUT</h3>
-          </Col>
-          <Col md="6">
-            <div className="text-end">
-              <button>New Group</button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-
-      <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
-        <Row>
-          <Col>
-            <div
-              className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
-            >
-              <div className={styles.editProfilePhoto}>X</div>
-              <img src={image} className={styles.profilePhoto} alt="" />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center pt-4">
-            <div>
-              <h1>James Bond</h1>
-              <h4>
-                “Pushing pixels and experiences in digital products for
-                Sebostudio”
-              </h4>
-            </div>
-          </Col>
-        </Row>
         <Row
           className="pt-5 pb-4"
           style={{ borderBottom: "2px solid #F1F1F5" }}
