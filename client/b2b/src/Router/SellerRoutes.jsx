@@ -8,6 +8,7 @@ import ManageUser from "../Pages/ManageData/ManageUser";
 import ManageWholesellers from "../Pages/ManageData/ManageWholesellers";
 import NewRequest from "../Pages/ManageData/NewRequest";
 import AllMembers from "../Pages/ManageData/AllMembers";
+import WholeSellerPanel from "../Pages/WholeSellerpanel/WholeSellerPanel";
 
 const sellerRoutes = [
   {
@@ -38,7 +39,6 @@ const sellerRoutes = [
     path: "/All-Members",
     element: <AllMembers />,
   },
-
   {
     path: "/admin-panel",
     element: <AdminPanel />,
@@ -51,7 +51,9 @@ const sellerRoutes = [
     path: "/signup",
     element: <Signup />,
   },
-
- 
+  {
+    path: "/WholeSeller-panel",
+    element: <WholeSellerPanel />,
+  },
 ];
 export default sellerRoutes;
