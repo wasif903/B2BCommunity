@@ -16,15 +16,10 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  background-color: var(--primary-color);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 50%;
   display: flex;
-  border: 2px solid white;
-  height: 2rem;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  background-color: #0000002e;
   cursor: pointer;
 }
 .editCoverPhoto path {
