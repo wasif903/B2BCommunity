@@ -30,7 +30,7 @@ function ManageUser() {
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.heading}>
-          <p>Manage Users</p>
+          <p>All Members</p>
         </div>
         <input type="text" placeholder="Search here..." />
         <div className={styles.sliders}>

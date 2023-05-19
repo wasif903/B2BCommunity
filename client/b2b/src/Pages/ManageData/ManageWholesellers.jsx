@@ -1,6 +1,6 @@
 import React from "react";
 import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
-import styles from "./ManageDataStyles/ManageUser.module.css";
+import styles from "./ManageDataStyles/ManageWholesellers.module.css";
 import userPic from "../../assets/UserPic.jpeg";
 import Header from "../../Components/Header";
 
@@ -16,8 +16,11 @@ function displayData(users) {
         </span>
       </div>
       <div className={styles.userDataBtn}>
-        <button>remove</button>
-        <button>block</button>
+        <span className="d-flex justify-content-between">
+          <button>remove</button>
+          <button>block</button>
+        </span>
+        <button className={styles.assignBtn}>Assign to other group</button>
       </div>
     </li>
   );
@@ -30,9 +33,12 @@ function ManageUser() {
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.heading}>
-          <p>Manage Users</p>
+          <p className="w-2">Manage Wholesellers</p>
         </div>
-        <input type="text" placeholder="Search here..." />
+        <form>
+          <input type="text" placeholder="Search here..." />
+          <button>+ WholeSellers</button>
+        </form>
         <div className={styles.sliders}>
           <a href="#">UIUX Designers</a>
           <a href="#">WordPress Developers</a>

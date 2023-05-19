@@ -1,0 +1,104 @@
+.coverPhoto {
+  position: relative;
+  height: 45vh;
+  background-image: url(../../assets/home/suggested_group.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+.editCoverPhoto {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 50%;
+  /* z-index: -1; */
+}
+
+.profileWrapper {
+  position: relative;
+}
+
+.editProfilePhoto {
+  position: absolute;
+  top: -105px;
+  right: 550px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.profilePhoto {
+  width: 25%;
+  margin-top: -130px;
+  border-radius: 50%;
+  border: 5px solid var(--primary-color);
+}
+
+.aboutLinks {
+  list-style: none;
+  text-decoration: none;
+  color: var(--font-primary-color);
+}
+
+.manageUsers {
+  background: rgba(219, 54, 134, 0.326);
+  box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
+  border-radius: 15px;
+  width: 250px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manageWholeSeller {
+  background: #edf4e7;
+  box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
+  border-radius: 15px;
+  width: 300px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manager {
+  color: #70d419;
+}
+
+.user {
+  color: rgba(255, 30, 139, 0.658);
+}
+
+.chart {
+  width: 40%;
+}
+
+.editIcon {
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .coverPhoto {
+    height: 25vh;
+  }
+
+  .profilePhoto {
+    width: 35%;
+    margin-top: -55px;
+  }
+
+  .editProfilePhoto {
+    top: -45px;
+    right: 150px;
+    background-color: var(--primary-color);
+  }
+  .chart {
+    width: 80%;
+  }
+}
