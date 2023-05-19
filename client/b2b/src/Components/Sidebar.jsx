@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import userProfile from "../assets/my_acc.png";
 
+// eslint-disable-next-line react/prop-types
 const Sidebar = ({ setIsOpen }) => {
   const menuItem = [
     {

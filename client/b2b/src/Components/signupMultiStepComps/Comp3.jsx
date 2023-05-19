@@ -1,9 +1,26 @@
-import styles from "./multiStepStyles/Comp1.module.css";
+import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { useState } from "react";
 
-function Comp3() {
+// eslint-disable-next-line react/prop-types
+function Comp3({ onChange, userFields }) {
+  // eslint-disable-next-line react/prop-types
+  const { email, password, PhoneNumber } = userFields;
+
+  const [confirmPass, setConfirmPass] = useState("");
+
+  const confirmPassHandler = (e) => {
+     setConfirmPass(e.target.value);
+  };
+
+  if (confirmPass === password) {
+    console.log("Password Matched");
+  } else {
+    console.log("Password Dont Match");
+  }
+
   return (
     <>
       <Container className="d-flex justify-content-center align-items-center flex-column">
@@ -16,16 +33,40 @@ function Comp3() {
         <Col className="mt-3 mb-5">
           <form action="input" className={styles.CompForm}>
             <Row>
-              <input type="text" placeholder="Phone number" />
+              <input
+                type="text"
+                name="PhoneNumber"
+                onChange={onChange}
+                value={PhoneNumber}
+                placeholder="Phone number"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Email address" />
+              <input
+                type="text"
+                name="email"
+                onChange={onChange}
+                value={email}
+                placeholder="Email address"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Password" />
+              <input
+                type="text"
+                name="password"
+                onChange={onChange}
+                value={password}
+                placeholder="Password"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Confirm Password" />
+              <input
+                type="text"
+                name="confirmPass"
+                onChange={confirmPassHandler}
+                value={confirmPass}
+                placeholder="Confirm Password"
+              />
             </Row>
           </form>
 
@@ -43,19 +84,17 @@ function Comp3() {
             className={`${styles.RegistrationInput} d-flex flex-column mt-3 mb-5`}
           >
             <span className="d-flex">
-              <input className="w-25 mt-1" type="checkbox" />
+              <input className=" mt-1" type="checkbox" />
               <p className="mt-1 ms-3 text-start text-dark">
                 Newsletter registration | I want to receive the newsletter.
               </p>
             </span>
-            <p
-              className={`${styles.RegistrationInputPara} text-start ps-5 mt-3`}
-            >
+            <p className={`${styles.RegistrationInputPara} text-start`}>
               We would like to know how you came to know about us?
             </p>
           </Row>
           <Row className={`${styles.privacyCheckBox} d-flex`}>
-            <input className="mt-3" type="checkbox" />
+            <input className="mt-2" type="checkbox" />
             <div className="w-auto">
               <p className="text-start">Privacy Consent Statement</p>
               <p className="text-start mt-0">

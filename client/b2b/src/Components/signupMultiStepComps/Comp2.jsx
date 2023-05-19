@@ -1,9 +1,13 @@
-import styles from "./multiStepStyles/Comp1.module.css";
+import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-function Comp2() {
+// eslint-disable-next-line react/prop-types
+function Comp2({ onChange, userFields }) {
+  // eslint-disable-next-line react/prop-types
+  const { addressLine, zipCode, city, country } = userFields;
+
   return (
     <>
       <Container className="d-flex justify-content-center align-items-center flex-column">
@@ -16,21 +20,42 @@ function Comp2() {
         <Col className="mt-3 mb-5">
           <form action="input" className={styles.CompForm}>
             <Row>
-              <input type="text" placeholder="Your address line" />
+              <input
+                type="text"
+                name="addressLine"
+                value={addressLine}
+                onChange={onChange}
+                placeholder="Your address line"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Zip code" />
+              <input
+                type="text"
+                name="zipCode"
+                value={zipCode}
+                onChange={onChange}
+                placeholder="Zip code"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Country" />
+              <input
+                type="text"
+                name="country"
+                value={country}
+                onChange={onChange}
+                placeholder="Country"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="City" />
+              <input
+                type="text"
+                name="city"
+                value={city}
+                onChange={onChange}
+                placeholder="City"
+              />
             </Row>
           </form>
-          {/* <Row>
-            <button className="mt-4">Next</button>
-          </Row> */}
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>

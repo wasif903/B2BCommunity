@@ -1,11 +1,12 @@
-import styles from "./multiStepStyles/Comp1.module.css";
+import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-function Comp1() {
-
- 
+// eslint-disable-next-line react/prop-types
+function Comp1({ onChange, userFields }) {
+  // eslint-disable-next-line react/prop-types
+  const { firstName, lastName, VAT_ID, companyName } = userFields;
 
   return (
     <>
@@ -19,21 +20,42 @@ function Comp1() {
         <Col className="mt-3 mb-5">
           <form action="input" className={styles.CompForm}>
             <Row>
-              <input type="text" placeholder="First Name" />
+              <input
+                type="text"
+                value={firstName}
+                onChange={onChange}
+                name="firstName"
+                placeholder="First Name"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Last Name" />
+              <input
+                type="text"
+                value={lastName}
+                onChange={onChange}
+                name="lastName"
+                placeholder="Last Name"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Company Name" />
+              <input
+                type="text"
+                value={companyName}
+                onChange={onChange}
+                name="companyName"
+                placeholder="Company Name"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="VAT-ID" />
+              <input
+                type="text"
+                value={VAT_ID}
+                onChange={onChange}
+                name="VAT_ID"
+                placeholder="VAT-ID"
+              />
             </Row>
           </form>
-          {/* <Row>
-            <button className="mt-4">Next</button>
-          </Row> */}
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>

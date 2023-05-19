@@ -3,54 +3,15 @@ import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import styles from "./WholeSellerPanel.module.css";
+import styles from "./GroupContent.module.css";
 import image from "../../assets/my_acc.png";
 import { useState } from "react";
-import Livepng from "../../assets/wholeSellerAssets/live.png";
-import Photopng from "../../assets/wholeSellerAssets/Photo.png";
-import videoMaker from "../../assets/wholeSellerAssets/videoMaker.png";
-import WholeSellerimg from "../../assets/wholeSellerAssets/WholesellerImg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
-
-// Funtion for display sliders items
-function displayItems(item) {
-  return (
-    <Col key={item.name} className="d-flex justify-content-center">
-      <div className={styles.posts}>
-        <p className={styles.postName}>{item.name}</p>
-        <span className={styles.postValue}>{item.value}</span>
-        <div className={styles.underLine}></div>
-      </div>
-    </Col>
-  );
-}
-
-// Data of sliders items
-const Data = [
-  {
-    name: "post",
-    value: "10,3K",
-  },
-  {
-    name: "Followers",
-    value: "2,315",
-  },
-  {
-    name: "Following",
-    value: "3,012",
-  },
-  {
-    name: "Likes",
-    value: "12,531",
-  },
-];
 
 function WholeSellerPanel() {
   // useState for Edite Cover Photo
@@ -103,13 +64,13 @@ function WholeSellerPanel() {
 
         {/**************** Sliders of WholeSeller Panel *************/}
 
-        <Row className="mt-5 pt-5 gap-10 overflow-hidden">
+        {/* <Row className="mt-5 pt-5 gap-10 overflow-hidden">
           {Data.map(displayItems)}
-        </Row>
+        </Row> */}
 
         {/************ WholeSellerInputArea ************/}
 
-        <div className={styles.WholeSellerInputArea}>
+        {/* <div className={styles.WholeSellerInputArea}>
           <Col className="h-100 position-relative">
             <Row className="position-relative">
               <Col className="position-absolute mt-2">
@@ -149,11 +110,11 @@ function WholeSellerPanel() {
               </div>
             </div>
           </Col>
-        </div>
+        </div> */}
 
         {/************ TotalMembers ************/}
 
-        <div className={styles.TotalMembers}>
+        {/* <div className={styles.TotalMembers}>
           <div></div>
           <p>Total Members</p>
           <code>23.4K</code>
@@ -162,11 +123,11 @@ function WholeSellerPanel() {
             <span className="ms-4"></span>
             <span className="ms-5"></span>
           </section>
-        </div>
+        </div> */}
 
         {/************ Manage Buttons ************/}
 
-        <Row className="py-lg-5">
+        {/* <Row className="py-lg-5">
           <Col
             md="6"
             className="py-3 d-md-block d-flex  justify-content-center align-items-center"
@@ -195,7 +156,7 @@ function WholeSellerPanel() {
               </h4>
             </div>
           </Col>
-        </Row>
+        </Row> */}
 
         {/* WholeSeller Panel posting and comment Area */}
 

@@ -5,7 +5,7 @@
   background-color: white;
   border-radius: 8px;
   padding: 5px 20px 5px 12px;
-  height: 3rem;
+  height: 2.5rem;
   position: relative;
 }
 
@@ -19,9 +19,9 @@
   margin: 0 !important;
   width: 16rem !important;
   height: 100%;
+  border-radius: 8px;
 }
 .searchInput[type="text"] {
-  font-size: 1.2rem;
   color: #464646;
 }
 .search_icon {
