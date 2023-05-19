@@ -56,7 +56,6 @@ function Comp1({ onChange, userFields }) {
               />
             </Row>
           </form>
-
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>
