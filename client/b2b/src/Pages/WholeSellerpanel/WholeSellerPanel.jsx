@@ -35,7 +35,7 @@ function displayItems(item) {
 // Data of sliders items
 const Data = [
   {
-    name: "post",
+    name: "Post",
     value: "10,3K",
   },
   {
@@ -158,15 +158,13 @@ function WholeSellerPanel() {
           <p>Total Members</p>
           <code>23.4K</code>
           <section className={styles.TotalMembersCircleSection}>
-            <span></span>
-            <span className="ms-4"></span>
-            <span className="ms-5"></span>
+            <FontAwesomeIcon className={styles.faEllipsis} icon={faEllipsis} />
           </section>
         </div>
 
         {/************ Manage Buttons ************/}
 
-        <Row className="py-lg-5">
+        <Row className="pt-lg-5 pb-lg-3">
           <Col
             md="6"
             className="py-3 d-md-block d-flex  justify-content-center align-items-center"
@@ -199,20 +197,26 @@ function WholeSellerPanel() {
 
         {/* WholeSeller Panel posting and comment Area */}
 
-        <Col>
-          <div className=" d-flex flex-column mt-4">
+        <Col className="mt-5">
+          <div className=" d-flex flex-column">
             <Row>
               <div
-                className={`${styles.postingAreaHeading} d-flex position-relative`}
+                className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
               >
                 <span
-                  className={`${styles.postingAreaHeadingCircle}  mt-2`}
-                ></span>
+                  className={`${styles.postingAreaHeadingCircle} position-relative`}
+                >
+                  <img
+                    className={styles.postingAreaimg}
+                    src={WholeSellerimg}
+                    alt="userImg"
+                  />
+                </span>
                 <section className={`${styles.postingHeadingTextArea} mx-2`}>
                   <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
                   <div className="d-flex">
-                    <p className="mb-0 mx-1">Tom Hawkins</p>
-                    <p className="px-1 mt-1">Admin</p>
+                    <p>Tom Hawkins</p>
+                    <p className="px-2">Admin</p>
                   </div>
                 </section>
                 <div className={styles.postingAreaThreeDots}>
@@ -225,7 +229,7 @@ function WholeSellerPanel() {
             </Row>
             <Row>
               <div className={`${styles.AddpostArea} mt-1`}>
-                <p className="px-4">
+                <p className="px-5">
                   A Great Way To Generate All The Motivation You Need To Get Fit
                   A Great Way To Generate All The Motivation You Need To Get Fit
                   A Great Way To Generate All The Motivation You Need To Get Fit
@@ -235,14 +239,20 @@ function WholeSellerPanel() {
 
             {/******* Comment input field *****/}
 
-            <section className="d-flex flex-column mt-5 mb-5">
+            <section className="d-flex flex-column mt-2 mb-5">
               <button className={`${styles.ViewComment} bg-white`}>
                 View all comments
               </button>
               <div className="d-flex align-center">
-                <div
-                  className={`${styles.postingAreaHeadingCircle} mt-1`}
-                ></div>
+                <span
+                  className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
+                >
+                  <img
+                    className={styles.postingAreaimg}
+                    src={WholeSellerimg}
+                    alt="userImg"
+                  />
+                </span>
                 <div
                   className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                 >
@@ -260,23 +270,30 @@ function WholeSellerPanel() {
                 </div>
               </div>
             </section>
+            <div className={styles.line}></div>
           </div>
         </Col>
 
-        <Col>
+        <Col className="mt-5">
           <div className=" d-flex flex-column mt-4">
             <Row>
               <div
-                className={`${styles.postingAreaHeading} d-flex position-relative`}
+                className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
               >
                 <span
-                  className={`${styles.postingAreaHeadingCircle}  mt-2`}
-                ></span>
-                <section className={`${styles.postingHeadingTextArea} mx-2`}>
+                  className={`${styles.postingAreaHeadingCircle} position-relative`}
+                >
+                  <img
+                    className={styles.postingAreaimg}
+                    src={WholeSellerimg}
+                    alt="userImg"
+                  />
+                </span>
+                <section className={`${styles.postingHeadingTextArea} mx-2 `}>
                   <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
                   <div className="d-flex">
-                    <p className="mb-0 mx-1">Tom Hawkins</p>
-                    <p className="px-1 mt-1">Admin</p>
+                    <p>Tom Hawkins</p>
+                    <p className="px-2">Admin</p>
                   </div>
                 </section>
                 <div className={styles.postingAreaThreeDots}>
@@ -289,7 +306,7 @@ function WholeSellerPanel() {
             </Row>
             <Row>
               <div className={`${styles.AddpostArea} mt-1`}>
-                <p className="px-4">
+                <p className="px-5">
                   A Great Way To Generate All The Motivation You Need To Get Fit
                   A Great Way To Generate All The Motivation You Need To Get Fit
                   A Great Way To Generate All The Motivation You Need To Get Fit
@@ -299,10 +316,23 @@ function WholeSellerPanel() {
 
             {/******* Posting Photos *****/}
             <section className={`${styles.PostingPhotos}`}>
-              <div className={styles.PhotoThree}></div>
+              <img
+                className={styles.PhotoThree}
+                src={WholeSellerimg}
+                alt="userImg"
+              />
               <span>
-                <div className={styles.PhotoOne}></div>
-                <div className={styles.PhotoTwo}></div>
+                <img
+                  className={styles.PhotoOne}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
+
+                <img
+                  className={styles.PhotoTwo}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
               </span>
             </section>
 
@@ -313,9 +343,15 @@ function WholeSellerPanel() {
                 View all comments
               </button>
               <div className="d-flex align-center">
-                <div
-                  className={`${styles.postingAreaHeadingCircle} mt-1`}
-                ></div>
+                <span
+                  className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
+                >
+                  <img
+                    className={styles.postingAreaimg}
+                    src={WholeSellerimg}
+                    alt="userImg"
+                  />
+                </span>
                 <div
                   className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                 >
@@ -333,6 +369,7 @@ function WholeSellerPanel() {
                 </div>
               </div>
             </section>
+            <div className={styles.line}></div>
           </div>
         </Col>
       </Container>

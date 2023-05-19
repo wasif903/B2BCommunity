@@ -12,7 +12,7 @@ function Comp3({ onChange, userFields }) {
   const [confirmPass, setConfirmPass] = useState("");
 
   const confirmPassHandler = (e) => {
-     setConfirmPass(e.target.value);
+    setConfirmPass(e.target.value);
   };
 
   if (confirmPass === password) {
@@ -107,8 +107,8 @@ function Comp3({ onChange, userFields }) {
               </p>
             </div>
           </Row>
-          <Row>
-            <button className="mt-4">Sign Up</button>
+          <Row className="mt-4 d-flex justify-content-center">
+            <button>Sign Up</button>
           </Row>
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
