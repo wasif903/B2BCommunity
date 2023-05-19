@@ -67,12 +67,17 @@
 }
 
 /******************************** CompThree (Registration) *******************************/
+.privacyCheckBox div p {
+  margin: 0 !important;
+}
 .RegistrationInput input,
 .privacyCheckBox input {
-  width: 2rem !important;
+  width: 1rem !important;
   cursor: pointer;
-  margin-bottom: 0.5rem !important;
-  height: 2rem !important;
+  height: 1rem !important;
+}
+.privacyCheckBox input {
+  margin-top: 5px !important;
 }
 .RegistrationInput span p {
   font-size: 1rem !important;
@@ -82,7 +87,8 @@
 }
 .RegistrationInputPara {
   font-size: 1.2rem !important;
-  width: 25rem !important;
+  width: 22rem !important;
+  padding-left: 2rem !important;
 }
 .privacyCheckBox div p:nth-child(2) {
   margin-top: 0 !important;

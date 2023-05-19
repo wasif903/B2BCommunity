@@ -1,4 +1,4 @@
-import styles from "./multiStepStyles/Comp1.module.css";
+import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -43,19 +43,17 @@ function Comp3() {
             className={`${styles.RegistrationInput} d-flex flex-column mt-3 mb-5`}
           >
             <span className="d-flex">
-              <input className="w-25 mt-1" type="checkbox" />
+              <input className=" mt-1" type="checkbox" />
               <p className="mt-1 ms-3 text-start text-dark">
                 Newsletter registration | I want to receive the newsletter.
               </p>
             </span>
-            <p
-              className={`${styles.RegistrationInputPara} text-start ps-5 mt-3`}
-            >
+            <p className={`${styles.RegistrationInputPara} text-start`}>
               We would like to know how you came to know about us?
             </p>
           </Row>
           <Row className={`${styles.privacyCheckBox} d-flex`}>
-            <input className="mt-3" type="checkbox" />
+            <input className="mt-2" type="checkbox" />
             <div className="w-auto">
               <p className="text-start">Privacy Consent Statement</p>
               <p className="text-start mt-0">

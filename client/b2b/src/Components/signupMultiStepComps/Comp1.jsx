@@ -1,4 +1,4 @@
-import styles from "./multiStepStyles/Comp1.module.css";
+import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";

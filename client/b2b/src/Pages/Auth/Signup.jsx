@@ -3,7 +3,7 @@ import Comp1 from "../../Components/signupMultiStepComps/Comp1";
 import Comp2 from "../../Components/signupMultiStepComps/Comp2";
 import Comp3 from "../../Components/signupMultiStepComps/Comp3";
 import Logo from "../../assets/logo.png";
-import styles from "../../Components/signupMultiStepComps/multiStepStyles/Comp1.module.css";
+import styles from "../../Components/signupMultiStepComps/multiStepStyles/MultiStepComp.module.css";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 function Signup() {

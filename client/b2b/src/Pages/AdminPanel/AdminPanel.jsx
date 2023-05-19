@@ -144,17 +144,15 @@ function AdminPanel() {
         <Row className="py-4">
           <ul>
             {aboutMe.map((item) => (
-              <>
-                <li className="py-2">
-                  <Link
-                    className={`${styles.aboutLinks} d-flex align-items-center`}
-                    to={item.link}
-                  >
-                    <FontAwesomeIcon className="pe-3 py-2" icon={item.icon} />
-                    {item.text}
-                  </Link>
-                </li>
-              </>
+              <li key={item.text} className="py-2">
+                <Link
+                  className={`${styles.aboutLinks} d-flex align-items-center`}
+                  to={item.link}
+                >
+                  <FontAwesomeIcon className="pe-3 py-2" icon={item.icon} />
+                  {item.text}
+                </Link>
+              </li>
             ))}
           </ul>
         </Row>

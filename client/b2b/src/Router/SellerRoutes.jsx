@@ -9,6 +9,7 @@ import ManageWholesellers from "../Pages/ManageData/ManageWholesellers";
 import NewRequest from "../Pages/ManageData/NewRequest";
 import AllMembers from "../Pages/ManageData/AllMembers";
 import WholeSellerPanel from "../Pages/WholeSellerpanel/WholeSellerPanel";
+import GroupContent from "../Pages/groupContent/GroupContent";
 
 const sellerRoutes = [
   {
@@ -54,6 +55,10 @@ const sellerRoutes = [
   {
     path: "/WholeSeller-panel",
     element: <WholeSellerPanel />,
+  },
+  {
+    path: "/Group-Content",
+    element: <GroupContent />,
   },
 ];
 export default sellerRoutes;
