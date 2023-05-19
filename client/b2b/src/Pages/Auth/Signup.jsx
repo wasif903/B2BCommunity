@@ -7,6 +7,7 @@ import styles from "../../Components/signupMultiStepComps/multiStepStyles/Comp1.
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 function Signup() {
+
   const prevStyle = () => {
     return {
       background: "blue",
@@ -33,8 +34,8 @@ function Signup() {
           <img src={Logo} className={styles.logo} />
         </div>
 
-        <Col className={styles.MultiStep}>
-          <MultiStep activeStep={0}>
+        <Col className={`text-center ${styles.MultiStep}`}>
+          <MultiStep activeStep={0} nextButton={nextStyle} prevButton={prevStyle}>
             <Comp1 title="Step 1" />
             <Comp2 title="Step 2" />
             <Comp3 title="Step 2" />

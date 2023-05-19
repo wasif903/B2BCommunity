@@ -28,9 +28,9 @@ function Comp2() {
               <input type="text" placeholder="City" />
             </Row>
           </form>
-          <Row>
+          {/* <Row>
             <button className="mt-4">Next</button>
-          </Row>
+          </Row> */}
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>

@@ -68,9 +68,9 @@ function Comp3() {
               </p>
             </div>
           </Row>
-          <Row>
+          {/* <Row>
             <button className="mt-4">Sign Up</button>
-          </Row>
+          </Row> */}
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>

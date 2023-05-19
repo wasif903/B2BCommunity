@@ -5,15 +5,7 @@ import Container from "react-bootstrap/Container";
 
 function Comp1() {
 
-  // const [step1 , setStep1] = useState({
-  //   name1:"",
-  //   email1:"",
-  //   phone1:"",
-  // })
-
-  // const onChange = (e) => {
-  //   setStep1({...step1, [e.target.name]:e.target.value});
-  // }
+ 
 
   return (
     <>
