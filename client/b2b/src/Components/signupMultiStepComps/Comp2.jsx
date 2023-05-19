@@ -56,9 +56,6 @@ function Comp2({ onChange, userFields }) {
               />
             </Row>
           </form>
-          <Row>
-            <button className="mt-4">Next</button>
-          </Row>
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>
