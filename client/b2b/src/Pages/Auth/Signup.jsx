@@ -6,7 +6,29 @@ import Logo from "../../assets/logo.png";
 import styles from "../../Components/signupMultiStepComps/multiStepStyles/MultiStepComp.module.css";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import { useState } from "react";
+
 function Signup() {
+  const [userFields, setUserFields] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    VAT_ID: "",
+    addressLine: "",
+    zipCode: "",
+    city: "",
+    country: "",
+    PhoneNumber: "",
+    email: "",
+    password: "",
+  });
+
+  const onChange = (e) => {
+    setUserFields({ ...userFields, [e.target.name]: e.target.value });
+  };
+
+  console.log(userFields, "user checking data");
+
   const prevStyle = () => {
     return {
       background: "blue",
@@ -33,11 +55,15 @@ function Signup() {
           <img src={Logo} className={styles.logo} />
         </div>
 
-        <Col className={styles.MultiStep}>
+        <Col
+          className={`text-center ${styles.MultiStep}`}
+          prevStyle={prevStyle}
+          nextStyle={nextStyle}
+        >
           <MultiStep activeStep={0}>
-            <Comp1 title="Step 1" />
-            <Comp2 title="Step 2" />
-            <Comp3 title="Step 2" />
+            <Comp1 title="Step 1" onChange={onChange} userFields={userFields} />
+            <Comp2 title="Step 2" userFields={userFields} onChange={onChange} />
+            <Comp3 title="Step 2" userFields={userFields} onChange={onChange} />
           </MultiStep>
         </Col>
       </Container>

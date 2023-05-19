@@ -52,7 +52,8 @@
   font-size: 0.95rem;
 }
 .wrapper button {
-  width: 100% !important;
+  width: 30% !important;
+margin-right: 20px;
   height: 3.3rem !important;
 }
 /******************************** CompThree (SelectFile) *******************************/

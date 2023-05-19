@@ -48,7 +48,8 @@ h6 {
   color: var(--font-primary-color);
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
   text-transform: uppercase;
   text-decoration: none;
@@ -68,4 +69,21 @@ ul, li {
   transition: 0.3s;
 }
 
+.go3842760039:before {
+  content: "•";
+  color: white;
+  background-color: var(--primary-color) !important;
+}
 
+.go433304200:before {
+  content: "✓";
+  color: white;
+  background-color: var(--primary-color) !important;
+}
+
+.go2150698616 span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--primary-color) !important;
+}

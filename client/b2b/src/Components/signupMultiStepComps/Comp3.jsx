@@ -2,8 +2,25 @@ import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { useState } from "react";
 
-function Comp3() {
+// eslint-disable-next-line react/prop-types
+function Comp3({ onChange, userFields }) {
+  // eslint-disable-next-line react/prop-types
+  const { email, password, PhoneNumber } = userFields;
+
+  const [confirmPass, setConfirmPass] = useState("");
+
+  const confirmPassHandler = (e) => {
+     setConfirmPass(e.target.value);
+  };
+
+  if (confirmPass === password) {
+    console.log("Password Matched");
+  } else {
+    console.log("Password Dont Match");
+  }
+
   return (
     <>
       <Container className="d-flex justify-content-center align-items-center flex-column">
@@ -16,16 +33,40 @@ function Comp3() {
         <Col className="mt-3 mb-5">
           <form action="input" className={styles.CompForm}>
             <Row>
-              <input type="text" placeholder="Phone number" />
+              <input
+                type="text"
+                name="PhoneNumber"
+                onChange={onChange}
+                value={PhoneNumber}
+                placeholder="Phone number"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Email address" />
+              <input
+                type="text"
+                name="email"
+                onChange={onChange}
+                value={email}
+                placeholder="Email address"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Password" />
+              <input
+                type="text"
+                name="password"
+                onChange={onChange}
+                value={password}
+                placeholder="Password"
+              />
             </Row>
             <Row>
-              <input type="text" placeholder="Confirm Password" />
+              <input
+                type="text"
+                name="confirmPass"
+                onChange={confirmPassHandler}
+                value={confirmPass}
+                placeholder="Confirm Password"
+              />
             </Row>
           </form>
 
