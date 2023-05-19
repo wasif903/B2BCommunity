@@ -4,11 +4,12 @@ import dotenv from 'dotenv';
 import auth from "./routes/auth.js";
 import groupCrud from "./routes/groupCrud.js";
 import cookieParser from 'cookie-parser';
-
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
+app.use(cors());
 app.use(cookieParser());
 
 dotenv.config();
