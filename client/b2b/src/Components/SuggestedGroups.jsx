@@ -6,7 +6,7 @@ import CardImage from '../assets/home/suggested_group.jpg'
 import { Link } from "react-router-dom";
 import styles from './compStyles/suggestedGroup.module.css'
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';  
 import breakpoints from "../utils/SwiperBreakPoints";
 
 function SuggestedGroups() {
