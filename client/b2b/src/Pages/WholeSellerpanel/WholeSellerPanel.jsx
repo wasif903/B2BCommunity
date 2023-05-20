@@ -110,45 +110,35 @@ function WholeSellerPanel() {
         {/************ WholeSellerInputArea ************/}
 
         <div className={styles.WholeSellerInputArea}>
-          <Col className="h-100 position-relative">
-            <Row className="position-relative">
-              <Col className="position-absolute mt-2">
-                <img
-                  className={styles.WholeSellerInputimg}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-              </Col>
-              <Col className="position-relative mt-2">
-                <input
-                  className={styles.wholeSellerInputField}
-                  type="text"
-                  placeholder="Write something..."
-                />
-              </Col>
-            </Row>
-            <Row>
-              <div className={styles.WholeSellerLine}></div>
-            </Row>
-            <div className={styles.WholeSellerLowerSection}>
-              <div>
-                <img className={styles.WholeSellerimg} src={Photopng} alt="" />
-                <p>Photo</p>
-              </div>
-              <div>
-                <img
-                  className={styles.WholeSellerimg}
-                  src={videoMaker}
-                  alt=""
-                />
-                <p>Video</p>
-              </div>
-              <div>
-                <img className={styles.WholeSellerimg} src={Livepng} alt="" />
-                <p>Live</p>
-              </div>
+          <section className="d-flex align-items-center h-50">
+            <img
+              className={styles.WholeSellerInputimg}
+              src={WholeSellerimg}
+              alt="userImg"
+            />
+            <input
+              className={styles.wholeSellerInputField}
+              type="text"
+              placeholder="Write something..."
+            />
+          </section>
+          <section className="h-1 w-100 d-flex justify-content-center align-items-center">
+            <span className={styles.WholeSellerLine}></span>
+          </section>
+          <section className={styles.WholeSellerLowerSection}>
+            <div>
+              <img className={styles.WholeSellerimg} src={Photopng} alt="" />
+              <p>Photo</p>
             </div>
-          </Col>
+            <div>
+              <img className={styles.WholeSellerimg} src={videoMaker} alt="" />
+              <p>Video</p>
+            </div>
+            <div>
+              <img className={styles.WholeSellerimg} src={Livepng} alt="" />
+              <p>Live</p>
+            </div>
+          </section>
         </div>
 
         {/************ TotalMembers ************/}
@@ -198,7 +188,7 @@ function WholeSellerPanel() {
         {/* WholeSeller Panel posting and comment Area */}
 
         <Col className="mt-5">
-          <div className=" d-flex flex-column">
+          <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
             <Row>
               <div
                 className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
@@ -239,11 +229,13 @@ function WholeSellerPanel() {
 
             {/******* Comment input field *****/}
 
-            <section className="d-flex flex-column mt-2 mb-5">
+            <section
+              className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
+            >
               <button className={`${styles.ViewComment} bg-white`}>
                 View all comments
               </button>
-              <div className="d-flex align-center">
+              <div className={`${styles.CommentBox} d-flex align-center`}>
                 <span
                   className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
                 >
@@ -270,12 +262,11 @@ function WholeSellerPanel() {
                 </div>
               </div>
             </section>
-            <div className={styles.line}></div>
           </div>
         </Col>
 
         <Col className="mt-5">
-          <div className=" d-flex flex-column mt-4">
+          <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
             <Row>
               <div
                 className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
@@ -321,7 +312,7 @@ function WholeSellerPanel() {
                 src={WholeSellerimg}
                 alt="userImg"
               />
-              <span>
+              <span className="">
                 <img
                   className={styles.PhotoOne}
                   src={WholeSellerimg}
@@ -338,11 +329,13 @@ function WholeSellerPanel() {
 
             {/******* Comment input field *****/}
 
-            <section className="d-flex flex-column mt-5 mb-5">
+            <section
+              className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
+            >
               <button className={`${styles.ViewComment} bg-white`}>
                 View all comments
               </button>
-              <div className="d-flex align-center">
+              <div className={`${styles.CommentBox} d-flex align-center`}>
                 <span
                   className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
                 >
@@ -369,7 +362,6 @@ function WholeSellerPanel() {
                 </div>
               </div>
             </section>
-            <div className={styles.line}></div>
           </div>
         </Col>
       </Container>

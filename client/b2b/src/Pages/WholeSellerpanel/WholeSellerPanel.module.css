@@ -4,7 +4,7 @@
 .coverPhoto {
   position: relative;
   height: 46vh;
-  background-image: url(../../assets/home/suggested_group.jpg);
+  background-image: url(../../assets/home/suggested_group2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 0;
@@ -40,10 +40,11 @@
   width: 12em;
   margin-top: -130px;
   border-radius: 50%;
-  border: 5px solid var(--primary-color);
+  border: 4px solid var(--primary-color);
   position: absolute;
   left: -10rem;
   top: 4rem;
+  background: var(--bg-color);
 }
 
 /*************************************************** Sliders of WholeSeller Panel CSS ****************************************************/
@@ -121,14 +122,14 @@
   margin-top: 5rem;
   border: none;
   border-radius: 7px;
-  height: 8rem;
+  height: 10rem;
   box-shadow: 0px 1px 5px -3px black;
   position: relative;
 }
 .WholeSellerInputimg {
   width: 3rem;
   height: 3rem;
-  position: absolute;
+  position: relative;
   left: 21px;
   border-radius: 50%;
 }
@@ -138,19 +139,14 @@
   border: 1px solid gray;
   padding: 1rem;
   outline: none;
-  width: 90%;
-  position: absolute;
-  left: 5rem;
-  top: 0.2rem;
+  width: 68.5rem;
+  position: relative;
+  left: 2rem;
 }
 .WholeSellerLine {
-  position: absolute;
-  bottom: 43%;
   width: 94% !important;
   height: 1px;
   background-color: #0000005e;
-  left: 50%;
-  transform: translate(-50%);
 }
 .WholeSellerLowerSection {
   display: flex;
@@ -158,7 +154,7 @@
   bottom: 0;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 9px;
+  margin-bottom: 14px;
 }
 .WholeSellerLowerSection div {
   display: flex;
@@ -254,6 +250,12 @@
 }
 
 /*************************************************** WholeSeller Panel posting and commentArea****************************************************/
+.PostCommentWrapper {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px -2px #80808082;
+  border: none;
+}
 .postingHeadingTextArea {
   margin: 0px 0px 0px 10px !important;
 }
@@ -278,6 +280,10 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
+}
+.CommentBox {
+  position: absolute;
+  bottom: 0;
 }
 .postingAreaHeadingCircle {
   width: 3rem;
@@ -322,6 +328,7 @@
   flex-direction: column;
   gap: 0.5rem;
   margin-left: 1rem;
+  justify-content: space-between;
 }
 .PhotoOne,
 .PhotoTwo {
@@ -341,19 +348,30 @@
   object-fit: cover;
   cursor: pointer;
 }
+.CommentField {
+  position: relative;
+  height: 5.3rem !important;
+}
 .ViewComment {
-  text-align: end;
   color: var(--primary-color);
   letter-spacing: 0.2px;
   font-weight: 600;
   cursor: pointer;
+  height: 2rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background: none;
+  width: fit-content;
+  position: absolute;
+  right: 0;
 }
 .ViewcommentInputField {
   display: flex !important;
   align-items: center;
   border: 1px solid #c1c1c4;
   margin-left: 10px;
-  width: 72.5rem;
+  width: 69.5rem;
   border-radius: 40px;
 }
 .ViewcommentInputField input {
@@ -396,7 +414,13 @@
     right: -22px;
   }
   .posts:hover .underLine {
-    transform: translateY(125%);
+    transform: translateY(138%);
+  }
+  .postName {
+    font-size: 1rem !important;
+  }
+  .postValue {
+    font-size: 15px !important;
   }
   .profilePhoto {
     width: 9rem;
@@ -421,7 +445,7 @@
     font-size: 0.8rem;
   }
   .ViewcommentInputField {
-    width: 40.5rem !important;
+    width: 37.5rem !important;
   }
   .ViewcommentInputField input {
     width: 49rem;
@@ -429,7 +453,7 @@
   .PhotoOne,
   .PhotoTwo {
     height: 12.4rem;
-    width: 21.5rem;
+    width: 19.5rem;
     margin-left: 0.6rem !important;
   }
   .PostingPhotos span {
@@ -437,8 +461,8 @@
   }
   .PhotoThree {
     height: 25rem;
-    width: 21.5rem;
-    margin-left: 1rem !important;
+    width: 19.5rem;
+    margin-left: 0rem !important;
   }
   .faEllipsis {
     font-size: 1rem;
@@ -484,13 +508,17 @@
     justify-content: space-around;
   }
   .ViewcommentInputField {
-    width: 25.5rem !important;
+    width: 22.5rem !important;
   }
   .ViewcommentInputField input {
     width: 19rem !important;
   }
+  .AddpostArea p {
+    padding: 0 !important;
+  }
   .ViewComment {
     font-size: 0.8rem !important;
+    top: 1rem;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -501,7 +529,7 @@
   .PhotoThree {
     height: 20rem;
     width: 13rem;
-    margin-left: 1rem !important;
+    margin-left: 0 !important;
   }
   .faEllipsis {
     font-size: 1rem;
@@ -526,7 +554,7 @@
     font-size: 1.2rem !important;
   }
   .ViewcommentInputField {
-    width: 21.5rem !important;
+    width: 19.5rem !important;
   }
   .ViewcommentInputField input {
     width: 16rem !important;
@@ -534,16 +562,19 @@
   .ViewComment {
     font-size: 0.8rem !important;
   }
-  .PhotoOne,
+  .postingHeadingText {
+    font-size: 0.7rem !important;
+  }
+  ._postingHeadingTextArea_1vp6f_517 div p:nth-child(1) .PhotoOne,
   .PhotoTwo {
-    height: 9.4rem;
+    height: 7.6rem;
     width: 11.5rem;
     margin-left: 1rem !important;
   }
   .PhotoThree {
-    height: 20rem;
-    width: 21.5rem;
-    margin-left: 1rem !important;
+    height: 16rem;
+    width: 10.5rem;
+    margin-left: 0rem !important;
   }
   .faEllipsis {
     font-size: 1rem;
