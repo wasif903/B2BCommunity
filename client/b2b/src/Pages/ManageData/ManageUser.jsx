@@ -1,4 +1,3 @@
-import React from "react";
 import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
 import styles from "./ManageDataStyles/ManageUser.module.css";
 import userPic from "../../assets/UserPic.jpeg";
