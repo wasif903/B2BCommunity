@@ -65,7 +65,6 @@ function Header() {
                 </div>
                 <div
                   onClick={handleModal}
-                  // eventKey={2}
                   className={`
                   ${styles.bars}
                   ${isOpen ? "d-none" : "d-flex"} 
