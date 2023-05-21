@@ -16,8 +16,6 @@ import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { faSignal } from "@fortawesome/free-solid-svg-icons";
-import { faSignal5 } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 
@@ -185,8 +183,8 @@ function WholeSellerPanel() {
         </Row>
 
         {/* WholeSeller Panel posting and comment Area */}
-        {peopleData.map((item) => (
-          <Col className="mt-5">
+        {peopleData.map((item, index) => (
+          <Col key={index + 1} className="mt-5">
             <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
               <Row>
                 <div
