@@ -3,29 +3,11 @@ import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
 import styles from "./ManageDataStyles/ManageWholesellers.module.css";
 import userPic from "../../assets/UserPic.jpeg";
 import Header from "../../Components/Header";
-
-// function for display user
-function displayData(users) {
-  let ListItems = (
-    <li key={users.name}>
-      <div className={styles.userData}>
-        <img src={userPic} alt="" />
-        <span>
-          <p>{users.name}</p>
-          <code>{users.code}</code>
-        </span>
-      </div>
-      <div className={styles.userDataBtn}>
-        <span className="d-flex justify-content-between">
-          <button>remove</button>
-          <button>block</button>
-        </span>
-        <button className={styles.assignBtn}>Assign to other group</button>
-      </div>
-    </li>
-  );
-  return ListItems;
-}
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function ManageUser() {
   return (
@@ -35,8 +17,11 @@ function ManageUser() {
         <div className={styles.heading}>
           <p className="w-2">Manage Wholesellers</p>
         </div>
-        <form>
-          <input type="text" placeholder="Search here..." />
+        <form className={styles.wrapperForm}>
+          <div>
+            <FontAwesomeIcon icon={faSearch} className={styles.search_icon} />
+            <input type="text" placeholder="Search here..." />
+          </div>
           <button>+ WholeSellers</button>
         </form>
         <div className={styles.sliders}>
@@ -44,9 +29,38 @@ function ManageUser() {
           <a href="#">WordPress Developers</a>
           <a href="#">Social Media Marketing</a>
         </div>
-        <section className={styles.displayUserData}>
-          <ul>{DummyUserData.map(displayData)}</ul>
-        </section>
+        <Container className={styles.displayUsers}>
+          <Row>
+            {DummyUserData.map((item) => (
+              <Col lg="3" md="4" sm="6">
+                <div className={`${styles.mapWrapper}`}>
+                  <div>
+                    <img className={styles.imgWrapper} src={userPic} alt="" />
+                  </div>
+                  <span
+                    className={`${styles.NewRequestNamePanel} text-center py-3`}
+                  >
+                    <p>{item.name}</p>
+                    <code>{item.code}</code>
+                  </span>
+                  <div className={styles.userDataBtnWrapper}>
+                    <div>
+                      <button className={`my-2 ${styles.buttons}`}>
+                        REMOVE
+                      </button>
+                      <button className={`my-2 ${styles.buttons}`}>
+                        BLOCK
+                      </button>
+                    </div>
+                    <button className={styles.assignBtn}>
+                      Assign to other group
+                    </button>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     </>
   );

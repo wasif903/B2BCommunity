@@ -6,14 +6,18 @@ import Col from "react-bootstrap/Col";
 import styles from "./GroupContent.module.css";
 import image from "../../assets/my_acc.png";
 import { useState } from "react";
+import WholeSellerimg from "../../assets/wholeSellerAssets/WholesellerImg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
+import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
+import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 
-function WholeSellerPanel() {
+function GroupContent() {
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
 
@@ -62,182 +66,153 @@ function WholeSellerPanel() {
           </Col>
         </Row>
 
-        {/**************** Sliders of WholeSeller Panel *************/}
+        {/**************** Featured Panel *************/}
 
-        {/* <Row className="mt-5 pt-5 gap-10 overflow-hidden">
-          {Data.map(displayItems)}
-        </Row> */}
-
-        {/************ WholeSellerInputArea ************/}
-
-        {/* <div className={styles.WholeSellerInputArea}>
-          <Col className="h-100 position-relative">
-            <Row className="position-relative">
-              <Col className="position-absolute mt-2">
-                <img
-                  className={styles.WholeSellerInputimg}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-              </Col>
-              <Col className="position-relative mt-2">
-                <input
-                  className={styles.wholeSellerInputField}
-                  type="text"
-                  placeholder="Write something..."
-                />
-              </Col>
-            </Row>
-            <Row>
-              <div className={styles.WholeSellerLine}></div>
-            </Row>
-            <div className={styles.WholeSellerLowerSection}>
-              <div>
-                <img className={styles.WholeSellerimg} src={Photopng} alt="" />
-                <p>Photo</p>
-              </div>
-              <div>
-                <img
-                  className={styles.WholeSellerimg}
-                  src={videoMaker}
-                  alt=""
-                />
-                <p>Video</p>
-              </div>
-              <div>
-                <img className={styles.WholeSellerimg} src={Livepng} alt="" />
-                <p>Live</p>
-              </div>
+        <div className={`${styles.featuredPanel} mt-5`}>
+          <Col>
+            <div className="d-flex justify-content-start align-items-center gap-2">
+              <h5 className="m-0">FEATURED</h5>
+              <FontAwesomeIcon
+                icon={faInfo}
+                onClick={toggleEditCoverModal}
+                className={`${styles.infoIcon} fa-lg`}
+              />
+            </div>
+            <div
+              className={`${styles.featuredPhotoRow} d-flex justify-content-center align-items-center gap-4 mt-2 mb-3`}
+            >
+              {FeaturedData.map((item) => (
+                <div className={styles.featuredMapWrapper}>
+                  <div className={styles.featuredMapDiv}>
+                    <img
+                      className={styles.postingAreaimg}
+                      src={item.imageURL}
+                      alt="userImg"
+                    />
+                    <span>
+                      <h2 className={styles.FeaturedHeadingText}>
+                        {item.passion}
+                      </h2>
+                      <div className={`${styles.featuredNameDiv} d-flex`}>
+                        <p>{item.name}</p>
+                        <p className="px-2">Admin</p>
+                      </div>
+                    </span>
+                  </div>
+                  <div className={`${styles.featuredTextArea} mt-3`}>
+                    <p>{item.description}</p>
+                  </div>
+                  <img
+                    className={styles.featuredPhoto}
+                    src={item.imageURL}
+                    alt="userImg"
+                  />
+                </div>
+              ))}
             </div>
           </Col>
-        </div> */}
-
-        {/************ TotalMembers ************/}
-
-        {/* <div className={styles.TotalMembers}>
-          <div></div>
-          <p>Total Members</p>
-          <code>23.4K</code>
-          <section className={styles.TotalMembersCircleSection}>
-            <span></span>
-            <span className="ms-4"></span>
-            <span className="ms-5"></span>
-          </section>
-        </div> */}
-
-        {/************ Manage Buttons ************/}
-
-        {/* <Row className="py-lg-5">
-          <Col
-            md="6"
-            className="py-3 d-md-block d-flex  justify-content-center align-items-center"
-          >
-            <div className={styles.manageUsers}>
-              <h4 className="pt-2">
-                <FontAwesomeIcon
-                  className={`${styles.user} pe-3`}
-                  icon={faGlobe}
-                />
-                Manage Users
-              </h4>
-            </div>
-          </Col>
-          <Col
-            md="6"
-            className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center"
-          >
-            <div className={`${styles.manageWholeSeller}`}>
-              <h4 className="pt-2">
-                <FontAwesomeIcon
-                  className={`${styles.manager} pe-3`}
-                  icon={faCirclePlay}
-                />
-                Manage Whole Seller
-              </h4>
-            </div>
-          </Col>
-        </Row> */}
+        </div>
 
         {/* WholeSeller Panel posting and comment Area */}
 
-        <Col>
-          <div className=" d-flex flex-column mt-4">
-            <Row>
-              <div
-                className={`${styles.postingAreaHeading} d-flex position-relative`}
-              >
-                <span
-                  className={`${styles.postingAreaHeadingCircle}  mt-2`}
-                ></span>
-                <section className={`${styles.postingHeadingTextArea} mx-2`}>
-                  <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
-                  <div className="d-flex">
-                    <p className="mb-0 mx-1">Tom Hawkins</p>
-                    <p className="px-1 mt-1">Admin</p>
-                  </div>
-                </section>
-                <div className={styles.postingAreaThreeDots}>
-                  <FontAwesomeIcon
-                    className={styles.faEllipsis}
-                    icon={faEllipsis}
-                  />
-                </div>
-              </div>
-            </Row>
-            <Row>
-              <div className={`${styles.AddpostArea} mt-1`}>
-                <p className="px-4">
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                </p>
-              </div>
-            </Row>
-
-            {/******* Comment input field *****/}
-
-            <section className="d-flex flex-column mt-5 mb-5">
-              <button className={`${styles.ViewComment} bg-white`}>
-                View all comments
-              </button>
-              <div className="d-flex align-center">
+        {peopleData.map((item) => (
+          <Col className="mt-5">
+            <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
+              <Row>
                 <div
-                  className={`${styles.postingAreaHeadingCircle} mt-1`}
-                ></div>
-                <div
-                  className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
+                  className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
                 >
-                  <input type="text" placeholder="Write your comment…" />
-                  <span className="d-flex justify-content-evenly align-items-center w-25">
-                    <FontAwesomeIcon
-                      className={`${styles.FaceSmile}`}
-                      icon={faFaceSmile}
-                    />
-                    <FontAwesomeIcon
-                      className={`${styles.Paperclip}`}
-                      icon={faPaperclip}
+                  <span
+                    className={`${styles.postingAreaHeadingCircle} position-relative`}
+                  >
+                    <img
+                      className={styles.postingAreaimg}
+                      src={item.imageURL}
+                      alt="userImg"
                     />
                   </span>
+                  <section className={`${styles.postingHeadingTextArea} mx-2`}>
+                    <h2 className={styles.postingHeadingText}>
+                      {item.passion}
+                    </h2>
+                    <div className="d-flex">
+                      <p>{item.name}</p>
+                      <p className="px-2">Admin</p>
+                    </div>
+                  </section>
+                  <div className={styles.postingAreaThreeDots}>
+                    <FontAwesomeIcon
+                      className={styles.faEllipsis}
+                      icon={faEllipsis}
+                    />
+                  </div>
                 </div>
-              </div>
-            </section>
-          </div>
-        </Col>
+              </Row>
+              <Row>
+                <div className={`${styles.AddpostArea} mt-1`}>
+                  <p className="px-5">{item.description}</p>
+                </div>
+              </Row>
 
-        <Col>
-          <div className=" d-flex flex-column mt-4">
+              {/******* Comment input field *****/}
+
+              <section
+                className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
+              >
+                <button className={`${styles.ViewComment} bg-white`}>
+                  View all comments
+                </button>
+                <div className={`${styles.CommentBox} d-flex align-center`}>
+                  <span
+                    className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
+                  >
+                    <img
+                      className={styles.postingAreaimg}
+                      src={item.imageURL}
+                      alt="userImg"
+                    />
+                  </span>
+                  <div
+                    className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
+                  >
+                    <input type="text" placeholder="Write your comment…" />
+                    <span className="d-flex justify-content-evenly align-items-center w-25">
+                      <FontAwesomeIcon
+                        className={`${styles.FaceSmile}`}
+                        icon={faFaceSmile}
+                      />
+                      <FontAwesomeIcon
+                        className={`${styles.Paperclip}`}
+                        icon={faPaperclip}
+                      />
+                    </span>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </Col>
+        ))}
+
+        <Col className="mt-5">
+          <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
             <Row>
               <div
-                className={`${styles.postingAreaHeading} d-flex position-relative`}
+                className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
               >
                 <span
-                  className={`${styles.postingAreaHeadingCircle}  mt-2`}
-                ></span>
-                <section className={`${styles.postingHeadingTextArea} mx-2`}>
+                  className={`${styles.postingAreaHeadingCircle} position-relative`}
+                >
+                  <img
+                    className={styles.postingAreaimg}
+                    src={WholeSellerimg}
+                    alt="userImg"
+                  />
+                </span>
+                <section className={`${styles.postingHeadingTextArea} mx-2 `}>
                   <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
                   <div className="d-flex">
-                    <p className="mb-0 mx-1">Tom Hawkins</p>
-                    <p className="px-1 mt-1">Admin</p>
+                    <p>Tom Hawkins</p>
+                    <p className="px-2">Admin</p>
                   </div>
                 </section>
                 <div className={styles.postingAreaThreeDots}>
@@ -250,7 +225,7 @@ function WholeSellerPanel() {
             </Row>
             <Row>
               <div className={`${styles.AddpostArea} mt-1`}>
-                <p className="px-4">
+                <p className="px-5">
                   A Great Way To Generate All The Motivation You Need To Get Fit
                   A Great Way To Generate All The Motivation You Need To Get Fit
                   A Great Way To Generate All The Motivation You Need To Get Fit
@@ -260,23 +235,44 @@ function WholeSellerPanel() {
 
             {/******* Posting Photos *****/}
             <section className={`${styles.PostingPhotos}`}>
-              <div className={styles.PhotoThree}></div>
-              <span>
-                <div className={styles.PhotoOne}></div>
-                <div className={styles.PhotoTwo}></div>
+              <img
+                className={styles.PhotoThree}
+                src={WholeSellerimg}
+                alt="userImg"
+              />
+              <span className="">
+                <img
+                  className={styles.PhotoOne}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
+
+                <img
+                  className={styles.PhotoTwo}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
               </span>
             </section>
 
             {/******* Comment input field *****/}
 
-            <section className="d-flex flex-column mt-5 mb-5">
+            <section
+              className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
+            >
               <button className={`${styles.ViewComment} bg-white`}>
                 View all comments
               </button>
-              <div className="d-flex align-center">
-                <div
-                  className={`${styles.postingAreaHeadingCircle} mt-1`}
-                ></div>
+              <div className={`${styles.CommentBox} d-flex align-center`}>
+                <span
+                  className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
+                >
+                  <img
+                    className={styles.postingAreaimg}
+                    src={WholeSellerimg}
+                    alt="userImg"
+                  />
+                </span>
                 <div
                   className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                 >
@@ -309,4 +305,4 @@ function WholeSellerPanel() {
   );
 }
 
-export default WholeSellerPanel;
+export default GroupContent;
