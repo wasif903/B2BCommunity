@@ -93,16 +93,25 @@
       "description": "Wanderlust-driven adventurer. Explores the globe, embracing diverse cultures and experiences to expand horizons and create lasting memories."
     }
   ],
-    "peoplePhotoData": [
-      {
-        "imageURL": "https://randomuser.me/api/portraits/women/8.jpg"
-      },
-      {
-        "imageURL": "https://randomuser.me/api/portraits/men/9.jpg"
-      },
-      {
-        "imageURL": "https://randomuser.me/api/portraits/women/10.jpg"
-      }
+    "FeaturedData": [
+          {
+            "name": "John Smith",
+            "passion": "Photography",
+            "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires.",
+            "imageURL": "https://randomuser.me/api/portraits/men/1.jpg"
+          },
+          {
+            "name": "Emily Johnson",
+            "passion": "Painting",
+            "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others.",
+            "imageURL": "https://randomuser.me/api/portraits/women/2.jpg"
+          },
+          {
+            "name": "Michael Davis",
+            "passion": "Cooking",
+            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+          }
     ]
   }
   

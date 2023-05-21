@@ -15,7 +15,7 @@ import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
-import { peoplePhotoData } from "../ManageData/ManageDataAssets/ManageUserData.json";
+import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 
 function GroupContent() {
   // useState for Edite Cover Photo
@@ -67,6 +67,7 @@ function GroupContent() {
         </Row>
 
         {/**************** Featured Panel *************/}
+
         <div className={`${styles.featuredPanel} mt-5`}>
           <Col>
             <div className="d-flex justify-content-start align-items-center gap-2">
@@ -80,7 +81,7 @@ function GroupContent() {
             <div
               className={`${styles.featuredPhotoRow} d-flex justify-content-center align-items-center gap-4 mt-2 mb-3`}
             >
-              {peoplePhotoData.map((item) => (
+              {FeaturedData.map((item) => (
                 <div className={styles.featuredMapWrapper}>
                   <div className={styles.featuredMapDiv}>
                     <img
@@ -90,21 +91,16 @@ function GroupContent() {
                     />
                     <span>
                       <h2 className={styles.FeaturedHeadingText}>
-                        Photography
+                        {item.passion}
                       </h2>
                       <div className={`${styles.featuredNameDiv} d-flex`}>
-                        <p>John smith</p>
+                        <p>{item.name}</p>
                         <p className="px-2">Admin</p>
                       </div>
                     </span>
                   </div>
                   <div className={`${styles.featuredTextArea} mt-3`}>
-                    <p className="px-5">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Nesciunt consequuntur qui inventore quibusdam hic ab
-                      suscipit doloribus atque dolorem nam, illo, quaerat iusto,
-                      quas impedit.
-                    </p>
+                    <p className="px-5">{item.description}</p>
                   </div>
                   <img
                     className={styles.featuredPhoto}
