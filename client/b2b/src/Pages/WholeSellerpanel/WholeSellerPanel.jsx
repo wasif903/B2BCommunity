@@ -198,7 +198,7 @@ function WholeSellerPanel() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={WholeSellerimg}
+                      src={item.imageURL}
                       alt="userImg"
                     />
                   </span>
@@ -239,7 +239,7 @@ function WholeSellerPanel() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={WholeSellerimg}
+                      src={item.imageURL}
                       alt="userImg"
                     />
                   </span>

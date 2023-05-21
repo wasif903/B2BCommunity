@@ -30,11 +30,13 @@ input.check:checked {
 }
 
 .anchor {
-  color: var(--font-primary-color);
+  color: var(--primary-color);
   text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 .anchor:hover {
-  color: var(--font-primary-color);
+  color: var(--primary-color);
   text-decoration: none;
 }
 

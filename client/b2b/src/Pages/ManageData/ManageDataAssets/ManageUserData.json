@@ -45,52 +45,62 @@
     {
       "name": "John Smith",
       "passion": "Photography",
-      "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires."
+      "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires.",
+      "imageURL": "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
       "name": "Emily Johnson",
       "passion": "Painting",
-      "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others."
+      "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others.",
+      "imageURL": "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
       "name": "Michael Davis",
       "passion": "Cooking",
-      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences."
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
     },
     {
       "name": "Sophia Anderson",
       "passion": "Writing",
-      "description": "Wordsmith and storyteller. Finds solace and excitement in crafting narratives that evoke emotions and ignite imaginations."
+      "description": "Wordsmith and storyteller. Finds solace and excitement in crafting narratives that evoke emotions and ignite imaginations.",
+      "imageURL": "https://randomuser.me/api/portraits/women/4.jpg"
     },
     {
       "name": "William Wilson",
       "passion": "Music",
-      "description": "Melody weaver and harmony seeker. Driven by the power of music to transcend boundaries and touch the depths of the human soul."
+      "description": "Melody weaver and harmony seeker. Driven by the power of music to transcend boundaries and touch the depths of the human soul.",
+      "imageURL": "https://randomuser.me/api/portraits/men/5.jpg"
     },
     {
       "name": "Olivia Martinez",
       "passion": "Dancing",
-      "description": "Moves to the rhythm of life with grace and passion. Believes dance is a language that speaks directly to the heart and brings people together."
+      "description": "Moves to the rhythm of life with grace and passion. Believes dance is a language that speaks directly to the heart and brings people together.",
+      "imageURL": "https://randomuser.me/api/portraits/women/6.jpg"
     },
     {
       "name": "Daniel Taylor",
       "passion": "Gardening",
-      "description": "Nurturer of plants and cultivator of beauty. Finds joy in creating lush and vibrant gardens that bring tranquility and harmony to spaces."
+      "description": "Nurturer of plants and cultivator of beauty. Finds joy in creating lush and vibrant gardens that bring tranquility and harmony to spaces.",
+      "imageURL": "https://randomuser.me/api/portraits/men/7.jpg"
     },
     {
       "name": "Ava Moore",
       "passion": "Sports",
-      "description": "Thrives in the world of athleticism and competition. Believes in the power of sports to build character, resilience, and foster camaraderie."
+      "description": "Thrives in the world of athleticism and competition. Believes in the power of sports to build character, resilience, and foster camaraderie.",
+      "imageURL": "https://randomuser.me/api/portraits/women/8.jpg"
     },
     {
       "name": "James Brown",
       "passion": "Film-making",
-      "description": "Crafts visual stories that captivate and inspire. Passionate about the art of cinema and the ability to transport audiences to new worlds."
+      "description": "Crafts visual stories that captivate and inspire. Passionate about the art of cinema and the ability to transport audiences to new worlds.",
+      "imageURL": "https://randomuser.me/api/portraits/men/9.jpg"
     },
     {
       "name": "Isabella Garcia",
       "passion": "Traveling",
-      "description": "Wanderlust-driven adventurer. Explores the globe, embracing diverse cultures and experiences to expand horizons and create lasting memories."
+      "description": "Wanderlust-driven adventurer. Explores the globe, embracing diverse cultures and experiences to expand horizons and create lasting memories.",
+      "imageURL": "https://randomuser.me/api/portraits/women/10.jpg"
     }
   ],
     "FeaturedData": [

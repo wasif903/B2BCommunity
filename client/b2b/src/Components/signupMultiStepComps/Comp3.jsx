@@ -2,6 +2,7 @@ import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
@@ -113,7 +114,9 @@ function Comp3({ onChange, userFields }) {
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>
-              <a href="">Login</a>
+              <Link to="/login">
+                <a>Login</a>
+              </Link>
             </span>
           </Row>
         </Col>

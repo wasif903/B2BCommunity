@@ -105,7 +105,7 @@ function Login() {
             <Col sm="12" md="9" className="text-md-start text-center">
               <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
             </Col>
-            <Col sm="12" md="3" className="text-center text-md-end pb-2">
+            <Col sm="12" md="3" className="text-center text-md-end pb-2 mb-1">
               <Link to="/signup" className={styles.anchor}>
                 SIGNUP
               </Link>

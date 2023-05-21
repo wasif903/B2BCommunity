@@ -86,7 +86,7 @@ function GroupContent() {
                   <div className={styles.featuredMapDiv}>
                     <img
                       className={styles.postingAreaimg}
-                      src={WholeSellerimg}
+                      src={item.imageURL}
                       alt="userImg"
                     />
                     <span>
@@ -100,7 +100,7 @@ function GroupContent() {
                     </span>
                   </div>
                   <div className={`${styles.featuredTextArea} mt-3`}>
-                    <p className="px-5">{item.description}</p>
+                    <p>{item.description}</p>
                   </div>
                   <img
                     className={styles.featuredPhoto}
@@ -127,7 +127,7 @@ function GroupContent() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={WholeSellerimg}
+                      src={item.imageURL}
                       alt="userImg"
                     />
                   </span>
@@ -168,7 +168,7 @@ function GroupContent() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={WholeSellerimg}
+                      src={item.imageURL}
                       alt="userImg"
                     />
                   </span>

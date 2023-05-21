@@ -48,7 +48,7 @@
 }
 .WholeSellerText div {
   position: relative;
-  left: 3rem !important;
+  left: 1rem !important;
   width: fit-content;
   font-family: "Poppins", sans-serif;
 }
@@ -69,23 +69,22 @@
   left: 1.5rem;
 }
 
-/*************************************************** WholeSeller Panel posting and commentArea****************************************************/
+/*************************************************** Featured Panel ****************************************************/
 .featuredPanel {
   padding: 2rem 2rem;
   border-radius: 10px;
   box-shadow: 0px 0px 8px -2px #80808082;
   width: 76rem;
   position: relative;
-  right: 10px;
 }
 .infoIcon {
   color: #514f4f8c;
   font-size: 0rem;
   border-radius: 50%;
   border: 2px solid #514f4f8c;
-  padding: 7px;
-  width: 10px;
-  height: 10px;
+  padding: 4px;
+  width: 13px;
+  height: 13px;
 }
 .featuredPhoto {
   height: 25rem;
@@ -101,6 +100,7 @@
   background: #9393931f;
   object-fit: contain;
   height: 31rem;
+  box-shadow: 1px 1px 4px 4px #80808030;
 }
 .featuredMapDiv {
   display: flex;
@@ -133,9 +133,16 @@
 }
 .featuredTextArea {
   height: 6rem;
-  overflow: auto;
-  margin: 1rem 0rem !important;
-  border: 1px solid #8080802e;
+  overflow: scroll;
+  margin: 1rem 0.5rem !important;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  width: 22rem;
+}
+.featuredTextArea p {
+  font-size: 0.8rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 /*************************************************** WholeSeller Panel posting and commentArea****************************************************/
 .PostCommentWrapper {

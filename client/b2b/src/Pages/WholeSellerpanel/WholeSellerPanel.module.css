@@ -51,7 +51,7 @@
 
 .WholeSellerText div {
   position: relative;
-  left: 3rem !important;
+  left: 1rem !important;
   width: fit-content;
   font-family: "Poppins", sans-serif;
 }
