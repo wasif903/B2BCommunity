@@ -11,7 +11,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../../utils/SwiperBreakPoints";
 
 function NewRequest() {
-
   const categoryOptions = [
     {
       category: "UI/UX Designer",
@@ -57,11 +56,11 @@ function NewRequest() {
           >
             <div>
               {categoryOptions.map((item, index) => (
-                <>
-                  <SwiperSlide className="d-inline-flex justify-content-center align-items-center">
-                    <button className={styles.catListBtn} key={index + 1}>{item.category}</button>
-                  </SwiperSlide>
-                </>
+                <SwiperSlide className="d-inline-flex justify-content-center align-items-center">
+                  <button className={styles.catListBtn} key={index + 1}>
+                    {item.category}
+                  </button>
+                </SwiperSlide>
               ))}
             </div>
           </Swiper>
@@ -87,28 +86,28 @@ function NewRequest() {
       <Container>
         <Row>
           {DummyUserData.map((item, index) => (
-            <>
-              <Col lg="3" md="4" sm="6">
-                <div className={`${styles.mapWrapper}`}>
-                  <div>
-                    <img
-                      className={styles.imgWrapper}
-                      src={userPic}
-                      key={index + 1}
-                      alt={index + 1}
-                    />
-                  </div>
-                  <div className="text-center py-3">
-                    <h3>{item.name}</h3>
-                    <h5>{item.code}</h5>
-                  </div>
-                  <div>
-                    <button className={`my-2 ${styles.buttons}`}>ADD</button>
-                    <button className={`my-2 ${styles.buttons}`}>REMOVE</button>
-                  </div>
+            <Col lg="3" md="4" sm="6">
+              <div className={`${styles.mapWrapper}`} key={index + 1}>
+                <div>
+                  <img
+                    className={styles.imgWrapper}
+                    src={userPic}
+                    key={index + 1}
+                    alt={index + 1}
+                  />
                 </div>
-              </Col>
-            </>
+                <div
+                  className={`${styles.NewRequestNamePanel} text-center py-3`}
+                >
+                  <h3>{item.name}</h3>
+                  <h5>{item.code}</h5>
+                </div>
+                <div>
+                  <button className={`my-2 ${styles.buttons}`}>ADD</button>
+                  <button className={`my-2 ${styles.buttons}`}>REMOVE</button>
+                </div>
+              </div>
+            </Col>
           ))}
         </Row>
       </Container>

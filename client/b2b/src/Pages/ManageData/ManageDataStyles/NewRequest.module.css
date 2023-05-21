@@ -1,59 +1,64 @@
 .mapWrapper {
-  border: var(--primary-color) 2px solid !important;
   border-radius: 12px;
-  padding: 10px;
+  padding: 16px 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   margin: 10px;
+  box-shadow: 0px 0px 5px 0px #80808099;
 }
 
-.imgWrapper  {
+.imgWrapper {
   width: 150px;
   border-radius: 50%;
-  border: var(--primary-color) solid 2px;
+  box-shadow: 0px 5px 20px 0px #808080d4;
 }
 
 .buttons {
   width: 100%;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .search_bar {
   display: flex;
   align-items: center;
-  width: 350px;
-  background-color: var(--primary-color);
+  width: 30rem;
   border-radius: 8px;
   padding: 5px 20px 5px 12px;
-  height: 3.5rem;
+  height: 3rem;
   position: relative;
+  border: 1px solid #808080db;
 }
 
 .search_bar .searchInput {
-  flex-grow: 1;
   border: none;
   outline: none;
   padding: 2px;
   position: absolute;
   right: 0;
   margin: 0 !important;
-  width: 19rem !important;
+  width: 27rem !important;
   height: 100%;
-  background-color: var(--primary-color);
   border-radius: 8px;
 }
 .searchInput[type="text"] {
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
 }
 
-.searchInput::placeholder{
-  color: white !important;
+.searchInput::placeholder {
+  color: rgb(0, 0, 0) !important;
 }
-
+.NewRequestNamePanel h3 {
+  font-size: 1.5rem;
+}
+.NewRequestNamePanel h5 {
+  font-size: 1rem;
+}
 .search_icon {
-  color:white;
+  color: grey;
   cursor: pointer;
 }
 

@@ -19,7 +19,7 @@ function Login() {
                 <img src={Logo} className={styles.logo} alt="site logo" />
               </div>
               <div className="text-center">
-                <h1 className={`${styles.headings} pb-3`}>Login</h1>
+                <h1 className={`${styles.headings}`}>Login</h1>
                 <h4 className={`${styles.headings}`}>
                   Login With Your Account <br /> To Continue
                 </h4>
@@ -29,32 +29,37 @@ function Login() {
 
           <Row className={styles.loginFrom}>
             <Col>
-              <Form>
+              <Form className="d-flex flex-column justify-content-center align-items-center">
                 <input
-                  className={`${styles.loginInputs} form-control-lg my-3`}
+                  className={`${styles.loginInputs} form-control-lg my-3 w-100`}
                   type="email"
                   placeholder="Email"
                 />
 
                 <input
-                  className={`form-control-lg my-3 ${styles.loginInputs}`}
+                  className={`form-control-lg my-3 w-100 ${styles.loginInputs}`}
                   type="password"
                   placeholder="Password"
                 />
 
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between w-100">
                   <div>
-                      <input type="checkbox" id="checkbox" label="" />
-                        <label className="ms-1" htmlFor="checkbox">Remember Me</label>
-                 
+                    <input type="checkbox" id="checkbox" label="" />
+                    <label className="ms-1" htmlFor="checkbox">
+                      Remember Me
+                    </label>
                   </div>
                   <div>
-                    <Link to="/forget-password" className={styles.headings}>Forgot Password?</Link>
+                    <Link to="/forget-password" className={styles.headings}>
+                      Forgot Password?
+                    </Link>
                   </div>
                 </div>
 
-                <div className="text-center d-grid my-3 ">
-                  <button type="submit">Submit</button>
+                <div className="text-center d-grid mt-4 w-100">
+                  <button className={styles.SumbitBtn} type="submit">
+                    Submit
+                  </button>
                 </div>
               </Form>
             </Col>
@@ -74,7 +79,7 @@ function Login() {
             </Col>
           </Row>
 
-          <Row className={`${styles.loginOptionRow} `}>
+          <Row className={`${styles.loginWithGoogleRow} p-0 `}>
             <Col
               md="3"
               className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}

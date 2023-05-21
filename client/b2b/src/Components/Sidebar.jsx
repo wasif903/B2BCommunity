@@ -50,10 +50,21 @@ const Sidebar = ({ setIsOpen }) => {
       <Container fluid className={styles.sidebarWrapper}>
         <Row>
           <Col sm="9" className="text-start mt-3 order-md-1 order-2">
-            <div className="d-inline-flex ">
-              <img src={userProfile} width="70px" alt="" />
+            <div
+              className="d-inline-flex position-relative"
+              style={{ width: "17rem" }}
+            >
+              <img
+                src={userProfile}
+                width="70px"
+                style={{ backgroundColor: "white", borderRadius: "50%" }}
+              />
               <div
-                style={{ lineHeight: "10px" }}
+                style={{
+                  lineHeight: "10px",
+                  position: "absolute",
+                  right: "1.5rem",
+                }}
                 className="d-flex pt-3 justify-content-center flex-column"
               >
                 <p className="text-white">David Smith</p>

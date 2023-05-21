@@ -143,6 +143,9 @@
   position: relative;
   left: 2rem;
 }
+.WholeSellerLineWrapper {
+  top: 0.5rem;
+}
 .WholeSellerLine {
   width: 94% !important;
   height: 1px;
@@ -290,6 +293,7 @@
   height: 3rem;
   background-color: var(--primary-color);
   border-radius: 50%;
+  bottom: 3px;
 }
 .postingHeadingText {
   margin: 0 !important;
@@ -442,7 +446,13 @@
     font-size: 0.8rem;
   }
   .AddpostArea {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .AddpostArea p {
+    padding: 0rem 0rem 0rem 3rem !important;
+  }
+  .ViewComment {
+    margin-top: 0.8rem !important;
   }
   .ViewcommentInputField {
     width: 37.5rem !important;
@@ -518,7 +528,7 @@
   }
   .ViewComment {
     font-size: 0.8rem !important;
-    top: 1rem;
+    top: 0.3rem;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -544,14 +554,29 @@
 
 @media all and (max-width: 360px) {
   .wholeSellerInputField {
-    width: 20rem !important;
+    width: 19rem !important;
+  }
+  .WholeSellerInputArea {
+    height: 8rem !important;
+  }
+  .WholeSellerLowerSection div img {
+    width: 1.5rem;
+  }
+  .WholeSellerLowerSection div p {
+    font-size: 0.9rem;
   }
   .AddpostArea {
     font-size: 0.8rem;
     letter-spacing: 0.1px !important;
   }
+  .postingAreaHeadingCircle {
+    margin-bottom: 0.5rem;
+  }
   .postingHeadingText {
     font-size: 1.2rem !important;
+  }
+  .CommentField {
+    height: 6rem !important;
   }
   .ViewcommentInputField {
     width: 19.5rem !important;
@@ -565,11 +590,21 @@
   .postingHeadingText {
     font-size: 0.7rem !important;
   }
-  ._postingHeadingTextArea_1vp6f_517 div p:nth-child(1) .PhotoOne,
+  .postingHeadingTextArea div p:nth-child(1) {
+    font-size: 0.56rem !important;
+  }
+  .postingHeadingTextArea div p:nth-child(2) {
+    font-size: 0.5rem;
+    margin-top: 2px !important;
+  }
+  .AddpostArea p {
+    font-size: 0.9rem;
+  }
+  .PhotoOne,
   .PhotoTwo {
     height: 7.6rem;
     width: 11.5rem;
-    margin-left: 1rem !important;
+    margin-left: 0.5rem !important;
   }
   .PhotoThree {
     height: 16rem;

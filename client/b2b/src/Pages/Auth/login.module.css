@@ -17,17 +17,16 @@
 }
 
 .logo {
-    width: 40%;
-
+  width: 40%;
 }
 
 .headings {
-  color: var(--font-primary-color);
+  color: #555454;
   text-decoration: none !important;
 }
 
 input.check:checked {
-    color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
 }
 
 .anchor {
@@ -57,35 +56,39 @@ input.check:checked {
 }
 
 .loginInputs {
-    border: none;
-    outline: none;
+  border: 1px solid #808080e3;
+  outline: none;
 }
 .loginInputs:hover {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 .loginInputs:active {
-    border: none !important;
-    outline: none !important;
+  border: none !important;
+  outline: none !important;
 }
 .loginInputs:focus {
-    border: none !important;
-    outline: none !important;
+  border: none !important;
+  outline: none !important;
 }
-
+.SumbitBtn {
+  height: 3rem;
+}
 .loginOptionIcon {
   border: 3px var(--primary-color) solid;
   border-radius: 10px 0px 0px 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .loginOptionTxt {
   background-color: var(--primary-color);
   border-radius: 0px 10px 10px 0px;
-  padding-top: 11px;
-  padding-bottom: 11px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
-
+.loginWithGoogleRow {
+  width: 17.5rem;
+}
 .loginOptionHeadings {
   color: var(--font-secondary-color);
   font-weight: 600 !important;
@@ -110,7 +113,7 @@ input.check:checked {
   }
   .loginOptionRow {
     padding: 0px;
-  } 
+  }
 }
 
 @media only screen and (max-width: 600px) {
