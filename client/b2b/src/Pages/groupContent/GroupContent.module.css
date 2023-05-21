@@ -133,7 +133,7 @@
 }
 .featuredTextArea {
   height: 6rem;
-  overflow: scroll;
+  overflow-y: scroll;
   margin: 1rem 0.5rem !important;
   scrollbar-width: thin;
   scroll-behavior: smooth;
