@@ -191,6 +191,7 @@
   .wrapperForm {
     width: 24rem;
     height: 2rem;
+    left: 1rem;
   }
   .wrapperForm div {
     width: 14rem;

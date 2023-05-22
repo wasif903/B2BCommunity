@@ -42,9 +42,16 @@ function Login() {
                   placeholder="Password"
                 />
 
-                <div className="d-flex justify-content-between w-100">
-                  <div>
-                    <input type="checkbox" id="checkbox" label="" />
+                <div
+                  className={`${styles.loginRememberForm} d-flex justify-content-between w-100`}
+                >
+                  <div className="d-flex justify-content-between flex-row-reverse w-50">
+                    <input
+                      type="checkbox"
+                      id="checkbox"
+                      label=""
+                      className="w-auto"
+                    />
                     <label className="ms-1" htmlFor="checkbox">
                       Remember Me
                     </label>

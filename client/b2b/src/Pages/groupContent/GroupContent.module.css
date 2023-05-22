@@ -385,6 +385,7 @@
   }
   .featuredMapWrapper {
     width: 23rem !important;
+    height: 33rem !important;
   }
 }
 @media all and (max-width: 1024px) {
@@ -445,7 +446,7 @@
     font-size: 0.8rem;
   }
   .ViewcommentInputField {
-    width: 37.5rem !important;
+    width: 45.5rem !important;
   }
   .ViewcommentInputField input {
     width: 49rem;

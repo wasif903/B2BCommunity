@@ -103,6 +103,7 @@
     top: -45px;
     right: 150px;
     background-color: var(--primary-color);
+    left: 18rem;
   }
   .chart {
     width: 80%;
