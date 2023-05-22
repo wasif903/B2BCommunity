@@ -649,6 +649,7 @@
   .postingAreaimg {
     width: 2.3rem;
     height: 2.3rem;
+    margin-bottom: 0.2rem;
   }
 }
 
@@ -719,5 +720,6 @@
   .postingAreaimg {
     width: 2.3rem;
     height: 2.3rem;
+    margin-bottom: 0.2rem;
   }
 }

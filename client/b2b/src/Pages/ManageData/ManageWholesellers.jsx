@@ -30,7 +30,7 @@ function ManageUser() {
           <a href="#">Social Media Marketing</a>
         </div>
         <Container className={styles.displayUsers}>
-          <Row>
+          <Row className={styles.displayUsersRow}>
             {DummyUserData.map((item) => (
               <Col lg="3" md="4" sm="6">
                 <div className={`${styles.mapWrapper}`}>

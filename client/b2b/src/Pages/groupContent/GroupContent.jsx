@@ -16,6 +16,8 @@ import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
+import { Swiper, SwiperSlide } from "swiper/react";
+import breakpoints from "../../utils/SwiperBreakPoints";
 
 function GroupContent() {
   // useState for Edite Cover Photo
@@ -81,34 +83,42 @@ function GroupContent() {
             <div
               className={`${styles.featuredPhotoRow} d-flex justify-content-center align-items-center gap-4 mt-2 mb-3`}
             >
-              {FeaturedData.map((item) => (
-                <div className={styles.featuredMapWrapper}>
-                  <div className={styles.featuredMapDiv}>
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={3}
+                // breakpoints={breakpoints}
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
+              >
+                {FeaturedData.map((item) => (
+                  <SwiperSlide className={styles.featuredMapWrapper}>
+                    <div className={styles.featuredMapDiv}>
+                      <img
+                        className={styles.postingAreaimg}
+                        src={item.imageURL}
+                        alt="userImg"
+                      />
+                      <span>
+                        <h2 className={styles.FeaturedHeadingText}>
+                          {item.passion}
+                        </h2>
+                        <div className={`${styles.featuredNameDiv} d-flex`}>
+                          <p>{item.name}</p>
+                          <p className="px-2">Admin</p>
+                        </div>
+                      </span>
+                    </div>
+                    <div className={`${styles.featuredTextArea} mt-3`}>
+                      <p>{item.description}</p>
+                    </div>
                     <img
-                      className={styles.postingAreaimg}
+                      className={styles.featuredPhoto}
                       src={item.imageURL}
                       alt="userImg"
                     />
-                    <span>
-                      <h2 className={styles.FeaturedHeadingText}>
-                        {item.passion}
-                      </h2>
-                      <div className={`${styles.featuredNameDiv} d-flex`}>
-                        <p>{item.name}</p>
-                        <p className="px-2">Admin</p>
-                      </div>
-                    </span>
-                  </div>
-                  <div className={`${styles.featuredTextArea} mt-3`}>
-                    <p>{item.description}</p>
-                  </div>
-                  <img
-                    className={styles.featuredPhoto}
-                    src={item.imageURL}
-                    alt="userImg"
-                  />
-                </div>
-              ))}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </Col>
         </div>
@@ -122,15 +132,12 @@ function GroupContent() {
                 <div
                   className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
                 >
-                  <span
-                    className={`${styles.postingAreaHeadingCircle} position-relative`}
-                  >
-                    <img
-                      className={styles.postingAreaimg}
-                      src={item.imageURL}
-                      alt="userImg"
-                    />
-                  </span>
+                  <img
+                    className={styles.postingAreaimg}
+                    src={item.imageURL}
+                    alt="userImg"
+                  />
+
                   <section className={`${styles.postingHeadingTextArea} mx-2`}>
                     <h2 className={styles.postingHeadingText}>
                       {item.passion}
@@ -163,15 +170,12 @@ function GroupContent() {
                   View all comments
                 </button>
                 <div className={`${styles.CommentBox} d-flex align-center`}>
-                  <span
-                    className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
-                  >
-                    <img
-                      className={styles.postingAreaimg}
-                      src={item.imageURL}
-                      alt="userImg"
-                    />
-                  </span>
+                  <img
+                    className={styles.postingAreaimg}
+                    src={item.imageURL}
+                    alt="userImg"
+                  />
+
                   <div
                     className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                   >

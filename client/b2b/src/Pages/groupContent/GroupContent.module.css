@@ -76,7 +76,7 @@
   box-shadow: 0px 0px 8px -2px #80808082;
   width: 76rem;
   position: relative;
-  display: none;
+  /* display: none; */
 }
 .infoIcon {
   color: #514f4f8c;
@@ -94,6 +94,9 @@
   position: relative;
   top: 0rem;
 }
+.featuredPhotoRow {
+  overflow: hidden;
+}
 .featuredMapWrapper {
   overflow: hidden;
   border-radius: 10px;
@@ -102,6 +105,7 @@
   object-fit: contain;
   height: 31rem;
   box-shadow: 1px 1px 4px 4px #80808030;
+  width: 23rem;
 }
 .featuredMapDiv {
   display: flex;
@@ -347,6 +351,7 @@
   }
   .ViewComment {
     margin-top: 0.8rem !important;
+    font-size: 0.8rem;
   }
   .ViewcommentInputField {
     width: 60rem !important;
@@ -374,6 +379,12 @@
   .postingAreaimg {
     width: 2.3rem;
     height: 2.3rem;
+  }
+  .featuredPanel {
+    width: 100% !important;
+  }
+  .featuredMapWrapper {
+    width: 23rem !important;
   }
 }
 @media all and (max-width: 1024px) {
@@ -431,6 +442,7 @@
   }
   .ViewComment {
     margin-top: 0.8rem !important;
+    font-size: 0.8rem;
   }
   .ViewcommentInputField {
     width: 37.5rem !important;
@@ -510,6 +522,7 @@
   .postingAreaimg {
     width: 2.3rem;
     height: 2.3rem;
+    margin-bottom: 0.2rem;
   }
 }
 
@@ -568,5 +581,6 @@
   .postingAreaimg {
     width: 2.3rem;
     height: 2.3rem;
+    margin-bottom: 0.2rem;
   }
 }

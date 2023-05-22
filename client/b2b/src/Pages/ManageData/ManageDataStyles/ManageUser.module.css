@@ -113,6 +113,48 @@
   height: 18px;
   padding-left: 5px;
 }
+@media all and (min-width: 1024px) {
+  .sliders a {
+    font-size: 1rem;
+  }
+  .heading p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .wrapper form {
+    width: 30rem !important;
+    height: 2.5rem;
+  }
+  .wrapper input {
+    width: 18rem !important;
+    height: 2.5rem;
+  }
+  .search_icon {
+    width: 2rem;
+    height: 14px;
+  }
+}
+@media all and (max-width: 820px) {
+  .sliders a {
+    font-size: 0.8rem;
+  }
+  .heading p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .wrapper form {
+    width: 20rem !important;
+    height: 2.5rem;
+  }
+  .wrapper input {
+    width: 18rem !important;
+    height: 2.5rem;
+  }
+  .search_icon {
+    width: 2rem;
+    height: 14px;
+  }
+}
 @media all and (max-width: 550px) {
   html {
     font-size: 85%;
@@ -126,8 +168,30 @@
   }
 }
 @media all and (max-width: 420px) {
+  .wrapper form {
+    width: 18rem;
+    height: 2.5rem;
+  }
   .wrapper input {
-    width: 20rem;
-    height: 3rem;
+    width: 15rem;
+    height: 2.5rem;
+  }
+  .search_icon {
+    width: 2rem;
+    height: 14px;
+  }
+}
+@media all and (max-width: 375px) {
+  .wrapper form {
+    width: 16rem;
+    height: 2.5rem;
+  }
+  .wrapper input {
+    width: 13rem;
+    height: 2.5rem;
+  }
+  .search_icon {
+    width: 2rem;
+    height: 14px;
   }
 }
