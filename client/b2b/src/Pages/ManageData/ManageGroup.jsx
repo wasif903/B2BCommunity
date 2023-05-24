@@ -7,16 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const Setting = [
-  { name: "Member requests", icon: "Stopwatch" },
-  { name: "Automatic member approvals", icon: "check" },
-  { name: "Pending posts", icon: "heart" },
-  { name: "Post topics", icon: "star" },
-  { name: "Scheduled posts", icon: "user" },
-  { name: "Activity Log", icon: "check" },
-  { name: "Group rules", icon: "heart" },
-  { name: "Member-Reported Content Posts", icon: "star" },
-  { name: "Group Settings", icon: "user" },
-  { name: "Manage Membership", icon: "check" },
+  { name: "Member requests", icon: "faHouse" },
+  { name: "Automatic member approvals", icon: "faHouse" },
+  { name: "Pending posts", icon: "faHouse" },
+  { name: "Post topics", icon: "faHouse" },
+  { name: "Scheduled posts", icon: "faHouse" },
+  { name: "Activity Log", icon: "faHouse" },
+  { name: "Group rules", icon: "faHouse" },
+  { name: "Member-Reported Content Posts", icon: "faHouse" },
+  { name: "Group Settings", icon: "faHouse" },
+  { name: "Manage Membership", icon: "faHouse" },
+  { name: "Check Group Photos", icon: "faHouse" },
+  { name: "Check Group Videos", icon: "faHouse" },
 ];
 function ManageGroup() {
   return (

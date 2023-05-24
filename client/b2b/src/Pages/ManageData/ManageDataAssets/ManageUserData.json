@@ -226,19 +226,8 @@
         "members": 2593,
         "image": "https://randomuser.me/api/portraits/women/10.jpg"
       }
-    ],
-    "settings": [
-      "Member requests",
-      "Automatic member approvals",
-      "Pending posts",
-      "Post topics",
-      "Scheduled posts",
-      "Activity Log",
-      "Group rules",
-      "Member-Reported Content Posts",
-      "Group Settings",
-      "Manage Membership"
     ]
+
   }
   
 
