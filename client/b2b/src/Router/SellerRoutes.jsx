@@ -10,6 +10,8 @@ import NewRequest from "../Pages/ManageData/NewRequest";
 import AllMembers from "../Pages/ManageData/AllMembers";
 import WholeSellerPanel from "../Pages/WholeSellerpanel/WholeSellerPanel";
 import GroupContent from "../Pages/groupContent/GroupContent";
+import AllGroup from "../Pages/ManageData/AllGroup";
+import ManageGroup from "../Pages/ManageData/ManageGroup";
 
 const sellerRoutes = [
   {
@@ -59,6 +61,14 @@ const sellerRoutes = [
   {
     path: "/Group-Content",
     element: <GroupContent />,
+  },
+  {
+    path: "/All-Group",
+    element: <AllGroup />,
+  },
+  {
+    path: "/Manage-Group",
+    element: <ManageGroup />,
   },
 ];
 export default sellerRoutes;

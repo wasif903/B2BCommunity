@@ -2,6 +2,7 @@ import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
@@ -12,7 +13,7 @@ function Comp3({ onChange, userFields }) {
   const [confirmPass, setConfirmPass] = useState("");
 
   const confirmPassHandler = (e) => {
-     setConfirmPass(e.target.value);
+    setConfirmPass(e.target.value);
   };
 
   if (confirmPass === password) {
@@ -81,7 +82,7 @@ function Comp3({ onChange, userFields }) {
             </span>
           </Row>
           <Row
-            className={`${styles.RegistrationInput} d-flex flex-column mt-3 mb-5`}
+            className={`${styles.RegistrationInput} d-flex flex-column justify-content-center align-items-center mt-3 mb-5`}
           >
             <span className="d-flex">
               <input className=" mt-1" type="checkbox" />
@@ -95,7 +96,7 @@ function Comp3({ onChange, userFields }) {
           </Row>
           <Row className={`${styles.privacyCheckBox} d-flex`}>
             <input className="mt-2" type="checkbox" />
-            <div className="w-auto">
+            <div className="w-auto ms-1">
               <p className="text-start">Privacy Consent Statement</p>
               <p className="text-start mt-0">
                 By checking the box, you confirm your consent that your inputs
@@ -107,13 +108,15 @@ function Comp3({ onChange, userFields }) {
               </p>
             </div>
           </Row>
-          {/* <Row>
-            <button className="mt-4">Sign Up</button>
-          </Row> */}
+          <Row>
+            <button className="m-auto mt-4">Sign Up</button>
+          </Row>
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>
-              <a href="">Login</a>
+              <Link to="/login">
+                <a>Login</a>
+              </Link>
             </span>
           </Row>
         </Col>

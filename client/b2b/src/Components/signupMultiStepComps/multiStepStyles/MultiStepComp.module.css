@@ -14,14 +14,11 @@
 .wrapper {
   margin-top: 5rem;
 }
-/* .wrapper p {
-  display: none;
-} */
 .wrapper p {
   font-family: Mulish;
   width: 19rem;
   text-align: center;
-  margin: 6px 0px 0px 0px !important;
+  margin: 6px 10px 0px 0px !important;
   font-size: 1rem !important;
 }
 .wrapper h2 {
@@ -53,7 +50,7 @@
 }
 .wrapper button {
   width: 30% !important;
-margin-right: 20px;
+  margin-right: 20px;
   height: 3.3rem !important;
   margin-right: 20px;
 }
@@ -70,6 +67,9 @@ margin-right: 20px;
 }
 
 /******************************** CompThree (Registration) *******************************/
+.privacyCheckBox {
+  margin-left: 1px;
+}
 .privacyCheckBox div p {
   margin: 0 !important;
 }
@@ -84,14 +84,13 @@ margin-right: 20px;
 }
 .RegistrationInput span p {
   font-size: 1rem !important;
-  width: 22rem !important;
+  width: 19rem !important;
   margin-left: 1rem !important;
   color: black !important;
 }
 .RegistrationInputPara {
   font-size: 1.2rem !important;
   width: 22rem !important;
-  padding-left: 2rem !important;
 }
 .privacyCheckBox div p:nth-child(2) {
   margin-top: 0 !important;
@@ -108,6 +107,3 @@ margin-right: 20px;
     width: 22rem !important;
   }
 }
-
-
-

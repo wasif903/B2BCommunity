@@ -4,11 +4,9 @@
 .coverPhoto {
   position: relative;
   height: 46vh;
-  background-image: url(../../assets/home/suggested_group.jpg);
+  background-image: url(../../assets/home/suggested_group2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
   z-index: 0;
 }
 
@@ -16,15 +14,10 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  background-color: var(--primary-color);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 50%;
   display: flex;
-  border: 2px solid white;
-  height: 2rem;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  background-color: #0000002e;
   cursor: pointer;
 }
 .editCoverPhoto path {
@@ -47,17 +40,15 @@
   width: 12em;
   margin-top: -130px;
   border-radius: 50%;
-  border: 5px solid var(--primary-color);
+  border: 4px solid var(--primary-color);
   position: absolute;
   left: -10rem;
   top: 4rem;
+  background: var(--bg-color);
 }
-
-/*************************************************** Sliders of WholeSeller Panel CSS ****************************************************/
-
 .WholeSellerText div {
   position: relative;
-  left: 3rem !important;
+  left: 1rem !important;
   width: fit-content;
   font-family: "Poppins", sans-serif;
 }
@@ -72,214 +63,127 @@
 .WholeSellerText div h4 {
   width: 26rem !important;
   position: relative;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: start;
   color: #92929d;
-}
-.posts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Poppins;
-  font-size: 1.2rem;
-  position: relative;
-  width: 4rem;
-  height: 5rem;
-  cursor: pointer;
-  z-index: 10;
-}
-.underLine {
-  position: absolute;
-  width: 100px;
-  height: 40px;
-  background-color: var(--primary-color);
-  border-radius: 10rem;
-  right: -18px;
-  transition: all 0.4s;
-  transform: translateY(160%);
-}
-.posts:hover .underLine {
-  transform: translateY(135%);
-}
-.posts:hover .postName,
-.posts:hover .postValue {
-  color: var(--primary-color);
-}
-.postName {
-  width: fit-content;
-  color: #92929d;
-  margin-bottom: 5px !important;
-  letter-spacing: 1px;
-  font-family: "Poppins", sans-serif;
-}
-.postValue {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-  letter-spacing: 0.10000000149011612px;
-  text-align: center;
+  left: 1.5rem;
 }
 
-/*************************************************** WholeSellerInputArea CSS ****************************************************/
-
-.WholeSellerInputArea {
-  margin-top: 5rem;
-  border: none;
-  border-radius: 7px;
-  height: 8rem;
-  box-shadow: 0px 1px 5px -3px black;
+/*************************************************** Featured Panel ****************************************************/
+.featuredPanel {
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px -2px #80808082;
+  width: 76rem;
   position: relative;
+  /* display: none; */
 }
-.WholeSellerInputimg {
-  width: 3rem;
-  height: 3rem;
-  position: absolute;
-  left: 21px;
+.infoIcon {
+  color: #514f4f8c;
+  font-size: 0rem;
   border-radius: 50%;
+  border: 2px solid #514f4f8c;
+  padding: 4px;
+  width: 13px;
+  height: 13px;
 }
-.wholeSellerInputField {
-  height: 2.5rem;
-  border-radius: 31px;
-  border: 1px solid gray;
-  padding: 1rem;
-  outline: none;
-  width: 90%;
-  position: absolute;
-  left: 5rem;
-  top: 0.2rem;
-}
-.WholeSellerLine {
-  position: absolute;
-  bottom: 43%;
-  width: 94% !important;
-  height: 1px;
-  background-color: #0000005e;
-  left: 50%;
-  transform: translate(-50%);
-}
-.WholeSellerLowerSection {
-  display: flex;
-  position: absolute;
-  bottom: 0;
+.featuredPhoto {
+  height: 25rem;
   width: 100%;
-  justify-content: space-between;
-  margin-bottom: 9px;
+  cursor: pointer;
+  position: relative;
+  top: 0rem;
 }
-.WholeSellerLowerSection div {
+.featuredPhotoRow {
+  overflow: hidden;
+}
+.featuredMapWrapper {
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 0.8rem;
+  background: #9393931f;
+  object-fit: contain;
+  height: 31rem;
+  box-shadow: 1px 1px 4px 4px #80808030;
+  width: 23rem;
+}
+.featuredMapDiv {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex: 0 0 auto;
-  padding: 0rem 4rem;
+  margin-left: 1rem;
+  justify-content: start;
   align-items: center;
+  margin-top: 1rem;
 }
-.WholeSellerLowerSection div p {
+.featuredMapDiv span {
+  margin-left: 0.5rem;
+}
+.FeaturedHeadingText {
+  font-size: 1rem;
+  margin-bottom: 0 !important;
+  margin-top: 0.3rem;
+  font-weight: bold;
+}
+.featuredNameDiv p:nth-child(1) {
   margin: 0 !important;
-  width: fit-content;
+  font-size: 0.7rem;
+  color: gray;
 }
-.WholeSellerimg {
-  width: 2rem;
-  background: transparent;
-  scale: fill;
+.featuredNameDiv p:nth-child(2) {
+  margin: 0 !important;
+  padding: 0rem 0.5rem !important;
+  font-size: 0.6rem;
+  background: #80808069;
+  margin-left: 0.3rem !important;
+  color: #92929d;
 }
-
-/*************************************************** TotalMembers CSS ****************************************************/
-
-.TotalMembers {
-  margin-top: 5rem;
-  margin-bottom: 3rem;
-  height: 9rem;
-  border-radius: 7px;
-  background: #e8e8e8;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+.featuredTextArea {
+  height: 6rem;
+  overflow-y: scroll;
+  margin: 1rem 0.5rem !important;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  width: 22rem;
 }
-.TotalMembers div {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  top: 2.1rem;
-  left: 1.8rem;
+.featuredTextArea p {
+  font-size: 0.8rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
-.TotalMembers p {
-  width: fit-content;
-  font-size: 2rem;
-  font-weight: 600;
-  color: #757575;
-  font-family: robota;
-  position: relative;
-  top: 1rem;
-  left: 3rem;
-  font-family: "Poppins", sans-serif;
-}
-.TotalMembers code {
-  font-size: 3rem;
-  font-weight: 900;
-  font-family: robota;
-  position: relative;
-  left: 4rem;
-  font-family: "Poppins", sans-serif;
-}
-.TotalMembersCircleSection {
-  position: absolute;
-  right: 2rem;
-  top: 2.2rem;
-  width: 4rem;
-  height: 1rem;
-}
-.TotalMembersCircleSection span {
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid black;
-  border-radius: 50%;
-}
-
-/*************************************************** Manage Buttons CSS ****************************************************/
-
-.manageUsers {
-  background: rgba(219, 54, 134, 0.326);
-  box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
-  border-radius: 15px;
-  width: 250px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.manageWholeSeller {
-  background: #e5fbd3;
-  box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
-  border-radius: 15px;
-  width: 300px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.manager {
-  color: #70d419;
-}
-.user {
-  color: rgba(255, 30, 139, 0.658);
-}
-
 /*************************************************** WholeSeller Panel posting and commentArea****************************************************/
-
+.PostCommentWrapper {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px -2px #80808082;
+  border: none;
+}
+.postingHeadingTextArea {
+  margin: 0px 0px 0px 10px !important;
+}
 .postingHeadingTextArea div p:nth-child(1) {
   color: #92929d;
   width: fit-content;
   font-family: "Poppins", sans-serif;
+  height: fit-content;
+  font-size: 0.8rem;
+  margin: 0 !important;
 }
 .postingHeadingTextArea div p:nth-child(2) {
   background-color: #80808069;
   color: #92929d;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   width: fit-content;
   font-family: "Poppins", sans-serif;
+  margin: 3px 4px !important;
+  height: fit-content;
+}
+.postingAreaimg {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.CommentBox {
+  position: absolute;
+  bottom: 0;
 }
 .postingAreaHeadingCircle {
   width: 3rem;
@@ -291,6 +195,7 @@
   margin: 0 !important;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
 }
 .postingAreaThreeDots {
   position: absolute;
@@ -309,6 +214,11 @@
   width: 100%;
   font-family: "Poppins", sans-serif;
 }
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #92929d5c;
+}
 .PostingPhotos {
   display: flex;
   padding: 2rem 0rem 0rem 0rem;
@@ -316,40 +226,52 @@
 .PostingPhotos span {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  justify-content: space-between;
 }
 .PhotoOne,
 .PhotoTwo {
   display: block;
-  height: 13rem;
+  height: 12rem;
   width: 25rem;
-  background-color: var(--primary-color);
-  border: 1px solid red;
-  margin-left: 6rem;
   border-radius: 43px;
+  object-fit: cover;
+  cursor: pointer;
 }
 .PhotoThree {
   display: block;
   height: 25rem;
   width: 25rem;
-  background-color: var(--primary-color);
-  border: 1px solid red;
-  margin-left: 6rem;
+  margin-left: 8rem;
   border-radius: 43px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.CommentField {
+  position: relative;
+  height: 5.3rem !important;
 }
 .ViewComment {
-  text-align: end;
   color: var(--primary-color);
   letter-spacing: 0.2px;
   font-weight: 600;
   cursor: pointer;
+  height: 2rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background: none;
+  width: fit-content;
+  position: absolute;
+  right: 0;
 }
 .ViewcommentInputField {
   display: flex !important;
   align-items: center;
   border: 1px solid #c1c1c4;
   margin-left: 10px;
-  width: 72.5rem;
+  width: 69.5rem;
   border-radius: 40px;
 }
 .ViewcommentInputField input {
@@ -369,9 +291,8 @@
   font-size: 1.7rem;
   cursor: pointer;
 }
-/*************************************************** Media query for (810PX) ****************************************************/
-
-@media all and (max-width: 810px) {
+/*************************************************** Media query for (1280PX) ****************************************************/
+@media all and (max-width: 1280px) {
   .wholeSellerInputField {
     width: 85%;
   }
@@ -392,7 +313,16 @@
     right: -22px;
   }
   .posts:hover .underLine {
-    transform: translateY(125%);
+    transform: translateY(138%);
+  }
+  .postName {
+    font-size: 1rem !important;
+  }
+  .postValue {
+    font-size: 15px !important;
+  }
+  .PostingPhotos {
+    justify-content: center;
   }
   .profilePhoto {
     width: 9rem;
@@ -400,7 +330,6 @@
   .postingAreaHeadingCircle {
     width: 2.3rem;
     height: 2.3rem;
-    margin-top: 10px !important;
   }
   .postingHeadingText {
     font-size: 1.2rem;
@@ -415,10 +344,109 @@
     font-size: 0.8rem;
   }
   .AddpostArea {
+    font-size: 0.9rem;
+  }
+  .AddpostArea p {
+    padding: 0rem 0rem 0rem 3rem !important;
+  }
+  .ViewComment {
+    margin-top: 0.8rem !important;
     font-size: 0.8rem;
   }
   .ViewcommentInputField {
-    width: 40.5rem !important;
+    width: 60rem !important;
+  }
+  .ViewcommentInputField input {
+    width: 107rem;
+  }
+  .PhotoOne,
+  .PhotoTwo {
+    height: 12.4rem;
+    width: 19.5rem;
+    margin-left: 0.6rem !important;
+  }
+  .PostingPhotos span {
+    margin: 0 !important;
+  }
+  .PhotoThree {
+    height: 25rem;
+    width: 19.5rem;
+    margin-left: 0rem !important;
+  }
+  .faEllipsis {
+    font-size: 1rem;
+  }
+  .postingAreaimg {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+  .featuredPanel {
+    width: 100% !important;
+  }
+  .featuredMapWrapper {
+    width: 23rem !important;
+    height: 33rem !important;
+  }
+}
+@media all and (max-width: 1024px) {
+  .ViewcommentInputField {
+    width: 49rem !important;
+  }
+  .ViewcommentInputField input {
+    /* width: 49rem; */
+    width: 90rem;
+  }
+  .PostingPhotos {
+    justify-content: center;
+  }
+}
+/*************************************************** Media query for (810PX) ****************************************************/
+
+@media all and (max-width: 820px) {
+  .WholeSellerText div {
+    left: 7rem !important;
+    bottom: 0.5rem;
+  }
+  .WholeSellerText div h4 {
+    width: 17.5rem !important;
+    position: relative;
+    left: 1rem;
+    font-size: 1rem;
+  }
+  .profilePhoto {
+    left: -1rem !important;
+  }
+  .profilePhoto {
+    width: 9rem;
+  }
+  .postingAreaHeadingCircle {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+  .postingHeadingText {
+    font-size: 1.2rem;
+  }
+  .postingHeadingTextArea {
+    margin-top: 0.5rem;
+  }
+  .postingHeadingTextArea div p:nth-child(2) {
+    font-size: 9px;
+  }
+  .postingHeadingTextArea div p {
+    font-size: 0.8rem;
+  }
+  .AddpostArea {
+    font-size: 0.9rem;
+  }
+  .AddpostArea p {
+    padding: 0rem 0rem 0rem 3rem !important;
+  }
+  .ViewComment {
+    margin-top: 0.8rem !important;
+    font-size: 0.8rem;
+  }
+  .ViewcommentInputField {
+    width: 45.5rem !important;
   }
   .ViewcommentInputField input {
     width: 49rem;
@@ -426,16 +454,23 @@
   .PhotoOne,
   .PhotoTwo {
     height: 12.4rem;
-    width: 21.5rem;
-    margin-left: 1rem !important;
+    width: 19.5rem;
+    margin-left: 0.6rem !important;
+  }
+  .PostingPhotos span {
+    margin: 0 !important;
   }
   .PhotoThree {
     height: 25rem;
-    width: 21.5rem;
-    margin-left: 1rem !important;
+    width: 19.5rem;
+    margin-left: 0rem !important;
   }
   .faEllipsis {
     font-size: 1rem;
+  }
+  .postingAreaimg {
+    width: 2.3rem;
+    height: 2.3rem;
   }
 }
 
@@ -449,70 +484,67 @@
     left: 8rem !important;
   }
   .WholeSellerText div h4 {
-    width: 17.5rem !important;
+    width: 16.5rem !important;
     position: relative;
     left: 1rem;
     font-size: 1rem;
-  }
-  .wholeSellerInputField {
-    width: 75%;
-  }
-  .underLine {
-    right: -22px;
-  }
-  .posts:hover .underLine {
-    transform: translateY(125%);
   }
   .profilePhoto {
     width: 9rem;
     top: 5rem;
   }
-  .WholeSellerLowerSection div {
-    padding: 0 !important;
-  }
-  .WholeSellerLowerSection {
-    justify-content: space-around;
-  }
   .ViewcommentInputField {
-    width: 25.5rem !important;
+    width: 22.5rem !important;
   }
   .ViewcommentInputField input {
     width: 19rem !important;
   }
+  .AddpostArea p {
+    padding: 0 !important;
+  }
   .ViewComment {
     font-size: 0.8rem !important;
+    top: 0.3rem;
   }
   .PhotoOne,
   .PhotoTwo {
-    height: 9.4rem;
-    width: 11.5rem;
-    margin-left: 1rem !important;
+    height: 9.6rem;
+    width: 13rem;
+    margin-left: 0.5rem !important;
   }
   .PhotoThree {
     height: 20rem;
-    width: 13.5rem;
-    margin-left: 1rem !important;
+    width: 13rem;
+    margin-left: 0 !important;
   }
   .faEllipsis {
     font-size: 1rem;
+  }
+  .postingAreaimg {
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-bottom: 0.2rem;
   }
 }
 
 /*************************************************** Media query for (360PX) ****************************************************/
 
-@media all and (max-width: 360px) {
-  .wholeSellerInputField {
-    width: 20rem !important;
-  }
+@media all and (max-width: 375px) {
   .AddpostArea {
     font-size: 0.8rem;
     letter-spacing: 0.1px !important;
   }
+  .postingAreaHeadingCircle {
+    margin-bottom: 0.5rem;
+  }
   .postingHeadingText {
     font-size: 1.2rem !important;
   }
+  .CommentField {
+    height: 6rem !important;
+  }
   .ViewcommentInputField {
-    width: 21.5rem !important;
+    width: 19.5rem !important;
   }
   .ViewcommentInputField input {
     width: 16rem !important;
@@ -520,18 +552,36 @@
   .ViewComment {
     font-size: 0.8rem !important;
   }
+  .postingHeadingText {
+    font-size: 0.7rem !important;
+  }
+  .postingHeadingTextArea div p:nth-child(1) {
+    font-size: 0.56rem !important;
+  }
+  .postingHeadingTextArea div p:nth-child(2) {
+    font-size: 0.5rem;
+    margin-top: 2px !important;
+  }
+  .AddpostArea p {
+    font-size: 0.9rem;
+  }
   .PhotoOne,
   .PhotoTwo {
-    height: 9.4rem;
+    height: 7.6rem;
     width: 11.5rem;
-    margin-left: 1rem !important;
+    margin-left: 0.5rem !important;
   }
   .PhotoThree {
-    height: 20rem;
-    width: 21.5rem;
-    margin-left: 1rem !important;
+    height: 16rem;
+    width: 10.5rem;
+    margin-left: 0rem !important;
   }
   .faEllipsis {
     font-size: 1rem;
+  }
+  .postingAreaimg {
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-bottom: 0.2rem;
   }
 }

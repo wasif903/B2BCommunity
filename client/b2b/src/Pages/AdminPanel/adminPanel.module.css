@@ -1,7 +1,7 @@
 .coverPhoto {
   position: relative;
   height: 45vh;
-  background-image: url(../../assets/home/suggested_group.jpg);
+  background-image: url(../../assets/home/suggested_group2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 0;
@@ -23,17 +23,23 @@
 
 .editProfilePhoto {
   position: absolute;
-  top: -105px;
-  right: 550px;
-  padding: 10px;
+  top: -111px;
+  left: 46rem;
   border-radius: 50%;
   background-color: var(--primary-color);
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .profilePhoto {
   width: 25%;
   margin-top: -130px;
   border-radius: 50%;
+  background-color: white;
   border: 5px solid var(--primary-color);
 }
 
@@ -55,7 +61,7 @@
 }
 
 .manageWholeSeller {
-  background: #edf4e7;
+  background: #6fc72396;
   box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
   border-radius: 15px;
   width: 300px;
@@ -74,7 +80,7 @@
 }
 
 .chart {
-  width: 40%;
+  width: 50%;
 }
 
 .editIcon {
@@ -97,6 +103,7 @@
     top: -45px;
     right: 150px;
     background-color: var(--primary-color);
+    left: 18rem;
   }
   .chart {
     width: 80%;

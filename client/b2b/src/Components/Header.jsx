@@ -1,8 +1,6 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Container from "react-bootstrap/Container";
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import styles from "./compStyles/header.module.css";
 import myAcc from "../assets/my_acc.png";
@@ -52,7 +50,12 @@ function Header() {
                 </div>
 
                 <div className="pe-lg-4 pe-2 d-none d-lg-flex">
-                  <img src={myAcc} width="50px" alt="" />
+                  <img
+                    src={myAcc}
+                    width="50px"
+                    alt=""
+                    style={{ backgroundColor: "white", borderRadius: "50%" }}
+                  />
                 </div>
                 <div className="pe-lg-4 pe-2">
                   <FontAwesomeIcon
@@ -62,7 +65,6 @@ function Header() {
                 </div>
                 <div
                   onClick={handleModal}
-                  // eventKey={2}
                   className={`
                   ${styles.bars}
                   ${isOpen ? "d-none" : "d-flex"} 

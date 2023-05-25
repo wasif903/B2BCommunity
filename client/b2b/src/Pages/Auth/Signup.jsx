@@ -64,7 +64,7 @@ function Signup() {
           nextStyle={nextStyle}
         >
           <MultiStep activeStep={0}>
-            <Comp1 title="Step 1" onChange={onChange} userFields={userFields} />
+            <Comp1 title="Step 1" userFields={userFields} onChange={onChange} />
             <Comp2 title="Step 2" userFields={userFields} onChange={onChange} />
             <Comp3 title="Step 2" userFields={userFields} onChange={onChange} />
           </MultiStep>

@@ -107,7 +107,13 @@ function AdminPanel() {
             <div
               className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
             >
-              <div className={styles.editProfilePhoto}>X</div>
+              <div className={styles.editProfilePhoto}>
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  onClick={toggleEditProfileModal}
+                  className={`${styles.editIcon} fa-lg`}
+                />
+              </div>
               <img src={image} className={styles.profilePhoto} alt="" />
             </div>
           </Col>
@@ -142,19 +148,26 @@ function AdminPanel() {
           </Col>
         </Row>
         <Row className="py-4">
-          <ul>
-            {aboutMe.map((item) => (
-              <li key={item.text} className="py-2">
-                <Link
-                  className={`${styles.aboutLinks} d-flex align-items-center`}
-                  to={item.link}
-                >
-                  <FontAwesomeIcon className="pe-3 py-2" icon={item.icon} />
-                  {item.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Col lg="6">
+            <ul>
+              {aboutMe.map((item) => (
+                <li key={item.text} className="py-2">
+                  <Link
+                    className={`${styles.aboutLinks} d-flex align-items-center`}
+                    to={item.link}
+                  >
+                    <FontAwesomeIcon className="pe-3 py-2" icon={item.icon} />
+                    {item.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Col>
+          <Col lg='6' className="d-flex justify-content-end align-items-end">
+            <div className={styles.chart}>
+              <PieChartAdminPanel data={chartData} options={chartOptions} />
+            </div>
+          </Col>
         </Row>
 
         <Row className="py-lg-5">
@@ -188,16 +201,7 @@ function AdminPanel() {
           </Col>
         </Row>
 
-        <Row className="py-5">
-          <Col
-            lg="12"
-            className="d-flex justify-content-center align-items-center"
-          >
-            <div className={styles.chart}>
-              <PieChartAdminPanel data={chartData} options={chartOptions} />
-            </div>
-          </Col>
-        </Row>
+        
       </Container>
 
       {showEditCoverModal ? (

@@ -11,6 +11,10 @@
   margin-top: 8rem;
   position: relative;
   bottom: 17rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .heading h2 {
   font-family: "Roboto", sans-serif;
@@ -20,21 +24,24 @@
 }
 .heading p {
   width: 25rem;
-  font-family: Mulish;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.5px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 .inputFields {
   position: relative;
   bottom: 15rem;
-  right: 3rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 .inputs {
   border: none;
   border-bottom: 1px solid #979797;
-  margin-left: 3rem;
   -moz-appearance: textfield;
   appearance: 0;
   width: 51px;
@@ -52,7 +59,6 @@
   font-size: 1.2rem;
   position: relative;
   bottom: 12rem;
-  right: 1.3rem;
   cursor: pointer;
 }
 .footer {
@@ -61,7 +67,6 @@
   justify-content: space-between;
   position: relative;
   bottom: 10rem;
-  right: 1rem;
 }
 
 .footer a,
@@ -69,15 +74,21 @@
   text-decoration: none;
   color: var(--primary-color);
 }
-
+@media all and (max-width: 1280px) {
+  .main {
+    position: relative;
+    top: 8rem;
+  }
+}
 @media all and (max-width: 400px) {
   html {
     font-size: 85%;
   }
   .inputs {
-    margin-left: 2rem;
+    width: 3rem !important;
   }
   .AuthBtn {
-    width: 23rem;
+    width: 18rem;
+    height: 3.2rem;
   }
 }
