@@ -3,6 +3,7 @@ import Header from "../../Components/Header";
 import LadyPic from "../../assets/my_acc.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
@@ -47,16 +48,21 @@ function ManageGroup() {
       </Container>
       <div className={styles.line}></div>
       <Container className={` ${styles.LowerPartContainer} mt-5 pt-2 `}>
-        <Row className={styles.LowerPartRow}>
-          <div
-            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
-          >
-            <span className={styles.Options}>
-              <FontAwesomeIcon className={styles.Optionsicon} icon={faHouse} />
-            </span>
-            <p className={`${styles.OptionName} w-auto m-0`}>Home</p>
-          </div>
-        </Row>
+        <Link to="/home">
+          <Row className={styles.LowerPartRow}>
+            <div
+              className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+            >
+              <span className={styles.Options}>
+                <FontAwesomeIcon
+                  className={styles.Optionsicon}
+                  icon={faHouse}
+                />
+              </span>
+              <p className={`${styles.OptionName} w-auto m-0`}>Home</p>
+            </div>
+          </Row>
+        </Link>
         <h1 className={styles.LowerPartHeading}>Admin tools</h1>
         {Setting.map((item, index) => (
           <Row key={index + 1} className={`${styles.LowerPartRow} my-4`}>

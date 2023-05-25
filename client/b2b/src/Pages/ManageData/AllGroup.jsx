@@ -1,4 +1,4 @@
-import { Children, React, useRef } from "react";
+import { React, useRef, useState } from "react";
 import styles from "./ManageDataStyles/AllGroup.module.css";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
@@ -6,23 +6,24 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { groups } from "./ManageDataAssets/ManageUserData.json";
 import { Link } from "react-router-dom";
+import ManageGroup from "./ManageGroup";
 
 function AllGroup() {
   // implement useRef
   const textRefs = useRef([]);
 
   // store data in array
-  const arr = [];
+  const arr = {};
 
   // function to get and push data in array
   const handleClick = (index) => {
     textRefs.current[index].textContent;
-    arr.push(
-      groups[index].name,
-      groups[index].city,
-      groups[index].members.toString(),
-      groups[index].image
-    );
+
+    arr.firstName = groups[index].name;
+    arr.CityName = groups[index].city;
+    arr.totalMembers = groups[index].members.toString();
+    arr.image = groups[index].image;
+
     if (arr.length >= 8) {
       arr.splice(0, 4);
     }
@@ -79,14 +80,14 @@ function AllGroup() {
                       </div>
                     </div>
                     <div className="w-75">
-                      {/* <Link to="/Manage-Group" className="text-decoration-none"> */}
-                      <button
-                        onClick={() => handleClick(index)}
-                        className={`my-2 w-100 ${styles.buttons}`}
-                      >
-                        Manage
-                      </button>
-                      {/* </Link> */}
+                      <Link to="/Manage-Group" className="text-decoration-none">
+                        <button
+                          onClick={() => handleClick(index)}
+                          className={`my-2 w-100 ${styles.buttons}`}
+                        >
+                          Manage
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </Col>
