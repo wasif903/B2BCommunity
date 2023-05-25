@@ -40,6 +40,9 @@ function Signup() {
 
   // Example nextStyle function
   const nextStyle = () => {
+    
+    
+
     return {
       background: "green",
       color: "white",
