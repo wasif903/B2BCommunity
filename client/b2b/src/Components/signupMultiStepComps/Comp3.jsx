@@ -2,11 +2,13 @@ import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
+
 
 // eslint-disable-next-line react/prop-types
-function Comp3({ onChange, userFields }) {
+function Comp3({ onChange, userFields, setSteps }) {
   // eslint-disable-next-line react/prop-types
   const { email, password, PhoneNumber } = userFields;
 
@@ -21,6 +23,15 @@ function Comp3({ onChange, userFields }) {
   } else {
     console.log("Password Dont Match");
   }
+
+  useEffect(() => {
+    
+    setSteps(2)
+
+  }, [])
+  
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -108,9 +119,11 @@ function Comp3({ onChange, userFields }) {
               </p>
             </div>
           </Row>
-          <Row>
-            <button className="m-auto mt-4">Sign Up</button>
-          </Row>
+
+    
+            <button type="submit" onClick={() => navigate('/home')}>Submit</button>
+         
+
           <Row className="mt-3">
             <span className="d-flex justify-content-between">
               <p>Already have account?</p>

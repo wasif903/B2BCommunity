@@ -3,11 +3,17 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-function Comp1({ onChange, userFields }) {
+function Comp1({ onChange, userFields, setSteps }) {
   // eslint-disable-next-line react/prop-types
   const { firstName, lastName, VAT_ID, companyName } = userFields;
+
+  
+  useEffect(() => {
+    setSteps(0)
+  }, [])
 
   return (
     <>

@@ -9,6 +9,9 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 
 function Signup() {
+
+
+
   const [userFields, setUserFields] = useState({
     firstName: "",
     lastName: "",
@@ -29,27 +32,9 @@ function Signup() {
 
   console.log(userFields, "user checking data");
 
-  const prevStyle = () => {
-    return {
-      background: "blue",
-      color: "white",
-      fontSize: "16px",
-      // additional styles...
-    };
-  };
+  const [steps, setSteps] = useState(0);
 
-  // Example nextStyle function
-  const nextStyle = () => {
-    
-    
-
-    return {
-      background: "green",
-      color: "white",
-      fontSize: "16px",
-      // additional styles...
-    };
-  };
+  console.log(steps, "CHECK STEPS");
 
   return (
     <>
@@ -58,16 +43,18 @@ function Signup() {
           <img src={Logo} className={styles.logo} />
         </div>
 
-        <Col
-          className={`text-center ${styles.MultiStep}`}
-          prevStyle={prevStyle}
-          nextStyle={nextStyle}
-        >
-          <MultiStep activeStep={0}>
-            <Comp1 title="Step 1" userFields={userFields} onChange={onChange} />
-            <Comp2 title="Step 2" userFields={userFields} onChange={onChange} />
-            <Comp3 title="Step 2" userFields={userFields} onChange={onChange} />
+        <Col className={`text-center ${styles.MultiStep}`} >
+
+          <MultiStep
+            activeStep={steps}
+            showNavigation={steps === 2 ? false : true}
+          >
+            <Comp1 title="Step 1" userFields={userFields} setSteps={setSteps} onChange={onChange} />
+            <Comp2 title="Step 2" userFields={userFields} setSteps={setSteps} onChange={onChange} />
+            <Comp3 title="Step 3" userFields={userFields} setSteps={setSteps} onChange={onChange} />
           </MultiStep>
+
+
         </Col>
       </Container>
     </>
