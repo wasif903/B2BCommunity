@@ -16,37 +16,31 @@ import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ImageGallery from 'react-image-gallery';
-
+import ImageGallery from "react-image-gallery";
 
 function GroupContent() {
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
 
-
   const images = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+      original: "https://picsum.photos/id/1018/1000/600/",
+      thumbnail: "https://picsum.photos/id/1018/250/150/",
     },
     {
-      original: 'https://picsum.photos/id/1015/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+      original: "https://picsum.photos/id/1015/1000/600/",
+      thumbnail: "https://picsum.photos/id/1015/250/150/",
     },
     {
-      original: 'https://picsum.photos/id/1019/1000/600/',
-      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+      original: "https://picsum.photos/id/1019/1000/600/",
+      thumbnail: "https://picsum.photos/id/1019/250/150/",
     },
   ];
-
 
   // Funtion for Edite Cover Photo
   const toggleEditCoverModal = () => {
     setShowEditCoverModal(!showEditCoverModal);
   };
-
-
-
 
   return (
     <>
@@ -106,7 +100,6 @@ function GroupContent() {
               <Swiper
                 spaceBetween={20}
                 slidesPerView={3}
-
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
               >
@@ -150,7 +143,9 @@ function GroupContent() {
         {peopleData.map((item) => (
           <>
             <Col className="mt-5">
-              <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
+              <div
+                className={`${styles.PostCommentWrapper} d-flex flex-column`}
+              >
                 <Row>
                   <div
                     className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
@@ -161,7 +156,9 @@ function GroupContent() {
                       alt="userImg"
                     />
 
-                    <section className={`${styles.postingHeadingTextArea} mx-2`}>
+                    <section
+                      className={`${styles.postingHeadingTextArea} mx-2`}
+                    >
                       <h2 className={styles.postingHeadingText}>
                         {item.passion}
                       </h2>
@@ -179,8 +176,6 @@ function GroupContent() {
                   </div>
                 </Row>
                 <Row>
-
-
                   <div className={`${styles.AddpostArea} mt-1`}>
                     <p className="px-5">{item.description}</p>
                   </div>
@@ -269,26 +264,9 @@ function GroupContent() {
             </Row>
 
             {/******* Posting Photos *****/}
-            <section className={`d-flex justify-content-center align-items-center  ${styles.PostingPhotos}`}>
-              {/* <img
-                className={styles.PhotoThree}
-                src={WholeSellerimg}
-                alt="userImg"
-              />
-              <span className="">
-                <img
-                  className={styles.PhotoOne}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-
-                <img
-                  className={styles.PhotoTwo}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-              </span> */}
-
+            <section
+              className={`d-flex justify-content-center align-items-center  ${styles.PostingPhotos}`}
+            >
               <ImageGallery items={images} />;
             </section>
 

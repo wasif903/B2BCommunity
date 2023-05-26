@@ -38,7 +38,8 @@ const Setting = [
   { name: "Check Group Photos", icon: faImage },
   { name: "Check Group Videos", icon: faVideo },
 ];
-function ManageGroup() {
+function ManageGroup(props) {
+  const { obj } = props;
   return (
     <>
       <Header />

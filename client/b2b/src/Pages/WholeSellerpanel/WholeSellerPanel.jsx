@@ -20,6 +20,7 @@ import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { useNavigate } from "react-router-dom";
+import ImageGallery from "react-image-gallery";
 
 // Data of sliders items
 const Data = [
@@ -38,6 +39,22 @@ const Data = [
   {
     name: "Likes",
     value: "12,531",
+  },
+];
+
+//Images
+const images = [
+  {
+    original: "https://picsum.photos/id/1018/1000/600/",
+    thumbnail: "https://picsum.photos/id/1018/250/150/",
+  },
+  {
+    original: "https://picsum.photos/id/1015/1000/600/",
+    thumbnail: "https://picsum.photos/id/1015/250/150/",
+  },
+  {
+    original: "https://picsum.photos/id/1019/1000/600/",
+    thumbnail: "https://picsum.photos/id/1019/250/150/",
   },
 ];
 
@@ -306,24 +323,7 @@ function WholeSellerPanel() {
 
             {/******* Posting Photos *****/}
             <section className={`${styles.PostingPhotos}`}>
-              <img
-                className={styles.PhotoThree}
-                src={WholeSellerimg}
-                alt="userImg"
-              />
-              <span className="">
-                <img
-                  className={styles.PhotoOne}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-
-                <img
-                  className={styles.PhotoTwo}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-              </span>
+              <ImageGallery items={images} />
             </section>
 
             {/******* Comment input field *****/}

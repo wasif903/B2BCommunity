@@ -10,22 +10,27 @@ import ManageGroup from "./ManageGroup";
 
 function AllGroup() {
   const navigate = useNavigate();
+
   const Ref = useRef({});
-  const [Data, setData] = useState({});
+  let obj = {};
 
   function HandleClick(index) {
     Ref.current[index].textContent;
-    setData(
-      (Data.Passion = groups[index].name),
-      (Data.City = groups[index].city),
-      (Data.Members = groups[index].members),
-      (Data.Img = groups[index].image)
-    );
 
-    console.log(Data);
+    obj.Passion = groups[index].name;
+    obj.City = groups[index].city;
+    obj.Members = groups[index].members;
+    obj.Img = groups[index].image;
+
+    console.log(obj);
   }
-  function a() {}
-  console.log(Data);
+
+  function a() {
+    return console.log(obj);
+  }
+
+  <ManageGroup obj={obj} />;
+
   return (
     <>
       <Header />
@@ -73,7 +78,7 @@ function AllGroup() {
                     <div className="w-75">
                       <button
                         onClick={() => (
-                          HandleClick(index), navigate("/Manage-Group")
+                          HandleClick(index), a(), navigate("/Manage-Group")
                         )}
                         className={`my-2 w-100 ${styles.buttons}`}
                       >
