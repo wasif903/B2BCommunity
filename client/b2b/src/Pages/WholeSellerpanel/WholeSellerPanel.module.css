@@ -234,6 +234,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .manageWholeSeller {
   background: #e5fbd3;
@@ -244,6 +245,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .manager {
   color: #70d419;

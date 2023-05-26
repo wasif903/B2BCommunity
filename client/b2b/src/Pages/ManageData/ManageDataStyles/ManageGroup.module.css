@@ -115,6 +115,7 @@
 .Optionsicon {
   color: rgb(83, 83, 83);
   transition: 1s;
+  font-size: 1.2rem !important;
 }
 .LowerPartHeading {
   margin-top: 2rem;

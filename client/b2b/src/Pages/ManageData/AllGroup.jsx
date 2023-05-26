@@ -1,3 +1,4 @@
+import { React } from "react";
 import styles from "./ManageDataStyles/AllGroup.module.css";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
@@ -7,19 +8,18 @@ import { groups } from "./ManageDataAssets/ManageUserData.json";
 import { useNavigate } from "react-router-dom";
 
 function AllGroup() {
-
   const navigate = useNavigate();
 
   return (
     <>
       <Header />
-      <div className="">
+      <div>
         <Row
           className={`${styles.Heading} d-flex justify-content-center align-items-center m-0`}
         >
           <p className="w-auto m-0 text-white">All Groups</p>
         </Row>
-       
+
         <Container className="py-5">
           <Row>
             {groups.map((item, index) => {
@@ -37,9 +37,7 @@ function AllGroup() {
                     <div
                       className={`${styles.NewRequestNamePanel} text-center py-3`}
                     >
-                      <h3 key={index}>
-                        {item.name}
-                      </h3>
+                      <h3 key={index}>{item.name}</h3>
                       <div className="d-flex justify-content-center align-items-center gap-2">
                         <h5 id="city" className="m-0">
                           {item.city}
@@ -49,14 +47,12 @@ function AllGroup() {
                       </div>
                     </div>
                     <div className="w-75">
-                      {/* <Link to="/Manage-Group" className="text-decoration-none"> */}
                       <button
-                        onClick={() => navigate('/Manage-Group')}
+                        onClick={() => navigate("/Manage-Group")}
                         className={`my-2 w-100 ${styles.buttons}`}
                       >
                         Manage
                       </button>
-                      {/* </Link> */}
                     </div>
                   </div>
                 </Col>

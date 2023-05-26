@@ -6,11 +6,7 @@ import sellerRoutes from "./Router/SellerRoutes";
 function App() {
   const element = useRoutes(sellerRoutes);
 
-  return (
-    <>
-      {element}
-    </>
-  );
+  return <>{element}</>;
 }
 
 export default App;

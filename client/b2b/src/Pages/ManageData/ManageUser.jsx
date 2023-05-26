@@ -7,8 +7,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function ManageUser() {
+  const navigate = useNavigate();
   return (
     <>
       <Header />
@@ -29,7 +31,10 @@ function ManageUser() {
           <Row>
             {DummyUserData.map((item) => (
               <Col lg="3" md="4" sm="6">
-                <div className={`${styles.mapWrapper}`}>
+                <div
+                  className={`${styles.mapWrapper}`}
+                  onClick={() => navigate("/All-Group")}
+                >
                   <div>
                     <img className={styles.imgWrapper} src={userPic} />
                   </div>
@@ -40,8 +45,22 @@ function ManageUser() {
                     <code>{item.code}</code>
                   </div>
                   <div>
-                    <button className={`my-2 ${styles.buttons}`}>REMOVE</button>
-                    <button className={`my-2 ${styles.buttons}`}>BLOCK</button>
+                    <button
+                      className={`my-2 ${styles.buttons}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      REMOVE
+                    </button>
+                    <button
+                      className={`my-2 ${styles.buttons}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      BLOCK
+                    </button>
                   </div>
                 </div>
               </Col>

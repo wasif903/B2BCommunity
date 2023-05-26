@@ -18,8 +18,11 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import EditProfilePhoto from "../../Components/AdminPanelModals/EditProfilePhoto";
+import { useNavigate } from "react-router-dom";
 
 function AdminPanel() {
+  const navigate = useNavigate();
+
   // Assets Start
   const aboutMe = [
     {
@@ -163,7 +166,7 @@ function AdminPanel() {
               ))}
             </ul>
           </Col>
-          <Col lg='6' className="d-flex justify-content-end align-items-end">
+          <Col lg="6" className="d-flex justify-content-end align-items-end">
             <div className={styles.chart}>
               <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>
@@ -175,7 +178,10 @@ function AdminPanel() {
             md="6"
             className="py-3 d-md-block d-flex  justify-content-center align-items-center"
           >
-            <div className={styles.manageUsers}>
+            <div
+              className={styles.manageUsers}
+              onClick={() => navigate("/Manage-User")}
+            >
               <h4 className="pt-2">
                 <FontAwesomeIcon
                   className={`${styles.user} pe-3`}
@@ -189,7 +195,10 @@ function AdminPanel() {
             md="6"
             className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center"
           >
-            <div className={`${styles.manageWholeSeller}`}>
+            <div
+              className={`${styles.manageWholeSeller}`}
+              onClick={() => navigate("/Manage-WholeSeller")}
+            >
               <h4 className="pt-2">
                 <FontAwesomeIcon
                   className={`${styles.manager} pe-3`}
@@ -200,8 +209,6 @@ function AdminPanel() {
             </div>
           </Col>
         </Row>
-
-        
       </Container>
 
       {showEditCoverModal ? (
