@@ -48,7 +48,7 @@ function ManageGroup() {
       </Container>
       <div className={styles.line}></div>
       <Container className={` ${styles.LowerPartContainer} mt-5 pt-2 `}>
-        <Link to="/home">
+        <Link to="/home" className="text-decoration-none">
           <Row className={styles.LowerPartRow}>
             <div
               className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
