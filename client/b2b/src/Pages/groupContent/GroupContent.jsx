@@ -16,16 +16,37 @@ import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import breakpoints from "../../utils/SwiperBreakPoints";
+import ImageGallery from 'react-image-gallery';
+
 
 function GroupContent() {
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
 
+
+  const images = [
+    {
+      original: 'https://picsum.photos/id/1018/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1015/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/',
+    },
+    {
+      original: 'https://picsum.photos/id/1019/1000/600/',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
+    },
+  ];
+
+
   // Funtion for Edite Cover Photo
   const toggleEditCoverModal = () => {
     setShowEditCoverModal(!showEditCoverModal);
   };
+
+
+
 
   return (
     <>
@@ -85,7 +106,7 @@ function GroupContent() {
               <Swiper
                 spaceBetween={20}
                 slidesPerView={3}
-               
+
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
               >
@@ -158,9 +179,16 @@ function GroupContent() {
                   </div>
                 </Row>
                 <Row>
+
+
                   <div className={`${styles.AddpostArea} mt-1`}>
                     <p className="px-5">{item.description}</p>
                   </div>
+
+                  {/* <div className={`${styles.AddpostArea} mt-1`}>
+                        <p className="px-5">{langTranslator}</p>
+                      </div>
+                   */}
                 </Row>
 
                 {/******* Comment input field *****/}
@@ -241,8 +269,8 @@ function GroupContent() {
             </Row>
 
             {/******* Posting Photos *****/}
-            <section className={`${styles.PostingPhotos}`}>
-              <img
+            <section className={`d-flex justify-content-center align-items-center  ${styles.PostingPhotos}`}>
+              {/* <img
                 className={styles.PhotoThree}
                 src={WholeSellerimg}
                 alt="userImg"
@@ -259,7 +287,9 @@ function GroupContent() {
                   src={WholeSellerimg}
                   alt="userImg"
                 />
-              </span>
+              </span> */}
+
+              <ImageGallery items={images} />;
             </section>
 
             {/******* Comment input field *****/}
