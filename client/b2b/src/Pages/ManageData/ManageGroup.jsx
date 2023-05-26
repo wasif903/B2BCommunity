@@ -7,18 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const Setting = [
-  { name: "Member requests", icon: "faHouse" },
-  { name: "Automatic member approvals", icon: "faHouse" },
-  { name: "Pending posts", icon: "faHouse" },
-  { name: "Post topics", icon: "faHouse" },
-  { name: "Scheduled posts", icon: "faHouse" },
-  { name: "Activity Log", icon: "faHouse" },
-  { name: "Group rules", icon: "faHouse" },
-  { name: "Member-Reported Content Posts", icon: "faHouse" },
-  { name: "Group Settings", icon: "faHouse" },
-  { name: "Manage Membership", icon: "faHouse" },
-  { name: "Check Group Photos", icon: "faHouse" },
-  { name: "Check Group Videos", icon: "faHouse" },
+  { name: "Member requests", icon: faHouse },
+  { name: "Automatic member approvals", icon: faHouse },
+  { name: "Pending posts", icon: faHouse },
+  { name: "Post topics", icon: faHouse },
+  { name: "Scheduled posts", icon: faHouse },
+  { name: "Activity Log", icon: faHouse },
+  { name: "Group rules", icon: faHouse },
+  { name: "Member-Reported Content Posts", icon: faHouse },
+  { name: "Group Settings", icon: faHouse },
+  { name: "Manage Membership", icon: faHouse },
+  { name: "Check Group Photos", icon: faHouse },
+  { name: "Check Group Videos", icon: faHouse },
 ];
 function ManageGroup() {
   return (
@@ -66,7 +66,7 @@ function ManageGroup() {
               <span className={styles.Options}>
                 <FontAwesomeIcon
                   className={styles.Optionsicon}
-                  icon={faHouse}
+                  icon={item.icon}
                 />
               </span>
               <p className={`${styles.OptionName} w-auto m-0`}>{item.name}</p>

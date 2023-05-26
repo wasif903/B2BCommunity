@@ -16,7 +16,7 @@ import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
-import breakpoints from "../../utils/SwiperBreakPoints";
+// import breakpoints from "../../utils/SwiperBreakPoints";
 
 function GroupContent() {
   // useState for Edite Cover Photo
@@ -85,7 +85,7 @@ function GroupContent() {
               <Swiper
                 spaceBetween={20}
                 slidesPerView={3}
-                breakpoints={breakpoints}
+               
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
               >
