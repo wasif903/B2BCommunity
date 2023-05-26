@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useRef, useState } from "react";
 import styles from "./ManageDataStyles/AllGroup.module.css";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
@@ -6,10 +6,26 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { groups } from "./ManageDataAssets/ManageUserData.json";
 import { useNavigate } from "react-router-dom";
+import ManageGroup from "./ManageGroup";
 
 function AllGroup() {
   const navigate = useNavigate();
+  const Ref = useRef({});
+  const [Data, setData] = useState({});
 
+  function HandleClick(index) {
+    Ref.current[index].textContent;
+    setData(
+      (Data.Passion = groups[index].name),
+      (Data.City = groups[index].city),
+      (Data.Members = groups[index].members),
+      (Data.Img = groups[index].image)
+    );
+
+    console.log(Data);
+  }
+  function a() {}
+  console.log(Data);
   return (
     <>
       <Header />
@@ -23,11 +39,14 @@ function AllGroup() {
         <Container className="py-5">
           <Row>
             {groups.map((item, index) => {
+              const ref = useRef(null);
+              Ref.current[index] = ref;
               return (
                 <Col lg="3" md="4" sm="6" key={index + 1}>
                   <div className={`${styles.mapWrapper}`} key={index + 1}>
                     <div>
                       <img
+                        ref={ref}
                         className={styles.imgWrapper}
                         src={item.image}
                         key={index + 1}
@@ -37,18 +56,25 @@ function AllGroup() {
                     <div
                       className={`${styles.NewRequestNamePanel} text-center py-3`}
                     >
-                      <h3 key={index}>{item.name}</h3>
+                      <h3 key={index} ref={ref}>
+                        {item.name}
+                      </h3>
                       <div className="d-flex justify-content-center align-items-center gap-2">
-                        <h5 id="city" className="m-0">
+                        <h5 id="city" className="m-0" ref={ref}>
                           {item.city}
                         </h5>
                         <span></span>
-                        <h5 className="m-0">{`${item.members} Members`}</h5>
+                        <h5
+                          className="m-0"
+                          ref={ref}
+                        >{`${item.members} Members`}</h5>
                       </div>
                     </div>
                     <div className="w-75">
                       <button
-                        onClick={() => navigate("/Manage-Group")}
+                        onClick={() => (
+                          HandleClick(index), navigate("/Manage-Group")
+                        )}
                         className={`my-2 w-100 ${styles.buttons}`}
                       >
                         Manage

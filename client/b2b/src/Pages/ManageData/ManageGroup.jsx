@@ -42,6 +42,7 @@ function ManageGroup() {
   return (
     <>
       <Header />
+
       <Row
         className={`${styles.Heading} d-flex justify-content-center align-items-center m-0`}
       >
