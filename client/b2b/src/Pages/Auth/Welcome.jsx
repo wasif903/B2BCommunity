@@ -6,9 +6,12 @@ import Logo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Welcome() {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={styles.welComeWrapper}>
@@ -24,7 +27,7 @@ function Welcome() {
               </div>
             </Col>
           </Row>
-          <Row className={`${styles.loginOptionRow}`}>
+          <Row className={`${styles.loginOptionRow}`} onClick={() => navigate('/signup')}>
             <Col
               md="3"
               className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}

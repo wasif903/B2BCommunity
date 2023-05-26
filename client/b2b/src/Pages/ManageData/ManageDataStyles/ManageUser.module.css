@@ -93,6 +93,12 @@
   align-items: center;
   margin: 10px;
   box-shadow: 0px 0px 5px 0px #80808099;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: -1;
+}
+.mapWrapper:hover {
+  transform: scale(1.07);
 }
 .imgWrapper {
   width: 150px;

@@ -5,17 +5,20 @@ import styles from "./login.module.css";
 import Logo from "../../assets/login_logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
 function Login() {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={styles.loginWrapper}>
         <Container className={styles.loginPageWrapper}>
           <Row>
             <Col>
-              <div className="text-center py-3">
+              <div onClick={() => navigate('/home')} className="text-center py-3">
                 <img src={Logo} className={styles.logo} alt="site logo" />
               </div>
               <div className="text-center">
@@ -64,7 +67,7 @@ function Login() {
                 </div>
 
                 <div className="text-center d-grid mt-4 w-100">
-                  <button className={styles.SumbitBtn} type="submit">
+                  <button onClick={() => navigate('/home')} className={styles.SumbitBtn} type="submit">
                     Submit
                   </button>
                 </div>

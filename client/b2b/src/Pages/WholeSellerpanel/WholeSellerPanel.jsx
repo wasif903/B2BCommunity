@@ -17,10 +17,9 @@ import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { faSignal } from "@fortawesome/free-solid-svg-icons";
-import { faSignal5 } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
+import { useNavigate } from "react-router-dom";
 
 // Data of sliders items
 const Data = [
@@ -43,6 +42,8 @@ const Data = [
 ];
 
 function WholeSellerPanel() {
+  const navigate = useNavigate();
+
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
 
@@ -154,32 +155,38 @@ function WholeSellerPanel() {
 
         {/************ Manage Buttons ************/}
 
-        <Row className="pt-lg-5 pb-lg-3">
+        <Row className="pt-lg-5 pb-lg-3 d-flex justify-content-evenly">
           <Col
             md="6"
-            className="py-3 d-md-block d-flex  justify-content-center align-items-center"
+            className="py-3 d-md-block d-flex  justify-content-center align-items-center w-auto"
           >
-            <div className={styles.manageUsers}>
+            <div
+              className={styles.manageUsers}
+              onClick={() => navigate("/New-Request")}
+            >
               <h4 className="pt-2">
                 <FontAwesomeIcon
                   className={`${styles.user} pe-3`}
                   icon={faGlobe}
                 />
-                Manage Users
+                New Request
               </h4>
             </div>
           </Col>
           <Col
             md="6"
-            className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center"
+            className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center w-auto"
           >
-            <div className={`${styles.manageWholeSeller}`}>
+            <div
+              className={`${styles.manageWholeSeller}`}
+              onClick={() => navigate("/All-Members")}
+            >
               <h4 className="pt-2">
                 <FontAwesomeIcon
                   className={`${styles.manager} pe-3`}
                   icon={faCirclePlay}
                 />
-                Manage Whole Seller
+                All Member
               </h4>
             </div>
           </Col>

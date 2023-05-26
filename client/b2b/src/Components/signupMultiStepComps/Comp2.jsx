@@ -3,12 +3,21 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-function Comp2({ onChange, userFields }) {
+function Comp2({ onChange, userFields, setSteps }) {
   // eslint-disable-next-line react/prop-types
   const { addressLine, zipCode, city, country } = userFields;
 
+
+  useEffect(() => {
+    
+    setSteps(1)
+
+  }, [])
+
+  
   return (
     <>
       <Container className="d-flex justify-content-center align-items-center flex-column">

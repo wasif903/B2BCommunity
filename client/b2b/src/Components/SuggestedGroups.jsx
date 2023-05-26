@@ -3,7 +3,7 @@ import Row from "react-bootstrap/esm/Row"
 import Col from "react-bootstrap/esm/Col"
 import Card from 'react-bootstrap/Card';
 import CardImage from '../assets/home/suggested_group.jpg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './compStyles/suggestedGroup.module.css'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';  
@@ -15,45 +15,46 @@ function SuggestedGroups() {
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
         {
             title: 'Web Development',
             exercept: " Some quick example text to build on the card title and make up the bulk of the content.",
-            link: "web-development"
+            link: "/Group-Content"
         },
     ]
 
+    const navigate = useNavigate();
 
     return (
         <>
@@ -71,7 +72,7 @@ function SuggestedGroups() {
                         </div>
                     </Col>
                     <Col className="text-end d-flex justify-content-end  align-items-center">
-                        <button>
+                        <button onClick={() => navigate('/All-Group')}>
                             SEE ALL
                         </button>
                     </Col>
