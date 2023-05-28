@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-
 // eslint-disable-next-line react/prop-types
 function Comp3({ onChange, userFields, setSteps }) {
   // eslint-disable-next-line react/prop-types
@@ -25,11 +24,8 @@ function Comp3({ onChange, userFields, setSteps }) {
   }
 
   useEffect(() => {
-    
-    setSteps(2)
-
-  }, [])
-  
+    setSteps(2);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -120,9 +116,9 @@ function Comp3({ onChange, userFields, setSteps }) {
             </div>
           </Row>
 
-    
-            <button type="submit" onClick={() => navigate('/home')}>Submit</button>
-         
+          <button type="submit" onClick={() => navigate("/Otp-auth")}>
+            Submit
+          </button>
 
           <Row className="mt-3">
             <span className="d-flex justify-content-between">

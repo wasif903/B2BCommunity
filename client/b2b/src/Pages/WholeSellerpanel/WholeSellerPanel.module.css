@@ -328,6 +328,7 @@
 .PostingPhotos {
   display: flex;
   padding: 2rem 0rem 0rem 0rem;
+  justify-content: center;
 }
 .PostingPhotos span {
   display: flex;

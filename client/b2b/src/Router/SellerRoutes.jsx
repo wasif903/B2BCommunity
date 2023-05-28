@@ -23,6 +23,18 @@ const sellerRoutes = [
     element: <Login />,
   },
   {
+    path: "/home",
+    element: <Home />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/admin-panel",
+    element: <AdminPanel />,
+  },
+  {
     path: "/Otp-auth",
     element: <OtpAuth />,
   },
@@ -41,18 +53,6 @@ const sellerRoutes = [
   {
     path: "/All-Members",
     element: <AllMembers />,
-  },
-  {
-    path: "/admin-panel",
-    element: <AdminPanel />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
   },
   {
     path: "/WholeSeller-panel",

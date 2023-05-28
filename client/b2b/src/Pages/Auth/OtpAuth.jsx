@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./OptAuth.module.css";
-
+import { useNavigate } from "react-router-dom";
 function OtpAuth() {
+  const navigate = useNavigate();
   return (
     <div className={style.main}>
       <div className={style.heading}>
@@ -14,7 +15,9 @@ function OtpAuth() {
         <input className={style.inputs} type="number" />
         <input className={style.inputs} type="number" />
       </form>
-      <button className={style.AuthBtn}>Submit</button>
+      <button className={style.AuthBtn} onClick={() => navigate("/home")}>
+        Submit
+      </button>
       <div className={style.footer}>
         <p>Don’t received the code?</p>
         <a href="/">Resend Code</a>

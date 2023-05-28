@@ -9,7 +9,6 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 
 function Welcome() {
-
   const navigate = useNavigate();
 
   return (
@@ -27,7 +26,10 @@ function Welcome() {
               </div>
             </Col>
           </Row>
-          <Row className={`${styles.loginOptionRow}`} onClick={() => navigate('/signup')}>
+          <Row
+            className={`${styles.loginOptionRow}`}
+            onClick={() => navigate("/signup")}
+          >
             <Col
               md="3"
               className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}
@@ -49,7 +51,7 @@ function Welcome() {
             </Col>
           </Row>
 
-          <Row className={`d-none d-md-flex ${styles.loginOptionRow}`}>
+          <Row className={`d-none d-md-flex ${styles.loginOptionMiddleRow}`}>
             <Col md="4">
               <div>
                 <hr className={styles.lines} />

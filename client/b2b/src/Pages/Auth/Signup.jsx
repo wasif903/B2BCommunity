@@ -9,9 +9,6 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 
 function Signup() {
-
-
-
   const [userFields, setUserFields] = useState({
     firstName: "",
     lastName: "",
@@ -43,18 +40,30 @@ function Signup() {
           <img src={Logo} className={styles.logo} />
         </div>
 
-        <Col className={`text-center ${styles.MultiStep}`} >
-
+        <Col className={`text-center ${styles.MultiStep}`}>
           <MultiStep
             activeStep={steps}
             showNavigation={steps === 2 ? false : true}
           >
-            <Comp1 title="Step 1" userFields={userFields} setSteps={setSteps} onChange={onChange} />
-            <Comp2 title="Step 2" userFields={userFields} setSteps={setSteps} onChange={onChange} />
-            <Comp3 title="Step 3" userFields={userFields} setSteps={setSteps} onChange={onChange} />
+            <Comp1
+              title="Step 1"
+              userFields={userFields}
+              setSteps={setSteps}
+              onChange={onChange}
+            />
+            <Comp2
+              title="Step 2"
+              userFields={userFields}
+              setSteps={setSteps}
+              onChange={onChange}
+            />
+            <Comp3
+              title="Step 3"
+              userFields={userFields}
+              setSteps={setSteps}
+              onChange={onChange}
+            />
           </MultiStep>
-
-
         </Col>
       </Container>
     </>

@@ -50,7 +50,6 @@
   outline: none;
   border: none;
   float: right;
-  z-index: -1;
 }
 .wrapper input::placeholder {
   text-transform: capitalize;
@@ -75,6 +74,7 @@
   text-decoration: none;
   color: #abb3bb;
   font-weight: 600;
+  transition: all 0.3s;
 }
 .sliders a:nth-child(1) {
   color: var(--primary-color);
@@ -97,6 +97,11 @@
   align-items: center;
   margin: 10px;
   box-shadow: 0px 0px 5px 0px #80808099;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.mapWrapper:hover {
+  transform: scale(1.04);
 }
 .imgWrapper {
   width: 150px;

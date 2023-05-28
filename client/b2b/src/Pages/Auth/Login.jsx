@@ -9,7 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
 function Login() {
-
   const navigate = useNavigate();
 
   return (
@@ -18,7 +17,10 @@ function Login() {
         <Container className={styles.loginPageWrapper}>
           <Row>
             <Col>
-              <div onClick={() => navigate('/home')} className="text-center py-3">
+              <div
+                onClick={() => navigate("/home")}
+                className="text-center py-3"
+              >
                 <img src={Logo} className={styles.logo} alt="site logo" />
               </div>
               <div className="text-center">
@@ -53,7 +55,7 @@ function Login() {
                       type="checkbox"
                       id="checkbox"
                       label=""
-                      className="w-auto"
+                      className={`${styles.Checkbox} w-auto`}
                     />
                     <label className="ms-1" htmlFor="checkbox">
                       Remember Me
@@ -67,7 +69,11 @@ function Login() {
                 </div>
 
                 <div className="text-center d-grid mt-4 w-100">
-                  <button onClick={() => navigate('/home')} className={styles.SumbitBtn} type="submit">
+                  <button
+                    onClick={() => navigate("/Otp-auth")}
+                    className={styles.SumbitBtn}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>

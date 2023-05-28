@@ -62,16 +62,7 @@ input.check:checked {
   outline: none;
 }
 .loginInputs:hover {
-  border: none;
   outline: none;
-}
-.loginInputs:active {
-  border: none !important;
-  outline: none !important;
-}
-.loginInputs:focus {
-  border: none !important;
-  outline: none !important;
 }
 .SumbitBtn {
   height: 3rem;
@@ -95,7 +86,9 @@ input.check:checked {
   color: var(--font-secondary-color);
   font-weight: 600 !important;
 }
-
+.Checkbox {
+  cursor: pointer;
+}
 .lines {
   width: 100%;
   color: var(--primary-color);

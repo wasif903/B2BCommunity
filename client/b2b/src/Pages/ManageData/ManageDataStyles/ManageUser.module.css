@@ -74,6 +74,7 @@
   text-decoration: none;
   color: #abb3bb;
   font-weight: 600;
+  transition: all 0.3s;
 }
 .sliders a:nth-child(1) {
   color: var(--primary-color);
@@ -98,7 +99,7 @@
   z-index: -1;
 }
 .mapWrapper:hover {
-  transform: scale(1.07);
+  transform: scale(1.04);
 }
 .imgWrapper {
   width: 150px;

@@ -267,7 +267,7 @@ function GroupContent() {
             <section
               className={`d-flex justify-content-center align-items-center  ${styles.PostingPhotos}`}
             >
-              <ImageGallery items={images} />;
+              <ImageGallery items={images} />
             </section>
 
             {/******* Comment input field *****/}

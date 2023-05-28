@@ -45,6 +45,9 @@ function NewRequest() {
   return (
     <>
       <Header />
+      <div className={styles.heading}>
+        <p className="w-2">New Request</p>
+      </div>
       <Container>
         <Row className="pt-5">
           <Swiper
@@ -56,7 +59,7 @@ function NewRequest() {
           >
             <div>
               {categoryOptions.map((item, index) => (
-                <SwiperSlide className="d-inline-flex justify-content-center align-items-center">
+                <SwiperSlide className="d-inline-flex justify-content-center align-items-center py-2">
                   <button className={styles.catListBtn} key={index + 1}>
                     {item.category}
                   </button>
@@ -102,7 +105,7 @@ function NewRequest() {
                   <h3>{item.name}</h3>
                   <h5>{item.code}</h5>
                 </div>
-                <div>
+                <div style={{ width: "8rem" }}>
                   <button className={`my-2 ${styles.buttons}`}>ADD</button>
                   <button className={`my-2 ${styles.buttons}`}>REMOVE</button>
                 </div>
