@@ -151,7 +151,7 @@ function AdminPanel() {
           </Col>
         </Row>
         <Row className="py-4">
-          <Col lg="6">
+          <Col sm="6">
             <ul>
               {aboutMe.map((item) => (
                 <li key={item.text} className="py-2">
@@ -166,7 +166,7 @@ function AdminPanel() {
               ))}
             </ul>
           </Col>
-          <Col lg="6" className="d-flex justify-content-end align-items-end">
+          <Col sm="6" className="d-flex justify-content-end align-items-end">
             <div className={styles.chart}>
               <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>

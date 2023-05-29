@@ -24,7 +24,7 @@
 .editProfilePhoto {
   position: absolute;
   top: -111px;
-  left: 46rem;
+  right: 45%;
   border-radius: 50%;
   background-color: var(--primary-color);
   display: flex;
@@ -107,6 +107,7 @@
     background-color: var(--primary-color);
     left: 18rem;
   }
+
   .chart {
     width: 80%;
   }
