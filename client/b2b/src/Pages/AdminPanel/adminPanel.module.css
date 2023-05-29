@@ -18,13 +18,11 @@
 }
 
 .profileWrapper {
-  position: relative;
+  z-index: 1;
+  flex-direction: row-reverse;
 }
 
 .editProfilePhoto {
-  position: absolute;
-  top: -111px;
-  left: 46rem;
   border-radius: 50%;
   background-color: var(--primary-color);
   display: flex;
@@ -33,10 +31,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  bottom: 10rem;
+  right: 1rem;
 }
 
 .profilePhoto {
-  width: 25%;
+  width: 15rem;
   margin-top: -130px;
   border-radius: 50%;
   background-color: white;
@@ -99,13 +100,14 @@
   .profilePhoto {
     width: 35%;
     margin-top: -55px;
+    left: 1rem;
+    position: relative;
   }
 
   .editProfilePhoto {
-    top: -45px;
-    right: 150px;
+    top: -6rem;
     background-color: var(--primary-color);
-    left: 18rem;
+    left: 1rem;
   }
   .chart {
     width: 80%;

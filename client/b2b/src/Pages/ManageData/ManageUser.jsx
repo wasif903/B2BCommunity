@@ -8,6 +8,18 @@ import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import breakpoints from "../../utils/SwiperBreakPoints";
+
+const Name = [
+  "UIUX Designers",
+  "WordPress Developers",
+  "Social Media Marketing",
+  "Web Developer",
+  "Software Developer",
+  "Graphic Designer",
+  "Youtuber",
+];
 
 function ManageUser() {
   const navigate = useNavigate();
@@ -23,9 +35,15 @@ function ManageUser() {
           <FontAwesomeIcon icon={faSearch} className={styles.search_icon} />
         </form>
         <div className={styles.sliders}>
-          <a href="#">UIUX Designers</a>
-          <a href="#">WordPress Developers</a>
-          <a href="#">Social Media Marketing</a>
+          <Swiper spaceBetween={15} slidesPerView={2} breakpoints={breakpoints}>
+            {Name.map((item, index) => (
+              <SwiperSlide className="d-inline-flex justify-content-center align-items-center py-2">
+                <a key={index} href="#">
+                  {item}
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
         <Container className={styles.displayUsers}>
           <Row>

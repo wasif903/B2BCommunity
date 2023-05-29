@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk:wght@500&display=swap");
 
 .main {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  top: 23rem;
 }
 .heading {
   margin-top: 8rem;
@@ -74,21 +75,43 @@
   text-decoration: none;
   color: var(--primary-color);
 }
-@media all and (max-width: 1280px) {
+@media all and (max-width: 1024px) {
   .main {
     position: relative;
-    top: 8rem;
+    top: 8rem !important;
   }
 }
-@media all and (max-width: 400px) {
+@media all and (min-width: 400px) {
+  .main {
+    position: relative;
+    top: 25rem !important;
+  }
+}
+@media all and (max-width: 460px) {
   html {
     font-size: 85%;
   }
+  .main {
+    position: relative;
+    top: 25rem !important;
+  }
   .inputs {
-    width: 3rem !important;
+    width: 4rem !important;
+  }
+  .inputFields {
+    gap: 2.5rem !important;
   }
   .AuthBtn {
-    width: 18rem;
-    height: 3.2rem;
+    width: 24rem;
+    height: 4rem;
+  }
+  .heading p {
+    width: 100% !important;
+    font-size: 1.2rem !important;
+  }
+  .footer p,
+  .footer a {
+    width: fit-content !important;
+    height: fit-content !important;
   }
 }

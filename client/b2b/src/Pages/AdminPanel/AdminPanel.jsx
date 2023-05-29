@@ -79,6 +79,7 @@ function AdminPanel() {
 
   const toggleEditCoverModal = () => {
     setShowEditCoverModal(!showEditCoverModal);
+    console.log(showEditCoverModal);
   };
 
   const toggleEditProfileModal = () => {
@@ -106,20 +107,18 @@ function AdminPanel() {
       </div>
       <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
         <Row>
-          <Col>
-            <div
-              className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
-            >
-              <div className={styles.editProfilePhoto}>
-                <FontAwesomeIcon
-                  icon={faPenToSquare}
-                  onClick={toggleEditProfileModal}
-                  className={`${styles.editIcon} fa-lg`}
-                />
-              </div>
-              <img src={image} className={styles.profilePhoto} alt="" />
+          <div
+            className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
+          >
+            <div className={styles.editProfilePhoto}>
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                onClick={toggleEditProfileModal}
+                className={`${styles.editIcon} fa-lg`}
+              />
             </div>
-          </Col>
+            <img src={image} className={styles.profilePhoto} alt="" />
+          </div>
         </Row>
         <Row>
           <Col className="text-center pt-4">
