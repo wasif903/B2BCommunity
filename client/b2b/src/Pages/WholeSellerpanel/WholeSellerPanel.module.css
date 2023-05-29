@@ -43,7 +43,7 @@
   border: 4px solid var(--primary-color);
   position: absolute;
   left: -10rem;
-  top: 4rem;
+  top: 5rem;
   background: var(--bg-color);
 }
 
@@ -139,7 +139,7 @@
   border: 1px solid gray;
   padding: 1rem;
   outline: none;
-  width: 68.5rem;
+  width: 90%;
   position: relative;
   left: 2rem;
 }
@@ -156,7 +156,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 14px;
 }
 .WholeSellerLowerSection div {
@@ -164,7 +164,6 @@
   gap: 1rem;
   justify-content: center;
   flex: 0 0 auto;
-  padding: 0rem 4rem;
   align-items: center;
 }
 .WholeSellerLowerSection div p {
@@ -378,7 +377,7 @@
   align-items: center;
   border: 1px solid #c1c1c4;
   margin-left: 10px;
-  width: 69.5rem;
+  width: 95%;
   border-radius: 40px;
 }
 .ViewcommentInputField input {
@@ -460,11 +459,8 @@
   .ViewComment {
     margin-top: 0.8rem !important;
   }
-  .ViewcommentInputField {
-    width: 60rem !important;
-  }
   .ViewcommentInputField input {
-    width: 107rem;
+    width: 105rem !important;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -489,18 +485,14 @@
   }
 }
 @media all and (max-width: 1024px) {
-  .ViewcommentInputField {
-    width: 49rem !important;
-  }
   .ViewcommentInputField input {
-    /* width: 49rem; */
-    width: 90rem;
+    width: 96vw !important;
   }
   .PostingPhotos {
     justify-content: center;
   }
 }
-/*************************************************** Media query for (810PX) ****************************************************/
+/*************************************************** Media query for (820PX) ****************************************************/
 
 @media all and (max-width: 820px) {
   .wholeSellerInputField {
@@ -518,6 +510,7 @@
   }
   .profilePhoto {
     left: -1rem !important;
+    top: 6rem !important;
   }
   .underLine {
     right: -22px;
@@ -560,7 +553,7 @@
     margin-top: 0.8rem !important;
   }
   .ViewcommentInputField {
-    width: 37.5rem !important;
+    width: 95% !important;
   }
   .ViewcommentInputField input {
     width: 49rem;
@@ -592,7 +585,8 @@
 
 @media all and (max-width: 430px) {
   .profilePhoto {
-    left: 1rem !important;
+    left: 0.5rem !important;
+    top: 9rem !important;
   }
   .WholeSellerText div {
     left: 8rem !important;
@@ -604,7 +598,8 @@
     font-size: 1rem;
   }
   .wholeSellerInputField {
-    width: 75%;
+    width: 80%;
+    margin-left: 1rem;
   }
   .underLine {
     right: -22px;
@@ -623,10 +618,10 @@
     justify-content: space-around;
   }
   .ViewcommentInputField {
-    width: 22.5rem !important;
+    width: 95% !important;
   }
   .ViewcommentInputField input {
-    width: 19rem !important;
+    width: 68vw !important;
   }
   .AddpostArea p {
     padding: 0 !important;
@@ -656,12 +651,9 @@
   }
 }
 
-/*************************************************** Media query for (360PX) ****************************************************/
+/*************************************************** Media query for (375PX) ****************************************************/
 
 @media all and (max-width: 375px) {
-  .wholeSellerInputField {
-    width: 19rem !important;
-  }
   .WholeSellerInputArea {
     height: 8rem !important;
   }
@@ -685,10 +677,7 @@
     height: 6rem !important;
   }
   .ViewcommentInputField {
-    width: 19.5rem !important;
-  }
-  .ViewcommentInputField input {
-    width: 16rem !important;
+    width: 95% !important;
   }
   .ViewComment {
     font-size: 0.8rem !important;

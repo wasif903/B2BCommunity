@@ -8,6 +8,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Swiper, SwiperSlide } from "swiper/react";
+import breakpoints from "../../utils/SwiperBreakPoints";
+
+const Name = [
+  "UIUX Designers",
+  "WordPress Developers",
+  "Social Media Marketing",
+  "Web Developer",
+  "Software Developer",
+  "Graphic Designer",
+  "Youtuber",
+];
 
 function ManageUser() {
   return (
@@ -25,14 +37,20 @@ function ManageUser() {
           <button>+ WholeSellers</button>
         </form>
         <div className={styles.sliders}>
-          <a href="#">UIUX Designers</a>
-          <a href="#">WordPress Developers</a>
-          <a href="#">Social Media Marketing</a>
+          <Swiper spaceBetween={15} slidesPerView={2} breakpoints={breakpoints}>
+            {Name.map((item, index) => (
+              <SwiperSlide className="d-inline-flex justify-content-center align-items-center py-2">
+                <a key={index} href="#">
+                  {item}
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
         <Container className={styles.displayUsers}>
           <Row className={styles.displayUsersRow}>
             {DummyUserData.map((item) => (
-              <Col lg="3" md="4" sm="6">
+              <Col lg="4" md="4.5" sm="6">
                 <div className={`${styles.mapWrapper}`}>
                   <div>
                     <img className={styles.imgWrapper} src={userPic} alt="" />

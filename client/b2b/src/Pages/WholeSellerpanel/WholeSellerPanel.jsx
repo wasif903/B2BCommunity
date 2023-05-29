@@ -253,7 +253,9 @@ function WholeSellerPanel() {
                 <button className={`${styles.ViewComment} bg-white`}>
                   View all comments
                 </button>
-                <div className={`${styles.CommentBox} d-flex align-center`}>
+                <div
+                  className={`${styles.CommentBox} d-flex align-center w-100`}
+                >
                   <img
                     className={styles.postingAreaimg}
                     src={item.imageURL}
@@ -334,7 +336,7 @@ function WholeSellerPanel() {
               <button className={`${styles.ViewComment} bg-white`}>
                 View all comments
               </button>
-              <div className={`${styles.CommentBox} d-flex align-center`}>
+              <div className={`${styles.CommentBox} d-flex align-center w-100`}>
                 <span
                   className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
                 >

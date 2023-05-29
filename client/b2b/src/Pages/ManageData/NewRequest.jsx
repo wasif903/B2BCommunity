@@ -89,7 +89,7 @@ function NewRequest() {
       <Container>
         <Row>
           {DummyUserData.map((item, index) => (
-            <Col lg="3" md="4" sm="6">
+            <Col lg="4" md="4.5" sm="6">
               <div className={`${styles.mapWrapper}`} key={index + 1}>
                 <div>
                   <img

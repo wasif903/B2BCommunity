@@ -6,19 +6,19 @@
   padding: 7px;
   margin-bottom: 2rem;
 }
-.MultiStep {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-}
+
 .wrapper {
-  margin-top: 5rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .wrapper p {
   font-family: Mulish;
   width: 19rem;
   text-align: center;
-  margin: 6px 10px 0px 0px !important;
   font-size: 1rem !important;
 }
 .wrapper h2 {

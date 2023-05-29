@@ -28,7 +28,11 @@ function Header() {
         <Container fluid className='"container-lg'>
           <Row>
             <Col md="6">
-              <div role="button" onClick={() => navigate('/')} className="text-md-start text-center">
+              <div
+                role="button"
+                onClick={() => navigate("/")}
+                className="text-md-start text-center"
+              >
                 <img src={Logo} width="50px" alt="" />
               </div>
             </Col>
@@ -52,7 +56,11 @@ function Header() {
                   </div>
                 </div>
 
-                <div onClick={() => navigate('/WholeSeller-panel')} role="button" className="pe-lg-4 pe-2 d-none d-lg-flex ">
+                <div
+                  onClick={() => navigate("/WholeSeller-panel")}
+                  role="button"
+                  className="pe-lg-4 pe-2 d-none d-lg-flex "
+                >
                   <img
                     src={myAcc}
                     width="50px"
@@ -76,7 +84,7 @@ function Header() {
                   <FontAwesomeIcon icon={faBars} className="text-white fa-lg" />
                 </div>
 
-                <div  className="d-flex d-lg-none pe-lg-4 ps-2 ps-sm-0">
+                <div className="d-flex d-lg-none pe-lg-4 ps-2 ps-sm-0">
                   <img src={myAcc} width="50px" alt="" />
                 </div>
               </div>

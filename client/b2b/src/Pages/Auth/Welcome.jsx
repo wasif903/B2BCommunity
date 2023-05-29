@@ -32,7 +32,7 @@ function Welcome() {
           >
             <Col
               md="3"
-              className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}
+              className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center h-100`}
             >
               <div className="text-center">
                 <FontAwesomeIcon
@@ -43,10 +43,10 @@ function Welcome() {
               </div>
             </Col>
             <Col md="9" className={styles.loginOptionTxt}>
-              <div className="text-center pt-2">
-                <h5 className={styles.loginOptionHeadings}>
+              <div className="text-center">
+                <p className={`${styles.loginOptionHeadings} m-0`}>
                   Continue With Gmail
-                </h5>
+                </p>
               </div>
             </Col>
           </Row>
@@ -68,7 +68,7 @@ function Welcome() {
           <Row className={`${styles.loginOptionRow} `}>
             <Col
               md="3"
-              className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}
+              className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center h-100`}
             >
               <div className="text-center">
                 <FontAwesomeIcon
@@ -79,19 +79,19 @@ function Welcome() {
               </div>
             </Col>
             <Col md="9" className={styles.loginOptionTxt}>
-              <div className="text-center pt-2">
-                <h5 className={`${styles.loginOptionHeadings}`}>
+              <div className="text-center">
+                <p className={`${styles.loginOptionHeadings} m-0`}>
                   Sign UP With Google
-                </h5>
+                </p>
               </div>
             </Col>
           </Row>
 
           <Row className={`${styles.loginOptionRow}`}>
             <Col sm="12" md="9" className="text-md-start text-center">
-              <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
+              <p className={styles.headings}>Alreay Have An Accound ?</p>
             </Col>
-            <Col sm="12" md="3" className="text-center text-md-end pb-2">
+            <Col sm="12" md="3" className="text-center text-md-end">
               <Link to="/login" className={styles.anchor}>
                 LOGIN
               </Link>

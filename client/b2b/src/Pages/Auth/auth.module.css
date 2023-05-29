@@ -17,6 +17,8 @@
 
 .headings {
   color: var(--font-secondary-color);
+  margin: 0 !important;
+  width: auto;
 }
 
 .anchor {
@@ -54,8 +56,9 @@
 .loginOptionTxt {
   background-color: white;
   border-radius: 0px 10px 10px 0px;
-  padding-top: 11px;
-  padding-bottom: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .loginOptionHeadings {
@@ -83,12 +86,10 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .loginOptionRow {
-    /* width: 100px;
-    height: 85px; */
+  /* .loginOptionRow {
     padding-top: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } */
 }

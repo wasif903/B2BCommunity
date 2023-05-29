@@ -76,7 +76,10 @@ const Sidebar = ({ setIsOpen }) => {
             sm="3"
             className="order-md-2 order-1 d-flex justify-content-center align-items-center"
           >
-            <button onClick={() => setIsOpen(false)} className="mt-2">
+            <button
+              onClick={() => setIsOpen(false)}
+              className={`${styles.SidebarBtn} mt-2`}
+            >
               X
             </button>
           </Col>

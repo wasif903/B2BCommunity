@@ -23,7 +23,7 @@ function AllGroup() {
           <Row>
             {groups.map((item, index) => {
               return (
-                <Col lg="3" md="4" sm="6" key={index + 1}>
+                <Col lg="4" md="4.5" sm="6" key={index + 1}>
                   <div className={`${styles.mapWrapper}`} key={index + 1}>
                     <div>
                       <img

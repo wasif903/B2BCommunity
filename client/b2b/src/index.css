@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
 :root {
   --primary-color: #db3685;
   --bg-color: white;
@@ -37,6 +41,7 @@ button:hover {
 
 p {
   color: var(--font-primary-color);
+  font-family: "Roboto", sans-serif !important;
 }
 
 h1,
@@ -46,6 +51,7 @@ h4,
 h5,
 h6 {
   color: var(--font-primary-color);
+  font-family: "Poppins", sans-serif;
 }
 
 ul,

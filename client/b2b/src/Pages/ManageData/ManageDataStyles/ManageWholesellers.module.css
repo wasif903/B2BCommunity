@@ -44,6 +44,7 @@
   border: 1px solid #808080db;
   border-radius: 7px;
   height: 3rem;
+  padding-right: 0.5rem;
 }
 .wrapperForm div input {
   width: 27rem;
@@ -66,7 +67,7 @@
 .sliders {
   position: relative;
   top: 7rem;
-  width: 100%;
+  width: 75%;
   display: flex;
   justify-content: space-evenly;
 }
@@ -135,7 +136,7 @@
   font-weight: bold;
 }
 .assignBtn {
-  width: 83%;
+  width: 14.5rem;
   text-transform: uppercase;
   font-size: 0.8rem;
   font-weight: bold;
@@ -175,11 +176,8 @@
   }
 }
 @media all and (max-width: 550px) {
-  html {
-    font-size: 85%;
-  }
   .sliders a {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .heading p {
     font-size: 1.5rem;
@@ -188,8 +186,8 @@
 }
 @media all and (max-width: 420px) {
   .wrapper input {
-    width: 15rem;
-    height: 3rem;
+    width: 11rem !important;
+    height: 2rem !important;
   }
 }
 @media all and (max-width: 420px) {

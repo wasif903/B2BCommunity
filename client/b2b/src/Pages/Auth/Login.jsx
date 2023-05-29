@@ -13,7 +13,7 @@ function Login() {
 
   return (
     <>
-      <div className={styles.loginWrapper}>
+      <div className={`${styles.loginWrapper}`}>
         <Container className={styles.loginPageWrapper}>
           <Row>
             <Col>
@@ -110,16 +110,16 @@ function Login() {
             </Col>
             <Col md="9" className={` ${styles.loginOptionTxt}`}>
               <div className="text-center pt-2">
-                <h5 className={`${styles.loginOptionHeadings}`}>
+                <p className={`${styles.loginOptionHeadings} mb-0`}>
                   Login With Google
-                </h5>
+                </p>
               </div>
             </Col>
           </Row>
 
           <Row className={`${styles.loginOptionRow}`}>
             <Col sm="12" md="9" className="text-md-start text-center">
-              <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
+              <p className={styles.headings}>Alreay Have An Accound ?</p>
             </Col>
             <Col sm="12" md="3" className="text-center text-md-end pb-2 mb-1">
               <Link to="/signup" className={styles.anchor}>
