@@ -71,4 +71,6 @@ const sellerRoutes = [
     element: <ManageGroup />,
   },
 ];
+
+
 export default sellerRoutes;

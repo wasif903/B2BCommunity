@@ -7,6 +7,7 @@ import styles from "../../Components/signupMultiStepComps/multiStepStyles/MultiS
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { useState } from "react";
+import Row from "react-bootstrap/esm/Row";
 
 function Signup() {
   const [userFields, setUserFields] = useState({
@@ -35,36 +36,39 @@ function Signup() {
 
   return (
     <>
-      <Container className={styles.wrapper}>
-        <div className="text-center">
-          <img src={Logo} className={styles.logo} />
-        </div>
+      <Container className={`${styles.wrapper} py-5`}>
+        <Row>
 
-        <Col className={`text-center ${styles.MultiStep}`}>
-          <MultiStep
-            activeStep={steps}
-            showNavigation={steps === 2 ? false : true}
-          >
-            <Comp1
-              title="Step 1"
-              userFields={userFields}
-              setSteps={setSteps}
-              onChange={onChange}
-            />
-            <Comp2
-              title="Step 2"
-              userFields={userFields}
-              setSteps={setSteps}
-              onChange={onChange}
-            />
-            <Comp3
-              title="Step 3"
-              userFields={userFields}
-              setSteps={setSteps}
-              onChange={onChange}
-            />
-          </MultiStep>
-        </Col>
+
+          <Col className={`text-center ${styles.MultiStep}`}>
+            <div className="text-center">
+              <img src={Logo} className={styles.logo} />
+            </div>
+            <MultiStep
+              activeStep={steps}
+              showNavigation={steps === 2 ? false : true}
+            >
+              <Comp1
+                title="Step 1"
+                userFields={userFields}
+                setSteps={setSteps}
+                onChange={onChange}
+              />
+              <Comp2
+                title="Step 2"
+                userFields={userFields}
+                setSteps={setSteps}
+                onChange={onChange}
+              />
+              <Comp3
+                title="Step 3"
+                userFields={userFields}
+                setSteps={setSteps}
+                onChange={onChange}
+              />
+            </MultiStep>
+          </Col>
+        </Row>
       </Container>
     </>
   );

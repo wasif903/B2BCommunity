@@ -13,7 +13,7 @@ function Login() {
 
   return (
     <>
-      <div className={styles.loginWrapper}>
+      <div className={`${styles.loginWrapper}`}>
         <Container className={styles.loginPageWrapper}>
           <Row>
             <Col>

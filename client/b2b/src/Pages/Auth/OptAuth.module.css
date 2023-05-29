@@ -1,94 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk:wght@500&display=swap");
 
 .main {
+  /* height: 100vh;
+  width: 10%;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.heading {
-  margin-top: 8rem;
-  position: relative;
-  bottom: 17rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.heading h2 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 35px;
-  margin-bottom: 12px;
-}
-.heading p {
-  width: 25rem;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-}
-.inputFields {
-  position: relative;
-  bottom: 15rem;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-.inputs {
-  border: none;
-  border-bottom: 1px solid #979797;
-  -moz-appearance: textfield;
-  appearance: 0;
-  width: 51px;
-  outline: none;
-}
-.inputs[type="number"] {
-  font-size: 2rem;
-  padding-left: 1rem;
-}
-.AuthBtn {
-  width: 22rem;
-  border: none;
-  border-radius: 5px;
-  height: 4rem;
-  font-size: 1.2rem;
-  position: relative;
-  bottom: 12rem;
-  cursor: pointer;
-}
-.footer {
-  display: flex;
-  width: 23rem;
-  justify-content: space-between;
-  position: relative;
-  bottom: 10rem;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-.footer a,
-.footer a:hover {
-  text-decoration: none;
-  color: var(--primary-color);
+.mainBtn  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 20% !important;
+  max-width: 300px;
+  margin: 0 auto;
 }
-@media all and (max-width: 1280px) {
-  .main {
-    position: relative;
-    top: 8rem;
-  }
+
+.otpAuhtFields {
+  width: 5%;
+  margin-left: 20px;
+  text-align: center;
+  margin-right: 20px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px grey solid;
+  overflow-y: hidden !important; 
 }
-@media all and (max-width: 400px) {
-  html {
-    font-size: 85%;
-  }
-  .inputs {
-    width: 3rem !important;
-  }
-  .AuthBtn {
-    width: 18rem;
-    height: 3.2rem;
-  }
+
+.otpAuhtFields:focus {
+  box-shadow: none !important;
+  outline: none;
+  overflow-y: hidden !important; 
+}
+.otpAuhtFields::-webkit-inner-spin-button {
+  display: none;
+}
+.otpAuhtFields::-webkit-outer-spin-button { 
+  display: none;
+}
+
+.otpAuhtFields:hover {
+  box-shadow: none !important;
+  outline: none;
+  overflow-y: hidden !important; 
 }
