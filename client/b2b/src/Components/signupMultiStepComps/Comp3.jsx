@@ -2,14 +2,18 @@ import styles from "./multiStepStyles/MultiStepComp.module.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+// eslint-disable-next-line no-unused-vars
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
+// Importing SIGNUP FROM REDUX
+
 // eslint-disable-next-line react/prop-types
-function Comp3({ onChange, userFields, setSteps }) {
+function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
   // eslint-disable-next-line react/prop-types
   const { email, password, PhoneNumber } = userFields;
+
 
   const [confirmPass, setConfirmPass] = useState("");
 
@@ -27,7 +31,8 @@ function Comp3({ onChange, userFields, setSteps }) {
     setSteps(2);
   }, []);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
 
   return (
     <>
@@ -116,7 +121,7 @@ function Comp3({ onChange, userFields, setSteps }) {
             </div>
           </Row>
 
-          <button type="submit" onClick={() => navigate("/Otp-auth")}>
+          <button type="submit" onClick={handleSubmit}>
             Submit
           </button>
 

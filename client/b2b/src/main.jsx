@@ -10,7 +10,7 @@ import 'swiper/css';
 
 // Redux
 import { Provider } from 'react-redux'
-import store from './REDUX/Reducers/store.js';
+import store from './REDUX/Reducers/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
