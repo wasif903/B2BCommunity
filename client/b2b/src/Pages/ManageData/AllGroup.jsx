@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ManageDataStyles/AllGroup.module.css";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
@@ -50,7 +49,7 @@ function AllGroup() {
                         onClick={() => navigate("/Manage-Group")}
                         className={`my-2 w-100 ${styles.buttons}`}
                       >
-                        Manage
+                        JOIN
                       </button>
                     </div>
                   </div>

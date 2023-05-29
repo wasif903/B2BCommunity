@@ -41,7 +41,7 @@ function Header() {
               md="6"
               className="d-flex justify-content-end align-items-center"
             >
-              <div className="d-flex justify-content-end align-items-center">
+              <div className="d-flex justify-md-content-end justify-content-start align-items-center">
                 <div className="mx-5">
                   <div className={`${styles.search_bar}`}>
                     <input
