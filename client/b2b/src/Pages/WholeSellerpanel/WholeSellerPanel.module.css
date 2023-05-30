@@ -480,13 +480,16 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 @media all and (max-width: 1024px) {
   .ViewcommentInputField input {
     width: 96vw !important;
+  }
+  .ViewcommentInputField {
+    width: 90% !important;
   }
   .PostingPhotos {
     justify-content: center;
@@ -507,6 +510,12 @@
     position: relative;
     left: 1rem;
     font-size: 1rem;
+  }
+  .TotalMembers div {
+    top: 1.9rem !important;
+  }
+  .TotalMembers p {
+    left: 4rem;
   }
   .profilePhoto {
     left: -1rem !important;
@@ -553,7 +562,7 @@
     margin-top: 0.8rem !important;
   }
   .ViewcommentInputField {
-    width: 95% !important;
+    width: 90% !important;
   }
   .ViewcommentInputField input {
     width: 49rem;
@@ -576,8 +585,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 
@@ -623,12 +632,23 @@
   .ViewcommentInputField input {
     width: 68vw !important;
   }
+  .TotalMembers div {
+    top: 1.7rem !important;
+  }
+  .TotalMembers p {
+    left: 4.2rem !important;
+  }
+  .postingHeadingTextArea div p:nth-child(1) {
+    font-size: 1rem;
+    margin-top: 0.2rem !important;
+  }
   .AddpostArea p {
     padding: 0 !important;
+    font-size: 1.1rem !important;
   }
   .ViewComment {
     font-size: 0.8rem !important;
-    top: 0.3rem;
+    top: -0.5rem;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -645,8 +665,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
     margin-bottom: 0.2rem;
   }
 }
@@ -671,7 +691,7 @@
     margin-bottom: 0.5rem;
   }
   .postingHeadingText {
-    font-size: 1.2rem !important;
+    font-size: 1.3rem !important;
   }
   .CommentField {
     height: 6rem !important;
@@ -681,16 +701,6 @@
   }
   .ViewComment {
     font-size: 0.8rem !important;
-  }
-  .postingHeadingText {
-    font-size: 0.7rem !important;
-  }
-  .postingHeadingTextArea div p:nth-child(1) {
-    font-size: 0.56rem !important;
-  }
-  .postingHeadingTextArea div p:nth-child(2) {
-    font-size: 0.5rem;
-    margin-top: 2px !important;
   }
   .AddpostArea p {
     font-size: 0.9rem;
@@ -710,8 +720,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
     margin-bottom: 0.2rem;
   }
 }

@@ -231,15 +231,12 @@ function GroupContent() {
               <div
                 className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
               >
-                <span
-                  className={`${styles.postingAreaHeadingCircle} position-relative`}
-                >
-                  <img
-                    className={styles.postingAreaimg}
-                    src={WholeSellerimg}
-                    alt="userImg"
-                  />
-                </span>
+                <img
+                  className={styles.postingAreaimg}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
+
                 <section className={`${styles.postingHeadingTextArea} mx-2 `}>
                   <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
                   <div className="d-flex">
@@ -281,15 +278,12 @@ function GroupContent() {
                 View all comments
               </button>
               <div className={`${styles.CommentBox} d-flex align-center w-100`}>
-                <span
-                  className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
-                >
-                  <img
-                    className={styles.postingAreaimg}
-                    src={WholeSellerimg}
-                    alt="userImg"
-                  />
-                </span>
+                <img
+                  className={styles.postingAreaimg}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
+
                 <div
                   className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                 >

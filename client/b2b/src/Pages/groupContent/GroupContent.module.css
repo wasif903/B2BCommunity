@@ -355,9 +355,6 @@
     margin-top: 0.8rem !important;
     font-size: 0.8rem;
   }
-  /* .ViewcommentInputField {
-    width: 60rem !important;
-  } */
   .ViewcommentInputField input {
     width: 105rem !important;
   }
@@ -379,8 +376,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
   }
   .featuredPanel {
     width: 100% !important;
@@ -391,11 +388,7 @@
   }
 }
 @media all and (max-width: 1024px) {
-  /* .ViewcommentInputField {
-    width: 49rem !important;
-  } */
   .ViewcommentInputField input {
-    /* width: 49rem; */
     width: 96vw !important;
   }
   .PostingPhotos {
@@ -449,7 +442,7 @@
     font-size: 0.8rem;
   }
   .ViewcommentInputField {
-    width: 95% !important;
+    width: 90% !important;
   }
   .ViewcommentInputField input {
     width: 49rem;
@@ -472,8 +465,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 
@@ -498,17 +491,22 @@
     top: 5rem;
   }
   .ViewcommentInputField {
-    width: 95% !important;
+    width: 90% !important;
   }
   .ViewcommentInputField input {
     width: 98vw !important;
   }
-  .AddpostArea p {
-    padding: 0 !important;
+  .postingHeadingTextArea div p:nth-child(1) {
+    font-size: 1rem !important;
   }
+  .postingHeadingText {
+    padding: 0 !important;
+    font-size: 1.3rem !important;
+  }
+
   .ViewComment {
     font-size: 0.8rem !important;
-    top: 0.3rem;
+    top: -0.5rem;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -525,8 +523,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
     margin-bottom: 0.2rem;
   }
   .featuredTextArea p {
@@ -552,26 +550,20 @@
     height: 6rem !important;
   }
   .ViewcommentInputField {
-    width: 95% !important;
+    width: 87% !important;
   }
-  /* .ViewcommentInputField input {
-    width: 16rem !important;
-  } */
   .ViewComment {
     font-size: 0.8rem !important;
   }
-  .postingHeadingText {
-    font-size: 0.7rem !important;
-  }
   .postingHeadingTextArea div p:nth-child(1) {
-    font-size: 0.56rem !important;
+    font-size: 1rem !important;
   }
-  .postingHeadingTextArea div p:nth-child(2) {
-    font-size: 0.5rem;
-    margin-top: 2px !important;
+  .postingHeadingText {
+    font-size: 1.3rem !important;
   }
+
   .AddpostArea p {
-    font-size: 0.9rem;
+    font-size: 1.1rem !important;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -588,8 +580,8 @@
     font-size: 1rem;
   }
   .postingAreaimg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 3rem;
+    height: 3rem;
     margin-bottom: 0.2rem;
   }
   .featuredTextArea p {
