@@ -122,7 +122,7 @@ function AdminPanel() {
         </Row>
         <Row>
           <Col className="text-center pt-4">
-            <div>
+            <div className={styles.heading}>
               <h1>James Bond</h1>
               <h4>
                 “Pushing pixels and experiences in digital products for
@@ -139,7 +139,7 @@ function AdminPanel() {
             size="6"
             className="d-flex justify-content-start align-items-center"
           >
-            <h3>About Me</h3>
+            <h3 className={styles.about}>About Me</h3>
           </Col>
           <Col size="6">
             <div className="text-end">
@@ -181,7 +181,7 @@ function AdminPanel() {
               className={styles.manageUsers}
               onClick={() => navigate("/Manage-User")}
             >
-              <h4 className="pt-2">
+              <h4 className={`${styles.btnName} pt-2`}>
                 <FontAwesomeIcon
                   className={`${styles.user} pe-3`}
                   icon={faGlobe}
@@ -198,7 +198,7 @@ function AdminPanel() {
               className={`${styles.manageWholeSeller}`}
               onClick={() => navigate("/Manage-WholeSeller")}
             >
-              <h4 className="pt-2">
+              <h4 className={`${styles.btnName} pt-2`}>
                 <FontAwesomeIcon
                   className={`${styles.manager} pe-3`}
                   icon={faCirclePlay}

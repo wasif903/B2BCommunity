@@ -23,8 +23,13 @@ function Login() {
               >
                 <img src={Logo} className={styles.logo} alt="site logo" />
               </div>
-              <div className="text-center">
-                <h1 className={`${styles.headings}`}>Login</h1>
+              <div className="text-center d-flex flex-column justify-content-center align-items-center">
+                <h1
+                  className={`${styles.headings}`}
+                  style={{ fontWeight: "bolder" }}
+                >
+                  Login
+                </h1>
                 <h4 className={`${styles.headings}`}>
                   Login With Your Account <br /> To Continue
                 </h4>
@@ -58,12 +63,11 @@ function Login() {
                         label=""
                         className={`${styles.Checkbox} me-2 mt-2 w-auto`}
                       />
-
                       Remember Me
                     </label>
                   </div>
-                  <div>
-                    <Link to="/forget-password" className={styles.headings}>
+                  <div className="d-flex align-items-center">
+                    <Link to="/forget-password" className={styles.forget}>
                       Forgot Password?
                     </Link>
                   </div>
@@ -119,8 +123,8 @@ function Login() {
           </Row>
 
           <Row className={`${styles.loginOptionRow}`}>
-            <Col sm="12" md="9" className="text-md-start text-center">
-              <p className={styles.headings}>Alreay Have An Accound ?</p>
+            <Col sm="12" md="9" className="text-md-start text-center w-auto">
+              <p className={styles.headings}>Alreay Have An Account ?</p>
             </Col>
             <Col sm="12" md="3" className="text-center text-md-end pb-2 mb-1">
               <Link to="/signup" className={styles.anchor}>

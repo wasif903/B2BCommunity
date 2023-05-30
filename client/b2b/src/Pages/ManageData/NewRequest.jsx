@@ -103,7 +103,7 @@ function NewRequest() {
                   className={`${styles.NewRequestNamePanel} text-center py-3`}
                 >
                   <h3>{item.name}</h3>
-                  <h5>{item.code}</h5>
+                  <code>{item.code}</code>
                 </div>
                 <div style={{ width: "8rem" }}>
                   <button className={`my-2 ${styles.buttons}`}>ADD</button>

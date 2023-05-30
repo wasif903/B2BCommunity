@@ -1,23 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Nunito+Sans&family=Poppins:wght@600&display=swap");
 
 .main {
-  /* height: 100vh;
-  width: 10%;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex-direction: column; */
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   height: 100vh;
-
 }
 .heading {
-
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,7 +19,6 @@
 .heading h2 {
   font-weight: bold;
   font-size: 2rem;
-
 }
 .heading p {
   width: 25rem;
@@ -36,6 +27,7 @@
   line-height: 20px;
   letter-spacing: 0.5px;
   text-align: center;
+  font-family: "Mulish", sans-serif !important;
 }
 
 .otpAuhtFields {
@@ -62,7 +54,6 @@
   cursor: pointer;
 }
 
-
 .mainBtn {
   display: flex;
   justify-content: center;
@@ -72,10 +63,12 @@
   max-width: 300px;
   margin: 0 auto;
 }
-
-
+.footer p,
+.footer NavLink {
+  font-family: "Nunito Sans", sans-serif !important;
+  width: auto;
+}
 @media all and (min-width: 400px) {
-
   .mainBtn {
     font-size: 1.4rem !important;
   }
@@ -113,8 +106,6 @@
     border-bottom: 2px grey solid;
     overflow-y: hidden !important;
   }
-
-  
 }
 
 .otpAuhtFields::-webkit-inner-spin-button {

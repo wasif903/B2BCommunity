@@ -63,7 +63,9 @@
 
 .loginOptionHeadings {
   color: var(--font-inter-color);
-  font-weight: 600 !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 .lines {
@@ -89,6 +91,6 @@
 
   .headings,
   .anchor {
-    font-size: 1.8rem !important;
+    font-size: 1.5rem !important;
   }
 }

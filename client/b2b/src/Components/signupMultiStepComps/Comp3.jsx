@@ -14,7 +14,6 @@ function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
   // eslint-disable-next-line react/prop-types
   const { email, password, PhoneNumber } = userFields;
 
-
   const [confirmPass, setConfirmPass] = useState("");
 
   const confirmPassHandler = (e) => {
@@ -33,14 +32,15 @@ function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
 
   // const navigate = useNavigate();
 
-
   return (
     <>
       <Container className="d-flex justify-content-center align-items-center flex-column">
         <Row>
           <div className="d-flex align-items-center flex-column mt-3">
             <h2>Tell us about yourself</h2>
-            <p>A few cliks away from creating your outlet 34 B2B</p>
+            <p className={styles.headingPara}>
+              A few cliks away from creating your outlet 34 B2B
+            </p>
           </div>
         </Row>
         <Col className="mt-3 mb-5">
