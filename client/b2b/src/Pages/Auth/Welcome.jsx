@@ -89,7 +89,7 @@ function Welcome() {
 
           <Row className={`${styles.loginOptionRow}`}>
             <Col sm="12" md="9" className="text-md-start text-center">
-              <p className={styles.headings}>Alreay Have An Accound ?</p>
+              <p className={styles.headings}>Alreay Have An Account ?</p>
             </Col>
             <Col sm="12" md="3" className="text-center text-md-end">
               <Link to="/login" className={styles.anchor}>

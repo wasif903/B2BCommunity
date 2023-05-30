@@ -83,13 +83,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-}
-
-@media only screen and (max-width: 600px) {
-  /* .loginOptionRow {
-    padding-top: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
+  .headings,
+  .anchor {
+    font-size: 1.5rem !important;
+  }
 }
