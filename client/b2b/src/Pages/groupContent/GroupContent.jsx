@@ -225,7 +225,7 @@ function GroupContent() {
           </>
         ))}
 
-        <Col className="mt-5">
+        <Col className="my-5">
           <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
             <Row>
               <div
