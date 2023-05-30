@@ -80,11 +80,15 @@
   .loginOptionIcon {
     border: 3px white solid;
     border-radius: 10px 10px 10px 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 175px !important;
   }
+
+  .siteLogo {
+    width: 80%;
+  }
+
   .headings,
   .anchor {
-    font-size: 1.5rem !important;
+    font-size: 1.8rem !important;
   }
 }

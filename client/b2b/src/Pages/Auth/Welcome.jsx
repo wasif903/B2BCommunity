@@ -18,8 +18,8 @@ function Welcome() {
           <Row>
             <Col>
               <div className="text-center pb-4">
-                <img src={Logo} alt="site logo" />
-              </div>
+                <img className={styles.siteLogo} src={Logo} alt="site logo" />
+              </div> 
               <div className="text-center">
                 <h2 className={styles.headings}>Welcome</h2>
                 <h1 className={`${styles.headings} display-6`}>OUTLET 34</h1>

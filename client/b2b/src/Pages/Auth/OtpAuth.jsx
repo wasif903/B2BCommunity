@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import style from "./OptAuth.module.css";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 function OtpAuth() {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function OtpAuth() {
               <input
                 className={style.otpAuhtFields}
                 ref={(ref) => (inputRefs.current[index] = ref)}
-                key={index}
+                key={index + 1}
                 type="number"
                 value={otp[index] || ""}
                 onChange={(event) => handleOtpChange(event, index)}
@@ -58,20 +59,15 @@ function OtpAuth() {
               Submit
             </button>
           </div>
-        </Col>
-      </Row>
 
-      <Row>
-        <Col>
-          <div
-            className="d-flex justify-content-around"
-            style={{ width: "22rem" }}
-          >
-            <p>Don’t received the code?</p>
-            <a href="/">Resend Code</a>
+          <div className="d-inline-flex py-5">
+            <p className="text-start">Don’t received the code?</p>
+            <NavLink to="/">Resend Code</NavLink>
           </div>
         </Col>
       </Row>
+
+
     </Container>
   );
 }

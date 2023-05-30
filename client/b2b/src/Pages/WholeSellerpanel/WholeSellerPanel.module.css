@@ -53,7 +53,7 @@
   position: relative;
   left: 1rem !important;
   width: fit-content;
-  font-family: "Poppins", sans-serif;
+  
 }
 .WholeSellerText div h1 {
   width: fit-content;
@@ -106,7 +106,7 @@
   color: var(--primary-color);
   margin-bottom: 5px !important;
   letter-spacing: 1px;
-  font-family: "Poppins", sans-serif;
+  
 }
 .postValue {
   font-size: 20px;
@@ -204,14 +204,14 @@
   position: relative;
   top: 1.5rem;
   left: 3.2rem;
-  font-family: "Poppins", sans-serif;
+  
 }
 .TotalMembers code {
   font-size: 2rem;
   font-weight: 900;
   position: relative;
   left: 4rem;
-  font-family: "Poppins", sans-serif;
+  
   top: 1rem;
 }
 .TotalMembersCircleSection {
@@ -266,7 +266,7 @@
 .postingHeadingTextArea div p:nth-child(1) {
   color: #92929d;
   width: fit-content;
-  font-family: "Poppins", sans-serif;
+  
   height: fit-content;
   font-size: 0.8rem;
   margin: 0 !important;
@@ -276,7 +276,7 @@
   color: #92929d;
   font-size: 0.6rem;
   width: fit-content;
-  font-family: "Poppins", sans-serif;
+  
   margin: 3px 4px !important;
   height: fit-content;
 }
@@ -299,7 +299,7 @@
 .postingHeadingText {
   margin: 0 !important;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  
   font-size: 1.2rem;
 }
 .postingAreaThreeDots {
@@ -317,7 +317,7 @@
   color: #44444f;
   font-size: 1rem;
   width: 100%;
-  font-family: "Poppins", sans-serif;
+  
 }
 .line {
   width: 100%;

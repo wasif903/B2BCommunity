@@ -41,7 +41,7 @@ button:hover {
 
 p {
   color: var(--font-primary-color);
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Work Sans", sans-serif !important;
 }
 
 h1,
@@ -51,7 +51,7 @@ h4,
 h5,
 h6 {
   color: var(--font-primary-color);
-  font-family: "Poppins", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 ul,

@@ -60,7 +60,7 @@ function SuggestedGroups() {
         <>
             <Container fluid className="py-5 px-lg-5">
 
-                <Row className="py-3">
+                <Row  className="py-3">
                     <Col>
                         <div>
                             <h2 className="display-6">
@@ -71,7 +71,7 @@ function SuggestedGroups() {
                             </h5>
                         </div>
                     </Col>
-                    <Col className="text-end d-flex justify-content-end  align-items-center">
+                    <Col  className="text-end d-flex justify-content-end  align-items-center">
                         <button onClick={() => navigate('/All-Group')}>
                             SEE ALL
                         </button>
@@ -97,8 +97,8 @@ function SuggestedGroups() {
                                             <Card className={`${styles.suggested_group_cards}`} style={{ width: '25rem' }}>
                                                 <Card.Img className={styles.cardImg} variant="top" src={CardImage} />
                                                 <Card.Body className="text-center">
-                                                    <Card.Title>{card.title}</Card.Title>
-                                                    <Card.Text>
+                                                    <Card.Title className={styles.cardTitle}>{card.title}</Card.Title>
+                                                    <Card.Text className={styles.cardTxt}>
                                                         {card.exercept}
                                                     </Card.Text>
                                                     <Link to={card.link}>

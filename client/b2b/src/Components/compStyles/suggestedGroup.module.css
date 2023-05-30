@@ -1,3 +1,14 @@
 .JoinedGroups {
     border-radius: 20px !important;
 }
+
+.cardTxt{
+    text-align: center !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: auto;
+}
+
+.cardTitle {
+    text-align: center !important;
+}

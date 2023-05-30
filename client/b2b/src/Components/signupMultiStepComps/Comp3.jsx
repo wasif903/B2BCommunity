@@ -121,7 +121,7 @@ function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
             </div>
           </Row>
 
-          <button type="submit" onClick={handleSubmit}>
+          <button type="submit" className="my-4" onClick={handleSubmit}>
             Submit
           </button>
 

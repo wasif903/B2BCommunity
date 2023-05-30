@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 body {
-  font-family: "Poppins", sans-serif;
+  
 }
 .Heading {
   background-image: linear-gradient(
@@ -14,7 +14,7 @@ body {
   border-bottom-right-radius: 2rem;
   border-bottom-left-radius: 2rem;
   width: 100%;
-  font-family: "Poppins", sans-serif;
+  
 }
 .Heading p {
   font-weight: 600;
@@ -23,7 +23,7 @@ body {
   letter-spacing: 1px;
 }
 .SubHeadingRow {
-  font-family: "Poppins", sans-serif;
+  
 }
 .SubHeadingRow div {
   width: 50%;

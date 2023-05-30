@@ -98,7 +98,7 @@ function JoinedGroups() {
                                                 <Card.Img className={styles.cardImg} variant="top" src={CardImage} />
                                                 <Card.Body className="text-center">
                                                     <Card.Title>{card.title}</Card.Title>
-                                                    <Card.Text>
+                                                    <Card.Text className={styles.cardTxt}>
                                                         {card.exercept}
                                                     </Card.Text>
                                                     <Link to={card.link}>

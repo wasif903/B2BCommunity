@@ -50,14 +50,15 @@ function Login() {
                 <div
                   className={`${styles.loginRememberForm} d-flex justify-content-between w-100`}
                 >
-                  <div className="d-flex justify-content-between flex-row-reverse w-50">
-                    <input
-                      type="checkbox"
-                      id="checkbox"
-                      label=""
-                      className={`${styles.Checkbox} w-auto`}
-                    />
-                    <label className="ms-1" htmlFor="checkbox">
+                  <div className=" w-50">
+                    <label htmlFor="checkbox">
+                      <input
+                        type="checkbox"
+                        id="checkbox"
+                        label=""
+                        className={`${styles.Checkbox} me-2 mt-2 w-auto`}
+                      />
+
                       Remember Me
                     </label>
                   </div>
