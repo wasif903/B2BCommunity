@@ -37,7 +37,7 @@
   cursor: pointer;
   position: relative;
   bottom: 10rem;
-  right: 1rem;
+  right: 0rem;
 }
 
 .profilePhoto {
@@ -47,7 +47,18 @@
   background-color: white;
   border: 5px solid var(--primary-color);
 }
-
+.heading h1 {
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 600 !important;
+}
+.heading h4 {
+  font-family: var(--font-family-roboto) !important;
+  color: #44444f !important;
+}
+.about {
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 500 !important;
+}
 .aboutLinks {
   list-style: none;
   text-decoration: none;
@@ -77,7 +88,9 @@
   align-items: center;
   cursor: pointer;
 }
-
+.btnName {
+  font-family: var(--font-family-roboto) !important;
+}
 .manager {
   color: #70d419;
 }

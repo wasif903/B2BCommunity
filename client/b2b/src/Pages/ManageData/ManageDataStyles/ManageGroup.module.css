@@ -14,6 +14,7 @@
   font-weight: 600;
   font-size: 3rem;
   letter-spacing: 1px;
+  font-family: var(--font-family-roboto) !important;
 }
 
 .mapWrapper {
@@ -39,11 +40,14 @@
 }
 .NewRequestNamePanel h3 {
   font-size: 1.5rem;
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 500 !important;
 }
 .NewRequestNamePanel h5,
 .mapWrapper p {
   font-size: 1rem;
   color: #92929d;
+  font-family: var(--font-family-roboto) !important;
 }
 .NewRequestNamePanel div span {
   width: 6px;
@@ -77,7 +81,6 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  
 }
 .LowerPartRow:before {
   display: block;
@@ -98,6 +101,7 @@
 .OptionName {
   font-weight: bold;
   font-size: 1rem;
+  font-family: var(--font-family-roboto) !important;
 }
 .Options {
   width: 3.5rem !important;

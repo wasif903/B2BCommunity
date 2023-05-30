@@ -60,14 +60,16 @@ function OtpAuth() {
             </button>
           </div>
 
-          <div className="d-inline-flex py-5">
+          <div
+            className={`${style.footer} d-inline-flex py-5 w-100 justify-content-between`}
+          >
             <p className="text-start">Don’t received the code?</p>
-            <NavLink to="/">Resend Code</NavLink>
+            <p>
+              <NavLink to="/">Resend Code</NavLink>
+            </p>
           </div>
         </Col>
       </Row>
-
-
     </Container>
   );
 }

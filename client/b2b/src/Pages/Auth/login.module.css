@@ -23,8 +23,14 @@
 .headings {
   color: #555454;
   text-decoration: none !important;
+  width: max-content;
+  margin-bottom: 10px;
 }
-
+.forget {
+  color: #555454;
+  text-decoration: none !important;
+  width: max-content;
+}
 input.check:checked {
   color: var(--primary-color) !important;
 }
@@ -114,7 +120,6 @@ input.check:checked {
   .loginOptionIcon {
     border: 3px var(--primary-color) solid;
     border-radius: 10px 10px 10px 10px;
-
   }
 
   .loginOptionRow {
@@ -145,9 +150,7 @@ input.check:checked {
 }
 
 @media only screen and (max-width: 280px) {
-  
   .loginFrom {
     width: 260px;
   }
-
 }

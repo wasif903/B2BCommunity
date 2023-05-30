@@ -181,7 +181,7 @@ function WholeSellerPanel() {
               className={styles.manageUsers}
               onClick={() => navigate("/New-Request")}
             >
-              <h4 className="pt-2">
+              <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
                 <FontAwesomeIcon
                   className={`${styles.user} pe-3`}
                   icon={faGlobe}
@@ -198,7 +198,7 @@ function WholeSellerPanel() {
               className={`${styles.manageWholeSeller}`}
               onClick={() => navigate("/All-Members")}
             >
-              <h4 className="pt-2">
+              <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
                 <FontAwesomeIcon
                   className={`${styles.manager} pe-3`}
                   icon={faCirclePlay}
