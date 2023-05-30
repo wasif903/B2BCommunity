@@ -61,10 +61,27 @@ const AuthSchema = new Schema(
       default: ['User'],
       require: true
     },
+
     invitation: {
       type: [String],
       enum: ['Pending', 'Accepted'],
     },
+
+    verification: {
+      type: Boolean,
+      default: false,
+    },
+
+    otpCode: {
+      type: Number,
+      default:null
+    },
+
+    otpExpire: {
+      type: Date,
+      default:null
+    }
+
   },
   { timestamps: true }
 );
