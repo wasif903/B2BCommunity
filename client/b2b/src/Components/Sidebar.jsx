@@ -47,9 +47,9 @@ const Sidebar = ({ setIsOpen }) => {
 
   return (
     <>
-      <Container fluid className={styles.sidebarWrapper}>
+      <Container fluid className={setIsOpen ? styles.sidebarWrapper : styles.sidebarWrapperNot }>
         <Row>
-          <Col sm="9" className="text-start mt-3 order-md-1 order-2">
+          <Col lg="9" className="text-start mt-3 order-md-1 order-2">
             <div
               className="d-inline-flex position-relative"
               style={{ width: "18rem" }}
@@ -62,10 +62,8 @@ const Sidebar = ({ setIsOpen }) => {
               <div
                 style={{
                   lineHeight: "10px",
-                  position: "absolute",
-                  right: "1.5rem",
                 }}
-                className="d-flex pt-3 justify-content-center flex-column"
+                className="d-flex pt-3 ps-3 justify-content-center flex-column"
               >
                 <p className={`${styles.name} text-white`}>David Smith</p>
                 <p className={`${styles.Email} text-white`}>
@@ -75,12 +73,12 @@ const Sidebar = ({ setIsOpen }) => {
             </div>
           </Col>
           <Col
-            sm="3"
+            lg="3"
             className="order-md-2 order-1 d-flex justify-content-center align-items-center"
           >
             <button
               onClick={() => setIsOpen(false)}
-              className={`${styles.SidebarBtn} mt-2`}
+              className={`${styles.SidebarBtn} mt-4`}
             >
               X
             </button>

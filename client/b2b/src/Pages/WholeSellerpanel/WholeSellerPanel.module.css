@@ -3,7 +3,7 @@
 /*************************************************** CoverPhoto And Heading CSS ****************************************************/
 .coverPhoto {
   position: relative;
-  height: 46vh;
+  height: 60vh;
   background-image: url(../../assets/home/suggested_group2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,10 +121,8 @@
 /*************************************************** WholeSellerInputArea CSS ****************************************************/
 
 .WholeSellerInputArea {
-  margin-top: 5rem;
   border: none;
   border-radius: 7px;
-  height: 10rem;
   box-shadow: 0px 1px 5px -3px black;
   position: relative;
 }
@@ -145,45 +143,31 @@
   position: relative;
   left: 2rem;
 }
-.WholeSellerLineWrapper {
-  top: 0.5rem;
-}
-.WholeSellerLine {
-  width: 94% !important;
-  height: 1px;
-  background-color: #0000005e;
-}
+
+
 .WholeSellerLowerSection {
   display: flex;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   justify-content: space-around;
-  margin-bottom: 14px;
+ 
 }
 .WholeSellerLowerSection div {
   display: flex;
-  gap: 1rem;
   justify-content: center;
   flex: 0 0 auto;
   align-items: center;
 }
 .WholeSellerLowerSection div p {
-  margin: 0 !important;
-  width: fit-content;
   font-family: var(--font-family-roboto) !important;
 }
 .WholeSellerimg {
-  width: 2rem;
-  background: transparent;
-  scale: fill;
+ color: var(--primary-color);
+ padding: 0px 20px 0px 20px;
 }
 
 /*************************************************** TotalMembers CSS ****************************************************/
 
 .TotalMembers {
-  margin-top: 5rem;
-  margin-bottom: 3rem;
   height: 9rem;
   border-radius: 7px;
   background: #e8e8e8;
@@ -231,7 +215,9 @@
   background: rgba(219, 54, 134, 0.326);
   box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
   border-radius: 15px;
-  width: 250px;
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -242,7 +228,9 @@
   background: #e5fbd3;
   box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
   border-radius: 15px;
-  width: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -499,6 +487,9 @@
   .PostingPhotos {
     justify-content: center;
   }
+  .coverPhoto {
+    height: 40vh;
+  }
 }
 /*************************************************** Media query for (820PX) ****************************************************/
 
@@ -517,10 +508,10 @@
     font-size: 1rem;
   }
   .TotalMembers div {
-    top: 1.9rem !important;
+    /* top: 1.9rem !important; */
   }
   .TotalMembers p {
-    left: 4rem;
+    /* left: 4rem; */
   }
   .profilePhoto {
     left: -1rem !important;
@@ -593,9 +584,31 @@
     width: 3rem;
     height: 3rem;
   }
+  .coverPhoto {
+    height: 35vh;
+  }
 }
 
+
+@media only screen and (max-width:600px) {
+  .coverPhoto {
+    height: 20vh;
+  }
+
+  .manageUsers {
+    height: 35px;
+    border-radius: 10px;
+  }
+  .manageWholeSeller {
+    height: 35px;
+    border-radius: 10px;
+  }
+}
+
+
 /*************************************************** Media query for (430PX) ****************************************************/
+
+
 
 @media all and (max-width: 430px) {
   .profilePhoto {
@@ -625,24 +638,15 @@
     width: 9rem;
     top: 5rem;
   }
-  .WholeSellerLowerSection div {
-    padding: 0 !important;
-  }
-  .WholeSellerLowerSection {
-    justify-content: space-around;
-  }
+
+
   .ViewcommentInputField {
     width: 95% !important;
   }
   .ViewcommentInputField input {
     width: 68vw !important;
   }
-  .TotalMembers div {
-    top: 1.7rem !important;
-  }
-  .TotalMembers p {
-    left: 4.2rem !important;
-  }
+ 
   .postingHeadingTextArea div p:nth-child(1) {
     font-size: 1rem;
     margin-top: 0.2rem !important;
@@ -679,12 +683,8 @@
 /*************************************************** Media query for (375PX) ****************************************************/
 
 @media all and (max-width: 375px) {
-  .WholeSellerInputArea {
-    height: 8rem !important;
-  }
-  .WholeSellerLowerSection div img {
-    width: 1.5rem;
-  }
+  
+ 
   .WholeSellerLowerSection div p {
     font-size: 0.9rem;
   }

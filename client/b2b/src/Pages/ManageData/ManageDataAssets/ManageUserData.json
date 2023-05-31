@@ -1,62 +1,62 @@
 {
   "DummyUserData": [
     {
-      "name": "John Doe",
+      "name": "67890",
       "code": "12345"
     },
     {
-      "name": "Jane Smith",
+      "name": "67890",
       "code": "67890"
     },
     {
-      "name": "Mike Johnson",
+      "name": "67890",
       "code": "54321"
     },
     {
-      "name": "Emily Davis",
+      "name": "67890",
       "code": "98765"
     },
     {
-      "name": "Chris Lee",
+      "name": "67890",
       "code": "45678"
     },
     {
-      "name": "Sarah Brown",
+      "name": "67890",
       "code": "23456"
     },
     {
-      "name": "David Wilson",
+      "name": "67890",
       "code": "78901"
     },
     {
-      "name": "Amy Taylor",
+      "name": "67890",
       "code": "34567"
     },
     {
-      "name": "Kevin Chen",
+      "name": "67890",
       "code": "89012"
     },
     {
-      "name": "Karen Wong",
+      "name": "67890",
       "code": "67890"
     }
   ],
   
   "peopleData": [
     {
-      "name": "Tom Hawkins",
+      "name": "67890",
       "passion": "Photography",
       "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires.",
       "imageURL": "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
-      "name": "Tom Hawkins",
+      "name": "67890",
       "passion": "Painting",
       "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others.",
       "imageURL": "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
-      "name": "Tom Hawkins",
+      "name": "67890",
       "passion": "Cooking",
       "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
       "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
@@ -65,61 +65,61 @@
   ],
     "FeaturedData": [
           {
-            "name": "John Smith",
+            "name": "67234",
             "passion": "Photography",
             "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires.",
             "imageURL": "https://randomuser.me/api/portraits/men/1.jpg"
           },
           {
-            "name": "Emily Johnson",
+            "name": "67234",
             "passion": "Painting",
             "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others.",
             "imageURL": "https://randomuser.me/api/portraits/women/2.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
           },
           {
-            "name": "Michael Davis",
+            "name": "67234",
             "passion": "Cooking",
             "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
             "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"

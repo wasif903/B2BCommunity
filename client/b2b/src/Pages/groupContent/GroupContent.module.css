@@ -479,6 +479,19 @@
   }
 }
 
+
+@media only screen and (max-width:600px) {
+  .coverPhoto {
+    position: relative;
+    height: 25vh;
+    background-image: url(../../assets/home/suggested_group2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+  }
+}
+
+
 /*************************************************** Media query for (430PX) ****************************************************/
 
 @media all and (max-width: 430px) {

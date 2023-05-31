@@ -110,13 +110,6 @@ function AdminPanel() {
           <div
             className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
           >
-            <div className={styles.editProfilePhoto}>
-              <FontAwesomeIcon
-                icon={faPenToSquare}
-                onClick={toggleEditProfileModal}
-                className={`${styles.editIcon} fa-lg`}
-              />
-            </div>
             <img src={image} className={styles.profilePhoto} alt="" />
           </div>
         </Row>
@@ -150,7 +143,7 @@ function AdminPanel() {
           </Col>
         </Row>
         <Row className="py-4">
-          <Col sm="6">
+          <Col sm="6" xs='6'>
             <ul>
               {aboutMe.map((item) => (
                 <li key={item.text} className="py-2">
@@ -165,7 +158,7 @@ function AdminPanel() {
               ))}
             </ul>
           </Col>
-          <Col sm="6" className="d-flex justify-content-end align-items-end">
+          <Col sm="6" xs='6' className="d-flex justify-content-end align-items-center">
             <div className={styles.chart}>
               <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>

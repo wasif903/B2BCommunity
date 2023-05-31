@@ -24,8 +24,8 @@
 
 .editProfilePhoto {
   position: absolute;
-  top: -111px;
-  right: 45%;
+  top: -150px;
+  right: 10% !important;
 
   border-radius: 50%;
   background-color: var(--primary-color);
@@ -47,6 +47,7 @@
   background-color: white;
   border: 5px solid var(--primary-color);
 }
+
 .heading h1 {
   font-family: var(--font-family-poppins) !important;
   font-weight: 600 !important;
@@ -69,7 +70,8 @@
   background: rgba(219, 54, 134, 0.326);
   box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
   border-radius: 15px;
-  width: 250px;
+  padding: 0px 20px 0px 20px;
+  width: max-content;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -81,7 +83,8 @@
   background: #6fc72396;
   box-shadow: 0px 2px 15px rgba(181, 181, 190, 0.15);
   border-radius: 15px;
-  width: 300px;
+  padding: 0px 20px 0px 20px;
+  width: max-content;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -99,14 +102,18 @@
   color: rgba(255, 30, 139, 0.658);
 }
 
-.chart {
-  width: 50%;
-}
+
 
 .editIcon {
   color: white;
   cursor: pointer;
   z-index: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .chart {
+    width: 50% !important;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -119,6 +126,7 @@
     margin-top: -55px;
     left: 1rem;
     position: relative;
+    
   }
 
   .editProfilePhoto {
@@ -128,6 +136,17 @@
   }
 
   .chart {
-    width: 80%;
+    width: 100% !important;
+  }
+  .manageUsers {
+    border-radius: 10px;
+    height: 40px;
+  }
+  
+  .manageWholeSeller {
+    border-radius: 10px;
+    height: 40px;
   }
 }
+
+
