@@ -50,7 +50,7 @@ function ManageUser() {
         <Container className={styles.displayUsers}>
           <Row className={styles.displayUsersRow}>
             {DummyUserData.map((item) => (
-              <Col lg="4" md="4.5" sm="6">
+              <Col lg="3" md="6" sm="6">
                 <div className={`${styles.mapWrapper}`}>
                   <div>
                     <img className={styles.imgWrapper} src={userPic} alt="" />

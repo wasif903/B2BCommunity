@@ -82,7 +82,7 @@
   color: rgb(0, 0, 0) !important;
 }
 .NewRequestNamePanel h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: var(--font-family-poppins) !important;
 }
 .NewRequestNamePanel code {
