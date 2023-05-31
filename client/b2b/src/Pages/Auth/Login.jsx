@@ -100,7 +100,7 @@ function Login() {
             </Col>
           </Row>
 
-          <Row className={`${styles.loginWithGoogleRow} p-0 `}>
+          <Row className={`${styles.loginWithGoogleRow} mt-5`}>
             <Col
               md="3"
               className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center`}
