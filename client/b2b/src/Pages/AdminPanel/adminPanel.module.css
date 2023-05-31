@@ -99,14 +99,18 @@
   color: rgba(255, 30, 139, 0.658);
 }
 
-.chart {
-  width: 50%;
-}
+
 
 .editIcon {
   color: white;
   cursor: pointer;
   z-index: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .chart {
+    width: 50% !important;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -128,6 +132,8 @@
   }
 
   .chart {
-    width: 80%;
+    width: 100% !important;
   }
 }
+
+

@@ -165,7 +165,7 @@ function AdminPanel() {
               ))}
             </ul>
           </Col>
-          <Col sm="6" className="d-flex justify-content-end align-items-end">
+          <Col sm="6" className="d-flex justify-content-end align-items-center">
             <div className={styles.chart}>
               <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>
