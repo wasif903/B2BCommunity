@@ -21,9 +21,11 @@
   height: 100%;
   border-radius: 8px;
 }
+
 .searchInput[type="text"] {
   color: #464646;
 }
+
 .search_icon {
   margin-left: 8px;
   color: #888;
@@ -38,14 +40,19 @@
   justify-content: center;
   align-items: center;
 }
+
 .bars {
   cursor: pointer;
 }
+
+
+
+
 @media only screen and (max-width: 600px) {
   .search_bar {
     display: flex;
     align-items: center;
-    width: 225px;
+    width: 190px;
     background-color: white;
     border-radius: 8px;
     padding: 5px 20px 5px 20px;

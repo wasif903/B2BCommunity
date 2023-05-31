@@ -594,6 +594,15 @@
   .coverPhoto {
     height: 20vh;
   }
+
+  .manageUsers {
+    height: 35px;
+    border-radius: 10px;
+  }
+  .manageWholeSeller {
+    height: 35px;
+    border-radius: 10px;
+  }
 }
 
 
