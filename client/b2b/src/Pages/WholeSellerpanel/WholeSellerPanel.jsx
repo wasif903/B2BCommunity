@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import styles from "./WholeSellerPanel.module.css";
 import image from "../../assets/my_acc.png";
 import { useState } from "react";
-import { faBroadcastTower } from '@fortawesome/free-solid-svg-icons';
+import { faBroadcastTower } from "@fortawesome/free-solid-svg-icons";
 import WholeSellerimg from "../../assets/wholeSellerAssets/WholesellerImg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -58,7 +58,6 @@ const images = [
 ];
 
 function WholeSellerPanel() {
-
   // Add the faSignalStream icon to the library
 
   const navigate = useNavigate();
@@ -125,24 +124,24 @@ function WholeSellerPanel() {
           ))}
         </Row>
 
-
         <Row className="pt-lg-5 pb-lg-3 d-flex justify-content-evenly">
-          <Col
-            lg="6"
-            className="py-3"
-          >
+          <Col lg="6" className="py-3">
             <div className={styles.TotalMembers}>
               <div></div>
               <p>Total Members</p>
               <code>23.4K</code>
               <section className={styles.TotalMembersCircleSection}>
-                <FontAwesomeIcon className={styles.faEllipsis} icon={faEllipsis} />
+                <FontAwesomeIcon
+                  className={styles.faEllipsis}
+                  icon={faEllipsis}
+                />
               </section>
             </div>
-
           </Col>
           <Col
-            lg="3" sm='6' xs='6'
+            lg="3"
+            sm="6"
+            xs="6"
             className="py-3 d-flex justify-content-center align-items-center flex-column"
           >
             <div
@@ -160,7 +159,9 @@ function WholeSellerPanel() {
           </Col>
 
           <Col
-            lg="3" sm='6' xs='6'
+            lg="3"
+            sm="6"
+            xs="6"
             className="py-3 d-flex justify-content-center align-items-center flex-column"
           >
             <div
@@ -180,7 +181,7 @@ function WholeSellerPanel() {
 
         {/************ WholeSellerInputArea ************/}
 
-        <div className={`py-4 ${styles.WholeSellerInputArea}`}>
+        <div className={`${styles.WholeSellerInputArea}`}>
           <section className="d-flex align-items-center">
             <img
               className={styles.WholeSellerInputimg}
@@ -196,12 +197,21 @@ function WholeSellerPanel() {
           <section
             className={` w-100 d-flex justify-content-center align-items-center`}
           >
-            <hr className="w-100 py-3" />
+            <hr className="m-0 p-0" style={{ width: "95%" }} />
           </section>
-          <div className="d-flex justify-content-evenly align-items-center flex-row" >
-            <FontAwesomeIcon icon={faImages} className={`fa-3x ${styles.WholeSellerimg}`} />
-            <FontAwesomeIcon icon={faVideo} className={`fa-3x ${styles.WholeSellerimg}`} />
-            <FontAwesomeIcon icon={faBroadcastTower} className={`fa-3x ${styles.WholeSellerimg}`}/>
+          <div className="d-flex justify-content-around align-items-center flex-row">
+            <FontAwesomeIcon
+              icon={faImages}
+              className={`fa-3x ${styles.WholeSellerimg}`}
+            />
+            <FontAwesomeIcon
+              icon={faVideo}
+              className={`fa-3x ${styles.WholeSellerimg}`}
+            />
+            <FontAwesomeIcon
+              icon={faBroadcastTower}
+              className={`fa-3x ${styles.WholeSellerimg}`}
+            />
           </div>
         </div>
 
@@ -209,7 +219,9 @@ function WholeSellerPanel() {
         {peopleData.map((item) => (
           <>
             <Col className="mt-5">
-              <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
+              <div
+                className={`${styles.PostCommentWrapper} d-flex flex-column`}
+              >
                 <Row>
                   <div
                     className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
@@ -219,7 +231,9 @@ function WholeSellerPanel() {
                       src={item.imageURL}
                       alt="userImg"
                     />
-                    <section className={`${styles.postingHeadingTextArea} mx-2`}>
+                    <section
+                      className={`${styles.postingHeadingTextArea} mx-2`}
+                    >
                       <h2 className={styles.postingHeadingText}>
                         {item.passion}
                       </h2>

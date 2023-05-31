@@ -137,7 +137,7 @@
   font-family: var(--font-family-roboto) !important;
 }
 .featuredNameDiv p:nth-child(2) {
-  margin: 0 !important;
+  margin: 2px 0px 0px 0px !important;
   padding: 0rem 0.5rem !important;
   font-size: 0.6rem;
   background: #80808069;
@@ -392,8 +392,8 @@
     width: 100% !important;
   }
   .featuredMapWrapper {
-    width: 23rem !important;
-    height: 33rem !important;
+    width: 20rem !important;
+    height: 27rem !important;
   }
 }
 @media all and (max-width: 1024px) {
@@ -479,8 +479,7 @@
   }
 }
 
-
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: 600px) {
   .coverPhoto {
     position: relative;
     height: 25vh;
@@ -490,7 +489,6 @@
     z-index: 0;
   }
 }
-
 
 /*************************************************** Media query for (430PX) ****************************************************/
 

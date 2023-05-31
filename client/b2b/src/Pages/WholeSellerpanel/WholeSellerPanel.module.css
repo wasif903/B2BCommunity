@@ -125,6 +125,11 @@
   border-radius: 7px;
   box-shadow: 0px 1px 5px -3px black;
   position: relative;
+  padding: 0 !important;
+  height: 8.5rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .WholeSellerInputimg {
   width: 3rem;
@@ -144,12 +149,10 @@
   left: 2rem;
 }
 
-
 .WholeSellerLowerSection {
   display: flex;
   width: 100%;
   justify-content: space-around;
- 
 }
 .WholeSellerLowerSection div {
   display: flex;
@@ -161,8 +164,9 @@
   font-family: var(--font-family-roboto) !important;
 }
 .WholeSellerimg {
- color: var(--primary-color);
- padding: 0px 20px 0px 20px;
+  color: var(--primary-color);
+  padding: 0px 20px 0px 20px;
+  font-size: 1.8rem;
 }
 
 /*************************************************** TotalMembers CSS ****************************************************/
@@ -589,8 +593,7 @@
   }
 }
 
-
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: 600px) {
   .coverPhoto {
     height: 20vh;
   }
@@ -605,10 +608,7 @@
   }
 }
 
-
 /*************************************************** Media query for (430PX) ****************************************************/
-
-
 
 @media all and (max-width: 430px) {
   .profilePhoto {
@@ -639,14 +639,13 @@
     top: 5rem;
   }
 
-
   .ViewcommentInputField {
     width: 95% !important;
   }
   .ViewcommentInputField input {
     width: 68vw !important;
   }
- 
+
   .postingHeadingTextArea div p:nth-child(1) {
     font-size: 1rem;
     margin-top: 0.2rem !important;
@@ -683,8 +682,6 @@
 /*************************************************** Media query for (375PX) ****************************************************/
 
 @media all and (max-width: 375px) {
-  
- 
   .WholeSellerLowerSection div p {
     font-size: 0.9rem;
   }
