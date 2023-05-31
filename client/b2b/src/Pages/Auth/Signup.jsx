@@ -7,8 +7,22 @@ import styles from "../../Components/signupMultiStepComps/multiStepStyles/MultiS
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { useState } from "react";
+import Row from "react-bootstrap/esm/Row";
+
+import { useCreateUserMutation } from "../../REDUX/Reducers/auth/UserSlice";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 function Signup() {
+
+  const [createUser, { isLoading, isError }] = useCreateUserMutation();
+
+  const navigate = useNavigate()
+
+  const [steps, setSteps] = useState(0);
+
   const [userFields, setUserFields] = useState({
     firstName: "",
     lastName: "",
@@ -23,52 +37,82 @@ function Signup() {
     password: "",
   });
 
-  const onChange = (e) => {
-    setUserFields({ ...userFields, [e.target.name]: e.target.value });
-  };
 
-  console.log(userFields, "user checking data");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
 
-  const prevStyle = () => {
-    return {
-      background: "blue",
-      color: "white",
-      fontSize: "16px",
-      // additional styles...
-    };
-  };
+      if (isLoading) {
+        alert("Loading");
+      } else {
 
-  // Example nextStyle function
-  const nextStyle = () => {
-    return {
-      background: "green",
-      color: "white",
-      fontSize: "16px",
-      // additional styles...
-    };
-  };
+        const res = await createUser(userFields);
 
-  return (
-    <>
-      <Container className={styles.wrapper}>
-        <div className="text-center">
-          <img src={Logo} className={styles.logo} />
-        </div>
+        if (isError) {
+          console.log(isError);
 
-        <Col
-          className={`text-center ${styles.MultiStep}`}
-          prevStyle={prevStyle}
-          nextStyle={nextStyle}
-        >
-          <MultiStep activeStep={0}>
-            <Comp1 title="Step 1" onChange={onChange} userFields={userFields} />
-            <Comp2 title="Step 2" userFields={userFields} onChange={onChange} />
-            <Comp3 title="Step 2" userFields={userFields} onChange={onChange} />
+        } else if (res.data.status === 200) {
+
+          navigate("/Otp-auth");
+
+          console.log(res, "CHECKING POSTING DATA");
+        }
+      }
+    
+
+    } catch (error) {
+    console.log(error);
+  }
+};
+
+const onChange = (e) => {
+  setUserFields({ ...userFields, [e.target.name]: e.target.value });
+};
+
+console.log(userFields, "user checking data");
+
+
+console.log(steps, "CHECK STEPS");
+
+return (
+  <>
+    <Container className={`${styles.wrapper} py-5`}>
+      <Row>
+
+
+        <Col className={`text-center ${styles.MultiStep}`}>
+          <div className="text-center">
+            <img src={Logo} className={styles.logo} />
+          </div>
+          <MultiStep
+            activeStep={steps}
+            showNavigation={steps === 2 ? false : true}
+          >
+            <Comp1
+              title="Step 1"
+              userFields={userFields}
+              setSteps={setSteps}
+              onChange={onChange}
+            />
+            <Comp2
+              title="Step 2"
+              userFields={userFields}
+              setSteps={setSteps}
+              onChange={onChange}
+            />
+            <Comp3
+              title="Step 3"
+              userFields={userFields}
+              setSteps={setSteps}
+              onChange={onChange}
+              handleSubmit={handleSubmit}
+            />
           </MultiStep>
         </Col>
-      </Container>
-    </>
-  );
+      </Row>
+    </Container>
+  </>
+);
 }
 
 export default Signup;

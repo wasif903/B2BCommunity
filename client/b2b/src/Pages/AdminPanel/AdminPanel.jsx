@@ -18,8 +18,11 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import EditProfilePhoto from "../../Components/AdminPanelModals/EditProfilePhoto";
+import { useNavigate } from "react-router-dom";
 
 function AdminPanel() {
+  const navigate = useNavigate();
+
   // Assets Start
   const aboutMe = [
     {
@@ -76,6 +79,7 @@ function AdminPanel() {
 
   const toggleEditCoverModal = () => {
     setShowEditCoverModal(!showEditCoverModal);
+    console.log(showEditCoverModal);
   };
 
   const toggleEditProfileModal = () => {
@@ -103,24 +107,22 @@ function AdminPanel() {
       </div>
       <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
         <Row>
-          <Col>
-            <div
-              className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
-            >
-              <div className={styles.editProfilePhoto}>
-                <FontAwesomeIcon
-                  icon={faPenToSquare}
-                  onClick={toggleEditProfileModal}
-                  className={`${styles.editIcon} fa-lg`}
-                />
-              </div>
-              <img src={image} className={styles.profilePhoto} alt="" />
+          <div
+            className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
+          >
+            <div className={styles.editProfilePhoto}>
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                onClick={toggleEditProfileModal}
+                className={`${styles.editIcon} fa-lg`}
+              />
             </div>
-          </Col>
+            <img src={image} className={styles.profilePhoto} alt="" />
+          </div>
         </Row>
         <Row>
           <Col className="text-center pt-4">
-            <div>
+            <div className={styles.heading}>
               <h1>James Bond</h1>
               <h4>
                 “Pushing pixels and experiences in digital products for
@@ -137,7 +139,7 @@ function AdminPanel() {
             size="6"
             className="d-flex justify-content-start align-items-center"
           >
-            <h3>About Me</h3>
+            <h3 className={styles.about}>About Me</h3>
           </Col>
           <Col size="6">
             <div className="text-end">
@@ -148,7 +150,7 @@ function AdminPanel() {
           </Col>
         </Row>
         <Row className="py-4">
-          <Col lg="6">
+          <Col sm="6">
             <ul>
               {aboutMe.map((item) => (
                 <li key={item.text} className="py-2">
@@ -163,7 +165,7 @@ function AdminPanel() {
               ))}
             </ul>
           </Col>
-          <Col lg='6' className="d-flex justify-content-end align-items-end">
+          <Col sm="6" className="d-flex justify-content-end align-items-end">
             <div className={styles.chart}>
               <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>
@@ -175,8 +177,11 @@ function AdminPanel() {
             md="6"
             className="py-3 d-md-block d-flex  justify-content-center align-items-center"
           >
-            <div className={styles.manageUsers}>
-              <h4 className="pt-2">
+            <div
+              className={styles.manageUsers}
+              onClick={() => navigate("/Manage-User")}
+            >
+              <h4 className={`${styles.btnName} pt-2`}>
                 <FontAwesomeIcon
                   className={`${styles.user} pe-3`}
                   icon={faGlobe}
@@ -189,8 +194,11 @@ function AdminPanel() {
             md="6"
             className="py-3 d-md-flex justify-content-md-end align-items-md-end  d-flex  justify-content-center align-items-center"
           >
-            <div className={`${styles.manageWholeSeller}`}>
-              <h4 className="pt-2">
+            <div
+              className={`${styles.manageWholeSeller}`}
+              onClick={() => navigate("/Manage-WholeSeller")}
+            >
+              <h4 className={`${styles.btnName} pt-2`}>
                 <FontAwesomeIcon
                   className={`${styles.manager} pe-3`}
                   icon={faCirclePlay}
@@ -200,8 +208,6 @@ function AdminPanel() {
             </div>
           </Col>
         </Row>
-
-        
       </Container>
 
       {showEditCoverModal ? (

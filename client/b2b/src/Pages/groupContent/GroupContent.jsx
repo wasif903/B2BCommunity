@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -8,7 +7,7 @@ import image from "../../assets/my_acc.png";
 import { useState } from "react";
 import WholeSellerimg from "../../assets/wholeSellerAssets/WholesellerImg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
@@ -16,10 +15,27 @@ import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ImageGallery from "react-image-gallery";
 
 function GroupContent() {
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
+
+  const images = [
+    {
+      original: "https://picsum.photos/id/1018/1000/600/",
+      thumbnail: "https://picsum.photos/id/1018/250/150/",
+    },
+    {
+      original: "https://picsum.photos/id/1015/1000/600/",
+      thumbnail: "https://picsum.photos/id/1015/250/150/",
+    },
+    {
+      original: "https://picsum.photos/id/1019/1000/600/",
+      thumbnail: "https://picsum.photos/id/1019/250/150/",
+    },
+  ];
 
   // Funtion for Edite Cover Photo
   const toggleEditCoverModal = () => {
@@ -81,34 +97,43 @@ function GroupContent() {
             <div
               className={`${styles.featuredPhotoRow} d-flex justify-content-center align-items-center gap-4 mt-2 mb-3`}
             >
-              {FeaturedData.map((item) => (
-                <div className={styles.featuredMapWrapper}>
-                  <div className={styles.featuredMapDiv}>
-                    <img
-                      className={styles.postingAreaimg}
-                      src={item.imageURL}
-                      alt="userImg"
-                    />
-                    <span>
-                      <h2 className={styles.FeaturedHeadingText}>
-                        {item.passion}
-                      </h2>
-                      <div className={`${styles.featuredNameDiv} d-flex`}>
-                        <p>{item.name}</p>
-                        <p className="px-2">Admin</p>
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={3}
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
+              >
+                {FeaturedData.map((item) => (
+                  <>
+                    <SwiperSlide className={styles.featuredMapWrapper}>
+                      <div className={styles.featuredMapDiv}>
+                        <img
+                          className={styles.postingAreaimg}
+                          src={item.imageURL}
+                          alt="userImg"
+                        />
+                        <span>
+                          <h2 className={styles.FeaturedHeadingText}>
+                            {item.passion}
+                          </h2>
+                          <div className={`${styles.featuredNameDiv} d-flex`}>
+                            <p>{item.name}</p>
+                            <p className="px-2">Admin</p>
+                          </div>
+                        </span>
                       </div>
-                    </span>
-                  </div>
-                  <div className={`${styles.featuredTextArea} mt-3`}>
-                    <p>{item.description}</p>
-                  </div>
-                  <img
-                    className={styles.featuredPhoto}
-                    src={item.imageURL}
-                    alt="userImg"
-                  />
-                </div>
-              ))}
+                      <div className={`${styles.featuredTextArea} mt-3`}>
+                        <p>{item.description}</p>
+                      </div>
+                      <img
+                        className={styles.featuredPhoto}
+                        src={item.imageURL}
+                        alt="userImg"
+                      />
+                    </SwiperSlide>
+                  </>
+                ))}
+              </Swiper>
             </div>
           </Col>
         </div>
@@ -116,98 +141,102 @@ function GroupContent() {
         {/* WholeSeller Panel posting and comment Area */}
 
         {peopleData.map((item) => (
-          <Col className="mt-5">
-            <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
-              <Row>
-                <div
-                  className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
-                >
-                  <span
-                    className={`${styles.postingAreaHeadingCircle} position-relative`}
-                  >
-                    <img
-                      className={styles.postingAreaimg}
-                      src={item.imageURL}
-                      alt="userImg"
-                    />
-                  </span>
-                  <section className={`${styles.postingHeadingTextArea} mx-2`}>
-                    <h2 className={styles.postingHeadingText}>
-                      {item.passion}
-                    </h2>
-                    <div className="d-flex">
-                      <p>{item.name}</p>
-                      <p className="px-2">Admin</p>
-                    </div>
-                  </section>
-                  <div className={styles.postingAreaThreeDots}>
-                    <FontAwesomeIcon
-                      className={styles.faEllipsis}
-                      icon={faEllipsis}
-                    />
-                  </div>
-                </div>
-              </Row>
-              <Row>
-                <div className={`${styles.AddpostArea} mt-1`}>
-                  <p className="px-5">{item.description}</p>
-                </div>
-              </Row>
-
-              {/******* Comment input field *****/}
-
-              <section
-                className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
+          <>
+            <Col className="mt-5">
+              <div
+                className={`${styles.PostCommentWrapper} d-flex flex-column`}
               >
-                <button className={`${styles.ViewComment} bg-white`}>
-                  View all comments
-                </button>
-                <div className={`${styles.CommentBox} d-flex align-center`}>
-                  <span
-                    className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
+                <Row>
+                  <div
+                    className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
                   >
                     <img
                       className={styles.postingAreaimg}
                       src={item.imageURL}
                       alt="userImg"
                     />
-                  </span>
-                  <div
-                    className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
-                  >
-                    <input type="text" placeholder="Write your comment…" />
-                    <span className="d-flex justify-content-evenly align-items-center w-25">
+
+                    <section
+                      className={`${styles.postingHeadingTextArea} mx-2`}
+                    >
+                      <h2 className={styles.postingHeadingText}>
+                        {item.passion}
+                      </h2>
+                      <div className="d-flex">
+                        <p>{item.name}</p>
+                        <p className="px-2">Admin</p>
+                      </div>
+                    </section>
+                    <div className={styles.postingAreaThreeDots}>
                       <FontAwesomeIcon
-                        className={`${styles.FaceSmile}`}
-                        icon={faFaceSmile}
+                        className={styles.faEllipsis}
+                        icon={faEllipsis}
                       />
-                      <FontAwesomeIcon
-                        className={`${styles.Paperclip}`}
-                        icon={faPaperclip}
-                      />
-                    </span>
+                    </div>
                   </div>
-                </div>
-              </section>
-            </div>
-          </Col>
+                </Row>
+                <Row>
+                  <div className={`${styles.AddpostArea} mt-1`}>
+                    <p className="px-5">{item.description}</p>
+                  </div>
+
+                  {/* <div className={`${styles.AddpostArea} mt-1`}>
+                        <p className="px-5">{langTranslator}</p>
+                      </div>
+                   */}
+                </Row>
+
+                {/******* Comment input field *****/}
+
+                <section
+                  className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
+                >
+                  <button className={`${styles.ViewComment} bg-white`}>
+                    View all comments
+                  </button>
+                  <div
+                    className={`${styles.CommentBox} d-flex align-center w-100`}
+                  >
+                    <img
+                      className={styles.postingAreaimg}
+                      src={item.imageURL}
+                      alt="userImg"
+                    />
+
+                    <div
+                      className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
+                    >
+                      <input type="text" placeholder="Write your comment…" />
+                      <span className="d-flex justify-content-evenly align-items-center w-25">
+                        <FontAwesomeIcon
+                          className={`${styles.FaceSmile}`}
+                          icon={faFaceSmile}
+                        />
+                        <FontAwesomeIcon
+                          className={`${styles.Paperclip}`}
+                          icon={faPaperclip}
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </Col>
+          </>
         ))}
 
-        <Col className="mt-5">
+        <Col className="my-5">
           <div className={`${styles.PostCommentWrapper} d-flex flex-column`}>
             <Row>
               <div
                 className={`${styles.postingAreaHeading} d-flex position-relative align-items-center mb-3`}
               >
-                <span
-                  className={`${styles.postingAreaHeadingCircle} position-relative`}
-                >
-                  <img
-                    className={styles.postingAreaimg}
-                    src={WholeSellerimg}
-                    alt="userImg"
-                  />
-                </span>
+                <img
+                  className={styles.postingAreaimg}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
+
                 <section className={`${styles.postingHeadingTextArea} mx-2 `}>
                   <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
                   <div className="d-flex">
@@ -234,25 +263,10 @@ function GroupContent() {
             </Row>
 
             {/******* Posting Photos *****/}
-            <section className={`${styles.PostingPhotos}`}>
-              <img
-                className={styles.PhotoThree}
-                src={WholeSellerimg}
-                alt="userImg"
-              />
-              <span className="">
-                <img
-                  className={styles.PhotoOne}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-
-                <img
-                  className={styles.PhotoTwo}
-                  src={WholeSellerimg}
-                  alt="userImg"
-                />
-              </span>
+            <section
+              className={`d-flex justify-content-center align-items-center  ${styles.PostingPhotos}`}
+            >
+              <ImageGallery items={images} />
             </section>
 
             {/******* Comment input field *****/}
@@ -263,16 +277,13 @@ function GroupContent() {
               <button className={`${styles.ViewComment} bg-white`}>
                 View all comments
               </button>
-              <div className={`${styles.CommentBox} d-flex align-center`}>
-                <span
-                  className={`${styles.postingAreaHeadingCircle} position-relative mt-1`}
-                >
-                  <img
-                    className={styles.postingAreaimg}
-                    src={WholeSellerimg}
-                    alt="userImg"
-                  />
-                </span>
+              <div className={`${styles.CommentBox} d-flex align-center w-100`}>
+                <img
+                  className={styles.postingAreaimg}
+                  src={WholeSellerimg}
+                  alt="userImg"
+                />
+
                 <div
                   className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                 >

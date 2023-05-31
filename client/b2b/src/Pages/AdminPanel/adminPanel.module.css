@@ -18,13 +18,15 @@
 }
 
 .profileWrapper {
-  position: relative;
+  z-index: 1;
+  flex-direction: row-reverse;
 }
 
 .editProfilePhoto {
   position: absolute;
   top: -111px;
-  left: 46rem;
+  right: 45%;
+
   border-radius: 50%;
   background-color: var(--primary-color);
   display: flex;
@@ -33,16 +35,30 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  bottom: 10rem;
+  right: 0rem;
 }
 
 .profilePhoto {
-  width: 25%;
+  width: 15rem;
   margin-top: -130px;
   border-radius: 50%;
   background-color: white;
   border: 5px solid var(--primary-color);
 }
-
+.heading h1 {
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 600 !important;
+}
+.heading h4 {
+  font-family: var(--font-family-roboto) !important;
+  color: #44444f !important;
+}
+.about {
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 500 !important;
+}
 .aboutLinks {
   list-style: none;
   text-decoration: none;
@@ -58,6 +74,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .manageWholeSeller {
@@ -69,8 +86,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
-
+.btnName {
+  font-family: var(--font-family-roboto) !important;
+}
 .manager {
   color: #70d419;
 }
@@ -97,13 +117,16 @@
   .profilePhoto {
     width: 35%;
     margin-top: -55px;
+    left: 1rem;
+    position: relative;
   }
 
   .editProfilePhoto {
-    top: -45px;
-    right: 150px;
+    top: -6rem;
     background-color: var(--primary-color);
+    left: 1rem;
   }
+
   .chart {
     width: 80%;
   }

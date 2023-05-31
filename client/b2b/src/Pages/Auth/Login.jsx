@@ -5,21 +5,31 @@ import styles from "./login.module.css";
 import Logo from "../../assets/login_logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
 function Login() {
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className={styles.loginWrapper}>
+      <div className={`${styles.loginWrapper}`}>
         <Container className={styles.loginPageWrapper}>
           <Row>
             <Col>
-              <div className="text-center py-3">
+              <div
+                onClick={() => navigate("/home")}
+                className="text-center py-3"
+              >
                 <img src={Logo} className={styles.logo} alt="site logo" />
               </div>
-              <div className="text-center">
-                <h1 className={`${styles.headings}`}>Login</h1>
+              <div className="text-center d-flex flex-column justify-content-center align-items-center">
+                <h1
+                  className={`${styles.headings}`}
+                  style={{ fontWeight: "bolder" }}
+                >
+                  Login
+                </h1>
                 <h4 className={`${styles.headings}`}>
                   Login With Your Account <br /> To Continue
                 </h4>
@@ -42,22 +52,33 @@ function Login() {
                   placeholder="Password"
                 />
 
-                <div className="d-flex justify-content-between w-100">
-                  <div>
-                    <input type="checkbox" id="checkbox" label="" />
-                    <label className="ms-1" htmlFor="checkbox">
+                <div
+                  className={`${styles.loginRememberForm} d-flex justify-content-between w-100`}
+                >
+                  <div className=" w-50">
+                    <label htmlFor="checkbox">
+                      <input
+                        type="checkbox"
+                        id="checkbox"
+                        label=""
+                        className={`${styles.Checkbox} me-2 mt-2 w-auto`}
+                      />
                       Remember Me
                     </label>
                   </div>
-                  <div>
-                    <Link to="/forget-password" className={styles.headings}>
+                  <div className="d-flex align-items-center">
+                    <Link to="/forget-password" className={styles.forget}>
                       Forgot Password?
                     </Link>
                   </div>
                 </div>
 
                 <div className="text-center d-grid mt-4 w-100">
-                  <button className={styles.SumbitBtn} type="submit">
+                  <button
+                    onClick={() => navigate("/Otp-auth")}
+                    className={styles.SumbitBtn}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>
@@ -94,16 +115,16 @@ function Login() {
             </Col>
             <Col md="9" className={` ${styles.loginOptionTxt}`}>
               <div className="text-center pt-2">
-                <h5 className={`${styles.loginOptionHeadings}`}>
+                <p className={`${styles.loginOptionHeadings} mb-0`}>
                   Login With Google
-                </h5>
+                </p>
               </div>
             </Col>
           </Row>
 
           <Row className={`${styles.loginOptionRow}`}>
-            <Col sm="12" md="9" className="text-md-start text-center">
-              <h6 className={styles.headings}>Alreay Have An Accound ?</h6>
+            <Col sm="12" md="9" className="text-md-start text-center w-auto">
+              <p className={styles.headings}>Alreay Have An Account ?</p>
             </Col>
             <Col sm="12" md="3" className="text-center text-md-end pb-2 mb-1">
               <Link to="/signup" className={styles.anchor}>

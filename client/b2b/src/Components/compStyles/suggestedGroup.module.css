@@ -1,3 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.heading h2 {
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 600 !important;
+  width: max-content;
+}
+
+.heading p {
+  font-family: var(--font-family-roboto) !important;
+  color: #92929d !important;
+}
 .JoinedGroups {
-    border-radius: 20px !important;
+  border-radius: 20px !important;
+}
+
+.cardTxt {
+  text-align: center !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: auto;
+  font-family: var(--font-family-roboto) !important;
+  color: #92929d;
+}
+
+.cardTitle {
+  text-align: center !important;
+  font-family: var(--font-family-poppins) !important;
+  font-weight: 600 !important;
+  color: black !important;
+}
+@media all and (max-width: 450px) {
+  .heading h2 {
+    width: max-content;
+  }
 }

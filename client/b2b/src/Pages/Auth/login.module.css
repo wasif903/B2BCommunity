@@ -23,8 +23,14 @@
 .headings {
   color: #555454;
   text-decoration: none !important;
+  width: max-content;
+  margin-bottom: 10px;
 }
-
+.forget {
+  color: #555454;
+  text-decoration: none !important;
+  width: max-content;
+}
 input.check:checked {
   color: var(--primary-color) !important;
 }
@@ -35,6 +41,7 @@ input.check:checked {
   font-size: 0.9rem;
   font-weight: bold;
 }
+
 .anchor:hover {
   color: var(--primary-color);
   text-decoration: none;
@@ -48,6 +55,7 @@ input.check:checked {
   justify-content: center;
   align-items: center;
 }
+
 .loginFrom {
   width: 300px;
   height: 270px;
@@ -61,39 +69,40 @@ input.check:checked {
   border: 1px solid #808080e3;
   outline: none;
 }
+
 .loginInputs:hover {
-  border: none;
   outline: none;
 }
-.loginInputs:active {
-  border: none !important;
-  outline: none !important;
-}
-.loginInputs:focus {
-  border: none !important;
-  outline: none !important;
-}
+
 .SumbitBtn {
   height: 3rem;
 }
+
 .loginOptionIcon {
   border: 3px var(--primary-color) solid;
   border-radius: 10px 0px 0px 10px;
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
 .loginOptionTxt {
   background-color: var(--primary-color);
   border-radius: 0px 10px 10px 0px;
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
 .loginWithGoogleRow {
   width: 17.5rem;
 }
+
 .loginOptionHeadings {
   color: var(--font-secondary-color);
   font-weight: 600 !important;
+}
+
+.Checkbox {
+  cursor: pointer;
 }
 
 .lines {
@@ -107,23 +116,41 @@ input.check:checked {
   .loginOptionTxt {
     display: none;
   }
+
   .loginOptionIcon {
     border: 3px var(--primary-color) solid;
     border-radius: 10px 10px 10px 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
   }
+
   .loginOptionRow {
     padding: 0px;
+  }
+
+  .loginWithGoogleRow {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .loginOptionRow {
-    width: 280px;
-    /* padding-top: 40px; */
+    width: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .loginWithGoogleRow {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 6.5rem !important;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .loginFrom {
+    width: 260px;
   }
 }

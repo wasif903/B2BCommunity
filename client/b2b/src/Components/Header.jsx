@@ -10,6 +10,7 @@ import Sidebar from "./Sidebar";
 import { useState } from "react";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,13 +20,19 @@ function Header() {
     console.log(isOpen);
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={styles.navBar}>
         <Container fluid className='"container-lg'>
           <Row>
             <Col md="6">
-              <div className="text-md-start text-center">
+              <div
+                role="button"
+                onClick={() => navigate("/")}
+                className="text-md-start text-center"
+              >
                 <img src={Logo} width="50px" alt="" />
               </div>
             </Col>
@@ -34,7 +41,7 @@ function Header() {
               md="6"
               className="d-flex justify-content-end align-items-center"
             >
-              <div className="d-flex justify-content-end align-items-center">
+              <div className="d-flex justify-md-content-end justify-content-start align-items-center">
                 <div className="mx-5">
                   <div className={`${styles.search_bar}`}>
                     <input
@@ -49,7 +56,11 @@ function Header() {
                   </div>
                 </div>
 
-                <div className="pe-lg-4 pe-2 d-none d-lg-flex">
+                <div
+                  onClick={() => navigate("/WholeSeller-panel")}
+                  role="button"
+                  className="pe-lg-4 pe-2 d-none d-lg-flex "
+                >
                   <img
                     src={myAcc}
                     width="50px"

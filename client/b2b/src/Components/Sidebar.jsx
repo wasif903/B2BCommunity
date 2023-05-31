@@ -52,7 +52,7 @@ const Sidebar = ({ setIsOpen }) => {
           <Col sm="9" className="text-start mt-3 order-md-1 order-2">
             <div
               className="d-inline-flex position-relative"
-              style={{ width: "17rem" }}
+              style={{ width: "18rem" }}
             >
               <img
                 src={userProfile}
@@ -67,8 +67,10 @@ const Sidebar = ({ setIsOpen }) => {
                 }}
                 className="d-flex pt-3 justify-content-center flex-column"
               >
-                <p className="text-white">David Smith</p>
-                <p className="text-white">davidsmith@gmail.com</p>
+                <p className={`${styles.name} text-white`}>David Smith</p>
+                <p className={`${styles.Email} text-white`}>
+                  davidsmith@gmail.com
+                </p>
               </div>
             </div>
           </Col>
@@ -76,11 +78,15 @@ const Sidebar = ({ setIsOpen }) => {
             sm="3"
             className="order-md-2 order-1 d-flex justify-content-center align-items-center"
           >
-            <button onClick={() => setIsOpen(false)} className="mt-2">
+            <button
+              onClick={() => setIsOpen(false)}
+              className={`${styles.SidebarBtn} mt-2`}
+            >
               X
             </button>
           </Col>
         </Row>
+        <div className={styles.line}></div>
         <Row>
           <Col>
             <div className={`${styles.sidebarUl} mt-lg-5`}>

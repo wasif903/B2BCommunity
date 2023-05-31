@@ -1,49 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Space+Grotesk:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Nunito+Sans&family=Poppins:wght@600&display=swap");
 
 .main {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  height: 100vh;
 }
 .heading {
-  margin-top: 8rem;
   position: relative;
-  bottom: 17rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .heading h2 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 35px;
-  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 2rem;
 }
 .heading p {
   width: 25rem;
-  font-family: Mulish;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 20px;
   letter-spacing: 0.5px;
+  text-align: center;
+  font-family: "Mulish", sans-serif !important;
 }
-.inputFields {
-  position: relative;
-  bottom: 15rem;
-  right: 3rem;
-}
-.inputs {
+
+.otpAuhtFields {
   border: none;
   border-bottom: 1px solid #979797;
-  margin-left: 3rem;
   -moz-appearance: textfield;
   appearance: 0;
   width: 51px;
   outline: none;
 }
-.inputs[type="number"] {
+
+.otpAuhtFields[type="number"] {
   font-size: 2rem;
-  padding-left: 1rem;
 }
+
 .AuthBtn {
   width: 22rem;
   border: none;
@@ -52,32 +51,83 @@
   font-size: 1.2rem;
   position: relative;
   bottom: 12rem;
-  right: 1.3rem;
   cursor: pointer;
 }
-.footer {
+
+.mainBtn {
   display: flex;
-  width: 23rem;
-  justify-content: space-between;
-  position: relative;
-  bottom: 10rem;
-  right: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100% !important;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.footer p,
+.footer NavLink {
+  font-family: "Nunito Sans", sans-serif !important;
+  width: auto;
+}
+@media all and (min-width: 400px) {
+  .mainBtn {
+    font-size: 1.4rem !important;
+  }
 }
 
-.footer a,
-.footer a:hover {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-@media all and (max-width: 400px) {
+@media all and (max-width: 460px) {
   html {
     font-size: 85%;
   }
+
   .inputs {
-    margin-left: 2rem;
+    width: 4rem !important;
+  }
+  .inputFields {
+    gap: 1rem !important;
+    width: 28rem;
   }
   .AuthBtn {
-    width: 23rem;
+    width: 24rem;
+    height: 4rem;
   }
+  .heading p {
+    width: 98% !important;
+    font-size: 1.2rem !important;
+  }
+  .otpAuhtFields {
+    width: 4rem !important;
+    text-align: center;
+    font-size: 10px;
+    border: none;
+    margin-right: 10px !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 2px grey solid;
+    overflow-y: hidden !important;
+  }
+}
+
+.otpAuhtFields::-webkit-inner-spin-button {
+  display: none !important;
+}
+.otpAuhtFields::-webkit-outer-spin-button {
+  display: none !important;
+}
+
+.otpAuhtFields {
+  margin-right: 10px !important;
+  text-align: center;
+}
+
+.otpAuhtFields:focus {
+  box-shadow: none !important;
+  outline: none;
+  overflow-y: hidden !important;
+}
+
+.otpAuhtFields:hover {
+  box-shadow: none !important;
+  outline: none;
+  overflow-y: hidden !important;
 }

@@ -17,6 +17,8 @@
 
 .headings {
   color: var(--font-secondary-color);
+  margin: 0 !important;
+  width: auto;
 }
 
 .anchor {
@@ -35,6 +37,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.loginOptionMiddleRow {
+  width: 300px;
+  height: 85px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .loginOptionIcon {
   border: 3px white solid;
@@ -45,13 +56,16 @@
 .loginOptionTxt {
   background-color: white;
   border-radius: 0px 10px 10px 0px;
-  padding-top: 11px;
-  padding-bottom: 11px;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .loginOptionHeadings {
   color: var(--font-inter-color);
-  font-weight: 600 !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 .lines {
@@ -68,22 +82,15 @@
   .loginOptionIcon {
     border: 3px white solid;
     border-radius: 10px 10px 10px 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 175px !important;
   }
-  
- 
-}
 
-@media only screen and (max-width: 600px) {
-  
-  .loginOptionRow {
-    /* width: 100px;
-    height: 85px; */
-    padding-top: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .siteLogo {
+    width: 80%;
   }
- 
+
+  .headings,
+  .anchor {
+    font-size: 1.5rem !important;
+  }
 }
