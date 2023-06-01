@@ -1,15 +1,26 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import style from "./OptAuth.module.css";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useVerfiyUserOtpMutation } from "../../REDUX/Reducers/auth/UserSlice";
+import { emailContext } from "../../contexts/SignupContext";
+import { useCookies } from 'react-cookie';
 
 function OtpAuth() {
+
   const navigate = useNavigate();
+
+  const [cookies, setCookie] = useCookies(['cookie']);
 
   const [otp, setOtp] = useState("");
 
   const inputRefs = useRef([]);
+
+  const { email } = useContext(emailContext);
+
+  // eslint-disable-next-line no-unused-vars
+  const [verfiyUserOtp, { isLoading, isError }] = useVerfiyUserOtpMutation();
 
   const handleOtpChange = (event, index) => {
     const { value } = event.target;
@@ -25,6 +36,34 @@ function OtpAuth() {
       }
     }
   };
+  console.log(cookies.cookies);
+
+
+  const otpVerify = async () => {
+
+    console.log(email, "logged In ")
+
+    try {
+
+      const res = await verfiyUserOtp({ email: email, otpCode: Number(otp) });
+      console.log(res);
+
+      if (isError) {
+        console.log(isError, "Error Occured")
+
+      } else if (res.data.status === 200) {
+
+
+        navigate('/home')
+        setCookie('cookies', res.data.token);
+
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <Container className={`${style.main} text-center`}>
@@ -41,7 +80,7 @@ function OtpAuth() {
       <Row>
         <Col className="py-3 d-flex flex-column justify-content-center align-items-center">
           <form className={style.inputFields}>
-            {[...Array(5)].map((_, index) => (
+            {[...Array(6)].map((_, index) => (
               <input
                 className={style.otpAuhtFields}
                 ref={(ref) => (inputRefs.current[index] = ref)}
@@ -55,7 +94,7 @@ function OtpAuth() {
           </form>
 
           <div className="pt-5 w-100">
-            <button className={style.mainBtn} onClick={() => navigate("/home")}>
+            <button className={style.mainBtn} onClick={otpVerify}>
               Submit
             </button>
           </div>

@@ -4,7 +4,7 @@ import { signup } from './auth/UserSlice';
 
 const store = configureStore({
     reducer: {
-        [signup.reducerPath]: signup.reducer
+        [signup.reducerPath]: signup.reducer,
     },
 
     middleware: (authMiddleware) =>

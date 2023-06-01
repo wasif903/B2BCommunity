@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_BASE_URL } from '../../../utils/BaseUrlConfig';
 
-// Define your base URL
-const baseUrl = 'http://localhost:5000/';
+const baseUrl = API_BASE_URL;
 
 // Create an API slice
 export const signup = createApi({
@@ -15,9 +15,16 @@ export const signup = createApi({
         body: user,
       }),
     }),
+    verfiyUserOtp: builder.mutation({
+      query: (data) => ({
+        url: 'auth/verify-otp',
+        method: 'PATCH',
+        body: data,
+      }), 
+    })
   }),
 });
 
 
 // Export the generated API endpoints
-export const { useCreateUserMutation } = signup;
+export const { useCreateUserMutation, useVerfiyUserOtpMutation } = signup;

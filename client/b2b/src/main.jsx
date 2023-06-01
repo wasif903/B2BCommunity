@@ -7,17 +7,23 @@ import { BrowserRouter } from "react-router-dom";
 // Import Swiper styles
 import "react-image-gallery/styles/css/image-gallery.css";
 import 'swiper/css';
+import { CookiesProvider } from 'react-cookie';
 
 // Redux
 import { Provider } from 'react-redux'
 import store from './REDUX/Reducers/store';
+import { EmailProvider } from './contexts/SignupContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
       <React.StrictMode>
-        <App />
+        <EmailProvider>
+          <CookiesProvider>
+            <App />
+          </CookiesProvider>
+        </EmailProvider>
       </React.StrictMode>
-    </BrowserRouter>
-  </Provider >
+    </Provider >
+  </BrowserRouter>
 )
