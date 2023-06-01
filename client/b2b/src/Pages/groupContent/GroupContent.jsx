@@ -17,6 +17,7 @@ import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ImageGallery from "react-image-gallery";
+import breakpoints from "../../utils/SwiperBreakPoints";
 
 function GroupContent() {
   // useState for Edite Cover Photo
@@ -98,8 +99,9 @@ function GroupContent() {
               className={`${styles.featuredPhotoRow} d-flex justify-content-center align-items-center gap-4 mt-2 mb-3`}
             >
               <Swiper
-                spaceBetween={20}
+                spaceBetween={15}
                 slidesPerView={3}
+                // breakpoints={breakpoints}
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
               >
@@ -266,7 +268,7 @@ function GroupContent() {
             <section
               className={`d-flex justify-content-center align-items-center  ${styles.PostingPhotos}`}
             >
-              <ImageGallery items={images} />
+              <ImageGallery items={images} sizes={1} />
             </section>
 
             {/******* Comment input field *****/}
