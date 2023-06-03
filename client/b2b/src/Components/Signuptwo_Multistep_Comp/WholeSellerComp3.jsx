@@ -10,7 +10,7 @@ import { useEffect } from "react";
 // Importing SIGNUP FROM REDUX
 
 // eslint-disable-next-line react/prop-types
-function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
+function WholeSellerComp3({ onChange, userFields, setSteps, handleSubmit }) {
   // eslint-disable-next-line react/prop-types
   const { email, password, PhoneNumber } = userFields;
 
@@ -145,4 +145,4 @@ function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
   );
 }
 
-export default Comp3;
+export default WholeSellerComp3;

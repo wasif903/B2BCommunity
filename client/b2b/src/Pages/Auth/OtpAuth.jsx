@@ -52,11 +52,8 @@ function OtpAuth() {
         console.log(isError, "Error Occured")
 
       } else if (res.data.status === 200) {
-
-
         navigate('/home')
         setCookie('cookie', res.data.cookie);
-
       }
 
     } catch (error) {

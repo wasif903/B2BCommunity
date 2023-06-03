@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-function Comp1({ onChange, userFields, setSteps }) {
+function WholeSellerComp2({ onChange, userFields, setSteps }) {
   // eslint-disable-next-line react/prop-types
-  const { firstName, lastName, VAT_ID, companyName } = userFields;
+  const { addressLine, zipCode, city, country } = userFields;
 
   useEffect(() => {
-    setSteps(0);
+    setSteps(1);
   }, []);
 
   return (
@@ -30,37 +30,37 @@ function Comp1({ onChange, userFields, setSteps }) {
             <Row>
               <input
                 type="text"
-                value={firstName}
+                name="addressLine"
+                value={addressLine}
                 onChange={onChange}
-                name="firstName"
-                placeholder="First Name"
+                placeholder="Your address line"
               />
             </Row>
             <Row>
               <input
                 type="text"
-                value={lastName}
+                name="zipCode"
+                value={zipCode}
                 onChange={onChange}
-                name="lastName"
-                placeholder="Last Name"
+                placeholder="Zip code"
               />
             </Row>
             <Row>
               <input
                 type="text"
-                value={companyName}
+                name="country"
+                value={country}
                 onChange={onChange}
-                name="companyName"
-                placeholder="Company Name"
+                placeholder="Country"
               />
             </Row>
             <Row>
               <input
                 type="text"
-                value={VAT_ID}
+                name="city"
+                value={city}
                 onChange={onChange}
-                name="VAT_ID"
-                placeholder="VAT-ID"
+                placeholder="City"
               />
             </Row>
           </form>
@@ -78,4 +78,4 @@ function Comp1({ onChange, userFields, setSteps }) {
   );
 }
 
-export default Comp1;
+export default WholeSellerComp2;

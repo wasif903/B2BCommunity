@@ -1,7 +1,4 @@
 import MultiStep from "react-multistep";
-import SignuptwoComp1 from "../../Components/Signuptwo_Multistep_Comp/SignuptwoComp1";
-import SignuptwoComp2 from "../../Components/Signuptwo_Multistep_Comp/SignuptwoComp2";
-import SignuptwoComp3 from "../../Components/Signuptwo_Multistep_Comp/SignuptwoComp3";
 import Logo from "../../assets/logo.png";
 import styles from "../../Components/signupMultiStepComps/multiStepStyles/MultiStepComp.module.css";
 import Container from "react-bootstrap/Container";
@@ -11,8 +8,12 @@ import Row from "react-bootstrap/esm/Row";
 import { useCreateUserMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { emailContext } from "../../contexts/SignupContext";
+import WholeSellerComp1 from "../../Components/Signuptwo_Multistep_Comp/WholeSellerComp1";
+import WholeSellerComp2 from "../../Components/Signuptwo_Multistep_Comp/WholeSellerComp2.jsx";
+import WholeSellerComp3 from "../../Components/Signuptwo_Multistep_Comp/WholeSellerComp3.jsx";
 
-function SignupTwo() {
+function AddWholeSeller() {
+  // eslint-disable-next-line no-unused-vars
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
 
   const { setEmail } = useContext(emailContext);
@@ -33,30 +34,29 @@ function SignupTwo() {
     PhoneNumber: "",
     email: "",
     password: "",
-    roles: "",
+    roles: "Seller",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+      console.log(userFields, "UserDataa");
     try {
-      if (isLoading) {
-        alert("Loading");
-      } else {
-        const res = await createUser(userFields);
+      const res = await createUser(userFields);
 
-        if (res.data.status === 200) {
-          console.log(res);
-          setEmail(res.data.data.email);
-          navigate("/otp-auth");
-        } else {
-          console.log(isError);
-        }
+      if (res.data.status === 200) {
+        console.log(res);
+        setEmail(res.data.data.email);
+        navigate("/otp-auth");
+        console.log(res.data.status)
+      } else {
+        console.log(isError);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+
 
   const onChange = (e) => {
     setUserFields({ ...userFields, [e.target.name]: e.target.value });
@@ -74,19 +74,19 @@ function SignupTwo() {
               activeStep={steps}
               showNavigation={steps === 2 ? false : true}
             >
-              <SignuptwoComp1
+              <WholeSellerComp1
                 title="Step 1"
                 userFields={userFields}
                 setSteps={setSteps}
                 onChange={onChange}
               />
-              <SignuptwoComp2
+              <WholeSellerComp2
                 title="Step 2"
                 userFields={userFields}
                 setSteps={setSteps}
                 onChange={onChange}
               />
-              <SignuptwoComp3
+              <WholeSellerComp3
                 title="Step 3"
                 userFields={userFields}
                 setSteps={setSteps}
@@ -101,4 +101,4 @@ function SignupTwo() {
   );
 }
 
-export default SignupTwo;
+export default AddWholeSeller;
