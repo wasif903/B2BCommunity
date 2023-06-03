@@ -5,10 +5,11 @@ import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import userProfile from "../assets/my_acc.png";
+import { useCookies } from "react-cookie";
 
 // eslint-disable-next-line react/prop-types
 const Sidebar = ({ setIsOpen }) => {
@@ -45,11 +46,40 @@ const Sidebar = ({ setIsOpen }) => {
     },
   ];
 
+  const navigate = useNavigate()
+
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies(['cookie']);
+
+  const logout = () => {
+    try {
+      setCookie('cookie', '', { expires: new Date(0) });
+      console.log("Logged Out");
+      setIsOpen(false);
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      <Container fluid className={setIsOpen ? styles.sidebarWrapper : styles.sidebarWrapperNot }>
+      <Container
+        fluid
+        className={setIsOpen ? styles.sidebarWrapper : styles.sidebarWrapperNot}
+      >
         <Row>
-          <Col lg="9" className="text-start mt-3 order-md-1 order-2">
+          <Col className="order-lg-2 order-1 d-flex justify-content-center align-items-center">
+            <button
+              onClick={() => setIsOpen(false)}
+              className={`${styles.SidebarBtn} mt-4`}
+            >
+              X
+            </button>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-start mt-3 order-lg-1 order-2">
             <div
               className="d-inline-flex position-relative"
               style={{ width: "18rem" }}
@@ -72,18 +102,8 @@ const Sidebar = ({ setIsOpen }) => {
               </div>
             </div>
           </Col>
-          <Col
-            lg="3"
-            className="order-md-2 order-1 d-flex justify-content-center align-items-center"
-          >
-            <button
-              onClick={() => setIsOpen(false)}
-              className={`${styles.SidebarBtn} mt-4`}
-            >
-              X
-            </button>
-          </Col>
         </Row>
+
         <div className={styles.line}></div>
         <Row>
           <Col>
@@ -109,7 +129,7 @@ const Sidebar = ({ setIsOpen }) => {
               ))}
             </div>
 
-            <button className="btn-style-2 mt-4 px-4">
+            <button onClick={logout} className="btn-style-2 mt-4 px-4">
               Logout{" "}
               <FontAwesomeIcon className="ps-2" icon={faRightFromBracket} />
             </button>

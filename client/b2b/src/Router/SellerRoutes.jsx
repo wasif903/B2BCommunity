@@ -12,6 +12,7 @@ import WholeSellerPanel from "../Pages/WholeSellerpanel/WholeSellerPanel";
 import GroupContent from "../Pages/groupContent/GroupContent";
 import AllGroup from "../Pages/ManageData/AllGroup";
 import ManageGroup from "../Pages/ManageData/ManageGroup";
+import SignupTwo from "../Pages/Auth/SignupTwo";
 
 const sellerRoutes = [
   {
@@ -70,7 +71,10 @@ const sellerRoutes = [
     path: "/Manage-Group",
     element: <ManageGroup />,
   },
+  {
+    path: "/Signup-Two",
+    element: <SignupTwo />,
+  },
 ];
-
 
 export default sellerRoutes;

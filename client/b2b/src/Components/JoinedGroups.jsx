@@ -86,9 +86,9 @@ function JoinedGroups() {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >
-              {cardData.map((card) => (
+              {cardData.map((card, index) => (
                 <>
-                  <SwiperSlide className="d-inline-flex justify-content-center align-items-center">
+                  <SwiperSlide key={index + 1} className="d-inline-flex justify-content-center align-items-center">
                     <Card
                       className={`${styles.suggested_group_cards}`}
                       style={{ width: "25rem", cursor: "pointer" }}

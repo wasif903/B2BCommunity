@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -7,9 +8,47 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { useUserLoginMutation } from "../../REDUX/Reducers/auth/UserSlice";
+import { useCookies } from "react-cookie";
 
 function Login() {
   const navigate = useNavigate();
+
+  const [userLoginFields, setUserLoginFields] = useState({
+    email: "",
+    password: "",
+  });
+
+  // eslint-disable-next-line no-unused-vars
+  const [cookie, setCookie] = useCookies();
+
+  // eslint-disable-next-line no-unused-vars
+  const [userLogin, { isLoading, isError }] = useUserLoginMutation();
+
+  const onChange = (e) => {
+    setUserLoginFields({ ...userLoginFields, [e.target.name]: e.target.value });
+  };
+
+  const sumbitData = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await userLogin(userLoginFields);
+
+      if (res.data.status === 200) {
+        console.log(res, "response");
+        setCookie("cookie", res.data.cookie);
+        navigate("/home");
+
+      } else {
+        alert("Check Your Credentials And Try Again");
+      }
+    } catch (error) {
+      console.log(error);
+      console.log(isError, "REdux ERROR");
+    }
+  };
+
+  const { email, password } = userLoginFields;
 
   return (
     <>
@@ -44,12 +83,18 @@ function Login() {
                   className={`${styles.loginInputs} form-control-lg my-3 w-100`}
                   type="email"
                   placeholder="Email"
+                  onChange={onChange}
+                  value={email}
+                  name="email"
                 />
 
                 <input
                   className={`form-control-lg my-3 w-100 ${styles.loginInputs}`}
                   type="password"
                   placeholder="Password"
+                  onChange={onChange}
+                  value={password}
+                  name="password"
                 />
 
                 <div
@@ -75,7 +120,7 @@ function Login() {
 
                 <div className="text-center d-grid mt-4 w-100">
                   <button
-                    onClick={onLogin}
+                    onClick={sumbitData}
                     className={styles.SumbitBtn}
                     type="submit"
                   >

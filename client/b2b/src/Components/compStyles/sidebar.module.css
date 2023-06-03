@@ -1,6 +1,6 @@
 .sidebarWrapper {
   position: fixed;
-  width: 25% !important;
+  width: 30% !important;
   background-color: var(--primary-color);
   height: 100vh;
   top: 0;
@@ -8,8 +8,8 @@
   z-index: 2;
   transition: all 0.3s ease;
   transform: translateX(0px);
-  
 }
+
 .sidebarWrapperNot {
   position: fixed;
   width: 25% !important;
@@ -29,7 +29,7 @@
 .SidebarBtn {
   z-index: 1;
   border: 3px solid;
-  border-radius: 50% !important;
+  border-radius: 10px !important;
   height: 0.5rem;
   width: 0.5rem;
   display: flex;
