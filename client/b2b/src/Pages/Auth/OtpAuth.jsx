@@ -36,7 +36,7 @@ function OtpAuth() {
       }
     }
   };
-  console.log(cookies.cookies);
+  console.log(cookies);
 
 
   const otpVerify = async () => {
@@ -55,7 +55,7 @@ function OtpAuth() {
 
 
         navigate('/home')
-        setCookie('cookies', res.data.token);
+        setCookie('cookie', res.data.cookie);
 
       }
 

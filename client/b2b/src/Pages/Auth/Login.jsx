@@ -75,7 +75,7 @@ function Login() {
 
                 <div className="text-center d-grid mt-4 w-100">
                   <button
-                    onClick={() => navigate("/Otp-auth")}
+                    onClick={onLogin}
                     className={styles.SumbitBtn}
                     type="submit"
                   >

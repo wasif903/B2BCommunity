@@ -21,10 +21,17 @@ export const signup = createApi({
         method: 'PATCH',
         body: data,
       }), 
+    }),
+    userLogin: builder.mutation({
+      query: (data) => ({
+        url: 'auth/login',
+        method: 'PATCH',
+        body: data,
+      }), 
     })
   }),
 });
 
 
 // Export the generated API endpoints
-export const { useCreateUserMutation, useVerfiyUserOtpMutation } = signup;
+export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation } = signup;
