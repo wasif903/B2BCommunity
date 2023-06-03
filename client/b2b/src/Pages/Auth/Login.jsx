@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -10,6 +11,21 @@ import Form from "react-bootstrap/Form";
 
 function Login() {
   const navigate = useNavigate();
+
+  const [userLoginFields, setUserLoginFields] = useState({
+    email: "",
+    password: "",
+  });
+
+  const onChange = (e) => {
+    setUserLoginFields({ ...userLoginFields, [e.target.name]: e.target.value });
+  };
+
+  const sumbitData = () => {
+    console.log(userLoginFields);
+  };
+
+  const { email, password } = userLoginFields;
 
   return (
     <>
@@ -44,12 +60,18 @@ function Login() {
                   className={`${styles.loginInputs} form-control-lg my-3 w-100`}
                   type="email"
                   placeholder="Email"
+                  onChange={onChange}
+                  value={email}
+                  name="email"
                 />
 
                 <input
                   className={`form-control-lg my-3 w-100 ${styles.loginInputs}`}
                   type="password"
                   placeholder="Password"
+                  onChange={onChange}
+                  value={password}
+                  name="password"
                 />
 
                 <div
@@ -75,7 +97,9 @@ function Login() {
 
                 <div className="text-center d-grid mt-4 w-100">
                   <button
-                    onClick={() => navigate("/Otp-auth")}
+                    onClick={() => {
+                      navigate("/home"), sumbitData();
+                    }}
                     className={styles.SumbitBtn}
                     type="submit"
                   >
