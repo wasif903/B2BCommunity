@@ -30,7 +30,6 @@ function WholeSellerComp3({ onChange, userFields, setSteps, handleSubmit }) {
     setSteps(2);
   }, []);
 
-  const navigate = useNavigate();
 
   return (
     <>
@@ -124,9 +123,7 @@ function WholeSellerComp3({ onChange, userFields, setSteps, handleSubmit }) {
           <button
             type="submit"
             className="my-4"
-            onClick={() => {
-              handleSubmit, navigate("/Otp-auth");
-            }}
+            onClick={handleSubmit}
           >
             Submit
           </button>

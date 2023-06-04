@@ -2,16 +2,17 @@ import { useState, useRef, useContext } from "react";
 import style from "./OptAuth.module.css";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { useVerfiyUserOtpMutation } from "../../REDUX/Reducers/auth/UserSlice";
+import {
+  useResendOtpMutation,
+  useVerfiyUserOtpMutation,
+} from "../../REDUX/Reducers/auth/UserSlice";
 import { emailContext } from "../../contexts/SignupContext";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 
 function OtpAuth() {
-
   const navigate = useNavigate();
 
-  const [cookies, setCookie] = useCookies(['cookie']);
+  const [cookies, setCookie] = useCookies(["cookie"]);
 
   const [otp, setOtp] = useState("");
 
@@ -21,6 +22,8 @@ function OtpAuth() {
 
   // eslint-disable-next-line no-unused-vars
   const [verfiyUserOtp, { isLoading, isError }] = useVerfiyUserOtpMutation();
+
+  const [resendOtp] = useResendOtpMutation();
 
   const handleOtpChange = (event, index) => {
     const { value } = event.target;
@@ -38,29 +41,32 @@ function OtpAuth() {
   };
   console.log(cookies);
 
-
   const otpVerify = async () => {
-
-    console.log(email, "logged In ")
+    console.log(email, "logged In ");
 
     try {
-
       const res = await verfiyUserOtp({ email: email, otpCode: Number(otp) });
       console.log(res);
 
       if (isError) {
-        console.log(isError, "Error Occured")
-
+        console.log(isError, "Error Occured");
       } else if (res.data.status === 200) {
-        navigate('/home')
-        setCookie('cookie', res.data.cookie);
+        navigate("/home");
+        setCookie("cookie", res.data.cookie);
       }
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
+  const onResendOtp = async (e) => {
+    e.preventDefault();
+    try {
+      await resendOtp({ email: email });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container className={`${style.main} text-center`}>
@@ -101,7 +107,7 @@ function OtpAuth() {
           >
             <p className="text-start">Don’t received the code?</p>
             <p>
-              <NavLink to="/">Resend Code</NavLink>
+              <button onClick={onResendOtp}>Resend Code</button>
             </p>
           </div>
         </Col>

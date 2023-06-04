@@ -15,6 +15,13 @@ export const signup = createApi({
         body: user,
       }),
     }),
+    createSeller: builder.mutation({
+      query: (user) => ({
+        url: 'auth/wholeseller-register',
+        method: 'POST',
+        body: user,
+      }),
+    }),
     verfiyUserOtp: builder.mutation({
       query: (data) => ({
         url: 'auth/verify-otp',
@@ -28,10 +35,17 @@ export const signup = createApi({
         method: 'POST',
         body: data,
       }), 
+    }),
+    resendOtp: builder.mutation({
+      query: (data) => ({
+        url: 'auth/resend-otp',
+        method: 'PATCH',
+        body: data,
+      }), 
     })
   }),
 });
 
 
 // Export the generated API endpoints
-export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation } = signup;
+export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation, useCreateSellerMutation, useResendOtpMutation } = signup;
