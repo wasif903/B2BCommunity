@@ -54,6 +54,7 @@ function OtpAuth() {
       } else if (res.data.status === 200) {
         navigate("/home");
         setCookie("cookie", res.data.cookie);
+        setCookie("userRole", res.data.user.role[0]);
       }
     } catch (error) {
       console.log(error);

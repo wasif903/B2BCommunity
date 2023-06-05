@@ -15,7 +15,7 @@ import { useCookies } from "react-cookie";
 const Sidebar = ({ setIsOpen }) => {
   const menuItem = [
     {
-      path: "/AdminDashboard",
+      path: "/admin-panel",
       name: "Dashboard",
       icon: faCommentDots,
     },
@@ -54,6 +54,7 @@ const Sidebar = ({ setIsOpen }) => {
   const logout = () => {
     try {
       setCookie('cookie', '', { expires: new Date(0) });
+      setCookie('userRole', '', { expires: new Date(0) });
       setIsOpen(false);
       navigate('/login');
     } catch (error) {

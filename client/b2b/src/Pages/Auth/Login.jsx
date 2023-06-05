@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -10,7 +10,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useUserLoginMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useCookies } from "react-cookie";
-import { userContext } from "../../contexts/UserContext";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,8 +18,6 @@ function Login() {
     email: "",
     password: "",
   });
-
-  const { user, setLoginUser} = useContext(userContext);
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
@@ -38,16 +35,15 @@ function Login() {
     try {
       const res = await userLogin(userLoginFields);
 
-      if (res.data.status === 200) {
+      if (!isError) {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
         // check karun/? han 
-        console.log(user, "------");
         navigate("/home");
-
-      } else if (res.data.status === 404) {
-        alert("Check Your Credentials And Try Again");
+      
+      } else {
+        console.log("Other Error Here")
       }
     } catch (error) {
       console.log(error);
