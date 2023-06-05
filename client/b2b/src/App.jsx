@@ -50,6 +50,5 @@ function App() {
     
   </>;
 }
-// dekh rha haina ? han karo
 
 export default App;
