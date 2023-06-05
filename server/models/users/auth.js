@@ -43,7 +43,6 @@ const AuthSchema = new Schema(
       require: true,
     },
 
-
     email: {
       type: String,
       require: true,
