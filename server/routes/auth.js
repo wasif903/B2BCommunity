@@ -208,6 +208,27 @@ router.patch('/resend-otp', async (req, res) => {
       resendOtp.otpCode = otpCode;
       resendOtp.otpExpire = Date.now() + 600000; // OTP expires in 10 minutes
 
+      // Set up the email message options
+      const mailOptions = {
+        from: "abdulrehman@techsmiths.co", // sender address
+        to: userExist.email, // receiver address
+        subject: "Welcome to My Website", // Subject line
+        html: `<p>Confirm Your OTP ${otpCode}</p>`, // plain text body
+      };
+
+      // Send the email with the OTP code
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          return res.status(500).json({ message: "Email sending failed" });
+        } else {
+          console.log("Email sent: " + info.response);
+          return res
+            .status(200)
+            .json({ message: "OTP created and sent successfully" });
+        }
+      });
+
       const saveUpdatedOtp = await resendOtp.save();
 
       res.status(200).json({ data: saveUpdatedOtp, status: 200 });
@@ -219,6 +240,55 @@ router.patch('/resend-otp', async (req, res) => {
     console.log(error);
   }
 });
+
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const userExist = await users.findOne({ email: req.body.email });
+
+    if (!userExist) {
+      res.status(404).json({ message: "Account With This Email Doesn't Exist" })
+    } else {
+
+      const resendOtp = await userotp.findOne({ userid: userExist._id });
+
+      const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+      // Save the OTP code to the user's record in the database
+      resendOtp.otpCode = otpCode;
+      resendOtp.otpExpire = Date.now() + 600000; // OTP expires in 10 minutes
+
+      // Set up the email message options
+      const mailOptions = {
+        from: "abdulrehman@techsmiths.co", // sender address
+        to: userExist.email, // receiver address
+        subject: "Welcome to My Website", // Subject line
+        html: `<p>Confirm Your OTP ${otpCode}</p>`, // plain text body
+      };
+
+      // Send the email with the OTP code
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          return res.status(500).json({ message: "Email sending failed" });
+        } else {
+          console.log("Email sent: " + info.response);
+          return res
+            .status(200)
+            .json({ message: "OTP created and sent successfully" });
+        }
+      });
+
+      const saveUpdatedOtp = await resendOtp.save();
+
+      res.status(200).json({ data: saveUpdatedOtp, status: 200 });
+
+    }
+
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
+  }
+})
 
 
 export default router;
