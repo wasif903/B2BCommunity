@@ -1,5 +1,5 @@
 import express from "express";
-import users from '../models/users/auth.js'
+import users from '../models/users/user.js'
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { body, validationResult } from "express-validator";
@@ -30,8 +30,10 @@ router.post("/register", async (req, res) => {
       const createUser = new users({
         email: req.body.email,
         password: securedPass,
-        roles: req.body.roles,
+        role: req.body.role,
       });
+
+      const saveUser = await createUser.save();
 
 
       const createUserDetails = new userdetails({
@@ -53,7 +55,6 @@ router.post("/register", async (req, res) => {
         otpExpire: getOtpExpire,
       });
 
-      const saveUser = await createUser.save();
       const saveUserDetails = await createUserDetails.save();
       const saveOtp = await createOtp.save();
 
@@ -114,7 +115,7 @@ router.patch("/verify-otp", async (req, res) => {
             {
               email: checkOtp.email,
               userID: checkOtp.id,
-              roles: checkOtp.roles,
+              role: checkOtp.role,
               invitation: checkOtp.invitation,
             },
             process.env.JWT_SECRET
@@ -155,7 +156,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const userExists = await AuthSchema.findOne({ email: req.body.email });
+      const userExists = await users.findOne({ email: req.body.email });
 
       if (userExists) {
         const comparePass = await bcrypt.compare(
@@ -168,7 +169,7 @@ router.post(
             {
               email: userExists.email,
               userID: userExists.id,
-              roles: userExists.roles,
+              role: userExists.role,
               invitation: userExists.invitation,
             },
             process.env.JWT_SECRET
@@ -189,6 +190,35 @@ router.post(
     }
   }
 );
+
+
+router.patch('/resend-otp', async (req, res) => {
+  try {
+    const userExist = await users.findOne({ email: req.body.email });
+
+    if (!userExist) {
+      res.status(404).json({ message: "Account With This Email Doesn't Exist" })
+    } else {
+
+      const resendOtp = await userotp.findOne({ userid: userExist._id });
+
+      const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+      // Save the OTP code to the user's record in the database
+      resendOtp.otpCode = otpCode;
+      resendOtp.otpExpire = Date.now() + 600000; // OTP expires in 10 minutes
+
+      const saveUpdatedOtp = await resendOtp.save();
+
+      res.status(200).json({ data: saveUpdatedOtp, status: 200 });
+
+    }
+
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
+  }
+});
 
 
 export default router;

@@ -1,7 +1,7 @@
 import express from "express";
 import Group from "../models/groups/Group.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
-import auth from "../models/users/auth.js";
+import auth from "../models/users/user.js";
 
 const router = express.Router();
 

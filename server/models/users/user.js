@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   timestamp: { type: Date, default: Date.now },
   role: {
-    type: String,
+    type: [String],
     enum: ["User", "Seller"],
     default: ["User"],
     require: true,

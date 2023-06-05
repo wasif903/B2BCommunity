@@ -11,10 +11,10 @@ const authMiddleware = (allowedRoles, allowedStatus) => {
       }
 
       const decodedToken = Jwt.verify(token.split(' ')[1], process.env.JWT_SECRET);
-      const verifyRoles = decodedToken.roles;
+      const verifyRoles = decodedToken.role;
       const verifyStatus = decodedToken.status;
 
-      const checkRoles = allowedRoles ? allowedRoles.some(roles => verifyRoles.includes(roles)) : true;
+      const checkRoles = allowedRoles ? allowedRoles.some(role => verifyRoles.includes(role)) : true;
       const checkStatus = allowedStatus ? allowedStatus.includes(verifyStatus) : true;
 
       if (!checkRoles) {
@@ -26,7 +26,7 @@ const authMiddleware = (allowedRoles, allowedStatus) => {
       }
 
       req.userId = decodedToken.id;
-      req.userRole = decodedToken.roles;
+      req.userRole = decodedToken.role;
       req.userStatus = decodedToken.status;
 
       return next();
