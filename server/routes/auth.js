@@ -67,7 +67,7 @@ router.post("/register", async (req, res) => {
 
             const saveUser = await createUser.save();
 
-            res.status(200).json({ status: 200, data: saveUser })
+            return  res.status(200).json({ status: 200, data: saveUser })
 
         }
     } catch (error) {
@@ -80,47 +80,49 @@ router.post("/register", async (req, res) => {
 
 router.patch('/verify-otp', async (req, res) => {
     try {
-        const userExist = await AuthSchema.findOne({ email: req.body.email });
-
-        if (!userExist) {
-            res.status(404).json({ message: "User Not Found" });
-        } else {
-            if (userExist.otpCode === req.body.otpCode) {
-                // Check if OTP has expired
-                const currentTime = Date.now();
-                const otpExpirationTime = new Date(userExist.otpExpire).getTime() + 10 * 60 * 1000; // Adding 10 minutes in milliseconds
-
-                if (currentTime > otpExpirationTime) {
-                    await userExist.updateOne({ $unset: { otpCode: "", otpExpire: "" } });
-                    res.status(400).json({ status: 400, message: "OTP has expired" });
-
-                } else {
-                    await userExist.updateOne({ verification: true });
-
-                    const cookie = await jwt.sign(
-                        {
-                            email: userExist.email,
-                            userID: userExist.id,
-                            roles: userExist.roles,
-                            invitation: userExist.invitation
-                        },
-                        process.env.JWT_SECRET
-                    );
-
-                    // Generate a cookie and set it in the response
-                    res.cookie('cookie', cookie, { httpOnly: true });
-
-                    res.status(200).json({ status: 200, data: userExist, cookie: cookie });
-                }
-            } else {
-                res.status(400).json({ status: 400, message: "INCORRECT OTP" });
-            }
-        }
+      const { email, otpCode } = req.body;
+  
+      const userExist = await AuthSchema.findOne({ email });
+  
+      if (!userExist) {
+        return res.status(404).json({ message: "User Not Found" });
+      }
+  
+      if (userExist.otpCode !== otpCode) {
+        return res.status(400).json({ status: 400, message: "Incorrect OTP" });
+      }
+  
+      // Check if OTP has expired
+      const currentTime = Date.now();
+      const otpExpirationTime = new Date(userExist.otpExpire).getTime() + 10 * 60 * 1000; // Adding 10 minutes in milliseconds
+  
+      if (currentTime > otpExpirationTime) {
+        await userExist.updateOne({ $unset: { otpCode: "", otpExpire: "" } });
+        return res.status(400).json({ status: 400, message: "OTP has expired" });
+      }
+  
+      await userExist.updateOne({ verification: true });
+  
+      const token = await jwt.sign(
+        {
+          email: userExist.email,
+          userID: userExist.id,
+          roles: userExist.roles,
+          invitation: userExist.invitation
+        },
+        process.env.JWT_SECRET
+      );
+  
+      // Generate a cookie and set it in the response
+      res.cookie('token', token, { httpOnly: true });
+  
+      return res.status(200).json({ status: 200, data: userExist, token });
     } catch (error) {
-        res.status(500).json({ status: 500, error });
-        console.log(error);
+      console.log(error);
+      return res.status(500).json({ status: 500, error: "Internal Server Error" });
     }
-});
+  });
+  
 
 
 
