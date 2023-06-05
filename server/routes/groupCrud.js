@@ -1,7 +1,7 @@
 import express from "express";
-import Group from "../models/Group.js";
+import Group from "../models/groups/Group.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
-import auth from "../models/auth.js";
+import auth from "../models/users/auth.js";
 
 const router = express.Router();
 
@@ -140,7 +140,6 @@ router.patch("/:sellerID/group-request-accepted/:GroupID", authMiddleware(["Sell
         console.log(error);
     }
 });
-
 
 
 export default router;

@@ -136,7 +136,7 @@ function AdminPanel() {
           </Col>
           <Col size="6">
             <div className="text-end">
-              <button>
+              <button onClick={() => navigate('/add-wholeseller')}>
                 New Group <FontAwesomeIcon icon={faPlus} />
               </button>
             </div>

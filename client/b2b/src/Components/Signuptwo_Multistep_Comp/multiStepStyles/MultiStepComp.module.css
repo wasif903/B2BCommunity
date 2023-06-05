@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Poppins:wght@600&display=swap");
+.logo {
+  background: var(--bs-pink);
+  width: 5rem;
+  border-radius: 50%;
+  height: 5rem;
+  padding: 7px;
+  margin-bottom: 2rem;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.wrapper p {
+  width: 19rem;
+  text-align: center;
+  font-size: 1rem !important;
+}
+.headingPara {
+  font-family: var(--font-family-mulish) !important;
+}
+.wrapper h2 {
+  font-size: 2.5rem !important;
+  margin: 0 !important;
+}
+.CompForm input {
+  width: 25rem !important;
+  height: 3.5rem;
+  margin-top: 1.5rem !important;
+  border-radius: 6px;
+  border: 1px solid gainsboro;
+  outline: none;
+}
+.wrapper span {
+  padding: 1px !important;
+}
+.wrapper span p {
+  width: fit-content;
+  margin: 0 !important;
+  color: #393f45d9 !important;
+  font-size: 1.2rem !important;
+}
+.wrapper span a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+.wrapper button {
+  width: 30% !important;
+  margin-right: 20px;
+  height: 3.3rem !important;
+  margin-right: 20px;
+}
+
+/******************************** CompThree (SelectFile) *******************************/
+.compThreeSelectFiles p:nth-child(1) {
+  font-size: 1.5rem !important;
+}
+.compThreeSelectFiles p:nth-child(2) {
+  font-size: 1.1rem !important;
+}
+.compThreeSelectFiles p:nth-child(4) {
+  font-size: 1.1rem !important;
+}
+
+/******************************** CompThree (Registration) *******************************/
+.privacyCheckBox {
+  margin-left: 1px;
+}
+.privacyCheckBox div p {
+  margin: 0 !important;
+}
+.RegistrationInput input,
+.privacyCheckBox input {
+  width: 1rem !important;
+  cursor: pointer;
+  height: 1rem !important;
+}
+.privacyCheckBox input {
+  margin-top: 5px !important;
+}
+.RegistrationInput span p {
+  font-size: 1rem !important;
+  width: 19rem !important;
+  margin-left: 1rem !important;
+  color: black !important;
+}
+.RegistrationInputPara {
+  font-size: 1.2rem !important;
+  width: 22rem !important;
+}
+.privacyCheckBox div p:nth-child(2) {
+  margin-top: 0 !important;
+}
+@media only screen and (max-width: 361px) {
+  h2 {
+    font-size: 2rem !important;
+    letter-spacing: 1px;
+  }
+  p {
+    width: 16rem;
+  }
+  input {
+    width: 22rem !important;
+  }
+}

@@ -10,15 +10,43 @@ export const signup = createApi({
     // ...other endpoints
     createUser: builder.mutation({
       query: (user) => ({
-        url: 'auth/register',
+        url: '/api/auth/register',
+        method: 'POST',
+        body: user,
+      }),
+    }),
+    createSeller: builder.mutation({
+      query: (user) => ({
+        url: '/api/auth/wholeseller-register',
         method: 'POST',
         body: user,
       }),
     }),
     verfiyUserOtp: builder.mutation({
       query: (data) => ({
-        url: 'auth/verify-otp',
+        url: '/api/auth/verify-otp',
         method: 'PATCH',
+        body: data,
+      }), 
+    }),
+    userLogin: builder.mutation({
+      query: (data) => ({
+        url: '/api/auth/login',
+        method: 'POST',
+        body: data,
+      }), 
+    }),
+    resendOtp: builder.mutation({
+      query: (data) => ({
+        url: '/api/auth/resend-otp',
+        method: 'PATCH',
+        body: data,
+      }), 
+    }),
+    getRole: builder.mutation({
+      query: (data) => ({
+        url: '/api/auth/get-role',
+        method: 'POST',
         body: data,
       }), 
     })
@@ -27,4 +55,4 @@ export const signup = createApi({
 
 
 // Export the generated API endpoints
-export const { useCreateUserMutation, useVerfiyUserOtpMutation } = signup;
+export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation, useCreateSellerMutation, useResendOtpMutation, useGetRoleMutation } = signup;
