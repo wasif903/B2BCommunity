@@ -20,7 +20,7 @@ function Login() {
     password: "",
   });
 
-  const { user, setUser } = useContext(userContext);
+  const { user, setLoginUser} = useContext(userContext);
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
@@ -41,11 +41,12 @@ function Login() {
       if (res.data.status === 200) {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
-        setUser(res.data);
+        setCookie("userRole", res.data.user.role[0]);
+        // check karun/? han 
         console.log(user, "------");
-
         navigate("/home");
-      } else {
+
+      } else if (res.data.status === 404) {
         alert("Check Your Credentials And Try Again");
       }
     } catch (error) {

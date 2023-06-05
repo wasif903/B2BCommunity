@@ -6,6 +6,7 @@ import Home from "../Pages/HomePage/Home";
 import AllMembers from "../Pages/ManageData/AllMembers";
 import GroupContent from "../Pages/groupContent/GroupContent";
 import AllGroup from "../Pages/ManageData/AllGroup";
+import { Navigate } from "react-router-dom";
 
 
 const UserRoute = [
@@ -42,6 +43,10 @@ const UserRoute = [
   {
     path: "/All-Group",
     element: <AllGroup />,
+  },
+  {
+    path: "*",
+    element: <Navigate to="/home"/> ,
   },
 ];
 

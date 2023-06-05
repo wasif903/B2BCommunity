@@ -10,7 +10,7 @@ import { userContext } from "../../contexts/UserContext";
 import { useCookies } from "react-cookie";
 
 function OtpAuth() {
-  
+
   const navigate = useNavigate();
 
   const [cookies, setCookie] = useCookies(["cookie"]);
@@ -19,7 +19,7 @@ function OtpAuth() {
 
   const inputRefs = useRef([]);
 
-  const { user, setUser } = useContext(userContext);
+  const { user } = useContext(userContext);
 
   // eslint-disable-next-line no-unused-vars
   const [verfiyUserOtp, { isLoading, isError }] = useVerfiyUserOtpMutation();
@@ -54,7 +54,6 @@ function OtpAuth() {
       } else if (res.data.status === 200) {
         navigate("/home");
         setCookie("cookie", res.data.cookie);
-        setUser(res.data);
       }
     } catch (error) {
       console.log(error);
@@ -62,9 +61,10 @@ function OtpAuth() {
   };
 
   const onResendOtp = async (e) => {
-    e.preventDefault({email: user.user.email});
+    e.preventDefault();
     try {
-      await resendOtp();
+      const res = await resendOtp({ email: user.user.email });
+      console.log(res.data)
     } catch (error) {
       console.log(error);
     }

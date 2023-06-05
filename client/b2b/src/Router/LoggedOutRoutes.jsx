@@ -3,7 +3,6 @@ import Login from "../Pages/Auth/Login";
 import OtpAuth from "../Pages/Auth/OtpAuth";
 import Signup from "../Pages/Auth/Signup";
 import Welcome from "../Pages/Auth/Welcome";
-import Home from "../Pages/HomePage/Home";
 
 
 const LoggedOutRoutes = [
@@ -16,10 +15,6 @@ const LoggedOutRoutes = [
     element: <Login />,
   },
   {
-    path: "/home",
-    element: <Home />,
-  },
-  {
     path: "/signup",
     element: <Signup />,
   },
@@ -29,7 +24,7 @@ const LoggedOutRoutes = [
   },
   {
     path: "*",
-    element: <Navigate to='/' />,
+    element: <Navigate to='/home' />,
   },
 ];
 

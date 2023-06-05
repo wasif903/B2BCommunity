@@ -29,7 +29,7 @@ function AddWholeSeller() {
     PhoneNumber: "",
     email: "",
     password: "",
-    roles: "Seller",
+    role: "Seller",
   });
 
   const navigate = useNavigate();
