@@ -16,7 +16,6 @@ function App() {
   
   useEffect(() => {
     setRoleChecker(cookie.userRole);
-    // routesManager();
     console.log(roleChecker)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cookie])
