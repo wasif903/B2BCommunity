@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useUserLoginMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useCookies } from "react-cookie";
-import { emailContext } from "../../contexts/SignupContext";
+import { userContext } from "../../contexts/UserContext";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ function Login() {
     password: "",
   });
 
-  const { email, setEmail } = useContext(emailContext);
+  const { user, setUser } = useContext(userContext);
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
@@ -32,6 +32,7 @@ function Login() {
     setUserLoginFields({ ...userLoginFields, [e.target.name]: e.target.value });
   };
 
+
   const sumbitData = async (e) => {
     e.preventDefault();
     try {
@@ -40,8 +41,8 @@ function Login() {
       if (res.data.status === 200) {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
-        setEmail(res.data.email);
-        console.log(email);
+        setUser(res.data);
+        console.log(user, "------");
 
         navigate("/home");
       } else {
@@ -52,6 +53,7 @@ function Login() {
       console.log(isError, "REdux ERROR");
     }
   };
+
 
   return (
     <>

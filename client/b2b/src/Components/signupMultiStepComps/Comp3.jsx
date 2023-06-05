@@ -4,31 +4,19 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 // eslint-disable-next-line no-unused-vars
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useEffect } from "react";
 
 // Importing SIGNUP FROM REDUX
 
 // eslint-disable-next-line react/prop-types
-function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
+function Comp3({ onChange, userFields, setSteps, handleSubmit, confirmPass, passwordChecker, passCheckerFunc }) {
   // eslint-disable-next-line react/prop-types
   const { email, password, PhoneNumber } = userFields;
 
-  const [confirmPass, setConfirmPass] = useState("");
-
-  const confirmPassHandler = (e) => {
-    setConfirmPass(e.target.value);
-  };
-
-  if (confirmPass === password) {
-    console.log("Password Matched");
-  } else {
-    console.log("Password Dont Match");
-  }
-
   useEffect(() => {
     setSteps(2);
-  }, []);
+
+  }, [passwordChecker]);
 
   // const navigate = useNavigate();
 
@@ -76,11 +64,22 @@ function Comp3({ onChange, userFields, setSteps, handleSubmit }) {
               <input
                 type="text"
                 name="confirmPass"
-                onChange={confirmPassHandler}
+                onChange={passCheckerFunc}
                 value={confirmPass}
                 placeholder="Confirm Password"
               />
             </Row>
+            <div className="text-start mt-3">
+              {
+                passwordChecker === "nomatch" ?
+                  (<span className="text-danger"> Password Dont Match </span>)
+                  : passwordChecker === "matched" ?
+                    (<span className="text-success">Password Matched</span>)
+                    :
+                    (<span className="d-none"></span>)
+              }
+            </div>
+
           </form>
 
           <Row>

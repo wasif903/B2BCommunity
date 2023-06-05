@@ -6,11 +6,11 @@ import Logo from "../../assets/logo.png";
 import styles from "../../Components/signupMultiStepComps/multiStepStyles/MultiStepComp.module.css";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Row from "react-bootstrap/esm/Row";
 import { useCreateUserMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useNavigate } from "react-router-dom";
-import { emailContext } from "../../contexts/SignupContext";
+import { userContext } from "../../contexts/UserContext";
 
 
 
@@ -18,11 +18,15 @@ function Signup() {
 
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
 
-  const { setEmail } = useContext(emailContext);
+  const { user, setUser } = useContext(userContext);
 
   const navigate = useNavigate()
 
   const [steps, setSteps] = useState(0);
+
+  const [confirmPass, setConfirmPass] = useState("");
+
+  const [passwordChecker, setPasswordChecker] = useState("")
 
   const [userFields, setUserFields] = useState({
     firstName: "",
@@ -52,25 +56,44 @@ function Signup() {
 
         if (res.data.status === 200) {
           console.log(res);
-          setEmail(res.data.data.email)
+          setUser(res.data);
           navigate('/otp-auth');
 
         } else {
           console.log(isError)
         }
       }
-
-
     } catch (error) {
       console.log(error);
     }
   };
 
   const onChange = (e) => {
-    setUserFields({ ...userFields, [e.target.name]: e.target.value });
+    const value = e.target.value;
+    setUserFields({ ...userFields, [e.target.name]: value });
+
   };
 
+  const passCheckerFunc = (e) => {
+    const value = e.target.value;
+    setConfirmPass(value);
 
+  };
+
+  useEffect(() => {
+    if (userFields.password === confirmPass || confirmPass === userFields.password) {
+      setPasswordChecker("matched");
+    } else if (userFields.password !== confirmPass || confirmPass !== userFields.password ) {
+      setPasswordChecker("nomatch");
+    } else {
+      setPasswordChecker("nomatch");
+    }
+  }, [confirmPass, userFields])
+
+
+
+
+  console.log(user);
 
   return (
     <>
@@ -104,6 +127,9 @@ function Signup() {
                 setSteps={setSteps}
                 onChange={onChange}
                 handleSubmit={handleSubmit}
+                confirmPass={confirmPass}
+                passwordChecker={passwordChecker}
+                passCheckerFunc={passCheckerFunc}
               />
             </MultiStep>
           </Col>

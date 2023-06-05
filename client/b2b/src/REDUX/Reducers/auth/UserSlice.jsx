@@ -42,17 +42,10 @@ export const signup = createApi({
         method: 'PATCH',
         body: data,
       }), 
-    }),
-    getRole: builder.mutation({
-      query: (data) => ({
-        url: '/api/auth/get-role',
-        method: 'POST',
-        body: data,
-      }), 
     })
   }),
 });
 
 
 // Export the generated API endpoints
-export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation, useCreateSellerMutation, useResendOtpMutation, useGetRoleMutation } = signup;
+export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation, useCreateSellerMutation, useResendOtpMutation } = signup;

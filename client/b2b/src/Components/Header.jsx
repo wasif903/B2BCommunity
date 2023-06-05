@@ -17,7 +17,6 @@ function Header() {
 
   const handleModal = () => {
     setIsOpen(true);
-    console.log(isOpen);
   };
 
   const navigate = useNavigate();

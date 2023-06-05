@@ -12,17 +12,17 @@ import { CookiesProvider } from 'react-cookie';
 // Redux
 import { Provider } from 'react-redux'
 import store from './REDUX/Reducers/store';
-import { EmailProvider } from './contexts/SignupContext.jsx';
+import { UserProvider } from './contexts/UserContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
       <React.StrictMode>
-        <EmailProvider>
+        <UserProvider>
           <CookiesProvider>
             <App />
           </CookiesProvider>
-        </EmailProvider>
+        </UserProvider>
       </React.StrictMode>
     </Provider >
   </BrowserRouter>

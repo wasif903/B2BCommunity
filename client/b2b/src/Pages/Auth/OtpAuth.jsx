@@ -6,10 +6,11 @@ import {
   useResendOtpMutation,
   useVerfiyUserOtpMutation,
 } from "../../REDUX/Reducers/auth/UserSlice";
-import { emailContext } from "../../contexts/SignupContext";
+import { userContext } from "../../contexts/UserContext";
 import { useCookies } from "react-cookie";
 
 function OtpAuth() {
+  
   const navigate = useNavigate();
 
   const [cookies, setCookie] = useCookies(["cookie"]);
@@ -18,7 +19,7 @@ function OtpAuth() {
 
   const inputRefs = useRef([]);
 
-  const { email } = useContext(emailContext);
+  const { user, setUser } = useContext(userContext);
 
   // eslint-disable-next-line no-unused-vars
   const [verfiyUserOtp, { isLoading, isError }] = useVerfiyUserOtpMutation();
@@ -41,11 +42,11 @@ function OtpAuth() {
   };
   console.log(cookies);
 
+
   const otpVerify = async () => {
-    console.log(email, "logged In ");
 
     try {
-      const res = await verfiyUserOtp({ email: email, otpCode: Number(otp) });
+      const res = await verfiyUserOtp({ email: user.user.email, otpCode: Number(otp) });
       console.log(res);
 
       if (isError) {
@@ -53,6 +54,7 @@ function OtpAuth() {
       } else if (res.data.status === 200) {
         navigate("/home");
         setCookie("cookie", res.data.cookie);
+        setUser(res.data);
       }
     } catch (error) {
       console.log(error);
@@ -60,13 +62,14 @@ function OtpAuth() {
   };
 
   const onResendOtp = async (e) => {
-    e.preventDefault();
+    e.preventDefault({email: user.user.email});
     try {
-      await resendOtp({ email: email });
+      await resendOtp();
     } catch (error) {
       console.log(error);
     }
   };
+
 
   return (
     <Container className={`${style.main} text-center`}>

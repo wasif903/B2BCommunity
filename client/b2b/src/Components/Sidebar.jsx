@@ -54,7 +54,6 @@ const Sidebar = ({ setIsOpen }) => {
   const logout = () => {
     try {
       setCookie('cookie', '', { expires: new Date(0) });
-      console.log("Logged Out");
       setIsOpen(false);
       navigate('/login');
     } catch (error) {
@@ -108,9 +107,9 @@ const Sidebar = ({ setIsOpen }) => {
         <Row>
           <Col>
             <div className={`${styles.sidebarUl} mt-lg-5`}>
-              {menuItem.map((item) => (
+              {menuItem.map((item, i) => (
                 <>
-                  <Link
+                  <Link key={i + 1}
                     className={`text-reset text-decoration-none`}
                     to={item.path}
                   >
