@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useUserLoginMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useCookies } from "react-cookie";
+import { emailContext } from "../../contexts/SignupContext";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ function Login() {
     email: "",
     password: "",
   });
+
+  const { email, setEmail } = useContext(emailContext);
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
@@ -37,8 +40,10 @@ function Login() {
       if (res.data.status === 200) {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
-        navigate("/home");
+        setEmail(res.data.email);
+        console.log(email);
 
+        navigate("/home");
       } else {
         alert("Check Your Credentials And Try Again");
       }
@@ -47,8 +52,6 @@ function Login() {
       console.log(isError, "REdux ERROR");
     }
   };
-
-  const { email, password } = userLoginFields;
 
   return (
     <>
@@ -84,7 +87,7 @@ function Login() {
                   type="email"
                   placeholder="Email"
                   onChange={onChange}
-                  value={email}
+                  value={userLoginFields.email}
                   name="email"
                 />
 
@@ -93,7 +96,7 @@ function Login() {
                   type="password"
                   placeholder="Password"
                   onChange={onChange}
-                  value={password}
+                  value={userLoginFields.password}
                   name="password"
                 />
 
