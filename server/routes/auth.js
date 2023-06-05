@@ -241,10 +241,9 @@ router.patch('/resend-otp', async (req, res) => {
   }
 });
 
-router.post('/forgot-password', async (req, res) => {
+router.patch('/forgot-password', async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
-
     if (!userExist) {
       res.status(404).json({ message: "Account With This Email Doesn't Exist" })
     } else {
@@ -279,9 +278,56 @@ router.post('/forgot-password', async (req, res) => {
       });
 
       const saveUpdatedOtp = await resendOtp.save();
-
       res.status(200).json({ data: saveUpdatedOtp, status: 200 });
+    }
 
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
+  }
+})
+
+
+router.patch('/reset-password', async (req, res) => {
+  try {
+    const userExist = await users.findOne({ email: req.body.email });
+    if (!userExist) {
+      res.status(404).json({ message: "Account With This Email Doesn't Exist" })
+    } else {
+
+      const resendOtp = await userotp.findOne({ userid: userExist._id });
+      const resetHashedPass = await bcrypt.hash(req.body.password, 10)
+
+      if (resendOtp.otpCode === req.body.otpCode) {
+        userExist.password = resetHashedPass || userExist.password
+      } else {
+        res.status(400).json({ message: "Invalid Opt Code" })
+      }
+
+
+      // Set up the email message options
+      const mailOptions = {
+        from: "abdulrehman@techsmiths.co", // sender address
+        to: userExist.email, // receiver address
+        subject: "Welcome to My Website", // Subject line
+        html: `<p>Your Password Has Changed Successfully</p>`, // plain text body
+      };
+
+      // Send the email with the OTP code
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          return res.status(500).json({ message: "Email sending failed" });
+        } else {
+          console.log("Email sent: " + info.response);
+          return res
+            .status(200)
+            .json({ message: "OTP created and sent successfully" });
+        }
+      });
+
+      const saveUpdatedPass = await userExist.save();
+      res.status(200).json({ data: saveUpdatedPass, status: 200 });
     }
 
   } catch (error) {
