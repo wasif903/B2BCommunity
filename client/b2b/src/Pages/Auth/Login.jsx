@@ -11,6 +11,7 @@ import Form from "react-bootstrap/Form";
 import { useUserLoginMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useCookies } from "react-cookie";
 
+
 function Login() {
   const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ function Login() {
     email: "",
     password: "",
   });
+
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
@@ -39,7 +41,8 @@ function Login() {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
-        // check karun/? han 
+        console.log(res.data);
+
         navigate("/home");
       
       } else {
