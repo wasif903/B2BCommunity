@@ -19,6 +19,10 @@ function Header() {
     setIsOpen(true);
   };
 
+  // eslint-disable-next-line no-unused-vars
+  const userDetails =JSON.parse(localStorage.getItem('userDetails'));
+
+
   const navigate = useNavigate();
 
   return (

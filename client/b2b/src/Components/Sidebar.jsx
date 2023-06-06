@@ -56,11 +56,16 @@ const Sidebar = ({ setIsOpen }) => {
       setCookie('cookie', '', { expires: new Date(0) });
       setCookie('userRole', '', { expires: new Date(0) });
       setIsOpen(false);
+      localStorage.clear("userDetails");
       navigate('/login');
     } catch (error) {
       console.log(error);
     }
   };
+
+  const userDetails =JSON.parse(localStorage.getItem('userDetails'));
+  const user = JSON.parse(localStorage.getItem("user"));
+  // console.log(user, "-------")
 
   return (
     <>
@@ -95,9 +100,10 @@ const Sidebar = ({ setIsOpen }) => {
                 }}
                 className="d-flex pt-3 ps-3 justify-content-center flex-column"
               >
-                <p className={`${styles.name} text-white`}>David Smith</p>
+                <p className={`${styles.name} text-white`}>{userDetails.firstName + " " +userDetails .lastName}</p>
+
                 <p className={`${styles.Email} text-white`}>
-                  davidsmith@gmail.com
+                  {user.email}
                 </p>
               </div>
             </div>

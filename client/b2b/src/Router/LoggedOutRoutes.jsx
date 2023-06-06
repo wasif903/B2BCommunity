@@ -24,7 +24,7 @@ const LoggedOutRoutes = [
   },
   {
     path: "*",
-    element: <Navigate to='/home' />,
+    element: <Navigate to='/login' />,
   },
 ];
 

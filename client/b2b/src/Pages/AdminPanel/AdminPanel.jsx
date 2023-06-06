@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import PieChartAdminPanel from "../../Components/Charts/PieChartAdminPanel";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import EditProfilePhoto from "../../Components/AdminPanelModals/EditProfilePhoto";
 import { useNavigate } from "react-router-dom";
@@ -86,6 +86,13 @@ function AdminPanel() {
     setShowEditProfileModal(!showEditProfileModal);
   };
 
+  useEffect(() => {
+     JSON.parse(localStorage.getItem('userDetails'));
+     JSON.parse(localStorage.getItem("user"));
+  }, [])
+
+
+
   return (
     <>
       <Header />
@@ -116,7 +123,7 @@ function AdminPanel() {
         <Row>
           <Col className="text-center pt-4">
             <div className={styles.heading}>
-              <h1>James Bond</h1>
+              <h1>{userDetails.firstName + " " + userDetails.lastName}</h1>
               <h4>
                 “Pushing pixels and experiences in digital products for
                 Sebostudio”

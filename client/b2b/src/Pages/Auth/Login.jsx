@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -41,10 +41,14 @@ function Login() {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
-        console.log(res.data);
+
+        localStorage.setItem("userDetails", JSON.stringify(res.data.userDetails));
+
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
 
         navigate("/home");
-      
+
       } else {
         console.log("Other Error Here")
       }
