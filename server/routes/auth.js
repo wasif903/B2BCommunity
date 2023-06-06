@@ -157,8 +157,9 @@ router.post(
       }
 
       const userExists = await users.findOne({ email: req.body.email });
+      const userDetails = await userdetails.findOne({ userid: userExists._id });
 
-      if (userExists) {
+      if (userExists && userDetails) {
         const comparePass = await bcrypt.compare(
           req.body.password,
           userExists.password
@@ -178,7 +179,7 @@ router.post(
           // Generate a cookie and set it in the response
           res.cookie("cookie", cookie, { httpOnly: true });
 
-          res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists });
+          res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists, userDetails: userDetails });
         } else {
           res.status(400).json({ message: "Passwords Don't Match" });
         }
@@ -334,6 +335,19 @@ router.patch('/reset-password', async (req, res) => {
     res.status(500).json(error);
     console.log(error);
   }
+})
+
+router.get('/all-user', async (req, res) => {
+
+  try {
+    const allUser = await users.find();
+    console.log(allUser)
+    res.status(200).json(allUser);
+  } catch (error) {
+    res.status(500).json(error);
+
+  }
+
 })
 
 

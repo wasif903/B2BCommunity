@@ -5,21 +5,61 @@ import auth from "../models/users/user.js";
 
 const router = express.Router();
 
-// Create Group Endpoint
-router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
-    try {
 
-        const createGroup = new Group({
-            groupName: req.body.groupName,
-            userID: req.body.userID,
-        });
-        const saveGroup = await createGroup.save();
-        res.status(201).json({ message: "Group Has Been Created Successfully", saveGroup });
+router.post('/create-group',  async (req, res) => {
+  try {
+    const {
+      groupName,
+      groupDesc,
+      groupType,
+      grouplocation,
+      admins,
+      members,
+      pendingRequests,
+      invitedUsers,
+      posts,
+    } = req.body;
 
-    } catch (error) {
-        res.status(500).json({ message: error });
-    }
+    const newGroup = new Group({
+      groupName,
+      groupDesc,
+      groupType,
+      grouplocation,
+      admins,
+      members,
+      pendingRequests,
+      invitedUsers,
+      posts,
+    });
+
+    const savedGroup = await newGroup.save();
+    res.status(201).json(savedGroup);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
+
+
+// router.post('')
+
+
+// Create Group Endpoint
+// router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
+//     try {
+
+//         const createGroup = new Group({
+//             groupName: req.body.groupName,
+//             userID: req.body.userID,
+//         });
+//         const saveGroup = await createGroup.save();
+//         res.status(201).json({ message: "Group Has Been Created Successfully", saveGroup });
+
+//     } catch (error) {
+//         res.status(500).json({ message: error });
+//     }
+// });
+
 
 // Update Group Endpoint
 router.patch("/update-group/:groupID", authMiddleware(["Seller"]), async (req, res) => {

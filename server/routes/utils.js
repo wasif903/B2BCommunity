@@ -2,11 +2,12 @@ import express from "express";
 import multer from "multer";
 import { S3Client } from "@aws-sdk/client-s3";
 import multers3 from "multer-s3";
+import xpath  from "path";
 
 const router = express.Router();
 //intialize s3 client
 const s3 = new S3Client({
-  region: "us-east-1",
+  region: "us-east-2",
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_KEY,
