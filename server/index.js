@@ -9,6 +9,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import http from 'http';
 import ratelimit from 'express-rate-limit';
+import googleAuth from './routes/googleAuth.js'
+
 //rate limiter for api calls
 const limiter = ratelimit({
     windowMs: 3 * 60 * 1000, // 3 minutes
@@ -28,10 +30,8 @@ app.use('/api/auth', auth,limiter);
 app.use('/api/groups', groupCrud);
 //routes for utilites
 app.use("/api/utils",utils )
+app.use('/api/googleAuth', googleAuth)
 
-app.get('/check', (req, res) => {
-    res.send("hello world");
-})
 
 httpServer.listen(port, () => {
     console.log(`Outlet 34 Server listening on port ${port}`)
