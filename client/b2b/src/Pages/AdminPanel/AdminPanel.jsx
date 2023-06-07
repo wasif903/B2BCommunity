@@ -86,9 +86,11 @@ function AdminPanel() {
     setShowEditProfileModal(!showEditProfileModal);
   };
 
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+  const user = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
-     JSON.parse(localStorage.getItem('userDetails'));
-     JSON.parse(localStorage.getItem("user"));
+
   }, [])
 
 

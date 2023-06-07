@@ -7,7 +7,7 @@ import myAcc from "../assets/my_acc.png";
 import Logo from "../assets/logo.png";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,12 @@ function Header() {
   };
 
   // eslint-disable-next-line no-unused-vars
-  const userDetails =JSON.parse(localStorage.getItem('userDetails'));
+  
+  useEffect(() => {
+    
+    JSON.parse(localStorage.getItem('userDetails'));
+
+}, [])
 
 
   const navigate = useNavigate();

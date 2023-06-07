@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -23,6 +23,7 @@ function Login() {
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
+  const [userDetails, setUserDetails] = useState();
 
   // eslint-disable-next-line no-unused-vars
   const [userLogin, { isLoading, isError }] = useUserLoginMutation();
@@ -41,12 +42,8 @@ function Login() {
         console.log(res, "response");
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
-
         localStorage.setItem("userDetails", JSON.stringify(res.data.userDetails));
-
         localStorage.setItem("user", JSON.stringify(res.data.user));
-
-
         navigate("/home");
 
       } else {
@@ -57,6 +54,13 @@ function Login() {
       console.log(isError, "REdux ERROR");
     }
   };
+
+
+  useEffect(() => {
+    
+
+  }, [cookie])
+  
 
 
   return (

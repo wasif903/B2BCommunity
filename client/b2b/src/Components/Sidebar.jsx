@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import userProfile from "../assets/my_acc.png";
 import { useCookies } from "react-cookie";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const Sidebar = ({ setIsOpen }) => {
@@ -62,6 +63,12 @@ const Sidebar = ({ setIsOpen }) => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    
+    
+  }, [])
+  
 
   const userDetails =JSON.parse(localStorage.getItem('userDetails'));
   const user = JSON.parse(localStorage.getItem("user"));

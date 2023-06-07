@@ -11,6 +11,9 @@ import { Link, useNavigate } from "react-router-dom";
 function Welcome() {
   const navigate = useNavigate();
 
+  
+  
+
   return (
     <>
       <div className={styles.welComeWrapper}>
@@ -65,7 +68,7 @@ function Welcome() {
             </Col>
           </Row>
 
-          <Row className={`${styles.loginOptionRow} `}>
+          <Row className={`${styles.loginOptionRow} `} >
             <Col
               md="3"
               className={`${styles.loginOptionIcon} d-flex justify-content-center align-items-center h-100`}
