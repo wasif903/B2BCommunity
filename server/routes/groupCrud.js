@@ -86,7 +86,7 @@ router.patch("/update-group/:groupID", authMiddleware(["Seller"]), async (req, r
 });
 
 // All Groups Endpoint
-router.get("/get-groups", async (req, res) => {
+router.get("/get-groups", authMiddleware(['Admin']), async (req, res) => {
 
     try {
         const findGroups = await Group.find();
