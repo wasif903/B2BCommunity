@@ -1,5 +1,5 @@
 import express from "express";
-import users from '../models/users/user.js'
+import users from "../models/users/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { body, validationResult } from "express-validator";
@@ -11,7 +11,6 @@ const router = express.Router();
 //route for seller registeration
 router.post("/register", async (req, res) => {
   try {
-
     const isUserExist = await users.findOne({ email: req.body.email });
 
     if (isUserExist) {
@@ -35,7 +34,6 @@ router.post("/register", async (req, res) => {
 
       const saveUser = await createUser.save();
 
-
       const createUserDetails = new userdetails({
         userid: createUser._id,
         firstName: req.body.firstName,
@@ -45,9 +43,8 @@ router.post("/register", async (req, res) => {
         addressLine: req.body.addressLine,
         zipCode: req.body.zipCode,
         city: req.body.city,
-        country: req.body.country
-      })
-
+        country: req.body.country,
+      });
 
       const createOtp = new userotp({
         userid: createUser._id,
@@ -79,9 +76,14 @@ router.post("/register", async (req, res) => {
         }
       });
 
-
-
-      res.status(200).json({ status: 200, user: saveUser, userDetails: saveUserDetails, otp: saveOtp });
+      res
+        .status(200)
+        .json({
+          status: 200,
+          user: saveUser,
+          userDetails: saveUserDetails,
+          otp: saveOtp,
+        });
     }
   } catch (error) {
     res.status(500).json(error);
@@ -93,12 +95,10 @@ router.patch("/verify-otp", async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
 
-
     if (!userExist) {
       res.status(404).json({ message: "User Not Found" });
     } else {
-
-      const checkOtp = await userotp.findOne({ userid: userExist._id })
+      const checkOtp = await userotp.findOne({ userid: userExist._id });
       if (checkOtp.otpCode === req.body.otpCode) {
         // Check if OTP has expired
         const currentTime = Date.now();
@@ -178,7 +178,14 @@ router.post(
           // Generate a cookie and set it in the response
           res.cookie("cookie", cookie, { httpOnly: true });
 
-          res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists });
+          res
+            .status(200)
+            .json({
+              status: 200,
+              message: "Logged In Successfully",
+              cookie,
+              user: userExists,
+            });
         } else {
           res.status(400).json({ message: "Passwords Don't Match" });
         }
@@ -191,15 +198,15 @@ router.post(
   }
 );
 
-
-router.patch('/resend-otp', async (req, res) => {
+router.patch("/resend-otp", async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
 
     if (!userExist) {
-      res.status(404).json({ message: "Account With This Email Doesn't Exist" })
+      res
+        .status(404)
+        .json({ message: "Account With This Email Doesn't Exist" });
     } else {
-
       const resendOtp = await userotp.findOne({ userid: userExist._id });
 
       const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
@@ -232,22 +239,21 @@ router.patch('/resend-otp', async (req, res) => {
       const saveUpdatedOtp = await resendOtp.save();
 
       res.status(200).json({ data: saveUpdatedOtp, status: 200 });
-
     }
-
   } catch (error) {
     res.status(500).json(error);
     console.log(error);
   }
 });
 
-router.patch('/forgot-password', async (req, res) => {
+router.patch("/forgot-password", async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
     if (!userExist) {
-      res.status(404).json({ message: "Account With This Email Doesn't Exist" })
+      res
+        .status(404)
+        .json({ message: "Account With This Email Doesn't Exist" });
     } else {
-
       const resendOtp = await userotp.findOne({ userid: userExist._id });
 
       const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
@@ -280,30 +286,28 @@ router.patch('/forgot-password', async (req, res) => {
       const saveUpdatedOtp = await resendOtp.save();
       res.status(200).json({ data: saveUpdatedOtp, status: 200 });
     }
-
   } catch (error) {
     res.status(500).json(error);
     console.log(error);
   }
-})
+});
 
-
-router.patch('/reset-password', async (req, res) => {
+router.patch("/reset-password", async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
     if (!userExist) {
-      res.status(404).json({ message: "Account With This Email Doesn't Exist" })
+      res
+        .status(404)
+        .json({ message: "Account With This Email Doesn't Exist" });
     } else {
-
       const resendOtp = await userotp.findOne({ userid: userExist._id });
-      const resetHashedPass = await bcrypt.hash(req.body.password, 10)
+      const resetHashedPass = await bcrypt.hash(req.body.password, 10);
 
       if (resendOtp.otpCode === req.body.otpCode) {
-        userExist.password = resetHashedPass || userExist.password
+        userExist.password = resetHashedPass || userExist.password;
       } else {
-        res.status(400).json({ message: "Invalid Opt Code" })
+        res.status(400).json({ message: "Invalid Opt Code" });
       }
-
 
       // Set up the email message options
       const mailOptions = {
@@ -329,12 +333,45 @@ router.patch('/reset-password', async (req, res) => {
       const saveUpdatedPass = await userExist.save();
       res.status(200).json({ data: saveUpdatedPass, status: 200 });
     }
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
+  }
+});
+//route for checking if user is in our database or not if not create the user . if is available initate a login 
+router.post("/firebaseauth", async (req, res) => {
+  try {
+    const userExist = await users.findOne({ email: req.body.email });
+    if (!userExist) {
+      
+      res.status(201).json({ message: "User Not Found" });
+    } else {
+      //user exist sign the user and send the token to client side 
+      const userDet = await userdetails.findOne({ userid: userExist._id });
 
+      const cookie =  jwt.sign(
+        {
+          email: userExist.email,
+          userID: userExist._id,
+          role: userExist.role,
+        },
+        process.env.JWT_SECRET
+      );
+
+      // Generate a cookie and set it in the response
+      res.cookie("cookie", cookie, { httpOnly: true });
+
+      res
+        .status(200)
+        .json({
+          message: "Logged In Successfully",
+          cookie,
+          user: {...userExist,...userDet.firstName,...userDet.path},
+        });
+    }
   } catch (error) {
     res.status(500).json(error);
     console.log(error);
   }
 })
-
-
 export default router;
