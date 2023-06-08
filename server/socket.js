@@ -4,23 +4,24 @@ import Post from "./models/groups/posts.js";
 import Group from "./models/groups/Group.js";
 export const setupSockets = (io) => {
   //this middleware ensures that every connection comes to server is authenticated with correct user
-  io.use((socket, next) => {
-    if (socket.handshake.query && socket.handshake.query.token) {
-      jwt.verify(
-        socket.handshake.query.token,
-        process.env.JWT_SECRET,
-        function (err, decoded) {
-          if (err) return next(new Error("Authentication error"));
-          socket.decoded = decoded;
-          next();
-        }
-      );
-    } else {
-      next(new Error("Authentication error"));
-    }
-  });
+  // io.use((socket, next) => {
+  //   if (socket.handshake.query && socket.handshake.query.token) {
+  //     jwt.verify(
+  //       socket.handshake.query.token,
+  //       process.env.JWT_SECRET,
+  //       function (err, decoded) {
+  //         if (err) return next(new Error("Authentication error"));
+  //         socket.decoded = decoded;
+  //         next();
+  //       }
+  //     );
+  //   } else {
+  //     next(new Error("Authentication error"));
+  //   }
+  // });
   io.on("connection", (socket) => {
     console.log("A user connected: " + socket.id);
+//event for checking if user is in our database or not if not create the user . if is available initate a login 
 
     socket.on("joinGroup", async (data) => {
       const { groupID, userID } = data;
