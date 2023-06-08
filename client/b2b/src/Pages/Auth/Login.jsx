@@ -38,14 +38,15 @@ function Login() {
     try {
       const res = await userLogin(userLoginFields);
 
+      console.log(res, "response");
       if (!isError) {
-        console.log(res, "response");
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
         localStorage.setItem("userDetails", JSON.stringify(res.data.userDetails));
         localStorage.setItem("user", JSON.stringify(res.data.user));
+        console.log(res.data);
         navigate("/home");
-
+        
       } else {
         console.log("Other Error Here")
       }

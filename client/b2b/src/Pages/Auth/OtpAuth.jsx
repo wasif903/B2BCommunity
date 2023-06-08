@@ -49,13 +49,11 @@ function OtpAuth() {
       const res = await verfiyUserOtp({ email: user.user.email, otpCode: Number(otp) });
       console.log(res);
 
-      if (isError) {
-        console.log(isError, "Error Occured");
-      } else if (res.data.status === 200) {
-        navigate("/home");
-        setCookie("cookie", res.data.cookie);
-        setCookie("userRole", res.data.user.role[0]);
-      }
+
+      navigate("/home");
+      setCookie("cookie", res.data.cookie);
+      setCookie("userRole", res.data.user.role[0]);
+
     } catch (error) {
       console.log(error);
     }

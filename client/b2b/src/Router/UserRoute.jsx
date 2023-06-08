@@ -13,7 +13,6 @@ const UserRoute = [
     element: <Home />,
   },
  
-
   {
     path: "/Otp-auth",
     element: <OtpAuth />,
