@@ -6,6 +6,7 @@ const baseUrl = API_BASE_URL;
 // Create an API slice
 export const signup = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
+  tagTypes:["groups"],
   endpoints: (builder) => ({
     // ...other endpoints
     createUser: builder.mutation({
@@ -35,6 +36,7 @@ export const signup = createApi({
         method: 'POST',
         body: data,
       }), 
+      invalidatesTags:['groups']
     }),
     resendOtp: builder.mutation({
       query: (data) => ({

@@ -56,7 +56,7 @@ const AdminRoute = [
     element: <AllGroup />,
   },
   {
-    path: "/Manage-Group",
+    path: "/Manage-Group/:id",
     element: <ManageGroup />,
   },
   {

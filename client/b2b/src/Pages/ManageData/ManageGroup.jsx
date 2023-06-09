@@ -3,7 +3,7 @@ import Header from "../../Components/Header";
 import LadyPic from "../../assets/my_acc.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -39,6 +39,12 @@ const Setting = [
   { name: "Check Group Videos", icon: faVideo },
 ];
 function ManageGroup() {
+
+  const {id} = useParams();
+
+  console.log(id);
+
+
   return (
     <>
       <Header />

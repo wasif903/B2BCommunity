@@ -42,10 +42,6 @@ const sellerRoutes = [
     element: <GroupContent />,
   },
   {
-    path: "/Manage-Group",
-    element: <ManageGroup />,
-  },
-  {
     path: "*",
     element: <Navigate to="/Home"/> ,
   },

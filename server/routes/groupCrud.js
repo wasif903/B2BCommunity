@@ -62,6 +62,25 @@ router.get("/get-groups", async (req, res) => {
 });
 
 
+router.get("/single-group/:id", async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+        const findGroups = await Group.findById(id);
+
+        if (findGroups) {
+            res.status(200).json({ message: " Request Successfull", findGroups });
+        } else {
+            res.status(404).json({ message: "Group Not Found" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
+});
+
+
 
 // Requesting To Join Group Endpoint
 router.patch("/request-join-group/:GroupID", authMiddleware(["User"]), async (req, res) => {
