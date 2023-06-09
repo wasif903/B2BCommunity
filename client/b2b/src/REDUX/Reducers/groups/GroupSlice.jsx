@@ -1,36 +1,48 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_BASE_URL } from '../../../utils/BaseUrlConfig';
-
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { API_BASE_URL } from "../../../utils/BaseUrlConfig";
 
 const baseUrl = API_BASE_URL;
 
 // Create an API slice
 export const group = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
-  reducerPath: 'groups',
+  reducerPath: "groups",
   tagTypes: ["groups"],
   endpoints: (builder) => ({
     // ...other endpoints
     getAllGroups: builder.query({
       query: () => {
         return {
-          url: '/api/groups/get-groups', // Update the URL to the correct endpoint for fetching groups
-          method: 'GET',
-        }
+          url: "/api/groups/get-groups", // Update the URL to the correct endpoint for fetching groups
+          method: "GET",
+        };
       },
-      providesTags: ["groups"]
-
+      providesTags: ["groups"],
     }),
-    getSingleGroups: builder.query({
+    getSingleGroup: builder.query({
       query: (id) => {
         return {
-          url: `/api/groups/single-group/${id}`, 
-          method: 'GET',
-        }
+          url: `/api/groups/single-group/${id}`,
+          method: "GET",
+        };
+      },
+    }),
+    requestToJoin: builder.mutation({
+      query: (data) => {
+        const { id, ...body } = data
+        return {
+          url: `/api/groups/${id}/request-to-join`,
+          method: "PATCH",
+          body
+        };
       },
     }),
   }),
 });
 
 // Export the generated API endpoints
-export const { useGetAllGroupsQuery } = group;
+export const {
+  useGetAllGroupsQuery,
+  useGetSingleGroupQuery,
+  useRequestToJoinMutation,
+} = group;

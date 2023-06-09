@@ -20,6 +20,7 @@ import {
   faImage,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
+import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 
 const Setting = [
   { name: "Member requests", icon: faUserGroup },
@@ -39,11 +40,13 @@ const Setting = [
   { name: "Check Group Videos", icon: faVideo },
 ];
 function ManageGroup() {
-
-  const {id} = useParams();
+  const { id } = useParams();
 
   console.log(id);
 
+  const getSingleGroups = useGetSingleGroupQuery(id);
+
+  console.log(getSingleGroups?.data);
 
   return (
     <>
@@ -57,17 +60,17 @@ function ManageGroup() {
       <Container className={`${styles.CardContainer} mt-5 pt-2`}>
         <div className={`${styles.mapWrapper}`}>
           <div>
-            <img className={styles.imgWrapper} src={LadyPic} />
+            <img className={styles.imgWrapper} src={getSingleGroups?.data?.groupdp !== null ? getSingleGroups?.data?.groupdp : LadyPic} />
           </div>
           <div className={`${styles.NewRequestNamePanel} text-center py-3`}>
-            <h3>Social Media Marketing</h3>
+            <h3>{getSingleGroups?.data?.groupName}</h3>
             <div className="d-flex justify-content-center align-items-center gap-2">
-              <h5 className="m-0">London</h5>
+              <h5 className="m-0">{getSingleGroups?.data?.grouplocation !== null ? getSingleGroups?.data?.grouplocation : "Location Not Available" }</h5>
               <span></span>
               <h5 className="m-0">{`2054 Members`}</h5>
             </div>
           </div>
-          <p className="w-auto">Private Group</p>
+          <p className="w-auto">{getSingleGroups?.data?.groupType !== null ? getSingleGroups?.data?.groupType : "PUBLIC"}</p>
         </div>
       </Container>
       <div className={styles.line}></div>
