@@ -37,6 +37,14 @@ export const group = createApi({
         };
       },
     }),
+    getPendingReq: builder.query({
+      query: (id) => {
+        return {
+          url: `/api/groups/${id}/get-pending-requests`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
