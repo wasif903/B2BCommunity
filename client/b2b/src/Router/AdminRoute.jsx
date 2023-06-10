@@ -36,7 +36,7 @@ const AdminRoute = [
     element: <ManageWholesellers />,
   },
   {
-    path: "/New-Request",
+    path: "/New-Request/:id",
     element: <NewRequest />,
   },
   {

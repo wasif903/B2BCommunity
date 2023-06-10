@@ -24,7 +24,7 @@ const sellerRoutes = [
   },
 
   {
-    path: "/New-Request",
+    path: "/New-Request/:id",
     element: <NewRequest />,
   },
   {
