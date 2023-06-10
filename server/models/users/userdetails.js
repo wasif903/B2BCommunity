@@ -45,7 +45,7 @@ const userDetailsSchema = new Schema({
   //group 
   invitation: {
     type: String,
-    enum: ['Pending', 'Accepted'],
+    enum: ['Rejected','Pending', 'Accepted'],
   },
   //user profile pic path 
   path:{

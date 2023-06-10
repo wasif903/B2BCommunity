@@ -2,6 +2,8 @@ import express from "express";
 import Group from "../models/groups/Group.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
 import auth from "../models/users/user.js";
+import user from "../models/users/user.js";
+import userdetails from "../models/users/userdetails.js";
 
 const router = express.Router();
 
@@ -45,6 +47,23 @@ router.patch("/update-group/:groupID", authMiddleware(["Seller"]), async (req, r
     }
 });
 
+
+router.delete('/remove-group/:groupID', async (req, res) => {
+    try {
+        const groupID = req.params;
+        const findGroups = await Group.findByIdAndDelete(groupID);
+        if (findGroups) {
+            res.status(200).json({ message: "Group Has Been Deleted Successfully" });
+        } else {
+            res.status(404).json({ message: "No Group Found" });
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+
+})
+
+
 // All Groups Endpoint
 router.get("/get-groups", async (req, res) => {
 
@@ -71,7 +90,7 @@ router.get("/single-group/:id", async (req, res) => {
         const findGroups = await Group.findById(id);
 
         if (findGroups) {
-            res.status(200).json({ message: " Request Successfull", findGroups });
+            res.status(200).json(findGroups);
         } else {
             res.status(404).json({ message: "Group Not Found" });
         }
@@ -80,83 +99,143 @@ router.get("/single-group/:id", async (req, res) => {
     }
 });
 
-
-
-// Requesting To Join Group Endpoint
-router.patch("/request-join-group/:GroupID", authMiddleware(["User"]), async (req, res) => {
+// Request TO Join The Group Endpoint
+router.patch('/:groupID/request-to-join', async (req, res) => {
     try {
-        const { GroupID } = req.params;
-        const findGroup = await Group.findById(GroupID);
-        const findUser = await auth.findOne({ _id: req.body.userID });
+        const groupID = req.params.groupID;
+        const findUser = await user.findOne({ email: req.body.email });
 
-        if (!findUser || !findGroup) {
-            res.status(404).json({ error: "Data Not Found" });
-        } else {
-            const existingUserIndex = findGroup.userID.findIndex(id => id.equals(findUser._id));
+        const pendingDetail = await userdetails.findOne({ userid: findUser._id })
 
-            if (existingUserIndex !== -1) {
-                // User already exists in the group, update the invitation status
-                findGroup.userID[existingUserIndex].invitation = "Pending";
-            } else {
-                // User doesn't exist in the group, add the user
-                findGroup.userID.push({
-                    _id: findUser._id,
-                    invitation: "Pending"
-                });
-            }
+        const findGroup = await Group.findById(groupID);
 
-            await findGroup.save(); // Save the updated group
-
-            await auth.findByIdAndUpdate(
-                findUser._id,
-                { $set: { invitation: "Pending" } } // Update the invitation status to "Pending"
-            );
-
-            res.status(200).json({ message: "Waiting For Seller To Accept Your Invitation", updateGroup: findGroup });
+        if (!findUser || !pendingDetail) {
+            return res.status(404).json({ message: "User not found" });
         }
+
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        if (findGroup.pendingRequests.includes(findUser._id)) {
+            return res.status(400).json({ message: "User already has a pending request to join this group" });
+        }
+
+        pendingDetail.invitation = "Pending" || pendingDetail.invitation
+
+        findGroup.pendingRequests.push(findUser._id);
+
+        await pendingDetail.save();
+        await findGroup.save();
+
+        res.status(200).json(findGroup);
     } catch (error) {
-        res.status(500).json(error);
-        console.log(error);
+        res.status(500).json({ message: error });
+        console.log(error)
     }
 });
 
-// Accepting Request To Join Group From Seller Endpoint
-router.patch("/:sellerID/group-request-accepted/:GroupID", authMiddleware(["Seller"]), async (req, res) => {
+// Get All the Pending Requests Of The Group
+router.get('/:groupID/get-pending-requests', async (req, res) => {
     try {
-        const { GroupID } = req.params;
-        const { sellerID } = req.params;
-        const findGroup = await Group.findById(GroupID);
-        const findSeller = await auth.findById(sellerID);
-        const findUser = await auth.findOne({ _id: req.body.userID });
+        const groupID = req.params.groupID; // Access the groupID parameter correctly
+        const findGroup = await Group.findById(groupID).populate('pendingRequests', '-password');
 
-        if (!findUser || !findGroup || !findSeller) {
-            res.status(404).json({ error: "Data Not Found" });
-        } else {
-            const existingUserIndex = findGroup.userID.findIndex(id => id.equals(findUser._id));
-
-            if (existingUserIndex !== -1) {
-                // User already exists in the group, update the invitation status
-                findGroup.userID[existingUserIndex].invitation = "Accepted";
-            } else {
-                // User doesn't exist in the group, add the user
-                findGroup.userID.push({
-                    _id: findUser._id,
-                    invitation: "Accepted"
-                });
-            }
-
-            await findGroup.save(); // Save the updated group
-
-            await auth.findByIdAndUpdate(
-                findUser._id,
-                { $set: { invitation: "Accepted" } } // Update the invitation status to "Accepted"
-            );
-
-            res.status(200).json({ message: "Your Invitation Has Been Accepted By The Seller", updateGroup: findGroup });
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group not found" });
         }
+
+        const pendingRequests = findGroup.pendingRequests;
+
+        // Query user collection to retrieve user details
+        const users = await user.find({ _id: { $in: pendingRequests } }, '-password');
+
+        res.status(200).json(users);
+
     } catch (error) {
         res.status(500).json(error);
-        console.log(error);
+        console.log(error.message);
+    }
+});
+
+
+//   Reject Group Request 
+router.patch('/:groupID/reject-request/:userID', async (req, res) => {
+    try {
+        const groupID = req.params.groupID;
+        const userID = req.params.userID;
+
+        const findGroup = await Group.findById(groupID);
+
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        const index = findGroup.pendingRequests.indexOf(userID);
+
+        if (index === -1) {
+            return res.status(404).json({ message: "User not found in pending requests" });
+        }
+
+        findGroup.pendingRequests.splice(index, 1);
+        await findGroup.save();
+
+        res.status(200).json({ message: "Request rejected successfully" });
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error.message);
+    }
+});
+
+// Accept Group Request 
+router.patch('/:groupID/accept-request/:userID', async (req, res) => {
+    try {
+        const groupID = req.params.groupID;
+        const userID = req.params.userID;
+
+        const findGroup = await Group.findById(groupID);
+
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        const index = findGroup.pendingRequests.indexOf(userID);
+
+        if (index === -1) {
+            return res.status(404).json({ message: "User not found in pending requests" });
+        }
+
+        findGroup.pendingRequests.splice(index, 1);
+        findGroup.members.push(userID);
+        await findGroup.save();
+
+        res.status(200).json({ message: "Request accepted successfully" });
+
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error.message);
+    }
+});
+
+// Get All Members
+router.get('/:groupID/get-all-members', async (req, res) => {
+    try {
+        const groupID = req.params.groupID; 
+        const findGroup = await Group.findById(groupID).populate('members', '-password');
+
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        const members = findGroup.members;
+
+        const users = await user.find({ _id: { $in: members } }, '-password');
+
+        res.status(200).json(users);
+
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error.message);
     }
 });
 
