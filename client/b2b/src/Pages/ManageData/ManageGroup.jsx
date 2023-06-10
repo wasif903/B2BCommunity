@@ -21,29 +21,10 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Setting = [
-  { name: "Member requests", icon: faUserGroup },
-  { name: "Automatic member approvals", icon: faCheckDouble },
-  { name: "Pending posts", icon: faEnvelope },
-  { name: "Post topics", icon: faClipboardCheck },
-  { name: "Scheduled posts", icon: faCalendarDays },
-  { name: "Activity Log", icon: faStopwatch },
-  { name: "Group rules", icon: faBook },
-  {
-    name: "Member-Reported Content Posts",
-    icon: faCircleExclamation,
-  },
-  { name: "Group Settings", icon: faGear },
-  { name: "Manage Membership", icon: faBell },
-  { name: "Check Group Photos", icon: faImage },
-  { name: "Check Group Videos", icon: faVideo },
-];
 function ManageGroup() {
-
-  const {id} = useParams();
+  const { id } = useParams();
 
   console.log(id);
-
 
   return (
     <>
@@ -88,21 +69,158 @@ function ManageGroup() {
           </Row>
         </Link>
         <h1 className={styles.LowerPartHeading}>Admin tools</h1>
-        {Setting.map((item, index) => (
-          <Row key={index + 1} className={`${styles.LowerPartRow} my-4`}>
-            <div
-              className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
-            >
-              <span className={styles.Options}>
-                <FontAwesomeIcon
-                  className={styles.Optionsicon}
-                  icon={item.icon}
-                />
-              </span>
-              <p className={`${styles.OptionName} w-auto m-0`}>{item.name}</p>
-            </div>
-          </Row>
-        ))}
+
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faUserGroup}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Member requests</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faCheckDouble}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>
+              Automatic member approvals
+            </p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faEnvelope}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Pending posts</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faClipboardCheck}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Post topics</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faCalendarDays}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Scheduled posts</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faStopwatch}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Activity Log</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon className={styles.Optionsicon} icon={faBook} />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Group rules</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon
+                className={styles.Optionsicon}
+                icon={faCircleExclamation}
+              />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>
+              Member-Reported Content Posts
+            </p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon className={styles.Optionsicon} icon={faGear} />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>Group Settings</p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon className={styles.Optionsicon} icon={faBell} />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>
+              Manage Membership
+            </p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon className={styles.Optionsicon} icon={faImage} />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>
+              Check Group Photos
+            </p>
+          </div>
+        </Row>
+        <Row className={`${styles.LowerPartRow} my-4`}>
+          <div
+            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+          >
+            <span className={styles.Options}>
+              <FontAwesomeIcon className={styles.Optionsicon} icon={faVideo} />
+            </span>
+            <p className={`${styles.OptionName} w-auto m-0`}>
+              Check Group Videos
+            </p>
+          </div>
+        </Row>
       </Container>
     </>
   );
