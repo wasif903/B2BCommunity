@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import style from "./forgetPass.module.css";
 import Container from "react-bootstrap/Container";
+import { useNavigate } from "react-router-dom";
 
 function ForgetPass() {
+  const navigate = useNavigate();
+
   const [forgetPassEmail, setforgetPassEmail] = useState({
     email: "",
   });
@@ -15,11 +18,13 @@ function ForgetPass() {
   };
 
   function Sumbit() {
-    console.log(forgetPassEmail);
+    if (forgetPassEmail.email !== "") navigate("/Enter-New-pass");
+    console.log(forgetPassEmail.email);
   }
+
   return (
     <>
-      <body className={style.body}>
+      <div className={style.body}>
         <h1 className="text-light w-100 text-center">Reset Password Form</h1>
         <Container className={style.con}>
           <div
@@ -44,7 +49,7 @@ function ForgetPass() {
             <button onClick={Sumbit}>Reset my Password</button>
           </div>
         </Container>
-      </body>
+      </div>
     </>
   );
 }

@@ -4,6 +4,7 @@ import OtpAuth from "../Pages/Auth/OtpAuth";
 import Signup from "../Pages/Auth/Signup";
 import Welcome from "../Pages/Auth/Welcome";
 import ForgetPass from "../Pages/Auth/ForgetPass";
+import EnterNewPass from "../Pages/Auth/EnterNewPass";
 
 const LoggedOutRoutes = [
   {
@@ -25,6 +26,10 @@ const LoggedOutRoutes = [
   {
     path: "/Forget-pass",
     element: <ForgetPass />,
+  },
+  {
+    path: "/Enter-New-pass",
+    element: <EnterNewPass />,
   },
   {
     path: "*",
