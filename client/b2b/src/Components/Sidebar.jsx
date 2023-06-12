@@ -64,7 +64,6 @@ const Sidebar = ({ setIsOpen }) => {
     }
   };
   
-
   useEffect(() => {
     
     
