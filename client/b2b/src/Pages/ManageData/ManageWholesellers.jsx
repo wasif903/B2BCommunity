@@ -1,5 +1,3 @@
-import React from "react";
-import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
 import styles from "./ManageDataStyles/ManageWholesellers.module.css";
 import userPic from "../../assets/UserPic.jpeg";
 import Header from "../../Components/Header";
@@ -10,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../../utils/SwiperBreakPoints";
+import { useGetSellersQuery, useRemoveUserMutation } from "../../REDUX/Reducers/groups/GroupSlice";
 
 const Name = [
   "UIUX Designers",
@@ -22,6 +21,22 @@ const Name = [
 ];
 
 function ManageUser() {
+
+  const getSellers = useGetSellersQuery();
+
+  console.log(getSellers.data);
+
+  const [removeSeller] = useRemoveUserMutation();
+
+  const removeSellerHandler = async (id) => {
+    try {
+      const res = await removeSeller(id);
+      console.log(id, res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Header />
@@ -39,7 +54,7 @@ function ManageUser() {
         <div className={styles.sliders}>
           <Swiper spaceBetween={15} slidesPerView={2} breakpoints={breakpoints}>
             {Name.map((item, index) => (
-              <SwiperSlide className="d-inline-flex justify-content-center align-items-center py-2">
+              <SwiperSlide key={index} className="d-inline-flex justify-content-center align-items-center py-2">
                 <a key={index} href="#">
                   {item}
                 </a>
@@ -49,8 +64,9 @@ function ManageUser() {
         </div>
         <Container className={styles.displayUsers}>
           <Row className={styles.displayUsersRow}>
-            {DummyUserData.map((item) => (
-              <Col lg="3" md="6" sm="6">
+            {getSellers?.data?.map((item) => (
+
+              <Col key={item._id} lg="3" md="6" sm="6">
                 <div className={`${styles.mapWrapper}`}>
                   <div>
                     <img className={styles.imgWrapper} src={userPic} alt="" />
@@ -58,20 +74,21 @@ function ManageUser() {
                   <span
                     className={`${styles.NewRequestNamePanel} text-center py-3`}
                   >
-                    <p>{item.name}</p>
-                    <code>{item.code}</code>
+                    <h3>{item.sellerDetails.firstName}</h3>
+                    <p>Country : {item.sellerDetails.country}</p>
+                    <p>City : {item.sellerDetails.city}</p>
                   </span>
                   <div className={styles.userDataBtnWrapper}>
                     <div>
-                      <button className={`my-2 ${styles.buttons}`}>
+                      <button onClick={() => removeSellerHandler(item._id)} className={`my-2 ${styles.buttons}`}>
                         REMOVE
                       </button>
                       <button className={`my-2 ${styles.buttons}`}>
-                        BLOCK
+                        DETAILS
                       </button>
                     </div>
                     <button className={styles.assignBtn}>
-                      Assign to other group
+                      Assign to Group
                     </button>
                   </div>
                 </div>

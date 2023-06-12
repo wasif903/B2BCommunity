@@ -7,7 +7,7 @@ const baseUrl = API_BASE_URL;
 export const group = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   reducerPath: "groups",
-  tagTypes: ["groups", "pendingReq", "getAllMembmers"],
+  tagTypes: ["groups", "pendingReq", "getAllMembmers", 'getAllSellers'],
   endpoints: (builder) => ({
     // ...other endpoints
     getAllGroups: builder.query({
@@ -88,7 +88,31 @@ export const group = createApi({
       },
       invalidatesTags:['getAllMembmers']
     }),
-    
+    assignGroup: builder.mutation({
+      query: (data) => {
+        const { groupID, userid, ...body } = data
+        return {
+          url: `/api/groups/${groupID}/assign-group/${userid}`,
+          method: "PATCH",
+          body
+        };
+      },
+      invalidatesTags:['getAllSellers']
+    }),
+    getSellers: builder.query({
+      query: () => ({
+        url:'/api/auth/all-sellers',
+        method:'GET',
+      }),
+      providesTags:['getAllSellers']
+    }),
+    removeUser: builder.mutation({
+      query: (id) => ({
+        url: `/api/auth/delete-user/${id}`,
+        method: 'DELETE',
+      }), 
+      invalidatesTags:['getAllSellers']
+    }),
   }),
 });
 
@@ -101,5 +125,8 @@ export const {
   useRejectReqMutation,
   useAcceptReqMutation,
   useGetAllMembersQuery,
-  useRemoveMemberMutation
+  useRemoveMemberMutation,
+  useAssignGroupMutation,
+  useGetSellersQuery,
+  useRemoveUserMutation
 } = group;
