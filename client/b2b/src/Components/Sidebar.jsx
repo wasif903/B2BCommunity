@@ -54,15 +54,16 @@ const Sidebar = ({ setIsOpen }) => {
 
   const logout = () => {
     try {
-      setCookie('cookie', '', { expires: new Date(0) });
-      setCookie('userRole', '', { expires: new Date(0) });
+      setCookie('cookie', '', { expires: new Date(0), path: '/' });
+      setCookie('userRole', '', { expires: new Date(0), path: '/' });
       setIsOpen(false);
-      localStorage.clear("userDetails");
+      localStorage.clear();
       navigate('/login');
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   useEffect(() => {
     

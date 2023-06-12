@@ -40,7 +40,7 @@ const AdminRoute = [
     element: <NewRequest />,
   },
   {
-    path: "/All-Members",
+    path: "/All-Members/:id",
     element: <AllMembers />,
   },
   {

@@ -1,4 +1,3 @@
-import { DummyUserData } from "./ManageDataAssets/ManageUserData.json";
 import styles from "./ManageDataStyles/NewRequest.module.css";
 import userPic from "../../assets/UserPic.jpeg";
 import Header from "../../Components/Header";
@@ -9,8 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../../utils/SwiperBreakPoints";
+import { useAcceptReqMutation, useGetPendingReqQuery, useRejectReqMutation } from "../../REDUX/Reducers/groups/GroupSlice";
+import { useParams } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 function NewRequest() {
+
+
   const categoryOptions = [
     {
       category: "UI/UX Designer",
@@ -42,6 +46,37 @@ function NewRequest() {
     },
   ];
 
+  const { id } = useParams();
+
+  const getPendingReq = useGetPendingReqQuery(id);
+
+  const [rejectReq, { isLoading, isError }] = useRejectReqMutation();
+  const [acceptReq] = useAcceptReqMutation();
+
+  // Request Rejection Handler
+  const reqRejectHandler = async (userid) => {
+    try {
+      const res = await rejectReq({ groupdID:id, userid });
+      console.log(res, userid);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const acceptReqHandler = async (userid) => {
+    try {
+      const res = await acceptReq({ groupdID:id, userid });
+      console.log(res, userid);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  const [cookie, setCookie] = useCookies(['userRole']);
+
+  console.log(cookie.userRole);
+
   return (
     <>
       <Header />
@@ -59,7 +94,7 @@ function NewRequest() {
           >
             <div>
               {categoryOptions.map((item, index) => (
-                <SwiperSlide className="d-inline-flex justify-content-center align-items-center py-2">
+                <SwiperSlide key={index} className="d-inline-flex justify-content-center align-items-center py-2">
                   <button className={styles.catListBtn} key={index + 1}>
                     {item.category}
                   </button>
@@ -88,8 +123,8 @@ function NewRequest() {
       </Container>
       <Container>
         <Row>
-          {DummyUserData.map((item, index) => (
-            <Col lg="3" md="6" sm="6">
+          {getPendingReq.data ? getPendingReq?.data?.map((item, index) => (
+            <Col key={index} lg="3" md="6" sm="6">
               <div className={`${styles.mapWrapper}`} key={index + 1}>
                 <div>
                   <img
@@ -102,16 +137,25 @@ function NewRequest() {
                 <div
                   className={`${styles.NewRequestNamePanel} text-center py-3`}
                 >
-                  <h3>{item.name}</h3>
-                  <code>{item.code}</code>
+                  <h2>{item.firstName}</h2>
+                  <p className="fw-bold py-0 my-0">City: {item.city}</p>
+                  <p className="fw-bold py-0 my-0">Country: {item.country}</p>
+                  <p className="fw-bold py-0 my-0">Status: {item.invitation}</p>
                 </div>
+
                 <div style={{ width: "8rem" }}>
-                  <button className={`my-2 ${styles.buttons}`}>ADD</button>
-                  <button className={`my-2 ${styles.buttons}`}>REMOVE</button>
+                  <button onClick={() => acceptReqHandler(item.userid)}  className={`my-2 ${styles.buttons}`}>ACCEPT</button>
+                  <button onClick={() => reqRejectHandler(item.userid)} className={`my-2 ${styles.buttons}`}>REJECT</button>
                 </div>
+
               </div>
             </Col>
-          ))}
+          ))
+            :
+            <div className="text-center">
+              <h1>No Requests Yet</h1>
+            </div>
+          }
         </Row>
       </Container>
     </>

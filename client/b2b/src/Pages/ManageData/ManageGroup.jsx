@@ -23,7 +23,12 @@ import {
 import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 
 function ManageGroup() {
+
   const { id } = useParams();
+
+  const getSingleGroups = useGetSingleGroupQuery(id);
+
+
 
   console.log(id);
 
@@ -86,34 +91,39 @@ function ManageGroup() {
         </Link>
         <h1 className={styles.LowerPartHeading}>Admin tools</h1>
 
-        <Row className={`${styles.LowerPartRow} my-4`}>
-          <div
-            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
-          >
-            <span className={styles.Options}>
-              <FontAwesomeIcon
-                className={styles.Optionsicon}
-                icon={faUserGroup}
-              />
-            </span>
-            <p className={`${styles.OptionName} w-auto m-0`}>Member requests</p>
-          </div>
-        </Row>
-        <Row className={`${styles.LowerPartRow} my-4`}>
-          <div
-            className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
-          >
-            <span className={styles.Options}>
-              <FontAwesomeIcon
-                className={styles.Optionsicon}
-                icon={faCheckDouble}
-              />
-            </span>
-            <p className={`${styles.OptionName} w-auto m-0`}>
-              Automatic member approvals
-            </p>
-          </div>
-        </Row>
+        <Link to={`/New-Request/${id}`}>
+          <Row className={`${styles.LowerPartRow} my-4`}>
+            <div
+              className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+            >
+              <span className={styles.Options}>
+                <FontAwesomeIcon
+                  className={styles.Optionsicon}
+                  icon={faUserGroup}
+                />
+              </span>
+              <p className={`${styles.OptionName} w-auto m-0`}>Member requests</p>
+            </div>
+          </Row>
+        </Link>
+
+        <Link to={`/All-Members/${id}`}>
+          <Row className={`${styles.LowerPartRow} my-4`}>
+            <div
+              className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
+            >
+              <span className={styles.Options}>
+                <FontAwesomeIcon
+                  className={styles.Optionsicon}
+                  icon={faCheckDouble}
+                />
+              </span>
+              <p className={`${styles.OptionName} w-auto m-0`}>
+                All Members
+              </p>
+            </div>
+          </Row>
+        </Link>
         <Row className={`${styles.LowerPartRow} my-4`}>
           <div
             className={`${styles.OptionWrapper} d-flex align-items-center gap-3`}
