@@ -6,6 +6,7 @@ import { body, validationResult } from "express-validator";
 import transporter from "../utils/NodeMailerConfig.js";
 import userdetails from "../models/users/userdetails.js";
 import userotp from "../models/users/userotp.js";
+import user from "../models/users/user.js";
 
 const router = express.Router();
 //route for seller registeration
@@ -338,13 +339,13 @@ router.post("/firebaseauth", async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
     if (!userExist) {
-      
+
       res.status(201).json({ message: "User Not Found" });
     } else {
       //user exist sign the user and send the token to client side 
       const userDet = await userdetails.findOne({ userid: userExist._id });
 
-      const cookie =  jwt.sign(
+      const cookie = jwt.sign(
         {
           email: userExist.email,
           userID: userExist._id,
@@ -361,7 +362,7 @@ router.post("/firebaseauth", async (req, res) => {
         .json({
           message: "Logged In Successfully",
           cookie,
-          user: {...userExist,...userDet.firstName,...userDet.path},
+          user: { ...userExist, ...userDet.firstName, ...userDet.path },
         });
     }
   } catch (error) {
@@ -369,4 +370,55 @@ router.post("/firebaseauth", async (req, res) => {
     console.log(error);
   }
 })
+
+
+router.get('/all-sellers', async (req, res) => {
+  try {
+    const findSellers = await users.find({ role: 'Seller' });
+    const getSellerIDs = findSellers.map((item) => item._id);
+    const getSellers = await userdetails.find({ userid: { $in: getSellerIDs } });
+
+    // Create a nested structure with seller details
+    const mergedData = findSellers.map((seller) => {
+      const sellerDetails = getSellers.find((details) => details.userid.toString() === seller._id.toString());
+      return { ...seller.toObject(), sellerDetails: sellerDetails.toObject() };
+    });
+
+    res.status(200).json(mergedData);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
+
+router.delete('/delete-user/:userID', async (req, res) => {
+  try {
+    const { userID } = req.params;
+
+    // Delete user from the 'users' collection
+    const deleteUser = await users.findByIdAndDelete(userID);
+
+    // Delete user details from the 'userdetails' collection
+    const deleteDetails = await userdetails.findOneAndDelete({ userId: userID });
+
+    // Delete user OTP details from the 'userotp' collection
+    const deleteOTP = await userotp.findOneAndDelete({ userId: userID });
+
+    if (!deleteUser || !deleteDetails || !deleteOTP) {
+      return res.status(404).json({ message: "User Not Found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
+
+
 export default router;

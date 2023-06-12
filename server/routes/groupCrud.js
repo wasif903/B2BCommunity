@@ -8,7 +8,7 @@ import userdetails from "../models/users/userdetails.js";
 const router = express.Router();
 
 // Create Group Endpoint
-router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
+router.post("/create-group", async (req, res) => {
     try {
 
         const createGroup = new Group({
@@ -24,7 +24,7 @@ router.post("/create-group", authMiddleware(["Seller"]), async (req, res) => {
 });
 
 // Update Group Endpoint
-router.patch("/update-group/:groupID", authMiddleware(["Seller"]), async (req, res) => {
+router.patch("/update-group/:groupID", async (req, res) => {
     try {
 
         const { groupID } = req.params;
@@ -96,6 +96,7 @@ router.get("/single-group/:id", async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: error });
+        console.log(error)
     }
 });
 
@@ -148,7 +149,8 @@ router.get('/:groupID/get-pending-requests', async (req, res) => {
         const pendingRequests = findGroup.pendingRequests;
 
         // Query user collection to retrieve user details
-        const users = await user.find({ _id: { $in: pendingRequests } }, '-password');
+        const users = await userdetails.find({ userid: { $in: pendingRequests } }, '-password');
+
 
         res.status(200).json(users);
 
@@ -220,7 +222,7 @@ router.patch('/:groupID/accept-request/:userID', async (req, res) => {
 // Get All Members
 router.get('/:groupID/get-all-members', async (req, res) => {
     try {
-        const groupID = req.params.groupID; 
+        const groupID = req.params.groupID;
         const findGroup = await Group.findById(groupID).populate('members', '-password');
 
         if (!findGroup) {
@@ -229,7 +231,7 @@ router.get('/:groupID/get-all-members', async (req, res) => {
 
         const members = findGroup.members;
 
-        const users = await user.find({ _id: { $in: members } }, '-password');
+        const users = await userdetails.find({ userid: { $in: members } }, '-password');
 
         res.status(200).json(users);
 
@@ -238,6 +240,69 @@ router.get('/:groupID/get-all-members', async (req, res) => {
         console.log(error.message);
     }
 });
+
+// Remove Member
+router.patch('/:groupID/remove-member/:userID', async (req, res) => {
+    try {
+        const groupID = req.params.groupID;
+        const userID = req.params.userID;
+
+        const findGroup = await Group.findById(groupID);
+
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        const index = findGroup.members.indexOf(userID);
+
+        if (index === -1) {
+            return res.status(404).json({ message: "User not found in pending requests" });
+        }
+
+        findGroup.members.splice(index, 1);
+        await findGroup.save();
+        res.status(200).json({ message: "Member Removed Successfully" });
+
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error.message);
+    }
+});
+
+
+// Assign Group to sellers
+router.patch('/:groupID/assign-group/:sellerID', async (req, res) => {
+    try {
+      const { groupID, sellerID } = req.params;
+  
+      const findGroup = await Group.findById(groupID);
+  
+      if (!findGroup) {
+        return res.status(404).json({ message: "Group Not Found" });
+      }
+  
+      const findSeller = findGroup.admins.includes(sellerID);
+  
+      if (findSeller) {
+        return res.status(409).json({ message: "Seller Already Assigned to Group" });
+      }
+  
+      const existingGroup = await Group.findOne({ admins: sellerID });
+  
+      if (existingGroup) {
+        return res.status(409).json({ message: "Seller Already Assigned to Another Group" });
+      }
+  
+      findGroup.admins.push(sellerID);
+      await findGroup.save();
+  
+      res.status(200).json({ message: "Group Assigned to Seller Successfully" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+  
 
 
 export default router;
