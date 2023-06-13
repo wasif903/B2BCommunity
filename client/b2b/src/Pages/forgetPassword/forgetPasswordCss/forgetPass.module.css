@@ -46,7 +46,8 @@ body h1 {
   border: 1px solid rgb(112, 111, 111);
   border-radius: 5px;
 }
-.inputField[type="email"] {
+.inputField[type="email"],
+.inputField[type="password"] {
   padding-left: 1rem;
 }
 .inputs button {

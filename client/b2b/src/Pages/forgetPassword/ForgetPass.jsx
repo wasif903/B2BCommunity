@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./forgetPass.module.css";
+import style from "./forgetPasswordCss/forgetPass.module.css";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function ForgetPass() {
   };
 
   function Sumbit() {
-    if (forgetPassEmail.email !== "") navigate("/Enter-New-pass");
+    if (forgetPassEmail.email !== "") navigate("/ForgetPass-Otp");
     console.log(forgetPassEmail.email);
   }
 
@@ -30,7 +30,7 @@ function ForgetPass() {
           <div
             className={`${style.headings} d-flex justify-content-center align-items-center flex-column`}
           >
-            <h1 className="d-flex justify-content-center align-items-center m-3">
+            <h1 className="d-flex justify-content-center align-items-center m-3 text-center">
               Forget Password
             </h1>
             <p>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./EnterNewPass.module.css";
+import style from "./forgetPasswordCss/forgetPass.module.css";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ function EnterNewPass() {
           <div
             className={`${style.headings} d-flex justify-content-center align-items-center flex-column`}
           >
-            <h1 className="d-flex justify-content-center align-items-center m-3">
+            <h1 className="d-flex justify-content-center align-items-center m-3 text-center">
               Enter New Password
             </h1>
             <p className="d-flex flex-column gap-2">

@@ -10,7 +10,6 @@ import { userContext } from "../../contexts/UserContext";
 import { useCookies } from "react-cookie";
 
 function OtpAuth() {
-
   const navigate = useNavigate();
 
   const [cookies, setCookie] = useCookies(["cookie"]);
@@ -42,18 +41,17 @@ function OtpAuth() {
   };
   console.log(cookies);
 
-
   const otpVerify = async () => {
-
     try {
-      const res = await verfiyUserOtp({ email: user.user.email, otpCode: Number(otp) });
+      const res = await verfiyUserOtp({
+        email: user.user.email,
+        otpCode: Number(otp),
+      });
       console.log(res);
-
 
       navigate("/home");
       setCookie("cookie", res.data.cookie);
       setCookie("userRole", res.data.user.role[0]);
-
     } catch (error) {
       console.log(error);
     }
@@ -63,12 +61,11 @@ function OtpAuth() {
     e.preventDefault();
     try {
       const res = await resendOtp({ email: user.user.email });
-      console.log(res.data)
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return (
     <Container className={`${style.main} text-center`}>
