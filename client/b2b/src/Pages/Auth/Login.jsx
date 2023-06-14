@@ -37,6 +37,7 @@ function Login() {
 
       console.log(res, "response");
       if (!isError) {
+        console.log(res.data);
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
         localStorage.setItem(

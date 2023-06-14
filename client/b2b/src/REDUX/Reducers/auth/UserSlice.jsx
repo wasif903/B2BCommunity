@@ -15,6 +15,7 @@ export const signup = createApi({
         method: 'POST',
         body: user,
       }),
+      
     }),
     createSeller: builder.mutation({
       query: (user) => ({

@@ -29,9 +29,15 @@ const Name = [
 function ManageUser() {
   const [isOpen, setisOpen] = useState(false);
 
-  const modalHandler = function () {
+  const [sellerData, setSellerData] = useState({});
+
+  const modalHandler = function (item) {
     setisOpen(!isOpen);
+    setSellerData(item);
+    console.log(sellerData, "seller data here");
   };
+
+
   console.log(isOpen);
   const getSellers = useGetSellersQuery();
 
@@ -108,7 +114,7 @@ function ManageUser() {
                           DETAILS
                         </button>
                       </div>
-                      <button className={styles.assignBtn}>
+                      <button onClick={() => modalHandler(item)} className={styles.assignBtn}>
                         Assign to Group
                       </button>
                     </div>
@@ -119,7 +125,7 @@ function ManageUser() {
           </Container>
         </div>
       </div>
-      {isOpen ? <Modal modalHandler={modalHandler} /> : ""}
+      {isOpen ? <Modal modalHandler={modalHandler} sellerData={sellerData} /> : ""}
     </>
   );
 }

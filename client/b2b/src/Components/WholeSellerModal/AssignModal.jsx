@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AssignModal.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { groups } from "../../Pages/ManageData/ManageDataAssets/ManageUserData.json";
+import { useAssignGroupMutation, useUnAssignedGroupsQuery } from '../../REDUX/Reducers/groups/GroupSlice'
 
-function AssignModal({ modalHandler }) {
+// eslint-disable-next-line react/prop-types
+function AssignModal({ modalHandler, sellerData }) {
+
+  const unAssignedGroups = useUnAssignedGroupsQuery();
+
+  const [assignGroup] = useAssignGroupMutation();
+
+  const [groups, setGroups] = useState([]);
+
+  const groupSelector = (e) => {
+    setGroups(e.target.value);
+  }
+
+  console.log(sellerData._id, "seller id");
+
+  // Assignment Handler
+  const assignmentHandler = async () => {
+    try {
+      const res = await assignGroup({ groupID: groups, userid: sellerData._id });
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  console.log(groups);
+
   return (
     <>
       <div className={styles.ModalBackground}>
@@ -11,8 +38,7 @@ function AssignModal({ modalHandler }) {
           <div
             className={`${styles.heading} d-flex justify-content-between align-items-center w-100`}
           >
-            <h3>Assign To Another group</h3>
-            <h4 onClick={modalHandler}>X</h4>
+            <h4 className="mt-4" onClick={modalHandler}>X</h4>
           </div>
           <div
             className={`${styles.Wrapper} d-flex flex-column justify-content-evenly align-items-center w-100 gap-4 height-100`}
@@ -27,20 +53,20 @@ function AssignModal({ modalHandler }) {
             >
               <p>
                 <strong>FullName:</strong>
-                <span>John Doe</span>
+                <span> {sellerData?.sellerDetails?.firstName + " " + sellerData?.sellerDetails?.lastName}</span>
               </p>
               <p>
                 <strong>Email:</strong>
-                <span>johndoe@example.com</span>
+                <span> {sellerData.email}</span>
               </p>
             </div>
             <div className={`${styles.buttons} d-flex flex-column gap-4`}>
-              <select name="group" id="groups">
-                {groups.map((group) => (
-                  <option value={group.name}>{group.name}</option>
+              <select onChange={groupSelector} name="group" id="groups">
+                {unAssignedGroups?.data?.map((group) => (
+                  <option key={group._id} value={group._id}>{group.groupName}</option>
                 ))}
               </select>
-              <button>Assign To This Group</button>
+              <button onClick={assignmentHandler}>Assign To This Group</button>
             </div>
           </div>
         </div>

@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import EditProfilePhoto from "../../Components/AdminPanelModals/EditProfilePhoto";
 import { useNavigate } from "react-router-dom";
+import { useGetSellersQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 
 function AdminPanel() {
   const navigate = useNavigate();
@@ -94,7 +95,6 @@ function AdminPanel() {
   }, [])
 
 
-
   return (
     <>
       <Header />
@@ -145,7 +145,10 @@ function AdminPanel() {
           </Col>
           <Col size="6">
             <div className="text-end">
-              <button onClick={() => navigate('/add-wholeseller')}>
+              <button onClick={() => {
+                navigate('/add-wholeseller')
+                
+                }}>
                 ADD SELLER <FontAwesomeIcon icon={faPlus} />
               </button>
             </div>
