@@ -23,7 +23,7 @@ function AssignModal({ modalHandler }) {
               className={styles.AssignModalImg}
             />
             <div
-              className={`${styles.DetailDiv} d-flex align-items-center justify-content-center gap-4 w-100`}
+              className={`${styles.DetailDiv} d-flex align-items-center justify-content-center gap-4 w-100 flex-column`}
             >
               <p>
                 <strong>FullName:</strong>

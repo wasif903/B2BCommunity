@@ -115,7 +115,6 @@ function ManageUser() {
                   </div>
                 </Col>
               ))}
-              <button onClick={modalHandler}>Assign</button>
             </Row>
           </Container>
         </div>
