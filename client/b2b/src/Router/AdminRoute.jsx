@@ -11,14 +11,14 @@ import AllGroup from "../Pages/ManageData/AllGroup";
 import ManageGroup from "../Pages/ManageData/ManageGroup";
 import AddWholeSeller from "../Pages/Auth/AddWholeSeller";
 import { Navigate } from "react-router-dom";
+import Detail from "../Components/Detail";
 
 const AdminRoute = [
-
   {
     path: "/home",
     element: <Home />,
   },
- 
+
   {
     path: "/admin-panel",
     element: <AdminPanel />,
@@ -64,8 +64,12 @@ const AdminRoute = [
     element: <AddWholeSeller />,
   },
   {
+    path: "/User-Detail",
+    element: <Detail />,
+  },
+  {
     path: "*",
-    element: <Navigate to="/home"/> ,
+    element: <Navigate to="/home" />,
   },
 ];
 

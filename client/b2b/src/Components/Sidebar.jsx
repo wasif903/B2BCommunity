@@ -47,30 +47,27 @@ const Sidebar = ({ setIsOpen }) => {
     },
   ];
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie] = useCookies(['cookie']);
+  const [cookies, setCookie] = useCookies(["cookie"]);
 
   const logout = () => {
     try {
-      setCookie('cookie', '', { expires: new Date(0), path: '/' });
-      setCookie('userRole', '', { expires: new Date(0), path: '/' });
+      setCookie("cookie", "", { expires: new Date(0), path: "/" });
+      setCookie("userRole", "", { expires: new Date(0), path: "/" });
       setIsOpen(false);
       localStorage.clear();
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
   };
-  
-  useEffect(() => {
-    
-    
-  }, [])
-  
 
-  const userDetails =JSON.parse(localStorage.getItem('userDetails'));
+  useEffect(() => {}, []);
+
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  console.log(userDetails);
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log(user, "-------")
 
@@ -107,11 +104,11 @@ const Sidebar = ({ setIsOpen }) => {
                 }}
                 className="d-flex pt-3 ps-3 justify-content-center flex-column"
               >
-                <p className={`${styles.name} text-white`}>{userDetails.firstName + " " +userDetails .lastName}</p>
-
-                <p className={`${styles.Email} text-white`}>
-                  {user.email}
+                <p className={`${styles.name} text-white`}>
+                  {/* {userDetails.firstName + " " + userDetails.lastName} */}
                 </p>
+
+                <p className={`${styles.Email} text-white`}>{user.email}</p>
               </div>
             </div>
           </Col>
@@ -123,7 +120,8 @@ const Sidebar = ({ setIsOpen }) => {
             <div className={`${styles.sidebarUl} mt-lg-5`}>
               {menuItem.map((item, i) => (
                 <>
-                  <Link key={i + 1}
+                  <Link
+                    key={i + 1}
                     className={`text-reset text-decoration-none`}
                     to={item.path}
                   >
