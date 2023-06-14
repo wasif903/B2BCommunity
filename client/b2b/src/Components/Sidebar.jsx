@@ -105,7 +105,7 @@ const Sidebar = ({ setIsOpen }) => {
                 className="d-flex pt-3 ps-3 justify-content-center flex-column"
               >
                 <p className={`${styles.name} text-white`}>
-                  {/* {userDetails.firstName + " " + userDetails.lastName} */}
+                  {userDetails.firstName + " " + userDetails.lastName}
                 </p>
 
                 <p className={`${styles.Email} text-white`}>{user.email}</p>

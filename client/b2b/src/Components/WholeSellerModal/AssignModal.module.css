@@ -1,29 +1,3 @@
-/* .Modalwrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:rgba(219, 54, 133, 0.38)\;
-}
-
-.modal {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: white;
-    height: 20vh;
-    border-radius: 20px;
-    position: relative;
-}
-
-.closeModal {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-} */
-
 .ModalBackground {
   position: fixed;
   top: 0;
@@ -43,25 +17,59 @@
   border-radius: 20px;
   padding: 20px;
   position: relative;
-  height: 40vh;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.modalTitle {
-  margin-bottom: 10px;
+.heading h3 {
+  font-weight: bolder;
 }
-
-.closeModal {
+.DetailDiv p {
+  margin: 0;
+}
+.heading h4 {
   position: absolute;
-  top: 10px;
-  right: 15px;
+  right: 20px;
   cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  width: 33px !important;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bolder;
 }
-
+.AssignModalImg {
+  border-radius: 50%;
+  width: 10rem;
+}
 .fileLabel {
   display: block;
   margin-top: 10px;
 }
 
+@media only screen and (max-width: 650px) {
+  .AssignModalImg {
+    width: 8rem !important;
+  }
+  .heading h3 {
+    font-size: 1.3rem;
+  }
+  .DetailDiv {
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding-bottom: 1rem;
+  }
+  .DetailDiv p {
+    margin: 0 !important;
+  }
+}
 @media only screen and (max-width: 600px) {
   .ModalWrapper {
     width: 80%;
