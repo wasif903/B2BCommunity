@@ -80,6 +80,17 @@ router.get("/get-groups", async (req, res) => {
     }
 });
 
+router.get('/available-groups-to-assign', async (req, res) => {
+    try {
+        const groupsWithoutSeller = await Group.find({ admins: { $exists: false } });
+
+        res.status(200).json(groupsWithoutSeller);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
 
 router.get("/single-group/:id", async (req, res) => {
 
@@ -273,36 +284,72 @@ router.patch('/:groupID/remove-member/:userID', async (req, res) => {
 // Assign Group to sellers
 router.patch('/:groupID/assign-group/:sellerID', async (req, res) => {
     try {
-      const { groupID, sellerID } = req.params;
-  
-      const findGroup = await Group.findById(groupID);
-  
-      if (!findGroup) {
-        return res.status(404).json({ message: "Group Not Found" });
-      }
-  
-      const findSeller = findGroup.admins.includes(sellerID);
-  
-      if (findSeller) {
-        return res.status(409).json({ message: "Seller Already Assigned to Group" });
-      }
-  
-      const existingGroup = await Group.findOne({ admins: sellerID });
-  
-      if (existingGroup) {
-        return res.status(409).json({ message: "Seller Already Assigned to Another Group" });
-      }
-  
-      findGroup.admins.push(sellerID);
-      await findGroup.save();
-  
-      res.status(200).json({ message: "Group Assigned to Seller Successfully" });
+        const { groupID, sellerID } = req.params;
+
+        const findGroup = await Group.findById(groupID);
+
+        if (!findGroup) {
+            return res.status(404).json({ message: "Group Not Found" });
+        }
+
+        const findSeller = findGroup.admins.includes(sellerID);
+
+        if (findSeller) {
+            return res.status(409).json({ message: "Seller Already Assigned to Group" });
+        }
+
+        const existingGroup = await Group.findOne({ admins: sellerID });
+
+        if (existingGroup) {
+            return res.status(409).json({ message: "Seller Already Assigned to Another Group" });
+        }
+
+        findGroup.admins.push(sellerID);
+        await findGroup.save();
+
+        res.status(200).json({ message: "Group Assigned to Seller Successfully" });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+        console.log(error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
-  });
-  
+});
+
+
+router.get('/unassigned-sellers', async (req, res) => {
+    try {
+        const assignedAdmins = await Group.distinct('admins');
+
+        const unassignedSellers = await user.find({ _id: { $nin: assignedAdmins } })
+            .select('email'); // Adjust the field names based on your schema
+
+        const unassignedSellersDetails = await userdetails.find({ userid: { $nin: assignedAdmins } })
+            .select('userid firstName lastName');
+
+        // Combine the data based on matching IDs
+        const combinedData = unassignedSellers.map((seller) => {
+            console.log("Seller Id Here",seller._id);
+            const details = unassignedSellersDetails.find((detail) => detail.userid.equals(seller._id));
+            console.log("userDetail Id Here",details);
+            return {
+                _id: seller._id,
+                email: seller.email,
+                firstName: details ? details.firstName : '',
+                lastName: details ? details.lastName : ''
+            };
+        });
+
+        res.status(200).json(combinedData);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+    
+});
+
+
+
+
 
 
 export default router;

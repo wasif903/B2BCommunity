@@ -139,23 +139,8 @@ router.patch("/verify-otp", async (req, res) => {
   }
 });
 //route for login
-router.post(
-  "/login",
-  [
-    body("email")
-      .notEmpty()
-      .withMessage("Email is required")
-      .isEmail()
-      .withMessage("Invalid email address"),
-    body("password").notEmpty().withMessage("Password is required"),
-  ],
-  async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
-      // Check for validation errors
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
 
       const userExists = await users.findOne({ email: req.body.email });
 
