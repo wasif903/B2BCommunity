@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import styles from "./ManageDataStyles/ManageWholesellers.module.css";
 import userPic from "../../assets/UserPic.jpeg";
 import Header from "../../Components/Header";
@@ -31,12 +30,25 @@ function ManageUser() {
   const [isAssignOpen, setisAssignOpen] = useState(false);
   const [isUnassignOpen, setisUnassignOpen] = useState(false);
 
-  const AssignmodalHandler = function () {
-    setisAssignOpen(!isAssignOpen);
-  };
-  const UnassignmodalHandler = function () {
+  // const AssignmodalHandler = function () {
+  //   setisAssignOpen(!isAssignOpen);
+  // };
+
+  const [sellerData, setSellerData] = useState({});
+
+  const UnassignmodalHandler = function (item) {
     setisUnassignOpen(!isUnassignOpen);
+    setSellerData(item);
+    console.log(sellerData, "seller data here");
   };
+
+  const modalHandler = function (item) {
+    setisAssignOpen(!isAssignOpen);
+    setSellerData(item);
+    console.log(sellerData, "seller data here");
+  };
+
+  // console.log(isOpen);
 
   const getSellers = useGetSellersQuery();
 
@@ -115,8 +127,8 @@ function ManageUser() {
                         </button>
                       </div>
                       <button
+                        onClick={() => modalHandler(item)}
                         className={styles.assignBtn}
-                        onClick={AssignmodalHandler}
                       >
                         Assign to Group
                       </button>
@@ -156,7 +168,7 @@ function ManageUser() {
                       </div>
                       <button
                         className={styles.assignBtn}
-                        onClick={UnassignmodalHandler}
+                        onClick={() => UnassignmodalHandler(item)}
                       >
                         unassign to Group
                       </button>
@@ -168,13 +180,23 @@ function ManageUser() {
           </Container>
         </div>
       </div>
-      {isAssignOpen ? (
+
+      {/* {isAssignOpen ? (
         <AssignModal AssignmodalHandler={AssignmodalHandler} />
       ) : (
         ""
-      )}
+      )} */}
       {isUnassignOpen ? (
-        <UnassignModal UnassignmodalHandler={UnassignmodalHandler} />
+        <UnassignModal
+          UnassignmodalHandler={UnassignmodalHandler}
+          sellerData={sellerData}
+        />
+      ) : (
+        ""
+      )}
+
+      {isAssignOpen ? (
+        <AssignModal modalHandler={modalHandler} sellerData={sellerData} />
       ) : (
         ""
       )}

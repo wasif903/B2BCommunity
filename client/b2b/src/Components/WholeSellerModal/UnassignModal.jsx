@@ -1,6 +1,32 @@
+import React, { useState } from "react";
 import styles from "./AssignModal.module.css";
+import { groups } from "../../Pages/ManageData/ManageDataAssets/ManageUserData.json";
+import {
+  useAssignGroupMutation,
+  useUnAssignedGroupsQuery,
+} from "../../REDUX/Reducers/groups/GroupSlice";
 
-function AssignModal({ UnassignmodalHandler }) {
+// eslint-disable-next-line react/prop-types
+function UnassignModal({ UnassignmodalHandler, sellerData }) {
+  const [assignGroup] = useAssignGroupMutation();
+
+  console.log(sellerData._id, "seller id");
+
+  // Assignment Handler
+  const assignmentHandler = async () => {
+    try {
+      const res = await assignGroup({
+        groupID: groups,
+        userid: sellerData._id,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(groups);
+
   return (
     <>
       <div className={styles.ModalBackground}>
@@ -9,7 +35,10 @@ function AssignModal({ UnassignmodalHandler }) {
             className={`${styles.heading} d-flex justify-content-between align-items-center w-100`}
           >
             <h3>Unassign Member</h3>
-            <h4 onClick={UnassignmodalHandler}>X</h4>
+
+            <h4 className="mt-4" onClick={UnassignmodalHandler}>
+              X
+            </h4>
           </div>
           <div
             className={`${styles.Wrapper} d-flex flex-column justify-content-evenly align-items-center w-100 gap-4 height-100`}
@@ -24,15 +53,19 @@ function AssignModal({ UnassignmodalHandler }) {
             >
               <p>
                 <strong>FullName:</strong>
-                <span>John Doe</span>
+                <span>
+                  {sellerData?.sellerDetails?.firstName +
+                    " " +
+                    sellerData?.sellerDetails?.lastName}
+                </span>
               </p>
               <p>
                 <strong>Email:</strong>
-                <span>johndoe@example.com</span>
+                <span> {sellerData.email}</span>
               </p>
             </div>
             <div className={`${styles.buttons} d-flex flex-column gap-4`}>
-              <button>Unassign Member</button>
+              <button onClick={assignmentHandler}>Unassign Member</button>
             </div>
           </div>
         </div>
@@ -41,4 +74,4 @@ function AssignModal({ UnassignmodalHandler }) {
   );
 }
 
-export default AssignModal;
+export default UnassignModal;

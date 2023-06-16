@@ -10,10 +10,13 @@ import WholeSellerComp1 from "../../Components/Signuptwo_Multistep_Comp/WholeSel
 import WholeSellerComp2 from "../../Components/Signuptwo_Multistep_Comp/WholeSellerComp2.jsx";
 import WholeSellerComp3 from "../../Components/Signuptwo_Multistep_Comp/WholeSellerComp3.jsx";
 import { useNavigate } from "react-router-dom";
+import { useGetSellersQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 
 function AddWholeSeller() {
   // eslint-disable-next-line no-unused-vars
   const [createSeller, { isLoading, isError }] = useCreateSellerMutation();
+
+  const getSellers = useGetSellersQuery();
 
   const [steps, setSteps] = useState(0);
 
@@ -42,6 +45,7 @@ function AddWholeSeller() {
       console.log(res);
       if (res.data.status === 200) {
         navigate('/admin-panel');
+        getSellers.refetch();
       } else {
         console.log(isError);
       }

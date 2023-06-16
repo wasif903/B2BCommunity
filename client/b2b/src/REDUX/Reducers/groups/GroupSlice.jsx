@@ -44,7 +44,7 @@ export const group = createApi({
           method: "GET",
         };
       },
-      providesTags:['pendingReq']
+      providesTags: ['pendingReq']
     }),
     rejectReq: builder.mutation({
       query: (data) => {
@@ -55,7 +55,7 @@ export const group = createApi({
           body
         };
       },
-      invalidatesTags:['pendingReq']
+      invalidatesTags: ['pendingReq']
     }),
     acceptReq: builder.mutation({
       query: (data) => {
@@ -66,7 +66,7 @@ export const group = createApi({
           body
         };
       },
-      invalidatesTags:['pendingReq']
+      invalidatesTags: ['pendingReq']
     }),
     getAllMembers: builder.query({
       query: (id) => {
@@ -75,7 +75,7 @@ export const group = createApi({
           method: "GET",
         };
       },
-      providesTags:['getAllMembmers']
+      providesTags: ['getAllMembmers']
     }),
     removeMember: builder.mutation({
       query: (data) => {
@@ -86,7 +86,7 @@ export const group = createApi({
           body
         };
       },
-      invalidatesTags:['getAllMembmers']
+      invalidatesTags: ['getAllMembmers']
     }),
     assignGroup: builder.mutation({
       query: (data) => {
@@ -97,22 +97,28 @@ export const group = createApi({
           body
         };
       },
-      invalidatesTags:['getAllSellers']
+      invalidatesTags: ['getAllSellers']
     }),
     getSellers: builder.query({
       query: () => ({
-        url:'/api/auth/all-sellers',
-        method:'GET',
+        url: '/api/auth/all-sellers',
+        method: 'GET',
       }),
-      providesTags:['getAllSellers']
+      providesTags: ['getAllSellers']
     }),
     removeUser: builder.mutation({
       query: (id) => ({
         url: `/api/auth/delete-user/${id}`,
         method: 'DELETE',
-      }), 
-      invalidatesTags:['getAllSellers']
+      }),
+      invalidatesTags: ['getAllSellers']
     }),
+    unAssignedGroups: builder.query({
+      query: () => ({
+        url: '/api/groups/available-groups-to-assign',
+        method: 'GET'
+      })
+    })
   }),
 });
 
@@ -128,5 +134,6 @@ export const {
   useRemoveMemberMutation,
   useAssignGroupMutation,
   useGetSellersQuery,
-  useRemoveUserMutation
+  useRemoveUserMutation,
+  useUnAssignedGroupsQuery
 } = group;
