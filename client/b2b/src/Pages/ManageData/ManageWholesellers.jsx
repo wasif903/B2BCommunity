@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "./ManageDataStyles/ManageWholesellers.module.css";
 import userPic from "../../assets/UserPic.jpeg";
@@ -14,7 +14,8 @@ import {
   useGetSellersQuery,
   useRemoveUserMutation,
 } from "../../REDUX/Reducers/groups/GroupSlice";
-import Modal from "../../Components/WholeSellerModal/AssignModal";
+import AssignModal from "../../Components/WholeSellerModal/AssignModal";
+import UnassignModal from "../../Components/WholeSellerModal/UnassignModal";
 
 const Name = [
   "UIUX Designers",
@@ -27,12 +28,16 @@ const Name = [
 ];
 
 function ManageUser() {
-  const [isOpen, setisOpen] = useState(false);
+  const [isAssignOpen, setisAssignOpen] = useState(false);
+  const [isUnassignOpen, setisUnassignOpen] = useState(false);
 
-  const modalHandler = function () {
-    setisOpen(!isOpen);
+  const AssignmodalHandler = function () {
+    setisAssignOpen(!isAssignOpen);
   };
-  console.log(isOpen);
+  const UnassignmodalHandler = function () {
+    setisUnassignOpen(!isUnassignOpen);
+  };
+
   const getSellers = useGetSellersQuery();
 
   console.log(getSellers.data);
@@ -82,6 +87,7 @@ function ManageUser() {
             </Swiper>
           </div>
           <Container className={styles.displayUsers}>
+            <h1 className={styles.assignHeading}>Assign WholeSellers</h1>
             <Row className={styles.displayUsersRow}>
               {getSellers?.data?.map((item) => (
                 <Col key={item._id} lg="3" md="6" sm="6">
@@ -108,8 +114,51 @@ function ManageUser() {
                           DETAILS
                         </button>
                       </div>
-                      <button className={styles.assignBtn}>
+                      <button
+                        className={styles.assignBtn}
+                        onClick={AssignmodalHandler}
+                      >
                         Assign to Group
+                      </button>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+          <Container className={`${styles.displayUsers} mt-5 pt-5`}>
+            <h1 className={styles.unassignHeading}>Unassign WholeSellers</h1>
+            <Row className={styles.displayUsersRow}>
+              {getSellers?.data?.map((item) => (
+                <Col key={item._id} lg="3" md="6" sm="6">
+                  <div className={`${styles.mapWrapper}`}>
+                    <div>
+                      <img className={styles.imgWrapper} src={userPic} alt="" />
+                    </div>
+                    <span
+                      className={`${styles.NewRequestNamePanel} text-center py-3`}
+                    >
+                      <h3>{item.sellerDetails.firstName}</h3>
+                      <p>Country : {item.sellerDetails.country}</p>
+                      <p>City : {item.sellerDetails.city}</p>
+                    </span>
+                    <div className={styles.userDataBtnWrapper}>
+                      <div>
+                        <button
+                          onClick={() => removeSellerHandler(item._id)}
+                          className={`my-2 ${styles.buttons}`}
+                        >
+                          REMOVE
+                        </button>
+                        <button className={`my-2 ${styles.buttons}`}>
+                          DETAILS
+                        </button>
+                      </div>
+                      <button
+                        className={styles.assignBtn}
+                        onClick={UnassignmodalHandler}
+                      >
+                        unassign to Group
                       </button>
                     </div>
                   </div>
@@ -119,7 +168,16 @@ function ManageUser() {
           </Container>
         </div>
       </div>
-      {isOpen ? <Modal modalHandler={modalHandler} /> : ""}
+      {isAssignOpen ? (
+        <AssignModal AssignmodalHandler={AssignmodalHandler} />
+      ) : (
+        ""
+      )}
+      {isUnassignOpen ? (
+        <UnassignModal UnassignmodalHandler={UnassignmodalHandler} />
+      ) : (
+        ""
+      )}
     </>
   );
 }

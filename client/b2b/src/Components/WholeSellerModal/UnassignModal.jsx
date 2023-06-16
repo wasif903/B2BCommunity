@@ -1,7 +1,6 @@
 import styles from "./AssignModal.module.css";
-import { groups } from "../../Pages/ManageData/ManageDataAssets/ManageUserData.json";
 
-function AssignModal({ AssignmodalHandler }) {
+function AssignModal({ UnassignmodalHandler }) {
   return (
     <>
       <div className={styles.ModalBackground}>
@@ -9,8 +8,8 @@ function AssignModal({ AssignmodalHandler }) {
           <div
             className={`${styles.heading} d-flex justify-content-between align-items-center w-100`}
           >
-            <h3>Assign To Another group</h3>
-            <h4 onClick={AssignmodalHandler}>X</h4>
+            <h3>Unassign Member</h3>
+            <h4 onClick={UnassignmodalHandler}>X</h4>
           </div>
           <div
             className={`${styles.Wrapper} d-flex flex-column justify-content-evenly align-items-center w-100 gap-4 height-100`}
@@ -33,14 +32,7 @@ function AssignModal({ AssignmodalHandler }) {
               </p>
             </div>
             <div className={`${styles.buttons} d-flex flex-column gap-4`}>
-              <select name="group" id="groups">
-                {groups.map((group, index) => (
-                  <option key={index} value={group.name}>
-                    {group.name}
-                  </option>
-                ))}
-              </select>
-              <button>Assign To This Group</button>
+              <button>Unassign Member</button>
             </div>
           </div>
         </div>
