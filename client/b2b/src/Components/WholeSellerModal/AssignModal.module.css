@@ -1,0 +1,81 @@
+.ModalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(219, 54, 133, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.ModalWrapper {
+  width: 45vw;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.heading h3 {
+  font-weight: bolder;
+}
+.DetailDiv p {
+  margin: 0;
+}
+.heading h4 {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  width: 33px !important;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+.AssignModalImg {
+  border-radius: 50%;
+  width: 10rem;
+}
+.fileLabel {
+  display: block;
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 650px) {
+  .AssignModalImg {
+    width: 8rem !important;
+  }
+  .heading h3 {
+    font-size: 1.3rem;
+  }
+  .DetailDiv {
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding-bottom: 1rem;
+  }
+  .DetailDiv p {
+    margin: 0 !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .ModalWrapper {
+    width: 80%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+  }
+}

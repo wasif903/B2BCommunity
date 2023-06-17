@@ -3,7 +3,9 @@ import Login from "../Pages/Auth/Login";
 import OtpAuth from "../Pages/Auth/OtpAuth";
 import Signup from "../Pages/Auth/Signup";
 import Welcome from "../Pages/Auth/Welcome";
-
+import ForgetPass from "../Pages/forgetPassword/ForgetPass";
+import EnterNewPass from "../Pages/forgetPassword/EnterNewPass";
+import ForgetPassOtp from "../Pages/forgetPassword/ForgetPassOtp";
 
 const LoggedOutRoutes = [
   {
@@ -23,8 +25,20 @@ const LoggedOutRoutes = [
     element: <OtpAuth />,
   },
   {
+    path: "/Forget-pass",
+    element: <ForgetPass />,
+  },
+  {
+    path: "/Enter-New-pass",
+    element: <EnterNewPass />,
+  },
+  {
+    path: "/ForgetPass-Otp",
+    element: <ForgetPassOtp />,
+  },
+  {
     path: "*",
-    element: <Navigate to='/login' />,
+    element: <Navigate to="/login" />,
   },
 ];
 

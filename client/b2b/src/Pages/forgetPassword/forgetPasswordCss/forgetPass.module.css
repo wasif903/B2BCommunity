@@ -1,0 +1,72 @@
+.body {
+  height: 100vh;
+  background: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+body h1 {
+  font-weight: bolder;
+}
+.con {
+  background: white;
+  padding: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  border-radius: 5px;
+  width: 50vw !important;
+  position: relative;
+}
+.headings h1 {
+  font-weight: bolder;
+  color: var(--primary-color);
+}
+.headings p {
+  text-align: center;
+  width: 34vw;
+  color: #5f5f5f;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  position: relative;
+}
+.inputField {
+  outline: none;
+  width: 90%;
+  height: 3rem;
+  border: 1px solid rgb(112, 111, 111);
+  border-radius: 5px;
+}
+.inputField[type="email"],
+.inputField[type="password"] {
+  padding-left: 1rem;
+}
+.inputs button {
+  width: 50%;
+}
+
+@media all and (max-width: 768px) {
+  .headings h1 {
+    font-size: 1.8rem !important;
+  }
+}
+@media all and (max-width: 500px) {
+  .con {
+    width: 92vw !important;
+  }
+  .headings p {
+    width: 70vw;
+  }
+  .inputField {
+    width: 80vw !important;
+  }
+}

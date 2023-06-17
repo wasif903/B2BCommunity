@@ -1,0 +1,58 @@
+.AssignAnotherGroupRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0rem;
+  border-bottom: 1px solid #0000005e;
+  gap: 1rem;
+}
+.AssignAnotherGroupImg {
+  border-radius: 50%;
+  width: 12rem;
+}
+.AssignAnotherGroupCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+.AssignAnotherGroupCol p {
+  gap: 0.3rem;
+  display: flex;
+  margin: 0 !important;
+}
+.address {
+  display: ruby;
+}
+@media all and (max-width: 575px) {
+  .DetailDiv {
+    width: 20rem !important;
+    padding-bottom: 1.5rem;
+  }
+  .AssignAnotherGroupCol {
+    align-items: self-start;
+  }
+}
+@media all and (max-width: 473px) {
+  .AssignAnotherGroupCol {
+    align-items: self-start;
+  }
+  .AssignAnotherGroupCol:nth-child(3) {
+    padding-top: 1rem;
+  }
+}
+@media all and (max-width: 362px) {
+  .DetailRow {
+    gap: 0.8rem !important;
+  }
+  .AssignAnotherGroupCol {
+    gap: 0.8rem !important;
+    align-items: center;
+  }
+  .AssignAnotherGroupCol p {
+    width: auto;
+  }
+  .AssignAnotherGroupCol:nth-child(3) {
+    padding-top: 0;
+  }
+}

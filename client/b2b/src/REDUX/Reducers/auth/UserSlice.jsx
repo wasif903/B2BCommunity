@@ -15,10 +15,11 @@ export const signup = createApi({
         method: 'POST',
         body: user,
       }),
+      
     }),
     createSeller: builder.mutation({
       query: (user) => ({
-        url: '/api/auth/wholeseller-register',
+        url: '/api/auth/register',
         method: 'POST',
         body: user,
       }),
@@ -44,7 +45,8 @@ export const signup = createApi({
         method: 'PATCH',
         body: data,
       }), 
-    })
+    }),
+    
   }),
 });
 

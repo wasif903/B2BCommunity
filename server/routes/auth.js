@@ -139,23 +139,8 @@ router.patch("/verify-otp", async (req, res) => {
   }
 });
 //route for login
-router.post(
-  "/login",
-  [
-    body("email")
-      .notEmpty()
-      .withMessage("Email is required")
-      .isEmail()
-      .withMessage("Invalid email address"),
-    body("password").notEmpty().withMessage("Password is required"),
-  ],
-  async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
-      // Check for validation errors
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
 
       const userExists = await users.findOne({ email: req.body.email });
 
@@ -180,7 +165,7 @@ router.post(
 
           // Generate a cookie and set it in the response
           res.cookie("cookie", cookie, { httpOnly: true });
-
+          
           res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists, userDetails: userDetails });
         } else {
           res.status(400).json({ message: "Passwords Don't Match" });
@@ -370,6 +355,55 @@ router.post("/firebaseauth", async (req, res) => {
     console.log(error);
   }
 })
+
+
+router.get('/all-sellers', async (req, res) => {
+  try {
+    const findSellers = await users.find({ role: 'Seller' });
+    const getSellerIDs = findSellers.map((item) => item._id);
+    const getSellers = await userdetails.find({ userid: { $in: getSellerIDs } });
+
+    // Create a nested structure with seller details
+    const mergedData = findSellers.map((seller) => {
+      const sellerDetails = getSellers.find((details) => details.userid.toString() === seller._id.toString());
+      return { ...seller.toObject(), sellerDetails: sellerDetails.toObject() };
+    });
+
+    res.status(200).json(mergedData);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
+
+router.delete('/delete-user/:userID', async (req, res) => {
+  try {
+    const { userID } = req.params;
+
+    // Delete user from the 'users' collection
+    const deleteUser = await users.findByIdAndDelete(userID);
+
+    // Delete user details from the 'userdetails' collection
+    const deleteDetails = await userdetails.findOneAndDelete({ userId: userID });
+
+    // Delete user OTP details from the 'userotp' collection
+    const deleteOTP = await userotp.findOneAndDelete({ userId: userID });
+
+    if (!deleteUser || !deleteDetails || !deleteOTP) {
+      return res.status(404).json({ message: "User Not Found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
 
 
 export default router;

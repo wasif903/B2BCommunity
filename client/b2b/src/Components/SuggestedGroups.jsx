@@ -74,7 +74,16 @@ function SuggestedGroups() {
             </div>
           </Col>
           <Col className="text-end d-flex justify-content-end  align-items-center">
-            <button onClick={() => navigate("/All-Group")}>SEE ALL</button>
+            <button
+              onClick={() =>
+                navigate(
+                  // "/All-Group"
+                  "/Manage-Wholeseller",
+                )
+              }
+            >
+              SEE ALL
+            </button>
           </Col>
         </Row>
 

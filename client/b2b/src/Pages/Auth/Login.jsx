@@ -11,7 +11,6 @@ import Form from "react-bootstrap/Form";
 import { useUserLoginMutation } from "../../REDUX/Reducers/auth/UserSlice";
 import { useCookies } from "react-cookie";
 
-
 function Login() {
   const navigate = useNavigate();
 
@@ -19,7 +18,6 @@ function Login() {
     email: "",
     password: "",
   });
-
 
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies();
@@ -32,7 +30,6 @@ function Login() {
     setUserLoginFields({ ...userLoginFields, [e.target.name]: e.target.value });
   };
 
-
   const sumbitData = async (e) => {
     e.preventDefault();
     try {
@@ -40,15 +37,18 @@ function Login() {
 
       console.log(res, "response");
       if (!isError) {
+        console.log(res.data, "login res");
         setCookie("cookie", res.data.cookie);
         setCookie("userRole", res.data.user.role[0]);
-        localStorage.setItem("userDetails", JSON.stringify(res.data.userDetails));
+        localStorage.setItem(
+          "userDetails",
+          JSON.stringify(res.data.userDetails),
+        );
         localStorage.setItem("user", JSON.stringify(res.data.user));
         console.log(res.data);
         navigate("/home");
-        
       } else {
-        console.log("Other Error Here")
+        console.log("Other Error Here");
       }
     } catch (error) {
       console.log(error);
@@ -56,13 +56,7 @@ function Login() {
     }
   };
 
-
-  useEffect(() => {
-    
-
-  }, [cookie])
-  
-
+  useEffect(() => {}, [cookie]);
 
   return (
     <>
@@ -126,7 +120,7 @@ function Login() {
                     </label>
                   </div>
                   <div className="d-flex align-items-center">
-                    <Link to="/forget-password" className={styles.forget}>
+                    <Link to="/Forget-pass" className={styles.forget}>
                       Forgot Password?
                     </Link>
                   </div>

@@ -9,13 +9,11 @@ import ManageGroup from "../Pages/ManageData/ManageGroup";
 import { Navigate } from "react-router-dom";
 
 const sellerRoutes = [
-
- 
   {
     path: "/home",
     element: <Home />,
   },
- 
+
   {
     path: "/Otp-auth",
     element: <OtpAuth />,
@@ -43,7 +41,7 @@ const sellerRoutes = [
   },
   {
     path: "*",
-    element: <Navigate to="/Home"/> ,
+    element: <Navigate to="/Home" />,
   },
 ];
 

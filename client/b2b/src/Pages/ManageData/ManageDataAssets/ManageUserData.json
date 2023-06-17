@@ -41,7 +41,7 @@
       "code": "67890"
     }
   ],
-  
+
   "peopleData": [
     {
       "name": "67890",
@@ -61,133 +61,129 @@
       "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
       "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
     }
-   
   ],
-    "FeaturedData": [
-          {
-            "name": "67234",
-            "passion": "Photography",
-            "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires.",
-            "imageURL": "https://randomuser.me/api/portraits/men/1.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Painting",
-            "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others.",
-            "imageURL": "https://randomuser.me/api/portraits/women/2.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          },
-          {
-            "name": "67234",
-            "passion": "Cooking",
-            "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
-            "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
-          }
-    ],
-    "groups": [
-      {
-        "name": "Social Media Masters",
-        "city": "New York",
-        "members": 2978,
-        "image": "https://randomuser.me/api/portraits/men/1.jpg"
-      },
-      {
-        "name": "Digital Influencers",
-        "city": "London",
-        "members": 4172,
-        "image": "https://randomuser.me/api/portraits/women/2.jpg"
-      },
-      {
-        "name": "Marketing Mavericks",
-        "city": "Sydney",
-        "members": 2004,
-        "image": "https://randomuser.me/api/portraits/men/3.jpg"
-      },
-      {
-        "name": "Social Strategies Squad",
-        "city": "Tokyo",
-        "members": 3531,
-        "image": "https://randomuser.me/api/portraits/women/4.jpg"
-      },
-      {
-        "name": "Influencer Insights",
-        "city": "Paris",
-        "members": 4569,
-        "image": "https://randomuser.me/api/portraits/men/5.jpg"
-      },
-      {
-        "name": "Content Creators Collective",
-        "city": "Berlin",
-        "members": 1827,
-        "image": "https://randomuser.me/api/portraits/women/6.jpg"
-      },
-      {
-        "name": "Digital Brand Builders",
-        "city": "Toronto",
-        "members": 3120,
-        "image": "https://randomuser.me/api/portraits/men/7.jpg"
-      },
-      {
-        "name": "Social Media Gurus",
-        "city": "Barcelona",
-        "members": 4756,
-        "image": "https://randomuser.me/api/portraits/women/8.jpg"
-      },
-      {
-        "name": "Online Marketing Pros",
-        "city": "Rio de Janeiro",
-        "members": 4321,
-        "image": "https://randomuser.me/api/portraits/men/9.jpg"
-      },
-      {
-        "name": "Digital Engagement Experts",
-        "city": "Cape Town",
-        "members": 2593,
-        "image": "https://randomuser.me/api/portraits/women/10.jpg"
-      }
-    ]
-
-  }
-  
-
+  "FeaturedData": [
+    {
+      "name": "67234",
+      "passion": "Photography",
+      "description": "Passionate about capturing moments and telling stories through the lens. Loves exploring nature and creating visual art that inspires.",
+      "imageURL": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Painting",
+      "description": "Expresses emotions through vibrant strokes of color. Believes art is a powerful medium for self-expression and connecting with others.",
+      "imageURL": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "67234",
+      "passion": "Cooking",
+      "description": "Fascinated by flavors and culinary creativity. Enjoys experimenting with diverse ingredients to create delicious and memorable dining experiences.",
+      "imageURL": "https://randomuser.me/api/portraits/men/3.jpg"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Social Media Masters",
+      "city": "New York",
+      "members": 2978,
+      "image": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      "name": "Digital Influencers",
+      "city": "London",
+      "members": 4172,
+      "image": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+      "name": "Marketing Mavericks",
+      "city": "Sydney",
+      "members": 2004,
+      "image": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "name": "Social Strategies Squad",
+      "city": "Tokyo",
+      "members": 3531,
+      "image": "https://randomuser.me/api/portraits/women/4.jpg"
+    },
+    {
+      "name": "Influencer Insights",
+      "city": "Paris",
+      "members": 4569,
+      "image": "https://randomuser.me/api/portraits/men/5.jpg"
+    },
+    {
+      "name": "Content Creators Collective",
+      "city": "Berlin",
+      "members": 1827,
+      "image": "https://randomuser.me/api/portraits/women/6.jpg"
+    },
+    {
+      "name": "Digital Brand Builders",
+      "city": "Toronto",
+      "members": 3120,
+      "image": "https://randomuser.me/api/portraits/men/7.jpg"
+    },
+    {
+      "name": "Social Media Gurus",
+      "city": "Barcelona",
+      "members": 4756,
+      "image": "https://randomuser.me/api/portraits/women/8.jpg"
+    },
+    {
+      "name": "Online Marketing Pros",
+      "city": "Rio de Janeiro",
+      "members": 4321,
+      "image": "https://randomuser.me/api/portraits/men/9.jpg"
+    },
+    {
+      "name": "Digital Engagement Experts",
+      "city": "Cape Town",
+      "members": 2593,
+      "image": "https://randomuser.me/api/portraits/women/10.jpg"
+    }
+  ]
+}

@@ -9,14 +9,12 @@ import { useCookies } from "react-cookie";
 
 function App() {
 
-  const [roleChecker, setRoleChecker] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(['userRole']);
 
   
   useEffect(() => {
-    setRoleChecker(cookie.userRole);
-    console.log(roleChecker)
+   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cookie])
 
@@ -28,7 +26,7 @@ function App() {
 
   let routes;
 
-  switch (roleChecker) {
+  switch (cookie.userRole) {
     case "Seller":
       routes = seller;
       break;
