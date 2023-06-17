@@ -11,6 +11,8 @@ import http from 'http';
 import ratelimit from 'express-rate-limit';
 import { Server } from "socket.io";
 import {setupSockets} from "./socket.js";
+import seller from './routes/seller.js'
+
 //rate limiter for api calls
 const limiter = ratelimit({
     windowMs: 3 * 60 * 1000, // 3 minutes
@@ -29,6 +31,7 @@ mongoDBConnection();
 app.io = io;
 app.use('/api/auth', auth,limiter);
 app.use('/api/groups', groupCrud);
+app.use('/api/seller', seller);
 //routes for utilites
 app.use("/api/utils",utils )
 setupSockets(io);  // setup your socket listeners

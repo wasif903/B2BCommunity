@@ -220,7 +220,7 @@ router.patch('/:groupID/accept-request/:userID', async (req, res) => {
 // Get All Members
 router.get('/:groupID/get-all-members', async (req, res) => {
     try {
-        const groupID = req.params.groupID; 
+        const groupID = req.params.groupID;
         const findGroup = await Group.findById(groupID).populate('members', '-password');
 
         if (!findGroup) {

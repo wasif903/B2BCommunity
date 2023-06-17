@@ -1,7 +1,8 @@
 import express from "express";
-import Post from "../models/groups/posts";
-import userdetails from "../models/users/userdetails";
-import Group from "../models/groups/groups";
+import Post from "../models/groups/posts.js";
+import userdetails from "../models/users/userdetails.js";
+import Group from "../models/groups/Group.js";
+import user from "../models/users/user.js";
 const router = express.Router();
 
 //route for creating a post for a specific group
@@ -44,6 +45,7 @@ router.post("/addpost", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
 //route for accepting user into group
 router.post("/acceptuser", async (req, res) => {
   const groupid = req.body.groupid;
@@ -81,4 +83,20 @@ router.post("/acceptuser", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+
+// Fetch All Sellers
+router.get('/all-sellers', async (req, res) => {
+ 
+  try {
+    const findSellers = await user.find({ role: 'Seller' }); // Filter users by role
+    res.status(200).json(findSellers);
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error.message);
+  }
+
+});
+
+
 export default router;
