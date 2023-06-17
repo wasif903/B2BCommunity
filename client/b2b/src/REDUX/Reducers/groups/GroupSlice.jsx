@@ -118,6 +118,18 @@ export const group = createApi({
         url: '/api/groups/available-groups-to-assign',
         method: 'GET'
       })
+    }),
+    unAssignedSellers: builder.query({
+      query: () => ({
+        url: '/api/seller/unassigned-sellers',
+        method: 'GET'
+      })
+    }),
+    assignedSellers: builder.query({
+      query: () => ({
+        url: '/api/seller/assigned-sellers',
+        method: 'GET'
+      })
     })
   }),
 });
@@ -135,5 +147,7 @@ export const {
   useAssignGroupMutation,
   useGetSellersQuery,
   useRemoveUserMutation,
-  useUnAssignedGroupsQuery
+  useUnAssignedGroupsQuery,
+  useUnAssignedSellersQuery,
+  useAssignedSellersQuery
 } = group;

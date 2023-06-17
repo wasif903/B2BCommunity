@@ -18,10 +18,18 @@ import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json
 import { Swiper, SwiperSlide } from "swiper/react";
 import ImageGallery from "react-image-gallery";
 import breakpoints from "../../utils/SwiperBreakPoints";
+import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
+import { useParams } from "react-router-dom";
 
 function GroupContent() {
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
+
+  const { id } = useParams();
+
+  const singleGroup = useGetSingleGroupQuery(id);
+
+  console.log(singleGroup, " Single Group Data Here")
 
   const images = [
     {

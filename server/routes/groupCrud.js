@@ -315,67 +315,7 @@ router.patch('/:groupID/assign-group/:sellerID', async (req, res) => {
 });
 
 
-router.get('/unassigned-sellers', async (req, res) => {
-    try {
-      const assignedAdmins = await Group.distinct('admins');
-  
-      const unassignedSellers = await user
-        .find({ _id: { $nin: assignedAdmins }, role: 'Seller' }) // Filter by role 'seller'
-        .select('email'); // Adjust the field names based on your schema
-  
-      const unassignedSellersDetails = await userdetails
-        .find({ userid: { $nin: assignedAdmins } })
-        .select('userid firstName lastName');
-  
-      // Combine the data based on matching IDs
-      const combinedData = unassignedSellers.map((seller) => {
-        const details = unassignedSellersDetails.find((detail) => detail.userid.equals(seller._id));
-        return {
-          _id: seller._id,
-          email: seller.email,
-          firstName: details ? details.firstName : '',
-          lastName: details ? details.lastName : '',
-        };
-      });
-  
-      res.status(200).json(combinedData);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  });
-  
 
-
-  router.get('/assigned-sellers', async (req, res) => {
-    try {
-      const assignedAdmins = await Group.distinct('admins');
-  
-      const assignedSellers = await user
-        .find({ _id: { $in: assignedAdmins }, role: 'Seller' }) // Filter by role 'Seller' and assignedAdmins
-        .select('email'); // Adjust the field names based on your schema
-  
-      const assignedSellersDetails = await userdetails
-        .find({ userid: { $in: assignedAdmins } })
-        .select('userid firstName lastName');
-  
-      // Combine the data based on matching IDs
-      const combinedData = assignedSellers.map((seller) => {
-        const details = assignedSellersDetails.find((detail) => detail.userid.equals(seller._id));
-        return {
-          _id: seller._id,
-          email: seller.email,
-          firstName: details ? details.firstName : '',
-          lastName: details ? details.lastName : '',
-        };
-      });
-  
-      res.status(200).json(combinedData);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  });
   
 
 

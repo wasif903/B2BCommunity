@@ -165,7 +165,7 @@ router.post("/login", async (req, res) => {
 
           // Generate a cookie and set it in the response
           res.cookie("cookie", cookie, { httpOnly: true });
-
+          
           res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists, userDetails: userDetails });
         } else {
           res.status(400).json({ message: "Passwords Don't Match" });

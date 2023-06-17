@@ -5,10 +5,13 @@ import {
   useAssignGroupMutation,
   useUnAssignedGroupsQuery,
 } from "../../REDUX/Reducers/groups/GroupSlice";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function UnassignModal({ UnassignmodalHandler, sellerData }) {
   const [assignGroup] = useAssignGroupMutation();
+
+  const navigate = useNavigate();
 
   console.log(sellerData._id, "seller id");
 
@@ -23,6 +26,10 @@ function UnassignModal({ UnassignmodalHandler, sellerData }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const visitGroup = (grpID) => {
+    navigate(`/Group-Content/${grpID}`);
   };
 
   console.log(groups);
@@ -54,9 +61,7 @@ function UnassignModal({ UnassignmodalHandler, sellerData }) {
               <p>
                 <strong>FullName:</strong>
                 <span>
-                  {sellerData?.sellerDetails?.firstName +
-                    " " +
-                    sellerData?.sellerDetails?.lastName}
+                  {sellerData?.firstName + " " + sellerData?.lastName}
                 </span>
               </p>
               <p>
@@ -66,6 +71,11 @@ function UnassignModal({ UnassignmodalHandler, sellerData }) {
             </div>
             <div className={`${styles.buttons} d-flex flex-column gap-4`}>
               <button onClick={assignmentHandler}>Unassign Member</button>
+            </div>
+            <div className={`${styles.buttons} d-flex flex-column gap-4`}>
+              <button onClick={() => visitGroup(sellerData.groupID)}>
+                Visit Group
+              </button>
             </div>
           </div>
         </div>

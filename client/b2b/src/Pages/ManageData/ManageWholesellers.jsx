@@ -10,8 +10,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../../utils/SwiperBreakPoints";
 import {
-  useGetSellersQuery,
+  useAssignedSellersQuery,
   useRemoveUserMutation,
+  useUnAssignedSellersQuery,
 } from "../../REDUX/Reducers/groups/GroupSlice";
 import AssignModal from "../../Components/WholeSellerModal/AssignModal";
 import UnassignModal from "../../Components/WholeSellerModal/UnassignModal";
@@ -48,11 +49,11 @@ function ManageUser() {
     console.log(sellerData, "seller data here");
   };
 
-  // console.log(isOpen);
+  const unAssignedSellers = useUnAssignedSellersQuery();
 
-  const getSellers = useGetSellersQuery();
+  const assignedSellers = useAssignedSellersQuery();
 
-  console.log(getSellers.data);
+  console.log(unAssignedSellers.data);
 
   const [removeSeller] = useRemoveUserMutation();
 
@@ -99,9 +100,9 @@ function ManageUser() {
             </Swiper>
           </div>
           <Container className={styles.displayUsers}>
-            <h1 className={styles.assignHeading}>Assign WholeSellers</h1>
+            <h1 className={`pb-5 ${styles.assignHeading}`}>Unassign WholeSellers</h1>
             <Row className={styles.displayUsersRow}>
-              {getSellers?.data?.map((item) => (
+              {unAssignedSellers?.data?.map((item) => (
                 <Col key={item._id} lg="3" md="6" sm="6">
                   <div className={`${styles.mapWrapper}`}>
                     <div>
@@ -110,9 +111,9 @@ function ManageUser() {
                     <span
                       className={`${styles.NewRequestNamePanel} text-center py-3`}
                     >
-                      <h3>{item.sellerDetails.firstName}</h3>
-                      <p>Country : {item.sellerDetails.country}</p>
-                      <p>City : {item.sellerDetails.city}</p>
+                      <h3>{item.firstName}</h3>
+                      {/* <p>Country : {item.sellerDetails.country}</p>
+                      <p>City : {item.sellerDetails.city}</p> */}
                     </span>
                     <div className={styles.userDataBtnWrapper}>
                       <div>
@@ -130,7 +131,7 @@ function ManageUser() {
                         onClick={() => modalHandler(item)}
                         className={styles.assignBtn}
                       >
-                        Assign to Group
+                        Assign to Seller
                       </button>
                     </div>
                   </div>
@@ -139,9 +140,9 @@ function ManageUser() {
             </Row>
           </Container>
           <Container className={`${styles.displayUsers} mt-5 pt-5`}>
-            <h1 className={styles.unassignHeading}>Unassign WholeSellers</h1>
+            <h1 className={`pb-5 ${styles.unassignHeading}`}>Already Assigned WholeSellers</h1>
             <Row className={styles.displayUsersRow}>
-              {getSellers?.data?.map((item) => (
+              {assignedSellers?.data?.map((item) => (
                 <Col key={item._id} lg="3" md="6" sm="6">
                   <div className={`${styles.mapWrapper}`}>
                     <div>
@@ -150,9 +151,9 @@ function ManageUser() {
                     <span
                       className={`${styles.NewRequestNamePanel} text-center py-3`}
                     >
-                      <h3>{item.sellerDetails.firstName}</h3>
-                      <p>Country : {item.sellerDetails.country}</p>
-                      <p>City : {item.sellerDetails.city}</p>
+                      <h3>{item.firstName}</h3>
+                      {/* <p>Country : {item.country}</p> */}
+                      {/* <p>City : {item.sellerDetails.city}</p> */}
                     </span>
                     <div className={styles.userDataBtnWrapper}>
                       <div>

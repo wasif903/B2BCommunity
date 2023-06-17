@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import styles from "./AssignModal.module.css";
 import {
   useAssignGroupMutation,
@@ -17,13 +17,13 @@ function AssignModal({ modalHandler, sellerData }) {
     setGroups(e.target.value);
   };
 
-  console.log(sellerData._id, "seller id");
 
   // Assignment Handler
   const assignmentHandler = async () => {
     try {
       const res = await assignGroup({
         groupID: groups,
+        // eslint-disable-next-line react/prop-types
         userid: sellerData._id,
       });
       console.log(res);
@@ -31,8 +31,6 @@ function AssignModal({ modalHandler, sellerData }) {
       console.log(error);
     }
   };
-
-  console.log(groups);
 
   return (
     <>
@@ -61,14 +59,15 @@ function AssignModal({ modalHandler, sellerData }) {
               <p>
                 <strong>FullName:</strong>
                 <span>
-                  {sellerData?.sellerDetails?.firstName +
+                  {sellerData?.firstName +
                     " " +
-                    sellerData?.sellerDetails?.lastName}
+                    sellerData?.lastName}
                 </span>
               </p>
               <p>
                 <strong>Email:</strong>
                 <span> {sellerData.email}</span>
+                <span> {sellerData.groupID}</span>
               </p>
             </div>
             <div className={`${styles.buttons} d-flex flex-column gap-4`}>
