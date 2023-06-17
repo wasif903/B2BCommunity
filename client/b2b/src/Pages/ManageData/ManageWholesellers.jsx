@@ -180,12 +180,6 @@ function ManageUser() {
           </Container>
         </div>
       </div>
-
-      {/* {isAssignOpen ? (
-        <AssignModal AssignmodalHandler={AssignmodalHandler} />
-      ) : (
-        ""
-      )} */}
       {isUnassignOpen ? (
         <UnassignModal
           UnassignmodalHandler={UnassignmodalHandler}
