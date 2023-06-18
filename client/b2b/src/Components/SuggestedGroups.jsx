@@ -78,7 +78,7 @@ function SuggestedGroups() {
               onClick={() =>
                 navigate(
                   // "/All-Group"
-                  "/Manage-Wholeseller",
+                  "/Group-Content/:id",
                 )
               }
             >
