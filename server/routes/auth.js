@@ -7,6 +7,7 @@ import transporter from "../utils/NodeMailerConfig.js";
 import userdetails from "../models/users/userdetails.js";
 import userotp from "../models/users/userotp.js";
 import user from "../models/users/user.js";
+import Group from "../models/groups/Group.js";
 
 const router = express.Router();
 //route for seller registeration
@@ -138,46 +139,98 @@ router.patch("/verify-otp", async (req, res) => {
     console.log(error);
   }
 });
+
+
 //route for login
+// router.post("/login", async (req, res) => {
+//     try {
+
+//       const userExists = await users.findOne({ email: req.body.email });
+
+//       const userDetails = await userdetails.findOne({ userid: userExists._id });
+
+//       if (userExists) {
+//         const comparePass = await bcrypt.compare(
+//           req.body.password,
+//           userExists.password
+//         );
+
+//         if (comparePass) {
+//           const cookie = await jwt.sign(
+//             {
+//               email: userExists.email,
+//               userID: userExists.id,
+//               role: userExists.role,
+//               invitation: userExists.invitation,
+//             },
+//             process.env.JWT_SECRET
+//           );
+
+//           // Generate a cookie and set it in the response
+//           res.cookie("cookie", cookie, { httpOnly: true });
+          
+//           res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists, userDetails: userDetails });
+//         } else {
+//           res.status(400).json({ message: "Passwords Don't Match" });
+//         }
+//       } else {
+//         res.status(404).json({ message: "Account Not Found" });
+//       }
+//     } catch (error) {
+//       res.status(500).json(error);
+//     }
+//   }
+// );
+
 router.post("/login", async (req, res) => {
-    try {
+  try {
+    const userExists = await users.findOne({ email: req.body.email });
+    const userDetails = await userdetails.findOne({ userid: userExists._id });
 
-      const userExists = await users.findOne({ email: req.body.email });
+    if (userExists) {
+      const comparePass = await bcrypt.compare(
+        req.body.password,
+        userExists.password
+      );
 
-      const userDetails = await userdetails.findOne({ userid: userExists._id });
-
-      if (userExists) {
-        const comparePass = await bcrypt.compare(
-          req.body.password,
-          userExists.password
+      if (comparePass) {
+        const group = await Group.findOne({ admins: userExists._id }).select(
+          "_id"
         );
 
-        if (comparePass) {
-          const cookie = await jwt.sign(
-            {
-              email: userExists.email,
-              userID: userExists.id,
-              role: userExists.role,
-              invitation: userExists.invitation,
-            },
-            process.env.JWT_SECRET
-          );
+        const cookie = await jwt.sign(
+          {
+            email: userExists.email,
+            userID: userExists.id,
+            role: userExists.role,
+            invitation: userExists.invitation,
+          },
+          process.env.JWT_SECRET
+        );
 
-          // Generate a cookie and set it in the response
-          res.cookie("cookie", cookie, { httpOnly: true });
-          
-          res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists, userDetails: userDetails });
-        } else {
-          res.status(400).json({ message: "Passwords Don't Match" });
-        }
+        // Generate a cookie and set it in the response
+        res.cookie("cookie", cookie, { httpOnly: true });
+
+        res.status(200).json({
+          status: 200,
+          message: "Logged In Successfully",
+          cookie,
+          user: userExists,
+          userDetails: userDetails,
+          groupID: group ? group._id : null,
+        });
       } else {
-        res.status(404).json({ message: "Account Not Found" });
+        res.status(400).json({ message: "Passwords Don't Match" });
       }
-    } catch (error) {
-      res.status(500).json(error);
+    } else {
+      res.status(404).json({ message: "Account Not Found" });
     }
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
   }
-);
+});
+
 
 router.patch("/resend-otp", async (req, res) => {
   try {
