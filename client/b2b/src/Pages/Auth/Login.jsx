@@ -42,9 +42,10 @@ function Login() {
         setCookie("userRole", res.data.user.role[0]);
         localStorage.setItem(
           "userDetails",
-          JSON.stringify(res.data.userDetails),
+          JSON.stringify(res.data.userDetails)
         );
         localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("gi", JSON.stringify(res.data.groupID));
         console.log(res.data);
         navigate("/home");
       } else {
