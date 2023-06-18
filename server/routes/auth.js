@@ -7,6 +7,7 @@ import transporter from "../utils/NodeMailerConfig.js";
 import userdetails from "../models/users/userdetails.js";
 import userotp from "../models/users/userotp.js";
 import user from "../models/users/user.js";
+import Group from "../models/groups/Group.js";
 
 const router = express.Router();
 //route for seller registeration
@@ -138,46 +139,58 @@ router.patch("/verify-otp", async (req, res) => {
     console.log(error);
   }
 });
+
+
 //route for login
 router.post("/login", async (req, res) => {
-    try {
+  try {
+    const userExists = await users.findOne({ email: req.body.email });
+    const userDetails = await userdetails.findOne({ userid: userExists._id });
 
-      const userExists = await users.findOne({ email: req.body.email });
+    if (userExists) {
+      const comparePass = await bcrypt.compare(
+        req.body.password,
+        userExists.password
+      );
 
-      const userDetails = await userdetails.findOne({ userid: userExists._id });
-
-      if (userExists) {
-        const comparePass = await bcrypt.compare(
-          req.body.password,
-          userExists.password
+      if (comparePass) {
+        const group = await Group.findOne({ admins: userExists._id }).select(
+          "_id"
         );
 
-        if (comparePass) {
-          const cookie = await jwt.sign(
-            {
-              email: userExists.email,
-              userID: userExists.id,
-              role: userExists.role,
-              invitation: userExists.invitation,
-            },
-            process.env.JWT_SECRET
-          );
+        const cookie = await jwt.sign(
+          {
+            email: userExists.email,
+            userID: userExists.id,
+            role: userExists.role,
+            invitation: userExists.invitation,
+          },
+          process.env.JWT_SECRET
+        );
 
-          // Generate a cookie and set it in the response
-          res.cookie("cookie", cookie, { httpOnly: true });
-          
-          res.status(200).json({ status: 200, message: "Logged In Successfully", cookie, user: userExists, userDetails: userDetails });
-        } else {
-          res.status(400).json({ message: "Passwords Don't Match" });
-        }
+        // Generate a cookie and set it in the response
+        res.cookie("cookie", cookie, { httpOnly: true });
+
+        res.status(200).json({
+          status: 200,
+          message: "Logged In Successfully",
+          cookie,
+          user: userExists,
+          userDetails: userDetails,
+          groupID: group ? group._id : null,
+        });
       } else {
-        res.status(404).json({ message: "Account Not Found" });
+        res.status(400).json({ message: "Passwords Don't Match" });
       }
-    } catch (error) {
-      res.status(500).json(error);
+    } else {
+      res.status(404).json({ message: "Account Not Found" });
     }
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
   }
-);
+});
+
 
 router.patch("/resend-otp", async (req, res) => {
   try {
@@ -277,48 +290,46 @@ router.patch("/reset-password", async (req, res) => {
   try {
     const userExist = await users.findOne({ email: req.body.email });
     if (!userExist) {
-      res
-        .status(404)
-        .json({ message: "Account With This Email Doesn't Exist" });
-    } else {
-      const resendOtp = await userotp.findOne({ userid: userExist._id });
-      const resetHashedPass = await bcrypt.hash(req.body.password, 10);
-
-      if (resendOtp.otpCode === req.body.otpCode) {
-        userExist.password = resetHashedPass || userExist.password;
-      } else {
-        res.status(400).json({ message: "Invalid Opt Code" });
-      }
-
-      // Set up the email message options
-      const mailOptions = {
-        from: "abdulrehman@techsmiths.co", // sender address
-        to: userExist.email, // receiver address
-        subject: "Welcome to My Website", // Subject line
-        html: `<p>Your Password Has Changed Successfully</p>`, // plain text body
-      };
-
-      // Send the email with the OTP code
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log(error);
-          return res.status(500).json({ message: "Email sending failed" });
-        } else {
-          console.log("Email sent: " + info.response);
-          return res
-            .status(200)
-            .json({ message: "OTP created and sent successfully" });
-        }
-      });
-
-      const saveUpdatedPass = await userExist.save();
-      res.status(200).json({ data: saveUpdatedPass, status: 200 });
+      return res.status(404).json({ message: "Account With This Email Doesn't Exist" });
     }
+
+    const resendOtp = await userotp.findOne({ userid: userExist._id });
+    if (!resendOtp || resendOtp.otpCode !== req.body.otpCode) {
+      return res.status(400).json({ message: "Invalid OTP Code" });
+    }
+
+    const resetHashedPass = await bcrypt.hash(req.body.password, 10);
+    userExist.password = resetHashedPass;
+
+    const saveUpdatedPass = await userExist.save();
+    if (!saveUpdatedPass) {
+      return res.status(500).json({ message: "Failed to update password" });
+    }
+
+    // Set up the email message options
+    const mailOptions = {
+      from: "abdulrehman@techsmiths.co", // sender address
+      to: userExist.email, // receiver address
+      subject: "Password Update Confirmation", // Subject line
+      html: "<p>Your password has been changed successfully.</p>", // plain text body
+    };
+
+    // Send the email with the password update confirmation
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Failed to send email confirmation" });
+      } else {
+        console.log("Email sent: " + info.response);
+        return res.status(200).json({ message: "Password updated successfully", status:200 });
+      }
+    });
   } catch (error) {
-    res.status(500).json(error);
     console.log(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
+
 //route for checking if user is in our database or not if not create the user . if is available initate a login 
 router.post("/firebaseauth", async (req, res) => {
   try {

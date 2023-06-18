@@ -46,10 +46,24 @@ export const signup = createApi({
         body: data,
       }), 
     }),
+    forgotPass: builder.mutation({
+      query: (data) => ({
+        url: '/api/auth/forgot-password',
+        method: 'PATCH',
+        body: data,
+      }), 
+    }),
+    passwordReset: builder.mutation({
+      query: (data) => ({
+        url: '/api/auth/reset-password',
+        method: 'PATCH',
+        body: data,
+      }), 
+    }),
     
   }),
 });
 
 
 // Export the generated API endpoints
-export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation, useCreateSellerMutation, useResendOtpMutation } = signup;
+export const { useCreateUserMutation, useVerfiyUserOtpMutation, useUserLoginMutation, useCreateSellerMutation, useResendOtpMutation, useForgotPassMutation, usePasswordResetMutation } = signup;

@@ -2,25 +2,32 @@ import React, { useState } from "react";
 import style from "./forgetPasswordCss/forgetPass.module.css";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
+import { useForgotPassMutation } from "../../REDUX/Reducers/auth/UserSlice";
 
 function ForgetPass() {
   const navigate = useNavigate();
 
-  const [forgetPassEmail, setforgetPassEmail] = useState({
-    email: "",
-  });
+  const [forgotPass] = useForgotPassMutation();
+
+  const [forgetPassEmail, setforgetPassEmail] = useState("");
 
   const handleChange = (e) => {
-    setforgetPassEmail({
-      ...forgetPassEmail,
-      [e.target.name]: e.target.value,
-    });
+    setforgetPassEmail(e.target.value);
   };
 
-  function Sumbit() {
-    if (forgetPassEmail.email !== "") navigate("/ForgetPass-Otp");
-    console.log(forgetPassEmail.email);
-  }
+  const forgotPassHandler = async () => {
+    try {
+      const res = await forgotPass({ email: forgetPassEmail });
+      console.log(res, "forgot pass handler api status");
+      if (res.data.status === 200) {
+        navigate("/Enter-New-pass", { state: { email: forgetPassEmail } });
+      } else {
+        alert("Invalid Email Try Again");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -43,10 +50,11 @@ function ForgetPass() {
               className={style.inputField}
               type="email"
               placeholder="Enter Your Email"
-              name="email"
+              name="forgetPassEmail"
+              value={forgetPassEmail}
               onChange={handleChange}
             />
-            <button onClick={Sumbit}>Reset my Password</button>
+            <button onClick={forgotPassHandler}>Reset my Password</button>
           </div>
         </Container>
       </div>

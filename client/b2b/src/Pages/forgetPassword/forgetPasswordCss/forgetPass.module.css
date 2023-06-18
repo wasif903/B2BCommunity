@@ -16,7 +16,7 @@ body h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
   border-radius: 5px;
   width: 50vw !important;
   position: relative;
@@ -41,23 +41,26 @@ body h1 {
 }
 .inputField {
   outline: none;
-  width: 90%;
-  height: 3rem;
+  width: 50%;
+  padding: 10px 10px 10px 10px;
   border: 1px solid rgb(112, 111, 111);
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .inputField[type="email"],
 .inputField[type="password"] {
   padding-left: 1rem;
 }
 .inputs button {
-  width: 50%;
+  width: auto;
+  margin-top: 15px;
+  padding: 10px;
 }
 
 @media all and (max-width: 768px) {
   .headings h1 {
     font-size: 1.8rem !important;
   }
+  
 }
 @media all and (max-width: 500px) {
   .con {
