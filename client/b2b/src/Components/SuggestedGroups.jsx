@@ -3,11 +3,12 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Card from "react-bootstrap/Card";
 import CardImage from "../assets/home/suggested_group.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import styles from "./compStyles/suggestedGroup.module.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../utils/SwiperBreakPoints";
+import Cookies from "js-cookie";
 
 function SuggestedGroups() {
   const cardData = [
@@ -62,6 +63,9 @@ function SuggestedGroups() {
   ];
 
   const navigate = useNavigate();
+  const gi = JSON.parse(localStorage.getItem("gi"));
+  const cookieValue = Cookies.get("userRole");
+  console.log(cookieValue);
 
   return (
     <>
@@ -74,19 +78,17 @@ function SuggestedGroups() {
             </div>
           </Col>
           <Col className="text-end d-flex justify-content-end  align-items-center">
-            <button
-              onClick={() =>
-                navigate(
-                  // "/All-Group"
-                  "/Group-Content/:id",
-                )
-              }
-            >
-              SEE ALL
-            </button>
+            {cookieValue === "Seller" ? (
+              <button onClick={() => navigate(`/Group-Content/${gi}`)}>
+                SEE ALL
+              </button>
+            ) : (
+              <button onClick={() => navigate("/Group-Content/:id")}>
+                SEE ALL
+              </button>
+            )}
           </Col>
         </Row>
-
         <Row>
           <Col>
             <Swiper

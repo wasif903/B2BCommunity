@@ -87,13 +87,10 @@ function AdminPanel() {
     setShowEditProfileModal(!showEditProfileModal);
   };
 
-  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const user = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
-
-  }, [])
-
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -145,17 +142,18 @@ function AdminPanel() {
           </Col>
           <Col size="6">
             <div className="text-end">
-              <button onClick={() => {
-                navigate('/add-wholeseller')
-                
-                }}>
+              <button
+                onClick={() => {
+                  navigate("/add-wholeseller");
+                }}
+              >
                 ADD SELLER <FontAwesomeIcon icon={faPlus} />
               </button>
             </div>
           </Col>
         </Row>
         <Row className="py-4">
-          <Col sm="6" xs='6'>
+          <Col sm="6" xs="6">
             <ul>
               {aboutMe.map((item) => (
                 <li key={item.text} className="py-2">
@@ -170,7 +168,11 @@ function AdminPanel() {
               ))}
             </ul>
           </Col>
-          <Col sm="6" xs='6' className="d-flex justify-content-end align-items-center">
+          <Col
+            sm="6"
+            xs="6"
+            className="d-flex justify-content-end align-items-center"
+          >
             <div className={styles.chart}>
               <PieChartAdminPanel data={chartData} options={chartOptions} />
             </div>

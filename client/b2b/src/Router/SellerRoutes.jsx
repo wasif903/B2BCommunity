@@ -36,7 +36,7 @@ const sellerRoutes = [
     element: <WholeSellerPanel />,
   },
   {
-    path: "/Group-Content",
+    path: "/Group-Content/:id",
     element: <GroupContent />,
   },
   {
