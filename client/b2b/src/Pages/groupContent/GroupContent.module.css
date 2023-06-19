@@ -4,10 +4,13 @@
 .coverPhoto {
   position: relative;
   height: 46vh;
-  background-image: url(../../assets/home/suggested_group2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 0;
+  /* background-image: url("https://randomuser.me/api/portraits/men/1.jpg"); */
+  /* background-image: url(../../assets/home/suggested_group2.jpg); */
+  object-fit: cover;
+  width: 100%;
 }
 
 .editCoverPhoto {
@@ -45,6 +48,7 @@
   left: -10rem;
   top: 5rem;
   background: var(--bg-color);
+  height: auto;
 }
 .WholeSellerText div {
   position: relative;
@@ -68,6 +72,7 @@
   color: #92929d;
   left: 1.5rem;
   font-family: var(--font-family-roboto) !important;
+  height: 3rem;
 }
 
 /*************************************************** Featured Panel ****************************************************/

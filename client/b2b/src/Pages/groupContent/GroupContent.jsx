@@ -20,6 +20,7 @@ import ImageGallery from "react-image-gallery";
 import breakpoints from "../../utils/SwiperBreakPoints";
 import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 import { useParams } from "react-router-dom";
+import coverPhoto from "../../assets/home/suggested_group2.jpg";
 
 function GroupContent() {
   // useState for Edite Cover Photo
@@ -29,7 +30,9 @@ function GroupContent() {
 
   const singleGroup = useGetSingleGroupQuery(id);
 
-  console.log(singleGroup, " Single Group Data Here")
+  console.log(singleGroup, " Single Group Data Here");
+  console.log(singleGroup.data);
+  const data = singleGroup.data;
 
   const images = [
     {
@@ -71,6 +74,11 @@ function GroupContent() {
             </Col>
           </Row>
         </Container>
+        <img
+          src={data?.groupcover ? data?.groupcover : coverPhoto}
+          alt=""
+          className={styles.coverPhoto}
+        />
       </div>
       <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
         <Row>
@@ -78,15 +86,23 @@ function GroupContent() {
             <div
               className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
             >
-              <img src={image} className={styles.profilePhoto} alt="" />
+              <img
+                src={data?.groupdp ? data?.groupdp : image}
+                className={styles.profilePhoto}
+                alt=""
+              />
             </div>
           </Col>
         </Row>
         <Row>
           <Col className={`${styles.WholeSellerText} text-center pt-4 `}>
             <div>
-              <h1>UIUX Designers</h1>
-              <h4>“Pushing pixels and experiences in digital”</h4>
+              <h1>{data?.groupName ? data?.groupName : "State Manager"}</h1>
+              <h4>
+                {data?.groupDesc
+                  ? data?.groupDesc
+                  : `“Pushing pixels and experiences in digital”`}
+              </h4>
             </div>
           </Col>
         </Row>
