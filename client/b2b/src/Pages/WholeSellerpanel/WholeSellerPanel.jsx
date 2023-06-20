@@ -20,6 +20,7 @@ import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
 import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { useNavigate } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
+import Cookies from "js-cookie";
 
 // Data of sliders items
 const Data = [
@@ -69,6 +70,10 @@ function WholeSellerPanel() {
   const toggleEditCoverModal = () => {
     setShowEditCoverModal(!showEditCoverModal);
   };
+
+  const gi = JSON.parse(localStorage.getItem("gi"));
+  const cookieValue = Cookies.get("userRole");
+  console.log(cookieValue);
 
   return (
     <>
@@ -138,45 +143,49 @@ function WholeSellerPanel() {
               </section>
             </div>
           </Col>
-          <Col
-            lg="3"
-            sm="6"
-            xs="6"
-            className="py-3 d-flex justify-content-center align-items-center flex-column"
-          >
-            <div
-              className={`${styles.manageWholeSeller}`}
-              onClick={() => navigate("/All-Members")}
+          {cookieValue === "Seller" && (
+            <Col
+              lg="3"
+              sm="6"
+              xs="6"
+              className="py-3 d-flex justify-content-center align-items-center flex-column"
             >
-              <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
-                <FontAwesomeIcon
-                  className={`${styles.manager} pe-3`}
-                  icon={faCirclePlay}
-                />
-                All Member
-              </h4>
-            </div>
-          </Col>
+              <div
+                className={`${styles.manageWholeSeller}`}
+                onClick={() => navigate(`/All-Members/${gi}`)}
+              >
+                <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
+                  <FontAwesomeIcon
+                    className={`${styles.manager} pe-3`}
+                    icon={faCirclePlay}
+                  />
+                  All Member
+                </h4>
+              </div>
+            </Col>
+          )}
 
-          <Col
-            lg="3"
-            sm="6"
-            xs="6"
-            className="py-3 d-flex justify-content-center align-items-center flex-column"
-          >
-            <div
-              className={styles.manageUsers}
-              onClick={() => navigate("/New-Request")}
+          {cookieValue === "Seller" && (
+            <Col
+              lg="3"
+              sm="6"
+              xs="6"
+              className="py-3 d-flex justify-content-center align-items-center flex-column"
             >
-              <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
-                <FontAwesomeIcon
-                  className={`${styles.user} pe-3`}
-                  icon={faGlobe}
-                />
-                New Request
-              </h4>
-            </div>
-          </Col>
+              <div
+                className={styles.manageUsers}
+                onClick={() => navigate(`/New-Request/${gi}`)}
+              >
+                <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
+                  <FontAwesomeIcon
+                    className={`${styles.user} pe-3`}
+                    icon={faGlobe}
+                  />
+                  New Request
+                </h4>
+              </div>
+            </Col>
+          )}
         </Row>
 
         {/************ WholeSellerInputArea ************/}

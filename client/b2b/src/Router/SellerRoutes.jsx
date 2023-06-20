@@ -5,7 +5,6 @@ import NewRequest from "../Pages/ManageData/NewRequest";
 import AllMembers from "../Pages/ManageData/AllMembers";
 import WholeSellerPanel from "../Pages/WholeSellerpanel/WholeSellerPanel";
 import GroupContent from "../Pages/groupContent/GroupContent";
-import ManageGroup from "../Pages/ManageData/ManageGroup";
 import { Navigate } from "react-router-dom";
 
 const sellerRoutes = [
@@ -22,13 +21,12 @@ const sellerRoutes = [
     path: "/Manage-User",
     element: <ManageUser />,
   },
-
   {
     path: "/New-Request/:id",
     element: <NewRequest />,
   },
   {
-    path: "/All-Members",
+    path: "/All-Members/:id",
     element: <AllMembers />,
   },
   {

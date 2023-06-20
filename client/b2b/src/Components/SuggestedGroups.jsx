@@ -1,3 +1,4 @@
+import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -83,7 +84,7 @@ function SuggestedGroups() {
                 SEE ALL
               </button>
             ) : (
-              <button onClick={() => navigate("/Group-Content/:id")}>
+              <button onClick={() => navigate(`/Group-Content/${gi}`)}>
                 SEE ALL
               </button>
             )}
@@ -99,7 +100,7 @@ function SuggestedGroups() {
               onSwiper={(swiper) => console.log(swiper)}
             >
               {cardData.map((card, index) => (
-                <>
+                <React.Fragment key={index}>
                   <SwiperSlide
                     key={index + 1}
                     className="d-inline-flex justify-content-center align-items-center"
@@ -126,7 +127,7 @@ function SuggestedGroups() {
                       </Card.Body>
                     </Card>
                   </SwiperSlide>
-                </>
+                </React.Fragment>
               ))}
             </Swiper>
           </Col>

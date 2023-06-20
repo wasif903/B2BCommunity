@@ -42,7 +42,7 @@ function Login() {
         setCookie("userRole", res.data.user.role[0]);
         localStorage.setItem(
           "userDetails",
-          JSON.stringify(res.data.userDetails)
+          JSON.stringify(res.data.userDetails),
         );
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("gi", JSON.stringify(res.data.groupID));
@@ -140,14 +140,16 @@ function Login() {
             </Col>
           </Row>
 
-          <Row className={`d-none d-md-flex ${styles.loginOptionRow}`}>
+          <Row
+            className={`d-none d-md-flex justify-content-around ${styles.loginOptionRow}`}
+          >
             <Col md="4">
               <div>
                 <hr className={styles.lines} />
               </div>
             </Col>
             <Col md="4">
-              <h4 className={`text-center  ${styles.headings}`}>OR</h4>
+              <h4 className={`text-center w-auto  ${styles.headings}`}>OR</h4>
             </Col>
             <Col md="4">
               <hr className={styles.lines} />

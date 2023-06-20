@@ -1,3 +1,4 @@
+import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -8,6 +9,7 @@ import styles from "./compStyles/suggestedGroup.module.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../utils/SwiperBreakPoints";
+import Cookies from "js-cookie";
 
 function JoinedGroups() {
   const cardData = [
@@ -87,8 +89,11 @@ function JoinedGroups() {
               onSwiper={(swiper) => console.log(swiper)}
             >
               {cardData.map((card, index) => (
-                <>
-                  <SwiperSlide key={index + 1} className="d-inline-flex justify-content-center align-items-center">
+                <React.Fragment key={index}>
+                  <SwiperSlide
+                    key={index + 1}
+                    className="d-inline-flex justify-content-center align-items-center"
+                  >
                     <Card
                       className={`${styles.suggested_group_cards}`}
                       style={{ width: "25rem", cursor: "pointer" }}
@@ -111,7 +116,7 @@ function JoinedGroups() {
                       </Card.Body>
                     </Card>
                   </SwiperSlide>
-                </>
+                </React.Fragment>
               ))}
             </Swiper>
           </Col>

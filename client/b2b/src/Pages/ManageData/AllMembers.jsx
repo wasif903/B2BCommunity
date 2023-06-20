@@ -8,7 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakpoints from "../../utils/SwiperBreakPoints";
-import { useGetAllMembersQuery, useRemoveMemberMutation } from "../../REDUX/Reducers/groups/GroupSlice";
+import {
+  useGetAllMembersQuery,
+  useRemoveMemberMutation,
+} from "../../REDUX/Reducers/groups/GroupSlice";
 import { useParams } from "react-router-dom";
 
 const Name = [
@@ -22,25 +25,22 @@ const Name = [
 ];
 
 function ManageUser() {
-
   const { id } = useParams();
 
   const getAllMembers = useGetAllMembersQuery(id);
 
   const [removeMember] = useRemoveMemberMutation();
 
-  console.log(getAllMembers);
-  
+  // console.log(getAllMembers);
 
   const removeMemberHandler = async (userid) => {
     try {
-      const res = await removeMember({ groupID:id , userid });
+      const res = await removeMember({ groupID: id, userid });
       console.log(res);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
+  };
   return (
     <>
       <Header />
@@ -55,7 +55,10 @@ function ManageUser() {
         <div className={styles.sliders}>
           <Swiper spaceBetween={15} slidesPerView={2} breakpoints={breakpoints}>
             {Name.map((item, index) => (
-              <SwiperSlide key={index} className="d-inline-flex justify-content-center align-items-center py-2">
+              <SwiperSlide
+                key={index}
+                className="d-inline-flex justify-content-center align-items-center py-2"
+              >
                 <a key={index} href="#">
                   {item}
                 </a>
@@ -79,8 +82,15 @@ function ManageUser() {
                     <p className="h6 py-2 my-0">Country: {item.country}</p>
                   </div>
                   <div>
-                    <button className={`my-2 ${styles.buttons}`}>DETAILS</button>
-                    <button onClick={() => removeMemberHandler(item.userid)} className={`my-2 ${styles.buttons}`}>REMOVE</button>
+                    <button className={`my-2 ${styles.buttons}`}>
+                      DETAILS
+                    </button>
+                    <button
+                      onClick={() => removeMemberHandler(item.userid)}
+                      className={`my-2 ${styles.buttons}`}
+                    >
+                      REMOVE
+                    </button>
                   </div>
                 </div>
               </Col>
