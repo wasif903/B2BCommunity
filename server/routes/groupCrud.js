@@ -313,9 +313,6 @@ router.patch('/:groupID/assign-group/:sellerID', async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
-
-
-
   
 
 

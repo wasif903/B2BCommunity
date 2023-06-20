@@ -16,6 +16,7 @@ const postSchema = new Schema({
       },
     },
   ],
+  
   group: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "groups",
@@ -24,12 +25,7 @@ const postSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "seller",
   },
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "comments",
-    },
-  ],
+
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,

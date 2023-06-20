@@ -11,7 +11,9 @@ import http from 'http';
 import ratelimit from 'express-rate-limit';
 import { Server } from "socket.io";
 import {setupSockets} from "./socket.js";
-import seller from './routes/seller.js'
+import seller from './routes/seller.js';
+import post from './routes/post.js'
+import comments from './routes/comments.js'
 
 //rate limiter for api calls
 const limiter = ratelimit({
@@ -32,6 +34,8 @@ app.io = io;
 app.use('/api/auth', auth,limiter);
 app.use('/api/groups', groupCrud);
 app.use('/api/seller', seller);
+app.use('/api/posts', post);
+app.use('/api/comments', comments);
 //routes for utilites
 app.use("/api/utils",utils )
 setupSockets(io);  // setup your socket listeners
