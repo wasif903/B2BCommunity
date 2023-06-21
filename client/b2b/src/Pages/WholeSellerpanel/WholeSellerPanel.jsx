@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -21,6 +22,9 @@ import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { useNavigate } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
 import Cookies from "js-cookie";
+import { useParams } from "react-router-dom";
+import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
+import coverPhoto from "../../assets/home/suggested_group2.jpg";
 
 // Data of sliders items
 const Data = [
@@ -71,16 +75,19 @@ function WholeSellerPanel() {
     setShowEditCoverModal(!showEditCoverModal);
   };
 
+  const { id } = useParams();
+
+  const singleGroup = useGetSingleGroupQuery(id);
+  const data = singleGroup.data;
+  console.log(data);
   const gi = JSON.parse(localStorage.getItem("gi"));
   const cookieValue = Cookies.get("userRole");
-  console.log(cookieValue);
 
   return (
     <>
       <Header />
 
       {/************ CoverPhoto And Heading ************/}
-
       <div className={`${styles.coverPhoto} pb-lg-5`}>
         <Container>
           <Row>
@@ -95,6 +102,11 @@ function WholeSellerPanel() {
             </Col>
           </Row>
         </Container>
+        <img
+          src={data?.groupcover ? data?.groupcover : coverPhoto}
+          alt=""
+          className={styles.coverPhoto}
+        />
       </div>
       <Container className={`${styles.profilePhotoWithDetails} px-lg-5`}>
         <Row>
@@ -102,15 +114,23 @@ function WholeSellerPanel() {
             <div
               className={`${styles.profileWrapper} d-flex justify-content-center align-items-center`}
             >
-              <img src={image} className={styles.profilePhoto} alt="" />
+              <img
+                src={data?.groupdp ? data?.groupdp : image}
+                className={styles.profilePhoto}
+                alt=""
+              />
             </div>
           </Col>
         </Row>
         <Row>
           <Col className={`${styles.WholeSellerText} text-center pt-4 `}>
             <div>
-              <h1>UIUX Designers</h1>
-              <h4>“Pushing pixels and experiences in digital”</h4>
+              <h1>{data?.groupName ? data?.groupName : "State Manager"}</h1>
+              <h4>
+                {data?.groupDesc
+                  ? data?.groupDesc
+                  : `“Pushing pixels and experiences in digital”`}
+              </h4>
             </div>
           </Col>
         </Row>
@@ -118,8 +138,8 @@ function WholeSellerPanel() {
         {/**************** Sliders of WholeSeller Panel *************/}
 
         <Row className="pt-5 gap-10 overflow-hidden">
-          {Data.map((item) => (
-            <Col key={item.name} className="d-flex justify-content-center">
+          {Data.map((item, index) => (
+            <Col key={index} className="d-flex justify-content-center">
               <div className={styles.posts}>
                 <p className={styles.postName}>{item.name}</p>
                 <span className={styles.postValue}>{item.value}</span>
@@ -225,8 +245,8 @@ function WholeSellerPanel() {
         </div>
 
         {/* WholeSeller Panel posting and comment Area */}
-        {peopleData.map((item) => (
-          <>
+        {peopleData.map((item, index) => (
+          <React.Fragment key={index}>
             <Col className="mt-5">
               <div
                 className={`${styles.PostCommentWrapper} d-flex flex-column`}
@@ -301,7 +321,7 @@ function WholeSellerPanel() {
                 </section>
               </div>
             </Col>
-          </>
+          </React.Fragment>
         ))}
 
         <Col className="my-5">

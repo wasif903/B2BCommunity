@@ -4,10 +4,11 @@
 .coverPhoto {
   position: relative;
   height: 60vh;
-  background-image: url(../../assets/home/suggested_group2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 0;
+  width: 100%;
+  object-fit: cover;
 }
 
 .editCoverPhoto {

@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -17,7 +18,7 @@ import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { FeaturedData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ImageGallery from "react-image-gallery";
-import breakpoints from "../../utils/SwiperBreakPoints";
+// import breakpoints from "../../utils/SwiperBreakPoints";
 import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 import { useParams } from "react-router-dom";
 import coverPhoto from "../../assets/home/suggested_group2.jpg";
@@ -29,10 +30,8 @@ function GroupContent() {
   const { id } = useParams();
 
   const singleGroup = useGetSingleGroupQuery(id);
-
-  console.log(singleGroup, " Single Group Data Here");
-  console.log(singleGroup.data);
   const data = singleGroup.data;
+  console.log(singleGroup, " Single Group Data Here");
 
   const images = [
     {
@@ -129,8 +128,8 @@ function GroupContent() {
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
               >
-                {FeaturedData.map((item) => (
-                  <>
+                {FeaturedData.map((item, index) => (
+                  <React.Fragment key={index}>
                     <SwiperSlide className={styles.featuredMapWrapper}>
                       <div className={styles.featuredMapDiv}>
                         <img
@@ -157,7 +156,7 @@ function GroupContent() {
                         alt="userImg"
                       />
                     </SwiperSlide>
-                  </>
+                  </React.Fragment>
                 ))}
               </Swiper>
             </div>
@@ -166,8 +165,8 @@ function GroupContent() {
 
         {/* WholeSeller Panel posting and comment Area */}
 
-        {peopleData.map((item) => (
-          <>
+        {peopleData.map((item, index) => (
+          <React.Fragment key={index}>
             <Col className="mt-5">
               <div
                 className={`${styles.PostCommentWrapper} d-flex flex-column`}
@@ -248,7 +247,7 @@ function GroupContent() {
                 </section>
               </div>
             </Col>
-          </>
+          </React.Fragment>
         ))}
 
         <Col className="my-5">

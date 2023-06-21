@@ -30,7 +30,7 @@ const sellerRoutes = [
     element: <AllMembers />,
   },
   {
-    path: "/WholeSeller-panel",
+    path: "/WholeSeller-panel/:id",
     element: <WholeSellerPanel />,
   },
   {
