@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Header from "../../Components/Header";
 import Container from "react-bootstrap/Container";
@@ -25,6 +26,11 @@ import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
 import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 import coverPhoto from "../../assets/home/suggested_group2.jpg";
+import {
+  useCreatePostMutation,
+  useGetPostQuery,
+} from "../../REDUX/Reducers/posts/posts";
+import { useCommentMutation } from "../../REDUX/Reducers/comments/Comments";
 
 // Data of sliders items
 const Data = [
@@ -82,6 +88,78 @@ function WholeSellerPanel() {
   console.log(data);
   const gi = JSON.parse(localStorage.getItem("gi"));
   const cookieValue = Cookies.get("userRole");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const getPost = useGetPostQuery(gi);
+  console.log(getPost, "posts");
+
+  const [createPost, { isLoading, isError }] = useCreatePostMutation();
+
+  const [postContent, setPostContent] = useState({
+    description: "",
+  });
+  const [postMedia, setPostMedia] = useState({
+    name: "",
+    type: "",
+  });
+
+  const contentHandler = (e) => {
+    setPostContent({ ...postContent, [e.target.name]: e.target.value });
+    console.log(postContent, "description here");
+  };
+  const postMediaHandler = (e) => {
+    const selectedFile = e.target.files[0];
+    setPostMedia({ ...postMedia, ["name"]: selectedFile.name });
+    setPostMedia({ ...postMedia, ["type"]: selectedFile.type });
+  };
+
+  const postCreator = async () => {
+    try {
+      const media = {
+        type: postMedia.type,
+        name: postMedia.name,
+      };
+      const res = await createPost({
+        author: user._id,
+        description: postContent.description,
+        group: gi,
+        media: [media],
+      });
+      console.log(res.data, "post handler");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [comment] = useCommentMutation();
+
+  const [commentContent, setCommentContent] = useState("");
+
+  const commentOnChange = (e) => {
+    setCommentContent(e.target.value);
+  };
+
+  const commentPoster = async (postID) => {
+    console.log(postID)
+    console.log(id, "gorup id")
+    if (commentContent.content !== "") {
+      try {
+        const res = await comment({
+          post: postID,
+          content: commentContent,
+          author: user._id,
+          groupID: id,
+        });
+
+        setCommentContent("");
+        console.log(res.data, "Comment Posted");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Write Some Comment");
+    }
+  };
 
   return (
     <>
@@ -220,8 +298,15 @@ function WholeSellerPanel() {
             <input
               className={styles.wholeSellerInputField}
               type="text"
+              onChange={contentHandler}
+              name="description"
+              value={postContent.description}
               placeholder="Write something..."
             />
+
+            <div className="d-block">
+              <button onClick={postCreator}>POST</button>
+            </div>
           </section>
           <section
             className={` w-100 d-flex justify-content-center align-items-center`}
@@ -229,23 +314,40 @@ function WholeSellerPanel() {
             <hr className="m-0 p-0" style={{ width: "95%" }} />
           </section>
           <div className="d-flex justify-content-around align-items-center flex-row">
-            <FontAwesomeIcon
-              icon={faImages}
+            <label htmlFor="fileInput" className={styles.custom_file_upload}>
+              <FontAwesomeIcon
+                icon={faImages}
+                className={`fa-3x ${styles.WholeSellerimg}`}
+              />
+              <input
+                id="fileInput"
+                type="file"
+                accept="image/*"
+                className={styles.file_input}
+                onChange={postMediaHandler}
+              />
+            </label>
+
+            <input
+              type="image"
+              src={faVideo}
+              alt="Video"
               className={`fa-3x ${styles.WholeSellerimg}`}
+              onClick={postMediaHandler}
             />
-            <FontAwesomeIcon
-              icon={faVideo}
+            <input
+              type="image"
+              src={faBroadcastTower}
+              alt="Broadcast"
               className={`fa-3x ${styles.WholeSellerimg}`}
-            />
-            <FontAwesomeIcon
-              icon={faBroadcastTower}
-              className={`fa-3x ${styles.WholeSellerimg}`}
+              onClick={postMediaHandler}
             />
           </div>
         </div>
 
-        {/* WholeSeller Panel posting and comment Area */}
-        {peopleData.map((item, index) => (
+        {/* Post Map From API */}
+
+        {getPost?.data?.findPosts.map((item, index) => (
           <React.Fragment key={index}>
             <Col className="mt-5">
               <div
@@ -257,17 +359,17 @@ function WholeSellerPanel() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={item.imageURL}
+                      src={item?.imageURL}
                       alt="userImg"
                     />
                     <section
                       className={`${styles.postingHeadingTextArea} mx-2`}
                     >
                       <h2 className={styles.postingHeadingText}>
-                        {item.passion}
+                        {item?.passion}
                       </h2>
                       <div className="d-flex">
-                        <p>{item.name}</p>
+                        <p>{item?.name}</p>
                         <p className="px-2">Admin</p>
                       </div>
                     </section>
@@ -298,14 +400,23 @@ function WholeSellerPanel() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={item.imageURL}
+                      src={item?.imageURL}
                       alt="userImg"
                     />
 
                     <div
-                      className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
+                      className={`${styles.ViewcommentInputField} d-flex align-items-center mt-5 py-2`}
                     >
-                      <input type="text" placeholder="Write your comment…" />
+                      <input
+                        type="text"
+                        placeholder="Write your comment…"
+                        name="content"
+                        value={commentContent}
+                        onChange={commentOnChange}
+                      />
+                      <button onClick={() => commentPoster(item._id)}>
+                        POST
+                      </button>
                       <span className="d-flex justify-content-evenly align-items-center w-25">
                         <FontAwesomeIcon
                           className={`${styles.FaceSmile}`}

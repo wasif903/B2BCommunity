@@ -2,6 +2,7 @@ import express from 'express'
 import posts from '../models/groups/posts.js';
 import Group from '../models/groups/Group.js';
 import user from '../models/users/user.js';
+import comments from '../models/groups/comments.js';
 
 const router = express.Router();
 
@@ -37,15 +38,50 @@ router.post('/create-post', async (req, res) => {
 });
 
 // Get All Post endpoint 
-router.get('/all-posts', async (req, res) => {
+// router.get('/all-posts/:grpID', async (req, res) => {
+//     try {
+//       const grpID = req.params.grpID;
+
+//       const findPosts = await posts.find({ group: grpID });
+
+//       res.status(200).json({ status: 200, findPosts });
+//     } catch (error) {
+//       console.log(error);
+//       res.status(500).json(error);
+//     }
+//   });
+
+router.get('/all-posts/:grpID', async (req, res) => {
     try {
-        const findPosts = await posts.find();
-        res.status(200).json({ status: 200, findPosts });
+      const grpID = req.params.grpID;
+  
+      const findPosts = await posts.find({ group: grpID });
+  
+      const postIDs = findPosts.map(post => post._id); // Extract post IDs
+  
+      const findComments = await comments.find({ post: { $in: postIDs } });
+  
+      const combinedData = findPosts.map(post => {
+        const matchingComments = findComments.filter(comment => comment.post.toString() === post._id.toString());
+        return {
+          ...post._doc,
+          comments: matchingComments
+        };
+      });
+  
+      res.status(200).json({ status: 200, data: combinedData });
     } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
+      console.log(error);
+      res.status(500).json(error);
     }
-})
+  });
+  
+  
+
+
+
+
+
 
 // Get Single Post 
 router.get('/:grpID/single-post/:postID', async (req, res) => {

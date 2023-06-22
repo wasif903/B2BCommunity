@@ -130,7 +130,7 @@
   height: 8.5rem !important;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .WholeSellerInputimg {
   width: 3rem;
@@ -145,9 +145,10 @@
   border: 1px solid gray;
   padding: 1rem;
   outline: none;
-  width: 90%;
+  width: 80%;
   position: relative;
   left: 2rem;
+  margin-right: 5%;
 }
 
 .WholeSellerLowerSection {
@@ -727,4 +728,22 @@
     height: 3rem;
     margin-bottom: 0.2rem;
   }
+}
+
+
+.custom_file_upload {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.file_input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
 }

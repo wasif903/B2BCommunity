@@ -2,7 +2,7 @@ import mongoose, { model } from "mongoose";
 const { Schema } = mongoose;
 
 const postSchema = new Schema({
-  title: String,
+  // title: String,
   description: String,
   media: [
     {
