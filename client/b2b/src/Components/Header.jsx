@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,16 @@ function Header() {
   };
 
   // eslint-disable-next-line no-unused-vars
-  
+
   useEffect(() => {
-    
-    JSON.parse(localStorage.getItem('userDetails'));
+    JSON.parse(localStorage.getItem("userDetails"));
+  }, []);
 
-}, [])
+  const userRole = Cookies.get("userRole");
 
+  console.log(userRole);
+
+  const groupID = JSON.parse( localStorage.getItem("gi"));
 
   const navigate = useNavigate();
 
@@ -65,18 +69,56 @@ function Header() {
                 </div>
 
                 <div className="d-flex align-items-center">
-                  <div
-                    onClick={() => navigate("/WholeSeller-panel")}
-                    role="button"
-                    className="pe-lg-4 px-4 d-none d-lg-flex "
-                  >
-                    <img
-                      src={myAcc}
-                      width="50px"
-                      alt=""
-                      style={{ backgroundColor: "white", borderRadius: "50%" }}
-                    />
-                  </div>
+                  {userRole === "Seller" ? (
+                    <div
+                      onClick={() => navigate(`/WholeSeller-panel/${groupID}`)}
+                      role="button"
+                      className="pe-lg-4 px-4 d-none d-lg-flex "
+                    >
+                      <img
+                        src={myAcc}
+                        width="50px"
+                        alt=""
+                        style={{
+                          backgroundColor: "white",
+                          borderRadius: "50%",
+                        }}
+                      />
+                    </div>
+                  ) : userRole === "User" ? (
+                    <div
+                      onClick={() => navigate(`/Admin-Panel`)}
+                      role="button"
+                      className="pe-lg-4 px-4 d-none d-lg-flex "
+                    >
+                      <img
+                        src={myAcc}
+                        width="50px"
+                        alt=""
+                        style={{
+                          backgroundColor: "white",
+                          borderRadius: "50%",
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => navigate(`/Admin-Panel`)}
+                      role="button"
+                      className="d-none "
+                    >
+                      <img
+                        src={myAcc}
+                        width="50px"
+                        alt=""
+                        style={{
+                          backgroundColor: "white",
+                          borderRadius: "50%",
+                        }}
+                      />
+                    </div>
+                  )}
+
                   <div className="pe-lg-4 px-4">
                     <FontAwesomeIcon
                       icon={faCommentDots}
@@ -90,7 +132,10 @@ function Header() {
                   ${isOpen ? "d-none" : "d-flex"} 
                    px-3`}
                   >
-                    <FontAwesomeIcon icon={faBars} className="text-white fa-lg" />
+                    <FontAwesomeIcon
+                      icon={faBars}
+                      className="text-white fa-lg"
+                    />
                   </div>
 
                   <div className="d-flex d-lg-none pe-lg-4 px-4 ps-sm-0">
