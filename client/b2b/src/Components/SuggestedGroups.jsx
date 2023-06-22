@@ -66,7 +66,7 @@ function SuggestedGroups() {
   const navigate = useNavigate();
   const gi = JSON.parse(localStorage.getItem("gi"));
   const cookieValue = Cookies.get("userRole");
-  console.log(cookieValue);
+  console.log(gi);
 
   return (
     <>
@@ -96,8 +96,8 @@ function SuggestedGroups() {
               spaceBetween={10}
               slidesPerView={5}
               breakpoints={breakpoints}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
+              // onSlideChange={() => console.log("slide change")}
+              // onSwiper={(swiper) => console.log(swiper)}
             >
               {cardData.map((card, index) => (
                 <React.Fragment key={index}>

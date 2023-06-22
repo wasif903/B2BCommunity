@@ -281,7 +281,7 @@ function WholeSellerPanel() {
                 </Row>
                 <Row>
                   <div className={`${styles.AddpostArea} mt-1`}>
-                    <p className="px-5">{item.description}</p>
+                    <p className="px-5">{data?.posts ? data?.posts : ""}</p>
                   </div>
                 </Row>
 
@@ -353,11 +353,7 @@ function WholeSellerPanel() {
             </Row>
             <Row>
               <div className={`${styles.AddpostArea} mt-1`}>
-                <p className="px-5">
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                </p>
+                <p className="px-5">{data?.posts ? data?.posts : ""}</p>
               </div>
             </Row>
 

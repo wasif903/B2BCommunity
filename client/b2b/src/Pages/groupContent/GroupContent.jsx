@@ -124,13 +124,15 @@ function GroupContent() {
               <Swiper
                 spaceBetween={15}
                 slidesPerView={3}
-                // breakpoints={breakpoints}
-                onSlideChange={() => console.log("slide change")}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={() => console.log("slide change")}
+                // onSwiper={(swiper) => console.log(swiper)}
               >
                 {FeaturedData.map((item, index) => (
                   <React.Fragment key={index}>
-                    <SwiperSlide className={styles.featuredMapWrapper}>
+                    <SwiperSlide
+                      key={index}
+                      className={styles.featuredMapWrapper}
+                    >
                       <div className={styles.featuredMapDiv}>
                         <img
                           className={styles.postingAreaimg}
@@ -202,7 +204,8 @@ function GroupContent() {
                 </Row>
                 <Row>
                   <div className={`${styles.AddpostArea} mt-1`}>
-                    <p className="px-5">{item.description}</p>
+                    {/* <p className="px-5">{item.description}</p> */}
+                    <p className="px-5">{data?.posts ? data?.posts : ""}</p>
                   </div>
 
                   {/* <div className={`${styles.AddpostArea} mt-1`}>
@@ -258,14 +261,16 @@ function GroupContent() {
               >
                 <img
                   className={styles.postingAreaimg}
-                  src={WholeSellerimg}
+                  src={peopleData[0].imageURL}
                   alt="userImg"
                 />
 
                 <section className={`${styles.postingHeadingTextArea} mx-2 `}>
-                  <h2 className={styles.postingHeadingText}>UIUX Designers</h2>
+                  <h2 className={styles.postingHeadingText}>
+                    {peopleData[0].passion}
+                  </h2>
                   <div className="d-flex">
-                    <p>Tom Hawkins</p>
+                    <p>{peopleData[0].name}</p>
                     <p className="px-2">Admin</p>
                   </div>
                 </section>
@@ -279,11 +284,7 @@ function GroupContent() {
             </Row>
             <Row>
               <div className={`${styles.AddpostArea} mt-1`}>
-                <p className="px-5">
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                  A Great Way To Generate All The Motivation You Need To Get Fit
-                </p>
+                <p className="px-5">{data?.posts ? data?.posts : ""}</p>
               </div>
             </Row>
 
