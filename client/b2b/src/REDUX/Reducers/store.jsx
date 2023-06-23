@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { signup } from './auth/UserSlice';
 import { group } from './groups/GroupSlice';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
-import { posts } from './posts/posts';
+import { posts } from './posts/Posts';
 import { comments } from './comments/Comments';
 
 const store = configureStore({

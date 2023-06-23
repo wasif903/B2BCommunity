@@ -29,7 +29,7 @@ import Comments from "../../Components/Comment/Comments";
 import {
   useCreatePostMutation,
   useGetPostQuery,
-} from "../../REDUX/Reducers/posts/posts";
+} from "../../REDUX/Reducers/posts/Posts";
 import { useCommentMutation } from "../../REDUX/Reducers/comments/Comments";
 
 // Data of sliders items
