@@ -6,8 +6,8 @@ function Comments({ comments }) {
   console.log(comments);
   return (
     <>
-      {comments.map((item) => (
-        <div>
+      {comments.map((item, index) => (
+        <div key={index}>
           <div className={style.CommentWrapper}>
             <img src={image} alt="" className={style.AddCommentImg} />
             <div className={style.CommentDetail}>

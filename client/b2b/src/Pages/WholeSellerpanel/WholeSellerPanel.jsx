@@ -25,6 +25,7 @@ import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
 import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 import coverPhoto from "../../assets/home/suggested_group2.jpg";
+import Comments from "../../Components/Comment/Comments";
 import {
   useCreatePostMutation,
   useGetPostQuery,
@@ -74,6 +75,11 @@ function WholeSellerPanel() {
 
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
+  const [ShowCommentsModal, setShowCommentsModal] = useState(false);
+
+  function CommentModal() {
+    setShowCommentsModal(!ShowCommentsModal);
+  }
 
   // Funtion for Edite Cover Photo
   const toggleEditCoverModal = () => {
@@ -406,7 +412,10 @@ function WholeSellerPanel() {
                 <section
                   className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
                 >
-                  <button className={`${styles.ViewComment} bg-white`}>
+                  <button
+                    className={`${styles.ViewComment} bg-white`}
+                    onClick={CommentModal}
+                  >
                     View all comments
                   </button>
                   <div
@@ -430,7 +439,6 @@ function WholeSellerPanel() {
                       />
                       <button
                         onClick={() => commentPoster(item._id)}
-                        // style={{ fontSize: "0.7rem" }}
                         className={styles.ViewcommentInputFieldBTN}
                       >
                         POST
@@ -448,6 +456,8 @@ function WholeSellerPanel() {
                     </div>
                   </div>
                 </section>
+                {/* Comments */}
+                {ShowCommentsModal ? <Comments comments={item.comments} /> : ""}
               </div>
             </Col>
           </React.Fragment>
