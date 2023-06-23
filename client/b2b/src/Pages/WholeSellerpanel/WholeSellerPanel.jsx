@@ -116,6 +116,7 @@ function WholeSellerPanel() {
     setPostContent({ ...postContent, [e.target.name]: e.target.value });
     console.log(postContent, "description here");
   };
+
   const postMediaHandler = (e) => {
     const selectedFile = e.target.files[0];
     setPostMedia({ ...postMedia, ["name"]: selectedFile.name });
@@ -250,7 +251,27 @@ function WholeSellerPanel() {
               </section>
             </div>
           </Col>
-          {cookieValue === "Seller" && (
+          {cookieValue === "Seller" ? (
+            <Col
+              lg="3"
+              sm="6"
+              xs="6"
+              className="py-3 d-flex justify-content-center align-items-center flex-column"
+            >
+              <div
+                className={`${styles.manageWholeSeller}`}
+                onClick={() => navigate(`/All-Members/${gi}`)}
+              >
+                <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
+                  <FontAwesomeIcon
+                    className={`${styles.manager} pe-3`}
+                    icon={faCirclePlay}
+                  />
+                  All Member
+                </h4>
+              </div>
+            </Col>
+          ) : (
             <Col
               lg="3"
               sm="6"
@@ -272,7 +293,27 @@ function WholeSellerPanel() {
             </Col>
           )}
 
-          {cookieValue === "Seller" && (
+          {cookieValue === "Seller" ? (
+            <Col
+              lg="3"
+              sm="6"
+              xs="6"
+              className="py-3 d-flex justify-content-center align-items-center flex-column"
+            >
+              <div
+                className={styles.manageUsers}
+                onClick={() => navigate(`/New-Request/${gi}`)}
+              >
+                <h4 className={`${styles.WholeSellerManageBtn} pt-2`}>
+                  <FontAwesomeIcon
+                    className={`${styles.user} pe-3`}
+                    icon={faGlobe}
+                  />
+                  New Request
+                </h4>
+              </div>
+            </Col>
+          ) : (
             <Col
               lg="3"
               sm="6"
@@ -379,7 +420,7 @@ function WholeSellerPanel() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={item?.imageURL}
+                      src={item?.imageURL ? item?.imageURL : `${image}`}
                       alt="userImg"
                     />
                     <section
@@ -403,7 +444,9 @@ function WholeSellerPanel() {
                 </Row>
                 <Row>
                   <div className={`${styles.AddpostArea} mt-1`}>
-                    <p className="px-5">{data?.posts ? data?.posts : ""}</p>
+                    <p className="px-5">
+                      {item?.description ? item?.description : ""}
+                    </p>
                   </div>
                 </Row>
 
@@ -423,7 +466,7 @@ function WholeSellerPanel() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={item?.imageURL}
+                      src={item?.imageURL ? item?.imageURL : `${image}`}
                       alt="userImg"
                     />
 

@@ -39,6 +39,8 @@ function GroupContent() {
   }
   const { id } = useParams();
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const singleGroup = useGetSingleGroupQuery(id);
   const data = singleGroup.data;
   console.log(singleGroup, " Single Group Data Here");
@@ -46,6 +48,37 @@ function GroupContent() {
   const gi = JSON.parse(localStorage.getItem("gi"));
   const getPost = useGetPostQuery(gi);
   console.log(getPost, "posts");
+
+  const [comment] = useCommentMutation();
+
+  const [commentContent, setCommentContent] = useState("");
+
+  const commentOnChange = (e) => {
+    setCommentContent(e.target.value);
+  };
+
+  const commentPoster = async (postID) => {
+    console.log(postID);
+    console.log(id, "gorup id");
+    if (commentContent.content !== "") {
+      try {
+        const res = await comment({
+          post: postID,
+          content: commentContent,
+          author: user._id,
+          groupID: id,
+        });
+
+        setCommentContent("");
+        console.log(res.data, "Comment Posted");
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Write Some Comment");
+    }
+  };
 
   const images = [
     {
@@ -252,7 +285,19 @@ function GroupContent() {
                     <div
                       className={`${styles.ViewcommentInputField} d-flex align-items-center mt-1`}
                     >
-                      <input type="text" placeholder="Write your comment…" />
+                      <input
+                        type="text"
+                        placeholder="Write your comment…"
+                        name="content"
+                        value={commentContent}
+                        onChange={commentOnChange}
+                      />
+                      <button
+                        onClick={() => commentPoster(item._id)}
+                        className={styles.ViewcommentInputFieldBTN}
+                      >
+                        POST
+                      </button>
                       <span className="d-flex justify-content-evenly align-items-center w-25">
                         <FontAwesomeIcon
                           className={`${styles.FaceSmile}`}

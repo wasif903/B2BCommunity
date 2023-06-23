@@ -3,7 +3,6 @@ import style from "./Comments.module.css";
 import image from "../../assets/my_acc.png";
 
 function Comments({ comments }) {
-  console.log(comments);
   return (
     <>
       {comments.map((item, index) => (
@@ -25,6 +24,7 @@ function Comments({ comments }) {
     </>
   );
 }
+
 function SubComment({ content }) {
   return (
     <>

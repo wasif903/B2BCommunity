@@ -264,6 +264,9 @@
   object-fit: cover;
   cursor: pointer;
 }
+.ViewcommentInputFieldBTN {
+  font-size: 0.7rem;
+}
 .CommentField {
   position: relative;
   height: 5.3rem !important;
@@ -459,7 +462,10 @@
     width: 90% !important;
   }
   .ViewcommentInputField input {
-    width: 49rem;
+    width: 65vw !important;
+  }
+  .ViewcommentInputFieldBTN {
+    font-size: 0.5rem;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -519,7 +525,10 @@
     width: 90% !important;
   }
   .ViewcommentInputField input {
-    width: 98vw !important;
+    width: 60vw !important;
+  }
+  .ViewcommentInputFieldBTN {
+    font-size: 0.5rem;
   }
   .postingHeadingTextArea div p:nth-child(1) {
     font-size: 1rem !important;
