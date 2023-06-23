@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Comments.module.css";
 import image from "../../assets/my_acc.png";
 
 function Comments({ comments }) {
+  const [isOpen, setIsOpen] = useState(false);
+  function handleOpen() {
+    setIsOpen(!isOpen);
+  }
   return (
     <>
       {comments.map((item, index) => (
@@ -15,17 +19,33 @@ function Comments({ comments }) {
                 <p>{item.content}</p>
               </span>
               <button className={style.CommentLike}>Like</button>
-              <button className={style.CommentReply}>Reply</button>
+              <button className={style.CommentReply} onClick={handleOpen}>
+                Reply
+              </button>
             </div>
           </div>
-          <SubComment content={item.content} />
+          {isOpen ? (
+            <input
+              type="text"
+              className={style.CommentInput}
+              placeholder="Write your comment..."
+            />
+          ) : (
+            ""
+          )}
+
+          <SubComment
+            content={item.content}
+            isOpen={isOpen}
+            handleOpen={handleOpen}
+          />
         </div>
       ))}
     </>
   );
 }
 
-function SubComment({ content }) {
+function SubComment({ content, handleOpen, isOpen }) {
   return (
     <>
       <div className={style.SubCommentWrapper}>
@@ -36,8 +56,19 @@ function SubComment({ content }) {
             <p>{content}</p>
           </span>
           <button className={style.SubCommentLike}>Like</button>
-          <button className={style.SubCommentReply}>Reply</button>
+          <button className={style.SubCommentReply} onClick={handleOpen}>
+            Reply
+          </button>
         </div>
+        {isOpen ? (
+          <input
+            type="text"
+            className={style.CommentInput}
+            placeholder="Write your comment..."
+          />
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
