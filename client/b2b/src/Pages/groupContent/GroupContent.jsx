@@ -21,17 +21,31 @@ import ImageGallery from "react-image-gallery";
 // import breakpoints from "../../utils/SwiperBreakPoints";
 import { useGetSingleGroupQuery } from "../../REDUX/Reducers/groups/GroupSlice";
 import { useParams } from "react-router-dom";
+import Comments from "../../Components/Comment/Comments";
 import coverPhoto from "../../assets/home/suggested_group2.jpg";
+import {
+  useCreatePostMutation,
+  useGetPostQuery,
+} from "../../REDUX/Reducers/posts/posts";
+import { useCommentMutation } from "../../REDUX/Reducers/comments/Comments";
 
 function GroupContent() {
   // useState for Edite Cover Photo
   const [showEditCoverModal, setShowEditCoverModal] = useState(false);
+  const [ShowCommentsModal, setShowCommentsModal] = useState(false);
 
+  function CommentModal() {
+    setShowCommentsModal(!ShowCommentsModal);
+  }
   const { id } = useParams();
 
   const singleGroup = useGetSingleGroupQuery(id);
   const data = singleGroup.data;
   console.log(singleGroup, " Single Group Data Here");
+
+  const gi = JSON.parse(localStorage.getItem("gi"));
+  const getPost = useGetPostQuery(gi);
+  console.log(getPost, "posts");
 
   const images = [
     {
@@ -167,7 +181,7 @@ function GroupContent() {
 
         {/* WholeSeller Panel posting and comment Area */}
 
-        {peopleData.map((item, index) => (
+        {getPost?.data?.data?.map((item, index) => (
           <React.Fragment key={index}>
             <Col className="mt-5">
               <div
@@ -179,7 +193,7 @@ function GroupContent() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={item.imageURL}
+                      src={item?.imageURL ? item?.imageURL : `${image}`}
                       alt="userImg"
                     />
 
@@ -187,10 +201,10 @@ function GroupContent() {
                       className={`${styles.postingHeadingTextArea} mx-2`}
                     >
                       <h2 className={styles.postingHeadingText}>
-                        {item.passion}
+                        {item?.passion}
                       </h2>
                       <div className="d-flex">
-                        <p>{item.name}</p>
+                        <p>{item?.name}</p>
                         <p className="px-2">Admin</p>
                       </div>
                     </section>
@@ -204,8 +218,9 @@ function GroupContent() {
                 </Row>
                 <Row>
                   <div className={`${styles.AddpostArea} mt-1`}>
-                    {/* <p className="px-5">{item.description}</p> */}
-                    <p className="px-5">{data?.posts ? data?.posts : ""}</p>
+                    <p className="px-5">
+                      {item?.description ? item?.description : ""}
+                    </p>
                   </div>
 
                   {/* <div className={`${styles.AddpostArea} mt-1`}>
@@ -219,7 +234,10 @@ function GroupContent() {
                 <section
                   className={`${styles.CommentField} d-flex flex-column mt-2 mb-3 position-relative`}
                 >
-                  <button className={`${styles.ViewComment} bg-white`}>
+                  <button
+                    className={`${styles.ViewComment} bg-white`}
+                    onClick={CommentModal}
+                  >
                     View all comments
                   </button>
                   <div
@@ -227,7 +245,7 @@ function GroupContent() {
                   >
                     <img
                       className={styles.postingAreaimg}
-                      src={item.imageURL}
+                      src={item?.imageURL ? item?.imageURL : `${image}`}
                       alt="userImg"
                     />
 
@@ -248,6 +266,8 @@ function GroupContent() {
                     </div>
                   </div>
                 </section>
+                {/* Comments */}
+                {ShowCommentsModal ? <Comments comments={item.comments} /> : ""}
               </div>
             </Col>
           </React.Fragment>

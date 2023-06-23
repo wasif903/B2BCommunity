@@ -19,7 +19,6 @@ import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import EditCoverPhoto from "../../Components/AdminPanelModals/EditCoverPhoto";
-import { peopleData } from "../ManageData/ManageDataAssets/ManageUserData.json";
 import { useNavigate } from "react-router-dom";
 import ImageGallery from "react-image-gallery";
 import Cookies from "js-cookie";
@@ -85,9 +84,12 @@ function WholeSellerPanel() {
 
   const singleGroup = useGetSingleGroupQuery(id);
   const data = singleGroup.data;
-  console.log(data);
+
+  // console.log(data);
+
   const gi = JSON.parse(localStorage.getItem("gi"));
   const cookieValue = Cookies.get("userRole");
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   const getPost = useGetPostQuery(gi);
@@ -98,6 +100,7 @@ function WholeSellerPanel() {
   const [postContent, setPostContent] = useState({
     description: "",
   });
+
   const [postMedia, setPostMedia] = useState({
     name: "",
     type: "",
@@ -140,8 +143,8 @@ function WholeSellerPanel() {
   };
 
   const commentPoster = async (postID) => {
-    console.log(postID)
-    console.log(id, "gorup id")
+    console.log(postID);
+    console.log(id, "gorup id");
     if (commentContent.content !== "") {
       try {
         const res = await comment({
@@ -289,7 +292,7 @@ function WholeSellerPanel() {
         {/************ WholeSellerInputArea ************/}
 
         <div className={`${styles.WholeSellerInputArea}`}>
-          <section className="d-flex align-items-center">
+          <section className="d-flex align-items-center justify-content-around">
             <img
               className={styles.WholeSellerInputimg}
               src={WholeSellerimg}
@@ -305,7 +308,9 @@ function WholeSellerPanel() {
             />
 
             <div className="d-block">
-              <button onClick={postCreator}>POST</button>
+              <button onClick={postCreator} style={{ fontSize: "0.8rem" }}>
+                POST
+              </button>
             </div>
           </section>
           <section
@@ -327,27 +332,36 @@ function WholeSellerPanel() {
                 onChange={postMediaHandler}
               />
             </label>
-
-            <input
-              type="image"
-              src={faVideo}
-              alt="Video"
-              className={`fa-3x ${styles.WholeSellerimg}`}
-              onClick={postMediaHandler}
-            />
-            <input
-              type="image"
-              src={faBroadcastTower}
-              alt="Broadcast"
-              className={`fa-3x ${styles.WholeSellerimg}`}
-              onClick={postMediaHandler}
-            />
+            <label htmlFor="fileInput" className={styles.custom_file_upload}>
+              <FontAwesomeIcon
+                icon={faVideo}
+                className={`fa-3x ${styles.WholeSellerimg}`}
+              />
+              <input
+                type="image"
+                alt="Video"
+                className={styles.file_input}
+                onClick={postMediaHandler}
+              />
+            </label>
+            <label htmlFor="fileInput" className={styles.custom_file_upload}>
+              <FontAwesomeIcon
+                icon={faBroadcastTower}
+                className={`fa-3x ${styles.WholeSellerimg}`}
+              />
+              <input
+                type="image"
+                alt="Video"
+                className={styles.file_input}
+                onClick={postMediaHandler}
+              />
+            </label>
           </div>
         </div>
 
         {/* Post Map From API */}
 
-        {getPost?.data?.findPosts.map((item, index) => (
+        {getPost?.data?.data?.map((item, index) => (
           <React.Fragment key={index}>
             <Col className="mt-5">
               <div
@@ -405,7 +419,7 @@ function WholeSellerPanel() {
                     />
 
                     <div
-                      className={`${styles.ViewcommentInputField} d-flex align-items-center mt-5 py-2`}
+                      className={`${styles.ViewcommentInputField} d-flex align-items-center  py-2`}
                     >
                       <input
                         type="text"
@@ -414,7 +428,11 @@ function WholeSellerPanel() {
                         value={commentContent}
                         onChange={commentOnChange}
                       />
-                      <button onClick={() => commentPoster(item._id)}>
+                      <button
+                        onClick={() => commentPoster(item._id)}
+                        // style={{ fontSize: "0.7rem" }}
+                        className={styles.ViewcommentInputFieldBTN}
+                      >
                         POST
                       </button>
                       <span className="d-flex justify-content-evenly align-items-center w-25">

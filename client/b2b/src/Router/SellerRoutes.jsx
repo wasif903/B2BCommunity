@@ -6,6 +6,7 @@ import AllMembers from "../Pages/ManageData/AllMembers";
 import WholeSellerPanel from "../Pages/WholeSellerpanel/WholeSellerPanel";
 import GroupContent from "../Pages/groupContent/GroupContent";
 import { Navigate } from "react-router-dom";
+import Comments from "../Components/Comment/Comments";
 
 const sellerRoutes = [
   {
@@ -36,6 +37,10 @@ const sellerRoutes = [
   {
     path: "/Group-Content/:id",
     element: <GroupContent />,
+  },
+  {
+    path: "/Comments",
+    element: <Comments />,
   },
   {
     path: "*",

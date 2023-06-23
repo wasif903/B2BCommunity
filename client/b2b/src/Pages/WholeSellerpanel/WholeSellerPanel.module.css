@@ -130,7 +130,7 @@
   height: 8.5rem !important;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .WholeSellerInputimg {
   width: 3rem;
@@ -145,7 +145,7 @@
   border: 1px solid gray;
   padding: 1rem;
   outline: none;
-  width: 80%;
+  width: 82%;
   position: relative;
   left: 2rem;
   margin-right: 5%;
@@ -168,7 +168,7 @@
 .WholeSellerimg {
   color: var(--primary-color);
   padding: 0px 20px 0px 20px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 /*************************************************** TotalMembers CSS ****************************************************/
@@ -378,6 +378,7 @@
   margin-left: 10px;
   width: 95%;
   border-radius: 40px;
+  height: 3.2rem;
 }
 .ViewcommentInputField input {
   height: 100%;
@@ -387,6 +388,9 @@
   border-bottom-left-radius: 40px;
   border-top-left-radius: 40px;
   padding-left: 1rem;
+}
+.ViewcommentInputFieldBTN {
+  font-size: 0.8rem;
 }
 .FaceSmile {
   font-size: 2rem;
@@ -400,7 +404,7 @@
 /*************************************************** Media query for (1280PX) ****************************************************/
 @media all and (max-width: 1280px) {
   .wholeSellerInputField {
-    width: 85%;
+    width: 75%;
   }
   .WholeSellerText div {
     left: 7rem !important;
@@ -458,8 +462,14 @@
   .ViewComment {
     margin-top: 0.8rem !important;
   }
+  .ViewcommentInputField {
+    position: relative;
+    top: 1rem;
+  }
   .ViewcommentInputField input {
     width: 105rem !important;
+  }
+  .ViewcommentInputFieldBTN {
   }
   .PhotoOne,
   .PhotoTwo {
@@ -569,6 +579,8 @@
   .ViewcommentInputField input {
     width: 49rem;
   }
+  .ViewcommentInputFieldBTN {
+  }
   .PhotoOne,
   .PhotoTwo {
     height: 12.4rem;
@@ -627,8 +639,7 @@
     font-size: 1rem;
   }
   .wholeSellerInputField {
-    width: 80%;
-    margin-left: 1rem;
+    width: 60%;
   }
   .underLine {
     right: -22px;
@@ -642,15 +653,24 @@
   }
 
   .ViewcommentInputField {
-    width: 95% !important;
+    width: 90% !important;
+    height: 2.9rem;
   }
   .ViewcommentInputField input {
     width: 68vw !important;
   }
-
+  .ViewcommentInputFieldBTN {
+    font-size: 0.5rem;
+  }
+  .ViewcommentInputFieldBTN:hover {
+    transform: none;
+  }
   .postingHeadingTextArea div p:nth-child(1) {
     font-size: 1rem;
     margin-top: 0.2rem !important;
+  }
+  .WholeSellerManageBtn {
+    font-size: 1.2rem;
   }
   .AddpostArea p {
     padding: 0 !important;
@@ -658,7 +678,8 @@
   }
   .ViewComment {
     font-size: 0.8rem !important;
-    top: -0.5rem;
+    top: 0.5rem;
+    right: -1rem;
   }
   .PhotoOne,
   .PhotoTwo {
@@ -701,7 +722,10 @@
     height: 6rem !important;
   }
   .ViewcommentInputField {
-    width: 95% !important;
+    width: 88% !important;
+  }
+  .ViewcommentInputField input {
+    width: 50vw !important;
   }
   .ViewComment {
     font-size: 0.8rem !important;
@@ -729,7 +753,6 @@
     margin-bottom: 0.2rem;
   }
 }
-
 
 .custom_file_upload {
   position: relative;

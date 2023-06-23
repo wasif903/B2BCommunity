@@ -1,0 +1,45 @@
+.CommentWrapper,
+.SubCommentWrapper {
+  display: flex;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+.SubCommentWrapper {
+  padding-left: 4rem;
+}
+.AddCommentImg,
+.SubAddCommentImg {
+  width: 3rem;
+  height: auto;
+  align-self: baseline;
+}
+.SubAddCommentImg {
+  width: 2.5rem;
+}
+.CommentSpan,
+.SubCommentSpan {
+  background: rgb(212, 211, 211);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  gap: 0.2rem;
+}
+.CommentSpan p,
+.CommentSpan h5,
+.SubCommentSpan p,
+.SubCommentSpan h5 {
+  margin: 0 !important;
+}
+.CommentSpan h5,
+.SubCommentSpan h5 {
+  font-weight: 600;
+}
+.CommentLike,
+.CommentReply,
+.SubCommentLike,
+.SubCommentReply {
+  background: none;
+  color: black;
+  font-size: 0.7rem;
+}
